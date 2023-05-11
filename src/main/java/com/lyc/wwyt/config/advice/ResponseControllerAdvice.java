@@ -10,7 +10,6 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -64,6 +63,9 @@ public class ResponseControllerAdvice implements ResponseBodyAdvice<Object> {
 
     @Override
     public Object beforeBodyWrite(Object data, MethodParameter returnType, MediaType mediaType, Class<? extends HttpMessageConverter<?>> aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
+        if (data == null) {
+            return R.ok(new ArrayList<>());
+        }
         //判断url是否需要拦截
         if (this.ignoring(serverHttpRequest.getURI().getPath())) {
             return data;
@@ -81,7 +83,7 @@ public class ResponseControllerAdvice implements ResponseBodyAdvice<Object> {
             }
         }
         // 将原本的数据包装在R里 默认为空数据
-        return R.ok(data == null ? new ArrayList<>() : data);
+        return R.ok(data);
     }
 
     /**

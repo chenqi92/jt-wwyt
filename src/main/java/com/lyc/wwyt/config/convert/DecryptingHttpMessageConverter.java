@@ -15,11 +15,11 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -53,24 +53,22 @@ public class DecryptingHttpMessageConverter extends MappingJackson2HttpMessageCo
         });
         String encryptedDatas = (String) map.get("datas");
         String decryptedDatas = decrypt(encryptedDatas);
-        Map<String, Object> decryptedMap = objectMapper.readValue(decryptedDatas, new TypeReference<Map<String, Object>>() {
-        });
-        map.putAll(decryptedMap);
-        map.remove("datas");
-        String decryptedBody = objectMapper.writeValueAsString(map);
+        String decryptedBody;
+        if (List.class.isAssignableFrom(javaType.getRawClass())) {
+            List<Map<String, Object>> decryptedList = objectMapper.readValue(decryptedDatas, new TypeReference<List<Map<String, Object>>>() {
+            });
+            decryptedBody = objectMapper.writeValueAsString(decryptedList);
+        } else {
+            Map<String, Object> decryptedMap = objectMapper.readValue(decryptedDatas, new TypeReference<Map<String, Object>>() {
+            });
+            map.putAll(decryptedMap);
+            map.remove("datas");
+            decryptedBody = objectMapper.writeValueAsString(map);
+        }
+
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(decryptedBody.getBytes());
         HttpHeaders headers = inputMessage.getHeaders();
-        return super.readInternal(javaType.getRawClass(), new HttpInputMessage() {
-            @Override
-            public InputStream getBody() {
-                return byteArrayInputStream;
-            }
-
-            @Override
-            public HttpHeaders getHeaders() {
-                return headers;
-            }
-        });
+        return this.objectMapper.readValue(byteArrayInputStream, javaType);
     }
 
     private String decrypt(String encrypted) {
@@ -82,7 +80,7 @@ public class DecryptingHttpMessageConverter extends MappingJackson2HttpMessageCo
             byte[] decrypted = cipher.doFinal(Base64.getDecoder().decode(encrypted));
             return new String(decrypted, StandardCharsets.UTF_8);
         } catch (Exception e) {
-            throw new DecryptException("请核对加密方式是否正确！");
+            throw new DecryptException();
         }
     }
 }

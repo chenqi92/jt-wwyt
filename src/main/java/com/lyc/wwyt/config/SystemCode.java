@@ -31,7 +31,7 @@ public enum SystemCode implements IResultCode {
 
     FORBIDDEN_403(403, "缺少资源访问权限!"),
 
-    DES_ERROR(501, "数据体解密失败!请根据文档内容核对数据加密方式!"),
+    DES_ERROR(501, "数据体解密失败!请核对加密方式是否正确！"),
     ;
 
     /**
