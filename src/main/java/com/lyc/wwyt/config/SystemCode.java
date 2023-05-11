@@ -1,4 +1,4 @@
-package com.lyc.wwyt.config.security;
+package com.lyc.wwyt.config;
 
 import cn.allbs.common.code.IResultCode;
 import io.swagger.annotations.ApiModel;
@@ -27,9 +27,11 @@ public enum SystemCode implements IResultCode {
 
     USERNAME_OR_PASSWORD_ERROR(401003, "用户名或密码错误"),
 
-    USER_NOT_FOUND_ERROR(401004, "不存在的用户名"),
+    USER_NOT_FOUND_ERROR(401004, "指定用户不存在!"),
 
     FORBIDDEN_403(403, "缺少资源访问权限!"),
+
+    DES_ERROR(501, "数据体解密失败!请根据文档内容核对数据加密方式!"),
     ;
 
     /**

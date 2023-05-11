@@ -2,6 +2,8 @@ package com.lyc.wwyt.config.advice;
 
 import cn.allbs.common.code.SystemCode;
 import cn.allbs.common.utils.R;
+import com.lyc.wwyt.exception.DecryptException;
+import com.lyc.wwyt.exception.UserNameNotExistException;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.validator.internal.engine.path.PathImpl;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
@@ -111,6 +113,22 @@ public class RestExceptionTranslator {
         String message = e.getMessage() + " " + e.getSupportedMediaTypes();
         log.error("不接受的媒体类型:{}", message);
         return R.fail(SystemCode.MEDIA_TYPE_NOT_SUPPORTED, message);
+    }
+
+    @ExceptionHandler(DecryptException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public R<Object> handleError(DecryptException e) {
+        String message = e.getMessage();
+        log.error("接口数据体解密失败:{}", message);
+        return R.fail(message);
+    }
+
+    @ExceptionHandler(UserNameNotExistException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public R<Object> handleError(UserNameNotExistException e) {
+        String message = e.getMessage();
+        log.error("用户校验失败:{}", message);
+        return R.fail(message);
     }
 
     /**

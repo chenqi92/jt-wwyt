@@ -2,7 +2,7 @@ package com.lyc.wwyt.config.security.handler;
 
 import cn.allbs.common.utils.R;
 import cn.allbs.common.utils.ResponseUtil;
-import com.lyc.wwyt.config.security.SystemCode;
+import com.lyc.wwyt.config.SystemCode;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 

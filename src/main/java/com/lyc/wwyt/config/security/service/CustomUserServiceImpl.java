@@ -1,6 +1,7 @@
 package com.lyc.wwyt.config.security.service;
 
 import com.lyc.wwyt.entity.TUserEntity;
+import com.lyc.wwyt.exception.UserNameNotExistException;
 import com.lyc.wwyt.service.TUserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -31,7 +32,7 @@ public class CustomUserServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         TUserEntity user = tUserService.findUserInfoByUserName(username);
         if (user == null) {
-            throw new UsernameNotFoundException("不存在的用户!");
+            throw new UserNameNotExistException();
         }
         return new User(user.getUsername(), user.getPassword(), new ArrayList<>());
     }
