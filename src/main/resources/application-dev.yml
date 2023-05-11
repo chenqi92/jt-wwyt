@@ -1,0 +1,81 @@
+# mysql 连接池配置
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: ${WWYT_MYSQL_USER_DEV:root}
+      password: ${WWYT_MYSQL_PWD_DEV:123456}
+      url: jdbc:mysql://${WWYT_MYSQL_HOST_DEV:wwyt-mysql}:${WWYT_MYSQL_PORT_DEV:3306}/${WWYT_MYSQL_DB_DEV:jt_prod}?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&allowMultiQueries=true&allowPublicKeyRetrieval=true
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+      filter:
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 1000
+          merge-sql: true
+          enabled: true
+        wall:
+          config:
+            multi-statement-allow: true
+  redis:
+    database: ${WWYT_REDIS_DB_DEV:0}
+    host: ${WWYT_REDIS_HOST_DEV:wwyt-redis}
+    port: ${WWYT_REDIS_PORT_DEV:6379}
+    password: ${WWYT_REDIS_PWD_DEV:123456}
+    timeout: 5000
+    lettuce:
+      pool:
+        min-idle: 2
+# mybatis plus 配置
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*.xml
+  global-config:
+    banner: false
+    db-config:
+      id-type: auto
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+    configuration:
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  type-handlers-package: com.lyc.wwyt.config.handler
+  show-sql: false
+  meta-custom:
+    del-flg: deleteMark
+    create-name: createBy
+    update-name: updateBy
+  chine-rate: 1.5
+  data-pms: false
+
+swagger:
+  title: jwt示例
+  description: jwt示例服务
+  version: 1.0
+  securitySchemes:
+    Authorization:
+      type: http
+      in: HEADER
+      name: Authorization
+      scheme: bearer
+
+  servers:
+    - url: http://127.0.0.1:7890
+      description: 五位一体数据上传平台
+springdoc:
+  api-docs:
+    # 开启api-docs
+    enabled: true
+  # 配置需要生成接口文档的扫描包
+  packages-to-scan: com.lyc.wwyt.controller
+  # 配置需要生成接口文档的接口路径
+  paths-to-match:
+security:
+  ignore-urls:
+    - /v3/api-docs/**
+    - /doc.html
+    - /webjars/**
+    - /druid/**
+    - /static/**
+    - /configuration/ui
+    - /swagger-resources/**
