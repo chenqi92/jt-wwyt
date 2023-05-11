@@ -4,7 +4,6 @@ package com.lyc.wwyt.entity;
 import cn.hutool.core.convert.Convert;
 import com.baomidou.mybatisplus.annotation.*;
 import com.lyc.wwyt.config.log.dto.SysLogDto;
-import io.swagger.annotations.ApiModel;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
@@ -17,7 +16,7 @@ import java.time.LocalDateTime;
  * @since 2023-05-11 09:41:45
  */
 @Data
-@ApiModel(value = "日志表")
+@Schema(title = "日志表", name = "TLogEntity")
 @TableName("t_log")
 public class TLogEntity {
 

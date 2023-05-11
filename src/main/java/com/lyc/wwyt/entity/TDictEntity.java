@@ -9,6 +9,7 @@ import lombok.EqualsAndHashCode;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 /**
  * 五位一体_字典表(t_dict)表实体类
@@ -46,7 +47,7 @@ public class TDictEntity extends BaseEntity {
     private String value;
 
     @Schema(description = "排序", name = "orderNum", implementation = Integer.class)
-    @NotBlank
+    @NotNull
     @Min(1)
     private Integer orderNum;
 }
