@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.wwyt.dao.TLogDao">
+    <resultMap type="com.lyc.wwyt.entity.TLogEntity" id="TLogMap">
+        <result property="id" column="id"/>
+        <result property="type" column="type"/>
+        <result property="title" column="title"/>
+        <result property="serviceId" column="service_id"/>
+        <result property="remoteAddr" column="remote_addr"/>
+        <result property="userAgent" column="user_agent"/>
+        <result property="requestUri" column="request_uri"/>
+        <result property="method" column="method"/>
+        <result property="params" column="params"/>
+        <result property="time" column="time"/>
+        <result property="exception" column="exception"/>
+        <result property="createTime" column="create_time"/>
+        <result property="createBy" column="create_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="deleteMark" column="delete_mark"/>
+    </resultMap>
+
+    <sql id="baseColumn">
+        id,
+        type,
+        title,
+        service_id,
+        remote_addr,
+        user_agent,
+        request_uri,
+        method,
+        params,
+        time,
+        exception,
+        create_time,
+        create_by,
+        update_time,
+        update_by,
+        delete_mark
+    </sql>
+</mapper>

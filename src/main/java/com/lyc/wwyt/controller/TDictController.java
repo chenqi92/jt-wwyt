@@ -1,6 +1,7 @@
 package com.lyc.wwyt.controller;
 
 import cn.allbs.common.utils.R;
+import com.lyc.wwyt.config.log.annotation.SysLog;
 import com.lyc.wwyt.entity.TDictEntity;
 import com.lyc.wwyt.service.TDictService;
 import io.swagger.annotations.ApiOperation;
@@ -39,7 +40,7 @@ public class TDictController {
      * @return R
      */
     @ApiOperation(value = "新增五位一体_字典表", notes = "新增五位一体_字典表")
-//    @SysLog("新增五位一体_字典表")
+    @SysLog("新增五位一体_字典表数据")
     @PostMapping
     public R save(@RequestBody @Valid TDictEntity tDictEntity) {
         return R.ok(this.tDictService.save(tDictEntity));

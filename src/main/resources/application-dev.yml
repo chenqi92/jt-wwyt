@@ -1,5 +1,16 @@
 # mysql 连接池配置
 spring:
+  servlet:
+    multipart:
+      max-file-size: 1024MB
+      max-request-size: 1024MB
+      enabled: true
+      file-size-threshold: 0
+  aop:
+    proxy-target-class: true
+    auto: true
+  mvc:
+    throw-exception-if-no-handler-found: true
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
