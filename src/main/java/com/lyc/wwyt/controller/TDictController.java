@@ -4,6 +4,7 @@ import cn.allbs.idempotent.annotation.Idempotent;
 import com.lyc.wwyt.config.log.annotation.SysLog;
 import com.lyc.wwyt.entity.TDictEntity;
 import com.lyc.wwyt.service.TDictService;
+import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
@@ -19,6 +20,7 @@ import java.util.List;
  * @author chenqi
  * @since 2023-05-10 17:47:13
  */
+@Hidden
 @Validated
 @RestController
 @AllArgsConstructor
