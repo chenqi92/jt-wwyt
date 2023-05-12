@@ -68,7 +68,13 @@ public class DecryptingHttpMessageConverter extends MappingJackson2HttpMessageCo
 
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(decryptedBody.getBytes());
         HttpHeaders headers = inputMessage.getHeaders();
-        return this.objectMapper.readValue(byteArrayInputStream, javaType);
+        Object res;
+        try {
+            res = this.objectMapper.readValue(byteArrayInputStream, javaType);
+        } catch (Exception e) {
+            throw new DecryptException("消息体解密失败!");
+        }
+        return res;
     }
 
     private String decrypt(String encrypted) {

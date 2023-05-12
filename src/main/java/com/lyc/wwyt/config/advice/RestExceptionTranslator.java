@@ -28,6 +28,7 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Set;
 
 /**
@@ -129,6 +130,14 @@ public class RestExceptionTranslator {
         String message = e.getMessage();
         log.error("用户校验失败:{}", message);
         return R.fail(message);
+    }
+
+    @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public R<Object> handleError(SQLIntegrityConstraintViolationException e) {
+        String message = e.getMessage();
+        log.error("数据库操作异常:{}", message);
+        return R.fail("存在主键想同的数据!");
     }
 
     /**
