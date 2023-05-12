@@ -30,9 +30,6 @@ import java.util.Map;
  * @date 2023/5/11
  */
 public class DecryptingHttpMessageConverter extends MappingJackson2HttpMessageConverter {
-    private static final String KEY = "JTXCLYWWYTSJJKWD";
-    private static final String INITIALIZATION_VECTOR = "JTXCLYWWYTSJJKWD";
-
     private final CustomConfigProperties customConfigProperties;
 
     private final ObjectMapper objectMapper;
