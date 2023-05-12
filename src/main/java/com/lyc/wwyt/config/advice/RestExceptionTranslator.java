@@ -2,6 +2,7 @@ package com.lyc.wwyt.config.advice;
 
 import cn.allbs.common.code.SystemCode;
 import cn.allbs.common.utils.R;
+import cn.allbs.idempotent.exception.IdempotentException;
 import com.lyc.wwyt.exception.DecryptException;
 import com.lyc.wwyt.exception.UserNameNotExistException;
 import lombok.extern.slf4j.Slf4j;
@@ -138,6 +139,14 @@ public class RestExceptionTranslator {
         String message = e.getMessage();
         log.error("数据库操作异常:{}", message);
         return R.fail("存在主键想同的数据!");
+    }
+
+    @ExceptionHandler(IdempotentException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public R<Object> handleError(IdempotentException e) {
+        String message = e.getMessage();
+        log.error("超过调用频率:{}", message);
+        return R.fail(message);
     }
 
     /**

@@ -61,16 +61,19 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!-- 一些常用utils、枚举值、常亮定义的封装 -->
         <dependency>
             <groupId>cn.allbs</groupId>
             <artifactId>allbs-common</artifactId>
             <version>${allbs.version}</version>
         </dependency>
+        <!-- 一些组件漏洞修复、常用的一些封装、如接口进出的java8的时间转换 -->
         <dependency>
             <groupId>cn.allbs</groupId>
             <artifactId>allbs-core</artifactId>
             <version>2.0.4</version>
         </dependency>
+        <!-- openApi文档的封装，swagger2.0的升级版 -->
         <dependency>
             <groupId>cn.allbs</groupId>
             <artifactId>allbs-swagger3</artifactId>
@@ -86,6 +89,7 @@
             <artifactId>druid-spring-boot-starter</artifactId>
             <version>${druid.version}</version>
         </dependency>
+        <!-- mybatis plus插件、权限处理、日志格式化、审计字段等-->
         <dependency>
             <groupId>cn.allbs</groupId>
             <artifactId>allbs-mybatis</artifactId>
@@ -96,9 +100,16 @@
             <artifactId>commons-codec</artifactId>
             <version>${codec.version}</version>
         </dependency>
+        <!-- 二级缓存组件 -->
         <dependency>
             <groupId>cn.allbs</groupId>
             <artifactId>allbs-cache</artifactId>
+            <version>${allbs.version}</version>
+        </dependency>
+        <!-- 接口限流 -->
+        <dependency>
+            <groupId>cn.allbs</groupId>
+            <artifactId>allbs-idempotent</artifactId>
             <version>${allbs.version}</version>
         </dependency>
     </dependencies>

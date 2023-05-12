@@ -48,10 +48,10 @@ mybatis-plus:
       id-type: auto
       logic-delete-value: 1
       logic-not-delete-value: 0
-    configuration:
-      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  #    configuration:
+  #      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   type-handlers-package: com.lyc.wwyt.config.handler
-  show-sql: false
+  show-sql: true
   meta-custom:
     del-flg: deleteMark
     create-name: createBy
@@ -90,3 +90,6 @@ security:
     - /static/**
     - /configuration/ui
     - /swagger-resources/**
+custom:
+  aes-key: JTXCLYWWYTSJJKWD
+  initialization-vector: JTXCLYWWYTSJJKWD

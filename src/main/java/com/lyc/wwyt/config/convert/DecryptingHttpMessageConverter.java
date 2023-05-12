@@ -3,6 +3,7 @@ package com.lyc.wwyt.config.convert;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.lyc.wwyt.config.properties.CustomConfigProperties;
 import com.lyc.wwyt.exception.DecryptException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpInputMessage;
@@ -32,11 +33,14 @@ public class DecryptingHttpMessageConverter extends MappingJackson2HttpMessageCo
     private static final String KEY = "JTXCLYWWYTSJJKWD";
     private static final String INITIALIZATION_VECTOR = "JTXCLYWWYTSJJKWD";
 
+    private final CustomConfigProperties customConfigProperties;
+
     private final ObjectMapper objectMapper;
 
-    public DecryptingHttpMessageConverter(ObjectMapper objectMapper) {
+    public DecryptingHttpMessageConverter(ObjectMapper objectMapper, CustomConfigProperties customConfigProperties) {
         super(objectMapper);
         this.objectMapper = objectMapper;
+        this.customConfigProperties = customConfigProperties;
         setSupportedMediaTypes(Collections.singletonList(MediaType.APPLICATION_JSON));
     }
 
@@ -80,8 +84,8 @@ public class DecryptingHttpMessageConverter extends MappingJackson2HttpMessageCo
     private String decrypt(String encrypted) {
         try {
             Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-            SecretKeySpec key = new SecretKeySpec(KEY.getBytes(StandardCharsets.UTF_8), "AES");
-            IvParameterSpec iv = new IvParameterSpec(INITIALIZATION_VECTOR.getBytes(StandardCharsets.UTF_8));
+            SecretKeySpec key = new SecretKeySpec(customConfigProperties.getAesKey().getBytes(StandardCharsets.UTF_8), "AES");
+            IvParameterSpec iv = new IvParameterSpec(customConfigProperties.getInitializationVector().getBytes(StandardCharsets.UTF_8));
             cipher.init(Cipher.DECRYPT_MODE, key, iv);
             byte[] decrypted = cipher.doFinal(Base64.getDecoder().decode(encrypted));
             return new String(decrypted, StandardCharsets.UTF_8);

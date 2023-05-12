@@ -55,3 +55,6 @@ mybatis-plus:
     update-name: updateBy
   chine-rate: 1.5
   data-pms: false
+custom:
+  aes-key: JTXCLYWWYTSJJKWD
+  initialization-vector: JTXCLYWWYTSJJKWD

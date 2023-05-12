@@ -1,6 +1,7 @@
 package com.lyc.wwyt.config.convert;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.lyc.wwyt.config.properties.CustomConfigProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -19,8 +20,11 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Resource
     private ObjectMapper objectMapper;
 
+    @Resource
+    private CustomConfigProperties customConfigProperties;
+
     @Override
     public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
-        converters.add(0, new DecryptingHttpMessageConverter(objectMapper));
+        converters.add(0, new DecryptingHttpMessageConverter(objectMapper, customConfigProperties));
     }
 }
