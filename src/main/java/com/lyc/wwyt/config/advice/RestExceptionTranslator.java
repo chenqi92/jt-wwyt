@@ -1,8 +1,12 @@
 package com.lyc.wwyt.config.advice;
 
 import cn.allbs.common.code.SystemCode;
+import cn.allbs.common.enums.ErrorCodeEnum;
+import cn.allbs.common.utils.JsonUtil;
 import cn.allbs.common.utils.R;
+import cn.allbs.common.utils.StringUtil;
 import cn.allbs.idempotent.exception.IdempotentException;
+import com.lyc.wwyt.config.ErrorMsg;
 import com.lyc.wwyt.exception.DecryptException;
 import com.lyc.wwyt.exception.UserNameNotExistException;
 import lombok.extern.slf4j.Slf4j;
@@ -29,7 +33,10 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
+import java.lang.reflect.Field;
 import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -64,7 +71,12 @@ public class RestExceptionTranslator {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public R<Object> handleError(MethodArgumentNotValidException e) {
         log.warn("参数验证失败:{}", e.getMessage());
-        return handleError(e.getBindingResult());
+        List<String> errors = new ArrayList<>();
+        e.getBindingResult().getAllErrors().forEach((error) -> {
+            String errorMessage = error.getDefaultMessage();
+            errors.add(errorMessage);
+        });
+        return R.fail(SystemCode.PARAM_BIND_ERROR, e.getMessage());
     }
 
     @ExceptionHandler(BindException.class)
@@ -76,9 +88,26 @@ public class RestExceptionTranslator {
 
     @ExceptionHandler(ConstraintViolationException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public R<Object> handleError(ConstraintViolationException e) {
-        log.warn("参数验证失败:{}", e.getMessage());
-        return handleError(e.getConstraintViolations());
+    public R handleError(ConstraintViolationException e) {
+        List<ErrorMsg> list = new ArrayList<>();
+        e.getConstraintViolations().forEach(a -> {
+            Object idValue = "";
+            Object leafBean = a.getLeafBean();
+            Class<?> clazz = leafBean.getClass();
+            try {
+                Field idField = clazz.getDeclaredField("id");
+                idField.setAccessible(true); // required if the field is private
+                idValue = idField.get(leafBean);
+            } catch (NoSuchFieldException | IllegalAccessException ex) {
+                log.error("获取id值失败");
+            }
+            list.add(ErrorMsg.builder()
+                    .uuid(idValue.toString())
+                    .msg(StringUtil.format("{} {}", ((PathImpl) a.getPropertyPath()).getLeafNode().toString(), a.getMessage()))
+                    .build());
+        });
+        // TODO maven发布需要时间先放msg里面
+        return R.fail(ErrorCodeEnum.METHOD_ARGUMENT_NOT_VALID_EXCEPTION_RESPONSE, JsonUtil.toJson(list));
     }
 
     @ExceptionHandler(NoHandlerFoundException.class)
