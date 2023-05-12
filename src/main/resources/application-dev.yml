@@ -57,7 +57,7 @@ mybatis-plus:
     create-name: createBy
     update-name: updateBy
   chine-rate: 1.5
-  data-pms: false
+  data-pms: true
 
 swagger:
   title: jwt示例
