@@ -1,7 +1,5 @@
 package com.lyc.wwyt.config.advice;
 
-import cn.allbs.core.advice.AllbsErrorAttributes;
-import cn.allbs.core.advice.AllbsErrorController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;

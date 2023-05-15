@@ -1,7 +1,6 @@
 package com.lyc.wwyt.config.advice;
 
 import cn.allbs.common.code.SystemCode;
-import cn.allbs.common.enums.ErrorCodeEnum;
 import cn.allbs.common.utils.R;
 import cn.allbs.common.utils.StringUtil;
 import cn.allbs.idempotent.exception.IdempotentException;
@@ -105,7 +104,7 @@ public class RestExceptionTranslator {
                     .msg(StringUtil.format("{} {}", ((PathImpl) a.getPropertyPath()).getLeafNode().toString(), a.getMessage()))
                     .build());
         });
-        return R.fail(ErrorCodeEnum.METHOD_ARGUMENT_NOT_VALID_EXCEPTION_RESPONSE, list);
+        return R.fail(SystemCode.PARAM_VALID_ERROR, list);
     }
 
     @ExceptionHandler(NoHandlerFoundException.class)

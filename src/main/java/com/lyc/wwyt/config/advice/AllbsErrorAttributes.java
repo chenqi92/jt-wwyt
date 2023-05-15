@@ -13,6 +13,7 @@ import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.WebRequest;
 
 import javax.servlet.RequestDispatcher;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Optional;
 
@@ -40,7 +41,7 @@ public class AllbsErrorAttributes extends DefaultErrorAttributes {
             result = ((ServiceException) error).getResult();
             result = Optional.ofNullable(result).orElse(R.fail(SystemCode.FAILURE));
         } else {
-            result = R.fail(SystemCode.FAILURE, "System error status:" + status);
+            result = R.fail(Optional.ofNullable(status).orElse(SystemCode.FAILURE.getCode()), StringUtil.format("接口异常，请联系开发人员并提供接口名称[{}]及异常状态值[{}]", requestUrl, status), new ArrayList<>());
         }
         return BeanUtil.beanToMap(result);
     }

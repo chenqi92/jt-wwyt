@@ -3,6 +3,7 @@ package com.lyc.wwyt.config.advice;
 import cn.allbs.common.code.SystemCode;
 import cn.allbs.common.utils.R;
 import cn.allbs.core.annotation.IgnoreAdvice;
+import cn.hutool.core.convert.Convert;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lyc.wwyt.config.security.handler.PermitAllUrlProperties;
@@ -21,6 +22,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
@@ -72,6 +74,12 @@ public class ResponseControllerAdvice implements ResponseBodyAdvice<Object> {
         }
         if (returnType.hasMethodAnnotation(IgnoreAdvice.class)) {
             return data;
+        }
+        if (data instanceof Map) {
+            Map<String, Object> map = Convert.toMap(String.class, Object.class, data);
+            if (map.containsKey("code") && map.containsKey("msg") && map.containsKey("data")) {
+                return data;
+            }
         }
         // String类型不能直接包装，所以要进行些特别的处理
         if (returnType.getGenericParameterType().equals(String.class)) {
