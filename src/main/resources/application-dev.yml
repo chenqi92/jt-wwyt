@@ -60,8 +60,8 @@ mybatis-plus:
   data-pms: true
 
 swagger:
-  title: jwt示例
-  description: jwt示例服务
+  title: 金坛五位一体接口文档
+  description: 金坛五位一体上传平台
   version: 1.0
   securitySchemes:
     Authorization:
