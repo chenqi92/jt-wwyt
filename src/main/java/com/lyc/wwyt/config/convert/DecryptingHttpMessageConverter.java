@@ -1,8 +1,10 @@
 package com.lyc.wwyt.config.convert;
 
+import cn.allbs.common.utils.StringUtil;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import com.lyc.wwyt.config.properties.CustomConfigProperties;
 import com.lyc.wwyt.exception.DecryptException;
 import org.springframework.http.HttpHeaders;
@@ -72,6 +74,9 @@ public class DecryptingHttpMessageConverter extends MappingJackson2HttpMessageCo
         Object res;
         try {
             res = this.objectMapper.readValue(byteArrayInputStream, javaType);
+        } catch (InvalidFormatException e) {
+            String fieldName = e.getPath().get(1).getFieldName();
+            throw new DecryptException(StringUtil.format("消息体解密失败!字段:{}类型不正确!", fieldName));
         } catch (Exception e) {
             throw new DecryptException("消息体解密失败!");
         }

@@ -45,12 +45,10 @@ public class TCbsglxxEntity extends BaseEntity {
     private String dwxz;
 
     @Schema(description = "承包商类别", name = "cbslb", implementation = Integer.class)
-    @NotNull
     @EnumValueConstraint(enumClass = CbslbEnum.class)
     private Integer cbslb;
 
     @Schema(description = "承包商类型", name = "cbslx", implementation = Integer.class)
-    @NotNull
     @EnumValueConstraint(enumClass = CbslxEnum.class)
     private Integer cbslx;
 

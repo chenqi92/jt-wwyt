@@ -2,6 +2,7 @@ package com.lyc.wwyt.config.check;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import java.util.Arrays;
 
 /**
  * 类 EnumValueValidator
@@ -21,16 +22,9 @@ public class EnumValueValidator implements ConstraintValidator<EnumValueConstrai
     @Override
     public boolean isValid(Object value, ConstraintValidatorContext context) {
         if (value == null) {
-            return true;
+            return false;
         }
 
-        for (CodeEnum enumValue : enumClass.getEnumConstants()) {
-            // 用户无论是输入指定的类型的名称或者是名称对应的值都视为通过
-            if (enumValue.getCode().equals(value.toString()) || enumValue.getValue().equals(value.toString())) {
-                return true;
-            }
-        }
-
-        return false;
+        return Arrays.stream(enumClass.getEnumConstants()).anyMatch(enumConstant -> enumConstant.getCode().equalsIgnoreCase(value.toString()) || enumConstant.getValue().equalsIgnoreCase(value.toString()));
     }
 }
