@@ -26,7 +26,7 @@ public class EnumValueValidator implements ConstraintValidator<EnumValueConstrai
 
         for (CodeEnum enumValue : enumClass.getEnumConstants()) {
             // 用户无论是输入指定的类型的名称或者是名称对应的值都视为通过
-            if (enumValue.getCode().equals(value) || enumValue.getValue().equals(value)) {
+            if (enumValue.getCode().equals(value.toString()) || enumValue.getValue().equals(value.toString())) {
                 return true;
             }
         }

@@ -3,6 +3,9 @@ package com.lyc.wwyt.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.lyc.wwyt.config.check.EnumValueConstraint;
+import com.lyc.wwyt.enums.CbslbEnum;
+import com.lyc.wwyt.enums.CbslxEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -43,10 +46,12 @@ public class TCbsglxxEntity extends BaseEntity {
 
     @Schema(description = "承包商类别", name = "cbslb", implementation = Integer.class)
     @NotNull
+    @EnumValueConstraint(enumClass = CbslbEnum.class)
     private Integer cbslb;
 
     @Schema(description = "承包商类型", name = "cbslx", implementation = Integer.class)
     @NotNull
+    @EnumValueConstraint(enumClass = CbslxEnum.class)
     private Integer cbslx;
 
     @Schema(description = "经营范围", name = "jyfw", implementation = String.class)
