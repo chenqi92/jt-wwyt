@@ -2,7 +2,6 @@ package com.lyc.wwyt.config.advice;
 
 import cn.allbs.common.code.SystemCode;
 import cn.allbs.common.enums.ErrorCodeEnum;
-import cn.allbs.common.utils.JsonUtil;
 import cn.allbs.common.utils.R;
 import cn.allbs.common.utils.StringUtil;
 import cn.allbs.idempotent.exception.IdempotentException;
@@ -106,8 +105,7 @@ public class RestExceptionTranslator {
                     .msg(StringUtil.format("{} {}", ((PathImpl) a.getPropertyPath()).getLeafNode().toString(), a.getMessage()))
                     .build());
         });
-        // TODO maven发布需要时间先放msg里面
-        return R.fail(ErrorCodeEnum.METHOD_ARGUMENT_NOT_VALID_EXCEPTION_RESPONSE, JsonUtil.toJson(list));
+        return R.fail(ErrorCodeEnum.METHOD_ARGUMENT_NOT_VALID_EXCEPTION_RESPONSE, list);
     }
 
     @ExceptionHandler(NoHandlerFoundException.class)

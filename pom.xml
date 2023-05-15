@@ -61,11 +61,11 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!-- 一些常用utils、枚举值、常亮定义的封装 -->
+        <!-- 一些常用utils、枚举值、常量定义的封装 -->
         <dependency>
             <groupId>cn.allbs</groupId>
             <artifactId>allbs-common</artifactId>
-            <version>${allbs.version}</version>
+            <version>2.0.2</version>
         </dependency>
         <!-- 一些组件漏洞修复、常用的一些封装、如接口进出的java8的时间转换 -->
         <dependency>
