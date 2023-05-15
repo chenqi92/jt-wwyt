@@ -3,7 +3,6 @@ package com.lyc.wwyt.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.swagger.annotations.ApiModel;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -19,7 +18,7 @@ import javax.validation.constraints.NotNull;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-@ApiModel(value = "承包商管理信息表")
+@Schema(description = "承包商管理信息表", name = "t_cbsglxx")
 @TableName("t_cbsglxx")
 public class TCbsglxxEntity extends BaseEntity {
 

@@ -4,7 +4,9 @@ import cn.allbs.idempotent.annotation.Idempotent;
 import com.lyc.wwyt.config.log.annotation.SysLog;
 import com.lyc.wwyt.entity.TCbsglxxEntity;
 import com.lyc.wwyt.service.TCbsglxxService;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.validation.annotation.Validated;
@@ -24,6 +26,7 @@ import java.util.List;
 @AllArgsConstructor
 @RequestMapping("/api/wwyt/t_cbsglxx")
 @Tag(name = "承包商管理", description = "承包商管理信息表 管理")
+@OpenAPIDefinition(info = @Info(title = "承包商管理Api", version = "v1", description = "承包商信息管理"))
 public class TCbsglxxController {
 
     /**
@@ -49,8 +52,7 @@ public class TCbsglxxController {
      *
      * @return List<TCbsglxxEntity> 当前账户下所有承包商信息
      */
-    @Operation(description = "修改承包商管理信息表", summary = "修改承包商管理信息表", tags = {"查询所有数据"})
-    @SysLog("修改承包商管理信息表")
+    @Operation(description = "查询承包商管理信息表数据", summary = "查询承包商管理信息表数据", tags = {"查询所有数据"})
     @GetMapping
     @Idempotent(expireTime = 180, info = "3分钟内最多请求一次!")
     public List<TCbsglxxEntity> updateById() {
