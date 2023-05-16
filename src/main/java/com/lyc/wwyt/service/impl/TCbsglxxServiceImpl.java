@@ -8,7 +8,7 @@ import com.lyc.wwyt.dto.TCbsglxxDTO;
 import com.lyc.wwyt.entity.TCbsglxxEntity;
 import com.lyc.wwyt.service.TCbsglxxService;
 import com.lyc.wwyt.vo.TCbsglxxVO;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,7 +20,7 @@ import java.util.List;
  * @since 2023-05-12 15:32:04
  */
 @Service("tCbsglxxService")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class TCbsglxxServiceImpl extends ServiceImpl<TCbsglxxDao, TCbsglxxEntity> implements TCbsglxxService {
 
     private final TCbsglxxDao tCbsglxxDao;

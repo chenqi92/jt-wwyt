@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.wwyt.dao.TCbszyscDao">
+    <resultMap type="com.lyc.wwyt.entity.TCbszyscEntity" id="TCbszyscMap">
+        <result property="id" column="id"/>
+        <result property="tyshxydm" column="TYSHXYDM"/>
+        <result property="contractorName" column="CONTRACTOR_NAME"/>
+        <result property="jobName" column="JOB_NAME"/>
+        <result property="content" column="CONTENT"/>
+        <result property="problemAnalysis" column="PROBLEM_ANALYSIS"/>
+        <result property="improvements" column="IMPROVEMENTS"/>
+        <result property="rectificationTime" column="RECTIFICATION_TIME"/>
+        <result property="assessor" column="ASSESSOR"/>
+        <result property="reviewTime" column="REVIEW_TIME"/>
+        <result property="appendix" column="APPENDIX"/>
+        <result property="createTime" column="create_time"/>
+        <result property="createBy" column="create_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="deleteMark" column="delete_mark"/>
+    </resultMap>
+
+    <sql id="baseColumn">
+        id,
+        TYSHXYDM,
+        CONTRACTOR_NAME,
+        JOB_NAME,
+        CONTENT,
+        PROBLEM_ANALYSIS,
+        IMPROVEMENTS,
+        RECTIFICATION_TIME,
+        ASSESSOR,
+        REVIEW_TIME,
+        APPENDIX,
+        create_time,
+        create_by,
+        update_time,
+        update_by,
+        delete_mark
+    </sql>
+
+    <select id="selectList" resultType="com.lyc.wwyt.vo.TCbszyscVO">
+        select
+        id,
+        TYSHXYDM,
+        CONTRACTOR_NAME,
+        JOB_NAME,
+        CONTENT,
+        PROBLEM_ANALYSIS,
+        IMPROVEMENTS,
+        RECTIFICATION_TIME,
+        ASSESSOR,
+        REVIEW_TIME,
+        APPENDIX,
+        create_time,
+        create_by,
+        update_time,
+        update_by,
+        delete_mark
+        from t_cbszysc
+        where delete_mark = 0
+        <if test="tCbszyscDTO != null and tCbszyscDTO != ''">
+            AND id = #{tCbszyscDTO.id}
+        </if>
+    </select>
+</mapper>

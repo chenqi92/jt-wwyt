@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.wwyt.dao.TAqhdjlDao">
+    <resultMap type="com.lyc.wwyt.entity.TAqhdjlEntity" id="TAqhdjlMap">
+        <result property="id" column="id"/>
+        <result property="tyshxydm" column="TYSHXYDM"/>
+        <result property="name" column="NAME"/>
+        <result property="departmentId" column="DEPARTMENT_ID"/>
+        <result property="location" column="LOCATION"/>
+        <result property="time" column="TIME"/>
+        <result property="convener" column="CONVENER"/>
+        <result property="level" column="LEVEL"/>
+        <result property="content" column="CONTENT"/>
+        <result property="member" column="MEMBER"/>
+        <result property="state" column="STATE"/>
+        <result property="resource" column="RESOURCE"/>
+        <result property="createTime" column="create_time"/>
+        <result property="createBy" column="create_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="deleteMark" column="delete_mark"/>
+    </resultMap>
+
+    <sql id="baseColumn">
+        id,
+        TYSHXYDM,
+        NAME,
+        DEPARTMENT_ID,
+        LOCATION,
+        TIME,
+        CONVENER,
+        LEVEL,
+        CONTENT,
+        MEMBER,
+        STATE,
+        RESOURCE,
+        create_time,
+        create_by,
+        update_time,
+        update_by,
+        delete_mark
+    </sql>
+
+    <select id="selectList" resultType="com.lyc.wwyt.vo.TAqhdjlVO">
+        select
+        id,
+        TYSHXYDM,
+        NAME,
+        DEPARTMENT_ID,
+        LOCATION,
+        TIME,
+        CONVENER,
+        LEVEL,
+        CONTENT,
+        MEMBER,
+        STATE,
+        RESOURCE,
+        create_time,
+        create_by,
+        update_time,
+        update_by,
+        delete_mark
+        from t_aqhdjl
+        where delete_mark = 0
+        <if test="tAqhdjlDTO != null and tAqhdjlDTO != ''">
+            AND id = #{tAqhdjlDTO.id}
+        </if>
+    </select>
+</mapper>

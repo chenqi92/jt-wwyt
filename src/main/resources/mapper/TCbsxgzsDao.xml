@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.wwyt.dao.TCbsxgzsDao">
+    <resultMap type="com.lyc.wwyt.entity.TCbsxgzsEntity" id="TCbsxgzsMap">
+        <result property="id" column="id"/>
+        <result property="tyshxydm" column="TYSHXYDM"/>
+        <result property="sscbs" column="SSCBS"/>
+        <result property="name" column="NAME"/>
+        <result property="level" column="LEVEL"/>
+        <result property="content" column="CONTENT"/>
+        <result property="startTime" column="START_TIME"/>
+        <result property="dueTime" column="DUE_TIME"/>
+        <result property="appendix" column="APPENDIX"/>
+        <result property="no" column="NO"/>
+        <result property="createTime" column="create_time"/>
+        <result property="createBy" column="create_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="deleteMark" column="delete_mark"/>
+    </resultMap>
+
+    <sql id="baseColumn">
+        id,
+        TYSHXYDM,
+        SSCBS,
+        NAME,
+        LEVEL,
+        CONTENT,
+        START_TIME,
+        DUE_TIME,
+        APPENDIX,
+        NO,
+        create_time,
+        create_by,
+        update_time,
+        update_by,
+        delete_mark
+    </sql>
+
+    <select id="selectList" resultType="com.lyc.wwyt.vo.TCbsxgzsVO">
+        select
+        id,
+        TYSHXYDM,
+        SSCBS,
+        NAME,
+        LEVEL,
+        CONTENT,
+        START_TIME,
+        DUE_TIME,
+        APPENDIX,
+        NO,
+        create_time,
+        create_by,
+        update_time,
+        update_by,
+        delete_mark
+        from t_cbsxgzs
+        where delete_mark = 0
+        <if test="tCbsxgzsDTO != null and tCbsxgzsDTO != ''">
+            AND id = #{tCbsxgzsDTO.id}
+        </if>
+    </select>
+</mapper>

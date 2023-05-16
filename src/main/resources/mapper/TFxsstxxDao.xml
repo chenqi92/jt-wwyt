@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.wwyt.dao.TFxsstxxDao">
+    <resultMap type="com.lyc.wwyt.entity.TFxsstxxEntity" id="TFxsstxxMap">
+        <result property="id" column="id"/>
+        <result property="tyshxydm" column="TYSHXYDM"/>
+        <result property="fxfqbm" column="FXFQBM"/>
+        <result property="fxfqmc" column="FXFQMC"/>
+        <result property="fxdj" column="FXDJ"/>
+        <result property="fxzbfw" column="FXZBFW"/>
+        <result property="gyfxdj" column="GYFXDJ"/>
+        <result property="kzfxdj" column="KZFXDJ"/>
+        <result property="fxjzys" column="FXJZYS"/>
+        <result property="fxjzdj" column="FXJZDJ"/>
+        <result property="szbm" column="SZBM"/>
+        <result property="zrr" column="ZRR"/>
+        <result property="fprq" column="FPRQ"/>
+        <result property="createTime" column="create_time"/>
+        <result property="createBy" column="create_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="deleteMark" column="delete_mark"/>
+        <result property="companyCode" column="COMPANY_CODE"/>
+    </resultMap>
+
+    <sql id="baseColumn">
+        id,
+        TYSHXYDM,
+        FXFQBM,
+        FXFQMC,
+        FXDJ,
+        FXZBFW,
+        GYFXDJ,
+        KZFXDJ,
+        FXJZYS,
+        FXJZDJ,
+        SZBM,
+        ZRR,
+        FPRQ,
+        create_time,
+        create_by,
+        update_time,
+        update_by,
+        delete_mark,
+        COMPANY_CODE
+    </sql>
+
+    <select id="selectList" resultType="com.lyc.wwyt.vo.TFxsstxxVO">
+        select
+        id,
+        TYSHXYDM,
+        FXFQBM,
+        FXFQMC,
+        FXDJ,
+        FXZBFW,
+        GYFXDJ,
+        KZFXDJ,
+        FXJZYS,
+        FXJZDJ,
+        SZBM,
+        ZRR,
+        FPRQ,
+        create_time,
+        create_by,
+        update_time,
+        update_by,
+        delete_mark,
+        COMPANY_CODE
+        from t_fxsstxx
+        where delete_mark = 0
+        <if test="tFxsstxxDTO != null and tFxsstxxDTO != ''">
+            AND id = #{tFxsstxxDTO.id}
+        </if>
+    </select>
+</mapper>
