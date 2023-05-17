@@ -1,6 +1,7 @@
 package com.lyc.wwyt.config.advice;
 
 import cn.allbs.common.code.SystemCode;
+import cn.allbs.common.constant.StringPool;
 import cn.allbs.common.utils.R;
 import cn.allbs.common.utils.StringUtil;
 import cn.allbs.idempotent.exception.IdempotentException;
@@ -9,6 +10,7 @@ import com.lyc.wwyt.exception.DecryptException;
 import com.lyc.wwyt.exception.UserNameNotExistException;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.validator.internal.engine.path.PathImpl;
+import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
@@ -31,10 +33,11 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
-import java.lang.reflect.Field;
+import javax.validation.Path;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 /**
@@ -89,25 +92,22 @@ public class RestExceptionTranslator {
     public R handleError(ConstraintViolationException e) {
         List<ErrorMsg> list = new ArrayList<>();
         e.getConstraintViolations().forEach(a -> {
-            Object idValue = "";
-            Object leafBean = a.getLeafBean();
-            for (Class<?> clazz = leafBean.getClass(); clazz != null; clazz = clazz.getSuperclass()) {
-                try {
-                    Field field = clazz.getDeclaredField("id");
-                    field.setAccessible(true);
-                    idValue = field.get(leafBean);
-                    break;
-                } catch (NoSuchFieldException ex) {
-                    // 这个类没有这个域，检查下一个父类
-                } catch (IllegalAccessException ex) {
-                    log.error("获取id值失败");
-                    break;
+            try {
+                Object leafBean = a.getLeafBean();
+                BeanWrapperImpl wrapper = new BeanWrapperImpl(leafBean);
+                Object idValue = wrapper.getPropertyValue("id");
+                Path.Node lastNode = ((PathImpl) a.getPropertyPath()).getLeafNode();
+                String fieldName = StringPool.EMPTY;
+                if (lastNode.getName() != null) {
+                    fieldName = lastNode.getName() + StringPool.SPACE;
                 }
+                list.add(ErrorMsg.builder()
+                        .uuid(Optional.ofNullable(idValue).map(Object::toString).orElse(""))
+                        .msg(StringUtil.format("{}{}", fieldName, a.getMessage()))
+                        .build());
+            } catch (Exception ex) {
+                log.error("解析id出现错误!");
             }
-            list.add(ErrorMsg.builder()
-                    .uuid(idValue.toString())
-                    .msg(StringUtil.format("{} {}", ((PathImpl) a.getPropertyPath()).getLeafNode().toString(), a.getMessage()))
-                    .build());
         });
         return R.fail(SystemCode.PARAM_VALID_ERROR, list);
     }
