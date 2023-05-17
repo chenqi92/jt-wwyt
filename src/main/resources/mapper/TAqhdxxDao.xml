@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.wwyt.dao.TAqhdxxDao">
+    <resultMap type="com.lyc.wwyt.entity.TAqhdxxEntity" id="TAqhdxxMap">
+        <result property="id" column="id"/>
+        <result property="tyshxydm" column="TYSHXYDM"/>
+        <result property="hdbt" column="HDBT"/>
+        <result property="hdrq" column="HDRQ"/>
+        <result property="hddd" column="HDDD"/>
+        <result property="hdzcr" column="HDZCR"/>
+        <result property="zbbm" column="ZBBM"/>
+        <result property="zycyry" column="ZYCYRY"/>
+        <result property="sffb" column="SFFB"/>
+        <result property="hdnr" column="HDNR"/>
+        <result property="hdqkyzj" column="HDQKYZJ"/>
+        <result property="fj" column="FJ"/>
+        <result property="createTime" column="create_time"/>
+        <result property="createBy" column="create_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="deleteMark" column="delete_mark"/>
+    </resultMap>
+
+    <sql id="baseColumn">
+        id,
+        TYSHXYDM,
+        HDBT,
+        HDRQ,
+        HDDD,
+        HDZCR,
+        ZBBM,
+        ZYCYRY,
+        SFFB,
+        HDNR,
+        HDQKYZJ,
+        FJ,
+        create_time,
+        create_by,
+        update_time,
+        update_by,
+        delete_mark
+    </sql>
+
+    <select id="selectList" resultType="com.lyc.wwyt.vo.TAqhdxxVO">
+        select
+        id,
+        TYSHXYDM,
+        HDBT,
+        HDRQ,
+        HDDD,
+        HDZCR,
+        ZBBM,
+        ZYCYRY,
+        SFFB,
+        HDNR,
+        HDQKYZJ,
+        FJ,
+        create_time,
+        create_by,
+        update_time,
+        update_by,
+        delete_mark
+        from t_aqhdxx
+        where delete_mark = 0
+        <if test="tAqhdxxDTO != null and tAqhdxxDTO != ''">
+            AND id = #{tAqhdxxDTO.id}
+        </if>
+    </select>
+</mapper>

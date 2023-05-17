@@ -91,13 +91,18 @@ public class RestExceptionTranslator {
         e.getConstraintViolations().forEach(a -> {
             Object idValue = "";
             Object leafBean = a.getLeafBean();
-            Class<?> clazz = leafBean.getClass();
-            try {
-                Field idField = clazz.getDeclaredField("id");
-                idField.setAccessible(true); // required if the field is private
-                idValue = idField.get(leafBean);
-            } catch (NoSuchFieldException | IllegalAccessException ex) {
-                log.error("获取id值失败");
+            for (Class<?> clazz = leafBean.getClass(); clazz != null; clazz = clazz.getSuperclass()) {
+                try {
+                    Field field = clazz.getDeclaredField("id");
+                    field.setAccessible(true);
+                    idValue = field.get(leafBean);
+                    break;
+                } catch (NoSuchFieldException ex) {
+                    // 这个类没有这个域，检查下一个父类
+                } catch (IllegalAccessException ex) {
+                    log.error("获取id值失败");
+                    break;
+                }
             }
             list.add(ErrorMsg.builder()
                     .uuid(idValue.toString())

@@ -1,18 +1,28 @@
 package com.lyc.wwyt.controller;
 
 import cn.allbs.idempotent.annotation.Idempotent;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lyc.wwyt.config.log.annotation.SysLog;
+import com.lyc.wwyt.dto.TCbsglxxDTO;
 import com.lyc.wwyt.entity.TCbsglxxEntity;
 import com.lyc.wwyt.service.TCbsglxxService;
+import com.lyc.wwyt.vo.TCbsglxxVO;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Parameters;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
+import org.springdoc.api.annotations.ParameterObject;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -43,8 +53,9 @@ public class TCbsglxxController {
     @Operation(description = "承包商管理信息表数据新增或修改", summary = "多条承包商管理信息表数据新增或修改", tags = {"数据保存"})
     @SysLog("承包商管理信息表数据新增或修改")
     @PostMapping
-    public void save(@RequestBody @Valid List<TCbsglxxEntity> list) {
-        this.tCbsglxxService.saveOrUpdateBatch(list);
+    public void save(@RequestBody @Valid List<TCbsglxxDTO> list) {
+        List<TCbsglxxEntity> entityList = new ArrayList<>(list);
+        this.tCbsglxxService.saveOrUpdateBatch(entityList);
     }
 
     /**
@@ -55,7 +66,20 @@ public class TCbsglxxController {
     @Operation(description = "查询承包商管理信息表数据", summary = "查询承包商管理信息表数据", tags = {"查询所有数据"})
     @GetMapping
     @Idempotent(expireTime = 180, info = "3分钟内最多请求一次!")
-    public List<TCbsglxxEntity> updateById() {
-        return this.tCbsglxxService.list();
+    public List<TCbsglxxVO> selectAll() {
+        return this.tCbsglxxService.selectList();
+    }
+
+    /**
+     * 分页查询当前账户下所有承包商信息
+     *
+     * @return List<TCbsglxxDTO> 分页当前账户下所有承包商信息
+     */
+    @Operation(description = "分页查询承包商管理信息表数据", summary = "分页查询承包商管理信息表数据", tags = {"分页查询所有数据"})
+    @GetMapping("page")
+    @Parameters({@Parameter(description = "当前页", name = "current", in = ParameterIn.QUERY, required = true, schema = @Schema(implementation = Integer.class)), @Parameter(description = "当前页条数", name = "size", in = ParameterIn.QUERY, required = true, schema = @Schema(implementation = Integer.class))})
+    @Idempotent(expireTime = 180, info = "3分钟内最多请求一次!", key = "#page.current")
+    public IPage<TCbsglxxVO> selectPage(@ParameterObject Page<TCbsglxxDTO> page, @ParameterObject TCbsglxxDTO cbsglxxDTO) {
+        return this.tCbsglxxService.selectPage(page, cbsglxxDTO);
     }
 }
