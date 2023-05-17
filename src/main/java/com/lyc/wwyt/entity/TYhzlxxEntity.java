@@ -1,11 +1,9 @@
 package com.lyc.wwyt.entity;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.lyc.wwyt.config.check.EnumValueConstraint;
+import com.lyc.wwyt.enums.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -14,6 +12,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * 隐患治理信息表(t_yhzlxx)表实体类
@@ -37,7 +37,7 @@ public class TYhzlxxEntity extends BaseEntity {
 
     @Schema(description = "统一社会信用代码", name = "tyshxydm", implementation = String.class, maxLength = 18)
     @NotBlank(message = "统一社会信用代码不能为空!")
-    @Size(max = 18, message = "统一社会信用代码不能超过18个字符(1个汉字记两个字符)!")
+    @Size(min = 18, max = 18, message = "统一社会信用代码为18位数字字母混合字符串!")
     private String tyshxydm;
 
     @Schema(description = "隐患名称", name = "dangerName", implementation = String.class, maxLength = 300)
@@ -50,15 +50,15 @@ public class TYhzlxxEntity extends BaseEntity {
     private String hazardCode;
 
     @Schema(description = "管控措施ID", name = "riskMeasureId", implementation = String.class, maxLength = 36)
-    @Size(max = 36, message = "管控措施ID不能超过36个字符(1个汉字记两个字符)!")
+    @Pattern(regexp = "^(.{32}|.{36})$", message = "长度必须是32位或者36位的字符!")
     private String riskMeasureId;
 
     @Schema(description = "隐患排查记录ID", name = "recordId", implementation = String.class, maxLength = 36)
-    @Size(max = 36, message = "隐患排查记录ID不能超过36个字符(1个汉字记两个字符)!")
+    @Pattern(regexp = "^(.{32}|.{36})$", message = "长度必须是32位或者36位的字符!")
     private String recordId;
 
     @Schema(description = "隐患等级（一般隐患：0；重大隐患：1）", name = "dangerLevel", implementation = Integer.class)
-    @NotNull(message = "隐患等级（一般隐患：0；重大隐患：1）不能为空")
+    @EnumValueConstraint(enumClass = DangerLevelEnum.class)
     private Integer dangerLevel;
 
     @Schema(description = "登记时间", name = "registTime", implementation = LocalDateTime.class)
@@ -71,16 +71,15 @@ public class TYhzlxxEntity extends BaseEntity {
     private String registrant;
 
     @Schema(description = "隐患来源（检查来源分类）", name = "dangerSrc", implementation = String.class, maxLength = 4)
-    @NotBlank(message = "隐患来源（检查来源分类）不能为空!")
-    @Size(max = 4, message = "隐患来源（检查来源分类）不能超过4个字符(1个汉字记两个字符)!")
+    @EnumValueConstraint(enumClass = DangerSrcEnum.class)
     private String dangerSrc;
 
     @Schema(description = "治理类型（即查即改：0、限期整改：1）", name = "dangerManageType", implementation = Integer.class)
-    @NotNull(message = "治理类型（即查即改：0、限期整改：1）不能为空")
+    @EnumValueConstraint(enumClass = DangerManageTypeEnum.class)
     private Integer dangerManageType;
 
     @Schema(description = "隐患类型（安全：1；工艺：2；电气：3；仪表：4；消防：5；总图：6；设备：7；其他：8）", name = "hazardDangerType", implementation = Integer.class)
-    @NotNull(message = "隐患类型（安全：1；工艺：2；电气：3；仪表：4；消防：5；总图：6；设备：7；其他：8）不能为空")
+    @EnumValueConstraint(enumClass = HazardDangerTypeEnum.class)
     private Integer hazardDangerType;
 
     @Schema(description = "隐患描述", name = "dangerDesc", implementation = String.class)
@@ -121,19 +120,25 @@ public class TYhzlxxEntity extends BaseEntity {
     private String checkAcceptComment;
 
     @Schema(description = "隐患状态（整改中：0；待验收：1；已验收：9）", name = "dangerState", implementation = Integer.class)
-    @NotNull(message = "隐患状态（整改中：0；待验收：1；已验收：9）不能为空")
+    @EnumValueConstraint(enumClass = DangerStateEnum.class)
     private Integer dangerState;
 
     @Schema(description = "人物管理分类（1：人的不安全行为；2：物的不安全状态；3：管理上的缺陷）", name = "managementClassification", implementation = Integer.class)
+    @EnumValueConstraint(enumClass = ManagementClassificationEnum.class)
     private Integer managementClassification;
 
     @Schema(description = "发生环节", name = "occurrenceLink", implementation = Integer.class)
+    @EnumValueConstraint(enumClass = OccurrenceLinkEnum.class)
     private Integer occurrenceLink;
 
-    @Schema(description = "隐患照片", name = "attachments1", implementation = Object.class)
+    @Schema(description = "隐患照片(base64 编码)", name = "attachments1", implementation = Object.class)
+    @Pattern(regexp = "^data:image/(?:png|jpeg|jpg);base64,([a-zA-Z0-9+/]{4})*([a-zA-Z0-9+/]{2}==|[a-zA-Z0-9+/]{3}=|[a-zA-Z0-9+/]{4})$", message = "图片格式必须为png或者jpg!")
+    @Size(max = 7340032, message = "图片大小不能大于5M!")
     private Object attachments1;
 
-    @Schema(description = "隐患整改照片", name = "attachments2", implementation = Object.class)
+    @Schema(description = "隐患整改照片(base64 编码)", name = "attachments2", implementation = Object.class)
+    @Pattern(regexp = "^data:image/(?:png|jpeg|jpg);base64,([a-zA-Z0-9+/]{4})*([a-zA-Z0-9+/]{2}==|[a-zA-Z0-9+/]{3}=|[a-zA-Z0-9+/]{4})$", message = "图片格式必须为png或者jpg!")
+    @Size(max = 7340032, message = "图片大小不能大于5M!")
     private Object attachments2;
 
     @Schema(description = "附件", name = "fj", implementation = String.class, maxLength = 1000)
@@ -142,7 +147,7 @@ public class TYhzlxxEntity extends BaseEntity {
 
     @Schema(description = "企业编码", name = "companyCode", implementation = String.class, maxLength = 9)
     @NotBlank(message = "企业编码不能为空!")
-    @Size(max = 9, message = "企业编码不能超过9个字符(1个汉字记两个字符)!")
+    @Pattern(regexp = "^\\d{9}$", message = "企业编码为小于9位的数字字符串!")
     private String companyCode;
 
 }

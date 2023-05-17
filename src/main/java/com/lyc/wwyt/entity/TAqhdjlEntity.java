@@ -1,10 +1,10 @@
 package com.lyc.wwyt.entity;
 
-import java.time.LocalDateTime;
-
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.lyc.wwyt.config.check.EnumValueConstraint;
+import com.lyc.wwyt.enums.LevelEnum;
+import com.lyc.wwyt.enums.StateEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -13,6 +13,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 
 /**
  * 安全活动记录表(t_aqhdjl)表实体类
@@ -36,7 +37,7 @@ public class TAqhdjlEntity extends BaseEntity {
 
     @Schema(description = "统一社会信用代码", name = "tyshxydm", implementation = String.class, maxLength = 18)
     @NotBlank(message = "统一社会信用代码不能为空!")
-    @Size(max = 18, message = "统一社会信用代码不能超过18个字符(1个汉字记两个字符)!")
+    @Size(min = 18, max = 18, message = "统一社会信用代码为18位数字字母混合字符串!")
     private String tyshxydm;
 
     @Schema(description = "活动名称", name = "name", implementation = String.class, maxLength = 50)
@@ -63,7 +64,7 @@ public class TAqhdjlEntity extends BaseEntity {
     private String convener;
 
     @Schema(description = "活动级别", name = "level", implementation = Integer.class, maxLength = 1)
-    @NotNull(message = "活动级别不能为空")
+    @EnumValueConstraint(enumClass = LevelEnum.class)
     private Integer level;
 
     @Schema(description = "活动内容", name = "content", implementation = String.class, maxLength = 500)
@@ -76,7 +77,7 @@ public class TAqhdjlEntity extends BaseEntity {
     private String member;
 
     @Schema(description = "状态", name = "state", implementation = Integer.class, maxLength = 1)
-    @NotNull(message = "状态不能为空")
+    @EnumValueConstraint(enumClass = StateEnum.class)
     private Integer state;
 
     @Schema(description = "活动照片、视频", name = "resource", implementation = String.class)

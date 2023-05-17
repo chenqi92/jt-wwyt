@@ -1,10 +1,7 @@
 package com.lyc.wwyt.entity;
 
-import java.time.LocalDateTime;
-
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.lyc.wwyt.config.check.EnumValueConstraint;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -13,6 +10,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 
 /**
  * 承包商相关证书表(t_cbsxgzs)表实体类
@@ -36,12 +34,12 @@ public class TCbsxgzsEntity extends BaseEntity {
 
     @Schema(description = "统一社会信用代码", name = "tyshxydm", implementation = String.class, maxLength = 18)
     @NotBlank(message = "统一社会信用代码不能为空!")
-    @Size(max = 18, message = "统一社会信用代码不能超过18个字符(1个汉字记两个字符)!")
+    @Size(min = 18, max = 18, message = "统一社会信用代码为18位数字字母混合字符串!")
     private String tyshxydm;
 
-    @Schema(description = "承包商ID", name = "sscbs", implementation = String.class, maxLength = 36)
+    @Schema(description = "承包商ID(承包商t_cbsglxx表id)", name = "sscbs", implementation = String.class, maxLength = 36)
     @NotBlank(message = "承包商ID不能为空!")
-    @Size(max = 36, message = "承包商ID不能超过36个字符(1个汉字记两个字符)!")
+    @Pattern(regexp = "^(.{32}|.{36})$", message = "长度必须是32位或者36位的字符!")
     private String sscbs;
 
     @Schema(description = "资质证书名称", name = "name", implementation = String.class, maxLength = 100)

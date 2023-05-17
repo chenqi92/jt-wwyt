@@ -1,11 +1,9 @@
 package com.lyc.wwyt.entity;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.lyc.wwyt.config.check.EnumValueConstraint;
+import com.lyc.wwyt.enums.KhjgEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -14,6 +12,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
 
 /**
  * 承包商评定管理信息表(t_cbspdglxx)表实体类
@@ -37,7 +36,7 @@ public class TCbspdglxxEntity extends BaseEntity {
 
     @Schema(description = "统一社会信用代码", name = "tyshxydm", implementation = String.class, maxLength = 18)
     @NotBlank(message = "统一社会信用代码不能为空!")
-    @Size(max = 18, message = "统一社会信用代码不能超过18个字符(1个汉字记两个字符)!")
+    @Size(min = 18, max = 18, message = "统一社会信用代码为18位数字字母混合字符串!")
     private String tyshxydm;
 
     @Schema(description = "标题", name = "bt", implementation = String.class, maxLength = 100)
@@ -45,9 +44,9 @@ public class TCbspdglxxEntity extends BaseEntity {
     @Size(max = 100, message = "标题不能超过100个字符(1个汉字记两个字符)!")
     private String bt;
 
-    @Schema(description = "承包商ID", name = "bkhcbs", implementation = String.class, maxLength = 36)
+    @Schema(description = "承包商ID(承包商t_cbsglxx表id)", name = "bkhcbs", implementation = String.class, maxLength = 36)
     @NotBlank(message = "承包商ID不能为空!")
-    @Size(max = 36, message = "承包商ID不能超过36个字符(1个汉字记两个字符)!")
+    @Pattern(regexp = "^(.{32}|.{36})$", message = "长度必须是32位或者36位的字符!")
     private String bkhcbs;
 
     @Schema(description = "考核部门", name = "khbm", implementation = String.class, maxLength = 200)
@@ -64,8 +63,7 @@ public class TCbspdglxxEntity extends BaseEntity {
     private Long zf;
 
     @Schema(description = "考核结果", name = "khjg", implementation = String.class, maxLength = 10)
-    @NotBlank(message = "考核结果不能为空!")
-    @Size(max = 10, message = "考核结果不能超过10个字符(1个汉字记两个字符)!")
+    @EnumValueConstraint(enumClass = KhjgEnum.class)
     private String khjg;
 
     @Schema(description = "审批前类别", name = "spqlb", implementation = String.class, maxLength = 100)

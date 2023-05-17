@@ -1,19 +1,17 @@
 package com.lyc.wwyt.entity;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.lyc.wwyt.config.check.EnumValueConstraint;
+import com.lyc.wwyt.enums.SmzqEnum;
+import com.lyc.wwyt.enums.WzflEnum;
+import com.lyc.wwyt.enums.WzztEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
+import java.time.LocalDate;
 
 /**
  * 应急物资管理信息表(t_yjwzglxx)表实体类
@@ -37,7 +35,7 @@ public class TYjwzglxxEntity extends BaseEntity {
 
     @Schema(description = "统一社会信用代码", name = "tyshxydm", implementation = String.class, maxLength = 18)
     @NotBlank(message = "统一社会信用代码不能为空!")
-    @Size(max = 18, message = "统一社会信用代码不能超过18个字符(1个汉字记两个字符)!")
+    @Size(min = 18, max = 18, message = "统一社会信用代码为18位数字字母混合字符串!")
     private String tyshxydm;
 
     @Schema(description = "物资名称", name = "wzmc", implementation = String.class, maxLength = 100)
@@ -65,8 +63,7 @@ public class TYjwzglxxEntity extends BaseEntity {
     private String fzbm;
 
     @Schema(description = "物资分类", name = "wzfl", implementation = String.class, maxLength = 10)
-    @NotBlank(message = "物资分类不能为空!")
-    @Size(max = 10, message = "物资分类不能超过10个字符(1个汉字记两个字符)!")
+    @EnumValueConstraint(enumClass = WzflEnum.class)
     private String wzfl;
 
     @Schema(description = "存放位置", name = "cfwz", implementation = String.class, maxLength = 50)
@@ -85,16 +82,16 @@ public class TYjwzglxxEntity extends BaseEntity {
 
     @Schema(description = "使用期限(单位：月)", name = "syqy", implementation = Object.class)
     @NotNull(message = "使用期限(单位：月)不能为空")
+    @Min(value = 0, message = "超出使用期限允许范围内!")
+    @Max(value = 99, message = "超出使用期限允许范围内!")
     private Object syqy;
 
     @Schema(description = "生命周期", name = "smzq", implementation = String.class, maxLength = 10)
-    @NotBlank(message = "生命周期不能为空!")
-    @Size(max = 10, message = "生命周期不能超过10个字符(1个汉字记两个字符)!")
+    @EnumValueConstraint(enumClass = SmzqEnum.class)
     private String smzq;
 
     @Schema(description = "物资状态", name = "wzzt", implementation = String.class, maxLength = 10)
-    @NotBlank(message = "物资状态不能为空!")
-    @Size(max = 10, message = "物资状态不能超过10个字符(1个汉字记两个字符)!")
+    @EnumValueConstraint(enumClass = WzztEnum.class)
     private String wzzt;
 
     @Schema(description = "投用日期", name = "tyrq", implementation = LocalDate.class)

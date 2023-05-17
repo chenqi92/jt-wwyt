@@ -1,19 +1,17 @@
 package com.lyc.wwyt.entity;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.lyc.wwyt.config.check.EnumValueConstraint;
+import com.lyc.wwyt.enums.YAJBEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * 应急预案管理信息表(t_yjyaglxx)表实体类
@@ -36,7 +34,7 @@ public class TYjyaglxxEntity extends BaseEntity {
 
     @Schema(description = "统一社会信用代码", name = "tyshxydm", implementation = String.class, maxLength = 18)
     @NotBlank(message = "统一社会信用代码不能为空!")
-    @Size(max = 18, message = "统一社会信用代码不能超过18个字符(1个汉字记两个字符)!")
+    @Size(min = 18, max = 18, message = "统一社会信用代码为18位数字字母混合字符串!")
     private String tyshxydm;
 
     @Schema(description = "预案名称", name = "yamc", implementation = String.class, maxLength = 200)
@@ -59,8 +57,7 @@ public class TYjyaglxxEntity extends BaseEntity {
     private String wxygl;
 
     @Schema(description = "预案级别", name = "yajb", implementation = String.class, maxLength = 10)
-    @NotBlank(message = "预案级别不能为空!")
-    @Size(max = 10, message = "预案级别不能超过10个字符(1个汉字记两个字符)!")
+    @EnumValueConstraint(enumClass = YAJBEnum.class)
     private String yajb;
 
     @Schema(description = "编写人", name = "bxr", implementation = String.class, maxLength = 100)
@@ -77,14 +74,14 @@ public class TYjyaglxxEntity extends BaseEntity {
     @NotNull(message = "发布实施日期不能为空")
     private LocalDate fbssrq;
 
-    @Schema(description = "预案附件", name = "yafj", implementation = String.class, maxLength = 1000)
+    @Schema(description = "预案附件(上传附件的路径地址)", name = "yafj", implementation = String.class, maxLength = 1000)
     @Size(max = 1000, message = "预案附件不能超过1000个字符(1个汉字记两个字符)!")
     private String yafj;
 
     @Schema(description = "备案时间", name = "basj", implementation = LocalDateTime.class)
     private LocalDateTime basj;
 
-    @Schema(description = "备案回执附件", name = "bahzfj", implementation = String.class, maxLength = 1000)
+    @Schema(description = "备案回执附件(上传附件的路径地址)", name = "bahzfj", implementation = String.class, maxLength = 1000)
     @Size(max = 1000, message = "备案回执附件不能超过1000个字符(1个汉字记两个字符)!")
     private String bahzfj;
 

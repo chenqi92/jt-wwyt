@@ -1,19 +1,17 @@
 package com.lyc.wwyt.entity;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.lyc.wwyt.config.check.EnumValueConstraint;
+import com.lyc.wwyt.enums.PXTJEnum;
+import com.lyc.wwyt.enums.PxjgEnum;
+import com.lyc.wwyt.enums.XgpgEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
+import java.time.LocalDate;
 
 /**
  * 人员培训信息表(t_rypxxx)表实体类
@@ -37,7 +35,7 @@ public class TRypxxxEntity extends BaseEntity {
 
     @Schema(description = "统一社会信用代码", name = "tyshxydm", implementation = String.class, maxLength = 18)
     @NotBlank(message = "统一社会信用代码不能为空!")
-    @Size(max = 18, message = "统一社会信用代码不能超过18个字符(1个汉字记两个字符)!")
+    @Size(min = 18, max = 18, message = "统一社会信用代码为18位数字字母混合字符串!")
     private String tyshxydm;
 
     @Schema(description = "证书名称", name = "zsmc", implementation = String.class, maxLength = 200)
@@ -57,8 +55,10 @@ public class TRypxxxEntity extends BaseEntity {
     @NotNull(message = "到期日期不能为空")
     private LocalDate dqrq;
 
-    @Schema(description = "培训有效期", name = "pxyxq", implementation = Double.class, maxLength = 4)
+    @Schema(description = "培训有效期(单位月)", name = "pxyxq", implementation = Double.class, maxLength = 4)
     @NotNull(message = "培训有效期不能为空")
+    @Digits(integer = 2, fraction = 2, message = "培训有效期超出限制范围!")
+    @Min(value = 0, message = "培训有效期不能小于0!")
     private Double pxyxq;
 
     @Schema(description = "培训人姓名", name = "pxrxm", implementation = String.class, maxLength = 100)
@@ -67,18 +67,21 @@ public class TRypxxxEntity extends BaseEntity {
     private String pxrxm;
 
     @Schema(description = "培训途径", name = "pxtj", implementation = Integer.class)
-    @NotNull(message = "培训途径不能为空")
+    @EnumValueConstraint(enumClass = PXTJEnum.class)
     private Integer pxtj;
 
     @Schema(description = "培训成绩", name = "pxcj", implementation = Double.class, maxLength = 10)
     @NotNull(message = "培训成绩不能为空")
+    @Digits(integer = 8, fraction = 2, message = "培训成绩超出限制范围!")
+    @Min(value = 0, message = "培训成绩不能小于0!")
     private Double pxcj;
 
     @Schema(description = "培训结果", name = "pxjg", implementation = Integer.class)
-    @NotNull(message = "培训结果不能为空")
+    @EnumValueConstraint(enumClass = PxjgEnum.class)
     private Integer pxjg;
 
     @Schema(description = "效果评估", name = "xgpg", implementation = Integer.class)
+    @EnumValueConstraint(enumClass = XgpgEnum.class)
     private Integer xgpg;
 
 }

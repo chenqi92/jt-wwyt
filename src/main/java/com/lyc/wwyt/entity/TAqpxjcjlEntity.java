@@ -1,11 +1,9 @@
 package com.lyc.wwyt.entity;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.lyc.wwyt.config.check.EnumValueConstraint;
+import com.lyc.wwyt.enums.TypeEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -14,6 +12,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
 
 /**
  * 安全培训奖惩记录表(t_aqpxjcjl)表实体类
@@ -37,7 +36,7 @@ public class TAqpxjcjlEntity extends BaseEntity {
 
     @Schema(description = "统一社会信用代码", name = "tyshxydm", implementation = String.class, maxLength = 18)
     @NotBlank(message = "统一社会信用代码不能为空!")
-    @Size(max = 18, message = "统一社会信用代码不能超过18个字符(1个汉字记两个字符)!")
+    @Size(min = 18, max = 18, message = "统一社会信用代码为18位数字字母混合字符串!")
     private String tyshxydm;
 
     @Schema(description = "奖惩内容", name = "content", implementation = String.class)
@@ -63,7 +62,7 @@ public class TAqpxjcjlEntity extends BaseEntity {
     private String name;
 
     @Schema(description = "奖惩类型", name = "type", implementation = Integer.class, maxLength = 1)
-    @NotNull(message = "奖惩类型不能为空")
+    @EnumValueConstraint(enumClass = TypeEnum.class)
     private Integer type;
 
     @Schema(description = "审批人", name = "operatorName", implementation = String.class, maxLength = 50)

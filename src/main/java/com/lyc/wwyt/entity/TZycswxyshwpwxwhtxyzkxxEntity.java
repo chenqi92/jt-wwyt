@@ -1,10 +1,10 @@
 package com.lyc.wwyt.entity;
 
-import java.time.LocalDateTime;
-
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.lyc.wwyt.config.check.EnumValueConstraint;
+import com.lyc.wwyt.enums.AqjsbsEnum;
+import com.lyc.wwyt.enums.FXDJEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -36,7 +36,7 @@ public class TZycswxyshwpwxwhtxyzkxxEntity extends BaseEntity {
 
     @Schema(description = "统一社会信用代码", name = "tyshxydm", implementation = String.class, maxLength = 18)
     @NotBlank(message = "统一社会信用代码不能为空!")
-    @Size(max = 18, message = "统一社会信用代码不能超过18个字符(1个汉字记两个字符)!")
+    @Size(min = 18, max = 18, message = "统一社会信用代码为18位数字字母混合字符串!")
     private String tyshxydm;
 
     @Schema(description = "岗位名称", name = "gwmc", implementation = String.class, maxLength = 100)
@@ -54,8 +54,7 @@ public class TZycswxyshwpwxwhtxyzkxxEntity extends BaseEntity {
     private String ydzsgfx;
 
     @Schema(description = "风险等级", name = "fxdj", implementation = String.class, maxLength = 8)
-    @NotBlank(message = "风险等级不能为空!")
-    @Size(max = 8, message = "风险等级不能超过8个字符(1个汉字记两个字符)!")
+    @EnumValueConstraint(enumClass = FXDJEnum.class)
     private String fxdj;
 
     @Schema(description = "风险管控措施", name = "fxgkcs", implementation = String.class)
@@ -67,7 +66,7 @@ public class TZycswxyshwpwxwhtxyzkxxEntity extends BaseEntity {
     private String yjcsdc;
 
     @Schema(description = "安全警示标示", name = "aqjsbs", implementation = String.class, maxLength = 50)
-    @Size(max = 50, message = "安全警示标示不能超过50个字符(1个汉字记两个字符)!")
+    @EnumValueConstraint(enumClass = AqjsbsEnum.class)
     private String aqjsbs;
 
     @Schema(description = "附件", name = "fj", implementation = String.class)
@@ -76,7 +75,7 @@ public class TZycswxyshwpwxwhtxyzkxxEntity extends BaseEntity {
 
     @Schema(description = "企业编码", name = "companyCode", implementation = String.class, maxLength = 9)
     @NotBlank(message = "企业编码不能为空!")
-    @Size(max = 9, message = "企业编码不能超过9个字符(1个汉字记两个字符)!")
+    @Pattern(regexp = "^\\d{9}$", message = "企业编码为小于9位的数字字符串!")
     private String companyCode;
 
 }

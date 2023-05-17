@@ -1,16 +1,14 @@
 package com.lyc.wwyt.entity;
 
-import java.time.LocalDateTime;
-
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.lyc.wwyt.config.check.EnumValueConstraint;
+import com.lyc.wwyt.enums.JclxEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -36,12 +34,11 @@ public class TJcbwhxxEntity extends BaseEntity {
 
     @Schema(description = "统一社会信用代码", name = "tyshxydm", implementation = String.class, maxLength = 18)
     @NotBlank(message = "统一社会信用代码不能为空!")
-    @Size(max = 18, message = "统一社会信用代码不能超过18个字符(1个汉字记两个字符)!")
+    @Size(min = 18, max = 18, message = "统一社会信用代码为18位数字字母混合字符串!")
     private String tyshxydm;
 
     @Schema(description = "检查类型", name = "jclx", implementation = String.class, maxLength = 10)
-    @NotBlank(message = "检查类型不能为空!")
-    @Size(max = 10, message = "检查类型不能超过10个字符(1个汉字记两个字符)!")
+    @EnumValueConstraint(enumClass = JclxEnum.class)
     private String jclx;
 
     @Schema(description = "检查项目", name = "jcxm", implementation = String.class, maxLength = 200)
@@ -69,7 +66,7 @@ public class TJcbwhxxEntity extends BaseEntity {
 
     @Schema(description = "企业编码", name = "companyCode", implementation = String.class, maxLength = 9)
     @NotBlank(message = "企业编码不能为空!")
-    @Size(max = 9, message = "企业编码不能超过9个字符(1个汉字记两个字符)!")
+    @Pattern(regexp = "^\\d{9}$", message = "企业编码为小于9位的数字字符串!")
     private String companyCode;
 
 }

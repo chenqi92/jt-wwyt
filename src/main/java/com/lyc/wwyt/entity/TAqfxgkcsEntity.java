@@ -1,10 +1,11 @@
 package com.lyc.wwyt.entity;
 
-import java.time.LocalDateTime;
-
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.lyc.wwyt.config.check.EnumValueConstraint;
+import com.lyc.wwyt.enums.Classify1Enum;
+import com.lyc.wwyt.enums.Classify2Enum;
+import com.lyc.wwyt.enums.DataSrcEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -41,12 +42,11 @@ public class TAqfxgkcsEntity extends BaseEntity {
 
     @Schema(description = "统一社会信用代码", name = "tyshxydm", implementation = String.class, maxLength = 18)
     @NotBlank(message = "统一社会信用代码不能为空!")
-    @Size(max = 18, message = "统一社会信用代码不能超过18个字符(1个汉字记两个字符)!")
+    @Size(min = 18, max = 18, message = "统一社会信用代码为18位数字字母混合字符串!")
     private String tyshxydm;
 
     @Schema(description = "管控方式", name = "dataSrc", implementation = String.class, maxLength = 2)
-    @NotBlank(message = "管控方式不能为空!")
-    @Size(max = 2, message = "管控方式不能超过2个字符(1个汉字记两个字符)!")
+    @EnumValueConstraint(enumClass = DataSrcEnum.class)
     private String dataSrc;
 
     @Schema(description = "管控措施描述", name = "riskMeasureDesc", implementation = String.class, maxLength = 4000)
@@ -55,13 +55,11 @@ public class TAqfxgkcsEntity extends BaseEntity {
     private String riskMeasureDesc;
 
     @Schema(description = "管控措施分类1", name = "classify1", implementation = String.class, maxLength = 2)
-    @NotBlank(message = "管控措施分类1不能为空!")
-    @Size(max = 2, message = "管控措施分类1不能超过2个字符(1个汉字记两个字符)!")
+    @EnumValueConstraint(enumClass = Classify1Enum.class)
     private String classify1;
 
     @Schema(description = "管控措施分类2", name = "classify2", implementation = String.class, maxLength = 4)
-    @NotBlank(message = "管控措施分类2不能为空!")
-    @Size(max = 4, message = "管控措施分类2不能超过4个字符(1个汉字记两个字符)!")
+    @EnumValueConstraint(enumClass = Classify2Enum.class)
     private String classify2;
 
     @Schema(description = "管控措施分类3", name = "classify3", implementation = String.class, maxLength = 100)
@@ -74,7 +72,7 @@ public class TAqfxgkcsEntity extends BaseEntity {
 
     @Schema(description = "企业编码", name = "companyCode", implementation = String.class, maxLength = 9)
     @NotBlank(message = "企业编码不能为空!")
-    @Size(max = 9, message = "企业编码不能超过9个字符(1个汉字记两个字符)!")
+    @Pattern(regexp = "^\\d{9}$", message = "企业编码为小于9位的数字字符串!")
     private String companyCode;
 
 }

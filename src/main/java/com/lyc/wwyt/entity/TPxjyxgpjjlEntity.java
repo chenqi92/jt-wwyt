@@ -1,16 +1,12 @@
 package com.lyc.wwyt.entity;
 
-import java.time.LocalDateTime;
-
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.lyc.wwyt.config.check.EnumValueConstraint;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -36,12 +32,13 @@ public class TPxjyxgpjjlEntity extends BaseEntity {
 
     @Schema(description = "统一社会信用代码", name = "tyshxydm", implementation = String.class, maxLength = 18)
     @NotBlank(message = "统一社会信用代码不能为空!")
-    @Size(max = 18, message = "统一社会信用代码不能超过18个字符(1个汉字记两个字符)!")
+    @Size(min = 18, max = 18, message = "统一社会信用代码为18位数字字母混合字符串!")
     private String tyshxydm;
 
     @Schema(description = "员工ID", name = "employeeId", implementation = String.class, maxLength = 8)
     @NotBlank(message = "员工ID不能为空!")
     @Size(max = 8, message = "员工ID不能超过8个字符(1个汉字记两个字符)!")
+    @Pattern(regexp = "^\\d{8}$", message = "员工ID只能由不超过8位的数字组成!")
     private String employeeId;
 
     @Schema(description = "员工姓名", name = "name", implementation = String.class, maxLength = 50)

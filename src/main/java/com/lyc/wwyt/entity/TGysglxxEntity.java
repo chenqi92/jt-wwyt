@@ -1,11 +1,9 @@
 package com.lyc.wwyt.entity;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.lyc.wwyt.config.check.EnumValueConstraint;
+import com.lyc.wwyt.enums.SfyyxqEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -14,6 +12,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
 
 /**
  * 供应商管理信息表(t_gysglxx)表实体类
@@ -37,7 +36,7 @@ public class TGysglxxEntity extends BaseEntity {
 
     @Schema(description = "统一社会信用代码", name = "tyshxydm", implementation = String.class, maxLength = 18)
     @NotBlank(message = "统一社会信用代码不能为空!")
-    @Size(max = 18, message = "统一社会信用代码不能超过18个字符(1个汉字记两个字符)!")
+    @Size(min = 18, max = 18, message = "统一社会信用代码为18位数字字母混合字符串!")
     private String tyshxydm;
 
     @Schema(description = "供应商公司名称", name = "gysgsmc", implementation = String.class, maxLength = 100)
@@ -62,7 +61,7 @@ public class TGysglxxEntity extends BaseEntity {
 
     @Schema(description = "联系电话", name = "lxdh", implementation = String.class, maxLength = 11)
     @NotBlank(message = "联系电话不能为空!")
-    @Size(max = 11, message = "联系电话不能超过11个字符(1个汉字记两个字符)!")
+    @Pattern(regexp = "^1[3-9][0-9]{9}$", message = "手机号码格式不正确!")
     private String lxdh;
 
     @Schema(description = "供应商风险评级", name = "gysfxpj", implementation = String.class, maxLength = 100)
@@ -85,7 +84,7 @@ public class TGysglxxEntity extends BaseEntity {
     @Size(max = 2000, message = "经营范围不能超过2000个字符(1个汉字记两个字符)!")
     private String jyfw;
 
-    @Schema(description = "公司描述", name = "gsms", implementation = String.class)
+    @Schema(description = "公司描述(没有填:无)", name = "gsms", implementation = String.class)
     @NotNull(message = "公司描述不能为空")
     private String gsms;
 
@@ -113,7 +112,7 @@ public class TGysglxxEntity extends BaseEntity {
     private String zsbh;
 
     @Schema(description = "是否有有效期", name = "sfyyxq", implementation = Integer.class, maxLength = 1)
-    @NotNull(message = "是否有有效期不能为空")
+    @EnumValueConstraint(enumClass = SfyyxqEnum.class)
     private Integer sfyyxq;
 
     @Schema(description = "取证日期", name = "qzrq", implementation = LocalDate.class)

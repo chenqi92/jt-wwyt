@@ -70,7 +70,7 @@ public class TAqfxfxdyEntity extends BaseEntity {
 
     @Schema(description = "化学品登记管理系统中的企业编码", name = "companyCode", implementation = String.class, maxLength = 9)
     @NotBlank(message = "企业编码不能为空!")
-    @Size(max = 9, message = "企业编码不能超过9个字符(1个汉字记两个字符)!")
+    @Pattern(regexp = "^\\d{9}$", message = "企业编码为小于9位的数字字符串!")
     private String companyCode;
 
 }

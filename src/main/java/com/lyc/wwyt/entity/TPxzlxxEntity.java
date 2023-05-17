@@ -1,10 +1,9 @@
 package com.lyc.wwyt.entity;
 
-import java.time.LocalDateTime;
-
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.lyc.wwyt.config.check.EnumValueConstraint;
+import com.lyc.wwyt.enums.WjlxEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -13,6 +12,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 
 /**
  * 培训资料信息表(t_pxzlxx)表实体类
@@ -36,7 +36,7 @@ public class TPxzlxxEntity extends BaseEntity {
 
     @Schema(description = "统一社会信用代码", name = "tyshxydm", implementation = String.class, maxLength = 18)
     @NotBlank(message = "统一社会信用代码不能为空!")
-    @Size(max = 18, message = "统一社会信用代码不能超过18个字符(1个汉字记两个字符)!")
+    @Size(min = 18, max = 18, message = "统一社会信用代码为18位数字字母混合字符串!")
     private String tyshxydm;
 
     @Schema(description = "资料标题", name = "zlbt", implementation = String.class, maxLength = 200)
@@ -63,8 +63,7 @@ public class TPxzlxxEntity extends BaseEntity {
     private String gjz;
 
     @Schema(description = "文件类型", name = "wjlx", implementation = String.class, maxLength = 100)
-    @NotBlank(message = "文件类型不能为空!")
-    @Size(max = 100, message = "文件类型不能超过100个字符(1个汉字记两个字符)!")
+    @EnumValueConstraint(enumClass = WjlxEnum.class)
     private String wjlx;
 
     @Schema(description = "教程简介", name = "jcjj", implementation = String.class, maxLength = 500)

@@ -37,7 +37,7 @@ public class TCbsglxxEntity extends BaseEntity {
 
     @Schema(description = "统一社会信用代码", name = "tyshxydm", implementation = String.class, minLength = 18, maxLength = 18)
     @NotBlank(message = "统一社会信用代码不能为空!")
-    @Size(min = 18, max = 18, message = "统一社会信用代码必须为18位!")
+    @Size(min = 18, max = 18, message = "统一社会信用代码为18位数字字母混合字符串!")
     private String tyshxydm;
 
     @Schema(description = "承包商单位名称", name = "cbsdwmc", implementation = String.class, maxLength = 100)

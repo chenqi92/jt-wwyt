@@ -1,10 +1,7 @@
 package com.lyc.wwyt.entity;
 
-import java.time.LocalDateTime;
-
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.lyc.wwyt.config.check.EnumValueConstraint;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -36,7 +33,7 @@ public class TYjczkxxEntity extends BaseEntity {
 
     @Schema(description = "统一社会信用代码", name = "tyshxydm", implementation = String.class, maxLength = 18)
     @NotBlank(message = "统一社会信用代码不能为空!")
-    @Size(max = 18, message = "统一社会信用代码不能超过18个字符(1个汉字记两个字符)!")
+    @Size(min = 18, max = 18, message = "统一社会信用代码为18位数字字母混合字符串!")
     private String tyshxydm;
 
     @Schema(description = "应急卡名称", name = "yjkmc", implementation = String.class, maxLength = 100)
@@ -63,7 +60,8 @@ public class TYjczkxxEntity extends BaseEntity {
     @Size(max = 100, message = "发生场所不能超过100个字符(1个汉字记两个字符)!")
     private String fscs;
 
-    @Schema(description = "工艺说明", name = "gysm", implementation = String.class)
+    @Schema(description = "工艺说明(图片的base64编码)", name = "gysm", implementation = String.class)
+    @Pattern(regexp = "^data:image/(?:png|jpeg|jpg);base64,([a-zA-Z0-9+/]{4})*([a-zA-Z0-9+/]{2}==|[a-zA-Z0-9+/]{3}=|[a-zA-Z0-9+/]{4})$", message = "图片格式必须为png或者jpg!")
     private String gysm;
 
     @Schema(description = "事故特征", name = "sgtz", implementation = String.class)
@@ -98,13 +96,15 @@ public class TYjczkxxEntity extends BaseEntity {
     @Size(max = 20, message = "外部应急电话不能超过20个字符(1个汉字记两个字符)!")
     private String wbyjdh;
 
-    @Schema(description = "附件", name = "fj", implementation = String.class)
+    @Schema(description = "附件(应急处置卡相关图片base64 编码)", name = "fj", implementation = String.class)
     @NotNull(message = "附件不能为空")
+    @Pattern(regexp = "^data:image/(?:png|jpeg|jpg);base64,([a-zA-Z0-9+/]{4})*([a-zA-Z0-9+/]{2}==|[a-zA-Z0-9+/]{3}=|[a-zA-Z0-9+/]{4})$", message = "图片格式必须为png或者jpg!")
+    @Size(max = 7340032, message = "图片大小不能大于5M!")
     private String fj;
 
     @Schema(description = "企业编码", name = "companyCode", implementation = String.class, maxLength = 9)
     @NotBlank(message = "企业编码不能为空!")
-    @Size(max = 9, message = "企业编码不能超过9个字符(1个汉字记两个字符)!")
+    @Pattern(regexp = "^\\d{9}$", message = "企业编码为小于9位的数字字符串!")
     private String companyCode;
 
 }

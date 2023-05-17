@@ -36,7 +36,7 @@ public class TQzpxdaEntity extends BaseEntity {
 
     @Schema(description = "统一社会信用代码", name = "tyshxydm", implementation = String.class, maxLength = 18)
     @NotBlank(message = "统一社会信用代码不能为空!")
-    @Size(max = 18, message = "统一社会信用代码不能超过18个字符(1个汉字记两个字符)!")
+    @Size(min = 18, max = 18, message = "统一社会信用代码为18位数字字母混合字符串!")
     private String tyshxydm;
 
     @Schema(description = "姓名", name = "name", implementation = String.class, maxLength = 50)
@@ -63,9 +63,9 @@ public class TQzpxdaEntity extends BaseEntity {
     @Size(max = 500, message = "证书描述不能超过500个字符(1个汉字记两个字符)!")
     private String describe;
 
-    @Schema(description = "证书文件附件", name = "file", implementation = String.class, maxLength = 500)
-    @NotBlank(message = "证书文件附件不能为空!")
-    @Size(max = 500, message = "证书文件附件不能超过500个字符(1个汉字记两个字符)!")
+    @Schema(description = "证书文件附件(上传路径)", name = "file", implementation = String.class, maxLength = 500)
+    @NotBlank(message = "证书文件附件(上传路径)不能为空!")
+    @Size(max = 500, message = "证书文件附件(上传路径)不能超过500个字符(1个汉字记两个字符)!")
     private String file;
 
     @Schema(description = "证书名称", name = "certificateName", implementation = String.class, maxLength = 200)
