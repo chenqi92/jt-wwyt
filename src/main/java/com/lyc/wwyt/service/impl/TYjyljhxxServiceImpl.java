@@ -17,23 +17,13 @@ import java.util.List;
  * 应急演练计划信息表(t_yjyljhxx)表服务实现类
  *
  * @author chenqi
- * @since 2023-05-16 16:33:41
+ * @since 2023-05-17 16:22:45
  */
 @Service("tYjyljhxxService")
 @RequiredArgsConstructor
 public class TYjyljhxxServiceImpl extends ServiceImpl<TYjyljhxxDao, TYjyljhxxEntity> implements TYjyljhxxService {
 
     private final TYjyljhxxDao tYjyljhxxDao;
-
-    /**
-     * 查询所有数据
-     *
-     * @return 所有数据
-     */
-    @Override
-    public List<TYjyljhxxVO> selectList() {
-        return this.tYjyljhxxDao.selectList();
-    }
 
     /**
      * 分页查询所有数据
@@ -43,7 +33,18 @@ public class TYjyljhxxServiceImpl extends ServiceImpl<TYjyljhxxDao, TYjyljhxxEnt
      * @return 指定页码和条数的数据
      */
     @Override
-    public IPage<TYjyljhxxVO> selectPage(Page<TYjyljhxxDTO> page, TYjyljhxxDTO tYjyljhxxDTO) {
-        return this.tYjyljhxxDao.selectList(page, tYjyljhxxDTO);
+    public IPage<TYjyljhxxVO> queryPage(Page<TYjyljhxxDTO> page, TYjyljhxxDTO tYjyljhxxDTO) {
+        return this.tYjyljhxxDao.queryList(page, tYjyljhxxDTO);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param tYjyljhxxDTO 查询参数
+     * @return 所有数据
+     */
+    @Override
+    public List<TYjyljhxxVO> queryList(TYjyljhxxDTO tYjyljhxxDTO) {
+        return this.tYjyljhxxDao.queryList(tYjyljhxxDTO);
     }
 }

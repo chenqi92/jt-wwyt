@@ -13,16 +13,9 @@ import java.util.List;
  * 安全检查记录表(t_aqjcjl)表服务接口
  *
  * @author chenqi
- * @since 2023-05-16 16:33:47
+ * @since 2023-05-17 16:22:38
  */
 public interface TAqjcjlService extends IService<TAqjcjlEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TAqjcjlVO>
-     */
-    List<TAqjcjlVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -31,5 +24,13 @@ public interface TAqjcjlService extends IService<TAqjcjlEntity> {
      * @param tAqjcjlDTO 查询参数
      * @return IPage<TAqjcjlVO> tAqjcjlDTO
      */
-    IPage<TAqjcjlVO> selectPage(Page<TAqjcjlDTO> page, TAqjcjlDTO tAqjcjlDTO);
+    IPage<TAqjcjlVO> queryPage(Page<TAqjcjlDTO> page, TAqjcjlDTO tAqjcjlDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tAqjcjlDTO 查询参数
+     * @return List<TAqjcjlVO>
+     */
+    List<TAqjcjlVO> queryList(TAqjcjlDTO tAqjcjlDTO);
 }

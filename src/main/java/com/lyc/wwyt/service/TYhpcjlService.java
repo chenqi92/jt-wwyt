@@ -13,16 +13,9 @@ import java.util.List;
  * 隐患排查记录表(t_yhpcjl)表服务接口
  *
  * @author chenqi
- * @since 2023-05-16 16:33:45
+ * @since 2023-05-17 16:22:42
  */
 public interface TYhpcjlService extends IService<TYhpcjlEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TYhpcjlVO>
-     */
-    List<TYhpcjlVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -31,5 +24,13 @@ public interface TYhpcjlService extends IService<TYhpcjlEntity> {
      * @param tYhpcjlDTO 查询参数
      * @return IPage<TYhpcjlVO> tYhpcjlDTO
      */
-    IPage<TYhpcjlVO> selectPage(Page<TYhpcjlDTO> page, TYhpcjlDTO tYhpcjlDTO);
+    IPage<TYhpcjlVO> queryPage(Page<TYhpcjlDTO> page, TYhpcjlDTO tYhpcjlDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tYhpcjlDTO 查询参数
+     * @return List<TYhpcjlVO>
+     */
+    List<TYhpcjlVO> queryList(TYhpcjlDTO tYhpcjlDTO);
 }

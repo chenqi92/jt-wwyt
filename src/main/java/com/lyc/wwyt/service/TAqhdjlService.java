@@ -13,16 +13,9 @@ import java.util.List;
  * 安全活动记录表(t_aqhdjl)表服务接口
  *
  * @author chenqi
- * @since 2023-05-16 16:33:57
+ * @since 2023-05-17 16:22:47
  */
 public interface TAqhdjlService extends IService<TAqhdjlEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TAqhdjlVO>
-     */
-    List<TAqhdjlVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -31,5 +24,13 @@ public interface TAqhdjlService extends IService<TAqhdjlEntity> {
      * @param tAqhdjlDTO 查询参数
      * @return IPage<TAqhdjlVO> tAqhdjlDTO
      */
-    IPage<TAqhdjlVO> selectPage(Page<TAqhdjlDTO> page, TAqhdjlDTO tAqhdjlDTO);
+    IPage<TAqhdjlVO> queryPage(Page<TAqhdjlDTO> page, TAqhdjlDTO tAqhdjlDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tAqhdjlDTO 查询参数
+     * @return List<TAqhdjlVO>
+     */
+    List<TAqhdjlVO> queryList(TAqhdjlDTO tAqhdjlDTO);
 }

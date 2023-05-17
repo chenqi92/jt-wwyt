@@ -15,17 +15,10 @@ import java.util.List;
  * 安全风险事件表(t_aqfxsj)表数据库访问层
  *
  * @author chenqi
- * @since 2023-05-16 16:33:58
+ * @since 2023-05-17 16:22:39
  */
 @Mapper
 public interface TAqfxsjDao extends BaseMapper<TAqfxsjEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TAqfxsjVO>
-     */
-    List<TAqfxsjVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TAqfxsjDao extends BaseMapper<TAqfxsjEntity> {
      * @param tAqfxsjDTO 查询参数
      * @return IPage<TAqfxsjVO>
      */
-    IPage<TAqfxsjVO> selectList(Page<TAqfxsjDTO> page, @Param("tAqfxsjDTO") TAqfxsjDTO tAqfxsjDTO);
+    IPage<TAqfxsjVO> queryList(Page<TAqfxsjDTO> page, @Param("tAqfxsjDTO") TAqfxsjDTO tAqfxsjDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tAqfxsjDTO 查询参数
+     * @return List<TAqfxsjVO>
+     */
+    List<TAqfxsjVO> queryList(@Param("tAqfxsjDTO") TAqfxsjDTO tAqfxsjDTO);
 }

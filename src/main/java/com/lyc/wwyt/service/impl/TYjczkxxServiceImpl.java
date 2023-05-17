@@ -17,23 +17,13 @@ import java.util.List;
  * 应急处置卡信息表：t_yjczkxx(t_yjczkxx)表服务实现类
  *
  * @author chenqi
- * @since 2023-05-16 16:33:39
+ * @since 2023-05-17 16:22:40
  */
 @Service("tYjczkxxService")
 @RequiredArgsConstructor
 public class TYjczkxxServiceImpl extends ServiceImpl<TYjczkxxDao, TYjczkxxEntity> implements TYjczkxxService {
 
     private final TYjczkxxDao tYjczkxxDao;
-
-    /**
-     * 查询所有数据
-     *
-     * @return 所有数据
-     */
-    @Override
-    public List<TYjczkxxVO> selectList() {
-        return this.tYjczkxxDao.selectList();
-    }
 
     /**
      * 分页查询所有数据
@@ -43,7 +33,18 @@ public class TYjczkxxServiceImpl extends ServiceImpl<TYjczkxxDao, TYjczkxxEntity
      * @return 指定页码和条数的数据
      */
     @Override
-    public IPage<TYjczkxxVO> selectPage(Page<TYjczkxxDTO> page, TYjczkxxDTO tYjczkxxDTO) {
-        return this.tYjczkxxDao.selectList(page, tYjczkxxDTO);
+    public IPage<TYjczkxxVO> queryPage(Page<TYjczkxxDTO> page, TYjczkxxDTO tYjczkxxDTO) {
+        return this.tYjczkxxDao.queryList(page, tYjczkxxDTO);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param tYjczkxxDTO 查询参数
+     * @return 所有数据
+     */
+    @Override
+    public List<TYjczkxxVO> queryList(TYjczkxxDTO tYjczkxxDTO) {
+        return this.tYjczkxxDao.queryList(tYjczkxxDTO);
     }
 }

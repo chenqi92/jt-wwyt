@@ -15,17 +15,10 @@ import java.util.List;
  * 承包商相关证书表(t_cbsxgzs)表数据库访问层
  *
  * @author chenqi
- * @since 2023-05-16 16:33:55
+ * @since 2023-05-17 16:22:40
  */
 @Mapper
 public interface TCbsxgzsDao extends BaseMapper<TCbsxgzsEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TCbsxgzsVO>
-     */
-    List<TCbsxgzsVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TCbsxgzsDao extends BaseMapper<TCbsxgzsEntity> {
      * @param tCbsxgzsDTO 查询参数
      * @return IPage<TCbsxgzsVO>
      */
-    IPage<TCbsxgzsVO> selectList(Page<TCbsxgzsDTO> page, @Param("tCbsxgzsDTO") TCbsxgzsDTO tCbsxgzsDTO);
+    IPage<TCbsxgzsVO> queryList(Page<TCbsxgzsDTO> page, @Param("tCbsxgzsDTO") TCbsxgzsDTO tCbsxgzsDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tCbsxgzsDTO 查询参数
+     * @return List<TCbsxgzsVO>
+     */
+    List<TCbsxgzsVO> queryList(@Param("tCbsxgzsDTO") TCbsxgzsDTO tCbsxgzsDTO);
 }

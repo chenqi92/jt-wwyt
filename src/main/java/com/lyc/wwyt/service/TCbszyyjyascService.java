@@ -13,16 +13,9 @@ import java.util.List;
  * 承包商作业应急预案审查表(t_cbszyyjyasc)表服务接口
  *
  * @author chenqi
- * @since 2023-05-16 16:33:49
+ * @since 2023-05-17 16:22:41
  */
 public interface TCbszyyjyascService extends IService<TCbszyyjyascEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TCbszyyjyascVO>
-     */
-    List<TCbszyyjyascVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -31,5 +24,13 @@ public interface TCbszyyjyascService extends IService<TCbszyyjyascEntity> {
      * @param tCbszyyjyascDTO 查询参数
      * @return IPage<TCbszyyjyascVO> tCbszyyjyascDTO
      */
-    IPage<TCbszyyjyascVO> selectPage(Page<TCbszyyjyascDTO> page, TCbszyyjyascDTO tCbszyyjyascDTO);
+    IPage<TCbszyyjyascVO> queryPage(Page<TCbszyyjyascDTO> page, TCbszyyjyascDTO tCbszyyjyascDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tCbszyyjyascDTO 查询参数
+     * @return List<TCbszyyjyascVO>
+     */
+    List<TCbszyyjyascVO> queryList(TCbszyyjyascDTO tCbszyyjyascDTO);
 }

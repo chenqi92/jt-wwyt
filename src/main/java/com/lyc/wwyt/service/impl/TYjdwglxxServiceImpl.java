@@ -17,23 +17,13 @@ import java.util.List;
  * 应急队伍管理信息表(t_yjdwglxx)表服务实现类
  *
  * @author chenqi
- * @since 2023-05-16 16:33:40
+ * @since 2023-05-17 16:22:39
  */
 @Service("tYjdwglxxService")
 @RequiredArgsConstructor
 public class TYjdwglxxServiceImpl extends ServiceImpl<TYjdwglxxDao, TYjdwglxxEntity> implements TYjdwglxxService {
 
     private final TYjdwglxxDao tYjdwglxxDao;
-
-    /**
-     * 查询所有数据
-     *
-     * @return 所有数据
-     */
-    @Override
-    public List<TYjdwglxxVO> selectList() {
-        return this.tYjdwglxxDao.selectList();
-    }
 
     /**
      * 分页查询所有数据
@@ -43,7 +33,18 @@ public class TYjdwglxxServiceImpl extends ServiceImpl<TYjdwglxxDao, TYjdwglxxEnt
      * @return 指定页码和条数的数据
      */
     @Override
-    public IPage<TYjdwglxxVO> selectPage(Page<TYjdwglxxDTO> page, TYjdwglxxDTO tYjdwglxxDTO) {
-        return this.tYjdwglxxDao.selectList(page, tYjdwglxxDTO);
+    public IPage<TYjdwglxxVO> queryPage(Page<TYjdwglxxDTO> page, TYjdwglxxDTO tYjdwglxxDTO) {
+        return this.tYjdwglxxDao.queryList(page, tYjdwglxxDTO);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param tYjdwglxxDTO 查询参数
+     * @return 所有数据
+     */
+    @Override
+    public List<TYjdwglxxVO> queryList(TYjdwglxxDTO tYjdwglxxDTO) {
+        return this.tYjdwglxxDao.queryList(tYjdwglxxDTO);
     }
 }

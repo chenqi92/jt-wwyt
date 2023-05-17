@@ -29,7 +29,7 @@ import java.util.List;
  * 承包商违章记录信息表(t_cbswzjlxx)表控制层
  *
  * @author chenqi
- * @since 2023-05-16 16:33:43
+ * @since 2023-05-17 16:22:42
  */
 @Validated
 @RestController
@@ -59,28 +59,28 @@ public class TCbswzjlxxController {
     }
 
     /**
-     * 查询当前账户下所有承包商违章记录信息表     *
+     * 查询当前账户下所有承包商违章记录信息表信息
      *
-     * @return List<TCbswzjlxxEntity> 当前账户下所有承包商违章记录信息表
+     * @return List<TCbswzjlxxEntity> 当前账户下所有承包商违章记录信息表信息
      */
     @Operation(description = "查询承包商违章记录信息表信息表数据", summary = "查询承包商违章记录信息表信息表数据", tags = {"查询所有数据"})
     @GetMapping
     @Idempotent(expireTime = 180, info = "3分钟内最多请求一次!")
-    public List<TCbswzjlxxVO> selectAll() {
-        return this.tCbswzjlxxService.selectList();
+    public List<TCbswzjlxxVO> selectAll(@ParameterObject TCbswzjlxxDTO tCbswzjlxxDTO) {
+        return this.tCbswzjlxxService.queryList(tCbswzjlxxDTO);
     }
 
     /**
-     * 分页查询当前账户下所有承包商违章记录信息表     *
+     * 分页查询当前账户下所有承包商违章记录信息表信息
      *
-     * @return List<TCbswzjlxxDTO> 分页当前账户下所有承包商违章记录信息表
+     * @return List<TCbswzjlxxDTO> 分页当前账户下所有承包商违章记录信息表信息
      */
     @Operation(description = "分页承包商违章记录信息表信息表数据", summary = "分页查询承包商违章记录信息表信息表数据", tags = {"分页查询所有数据"})
     @GetMapping("page")
     @Parameters({@Parameter(description = "当前页", name = "current", in = ParameterIn.QUERY, required = true, schema = @Schema(implementation = Integer.class)), @Parameter(description = "当前页条数", name = "size", in = ParameterIn.QUERY, required = true, schema = @Schema(implementation = Integer.class))})
     @Idempotent(expireTime = 180, info = "3分钟内最多请求一次!", key = "#page.current")
     public IPage<TCbswzjlxxVO> selectPage(@ParameterObject Page<TCbswzjlxxDTO> page, @ParameterObject TCbswzjlxxDTO tCbswzjlxxDTO) {
-        return this.tCbswzjlxxService.selectPage(page, tCbswzjlxxDTO);
+        return this.tCbswzjlxxService.queryPage(page, tCbswzjlxxDTO);
     }
 
 }

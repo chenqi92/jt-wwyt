@@ -13,16 +13,9 @@ import java.util.List;
  * 安全风险事件表(t_aqfxsj)表服务接口
  *
  * @author chenqi
- * @since 2023-05-16 16:33:58
+ * @since 2023-05-17 16:22:39
  */
 public interface TAqfxsjService extends IService<TAqfxsjEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TAqfxsjVO>
-     */
-    List<TAqfxsjVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -31,5 +24,13 @@ public interface TAqfxsjService extends IService<TAqfxsjEntity> {
      * @param tAqfxsjDTO 查询参数
      * @return IPage<TAqfxsjVO> tAqfxsjDTO
      */
-    IPage<TAqfxsjVO> selectPage(Page<TAqfxsjDTO> page, TAqfxsjDTO tAqfxsjDTO);
+    IPage<TAqfxsjVO> queryPage(Page<TAqfxsjDTO> page, TAqfxsjDTO tAqfxsjDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tAqfxsjDTO 查询参数
+     * @return List<TAqfxsjVO>
+     */
+    List<TAqfxsjVO> queryList(TAqfxsjDTO tAqfxsjDTO);
 }

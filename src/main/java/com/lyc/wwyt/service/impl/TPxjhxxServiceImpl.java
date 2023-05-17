@@ -17,23 +17,13 @@ import java.util.List;
  * 培训计划信息表(t_pxjhxx)表服务实现类
  *
  * @author chenqi
- * @since 2023-05-16 16:33:44
+ * @since 2023-05-17 16:22:47
  */
 @Service("tPxjhxxService")
 @RequiredArgsConstructor
 public class TPxjhxxServiceImpl extends ServiceImpl<TPxjhxxDao, TPxjhxxEntity> implements TPxjhxxService {
 
     private final TPxjhxxDao tPxjhxxDao;
-
-    /**
-     * 查询所有数据
-     *
-     * @return 所有数据
-     */
-    @Override
-    public List<TPxjhxxVO> selectList() {
-        return this.tPxjhxxDao.selectList();
-    }
 
     /**
      * 分页查询所有数据
@@ -43,7 +33,18 @@ public class TPxjhxxServiceImpl extends ServiceImpl<TPxjhxxDao, TPxjhxxEntity> i
      * @return 指定页码和条数的数据
      */
     @Override
-    public IPage<TPxjhxxVO> selectPage(Page<TPxjhxxDTO> page, TPxjhxxDTO tPxjhxxDTO) {
-        return this.tPxjhxxDao.selectList(page, tPxjhxxDTO);
+    public IPage<TPxjhxxVO> queryPage(Page<TPxjhxxDTO> page, TPxjhxxDTO tPxjhxxDTO) {
+        return this.tPxjhxxDao.queryList(page, tPxjhxxDTO);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param tPxjhxxDTO 查询参数
+     * @return 所有数据
+     */
+    @Override
+    public List<TPxjhxxVO> queryList(TPxjhxxDTO tPxjhxxDTO) {
+        return this.tPxjhxxDao.queryList(tPxjhxxDTO);
     }
 }

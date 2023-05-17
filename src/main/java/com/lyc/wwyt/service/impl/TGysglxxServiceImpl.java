@@ -17,23 +17,13 @@ import java.util.List;
  * 供应商管理信息表(t_gysglxx)表服务实现类
  *
  * @author chenqi
- * @since 2023-05-16 16:33:56
+ * @since 2023-05-17 16:22:41
  */
 @Service("tGysglxxService")
 @RequiredArgsConstructor
 public class TGysglxxServiceImpl extends ServiceImpl<TGysglxxDao, TGysglxxEntity> implements TGysglxxService {
 
     private final TGysglxxDao tGysglxxDao;
-
-    /**
-     * 查询所有数据
-     *
-     * @return 所有数据
-     */
-    @Override
-    public List<TGysglxxVO> selectList() {
-        return this.tGysglxxDao.selectList();
-    }
 
     /**
      * 分页查询所有数据
@@ -43,7 +33,18 @@ public class TGysglxxServiceImpl extends ServiceImpl<TGysglxxDao, TGysglxxEntity
      * @return 指定页码和条数的数据
      */
     @Override
-    public IPage<TGysglxxVO> selectPage(Page<TGysglxxDTO> page, TGysglxxDTO tGysglxxDTO) {
-        return this.tGysglxxDao.selectList(page, tGysglxxDTO);
+    public IPage<TGysglxxVO> queryPage(Page<TGysglxxDTO> page, TGysglxxDTO tGysglxxDTO) {
+        return this.tGysglxxDao.queryList(page, tGysglxxDTO);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param tGysglxxDTO 查询参数
+     * @return 所有数据
+     */
+    @Override
+    public List<TGysglxxVO> queryList(TGysglxxDTO tGysglxxDTO) {
+        return this.tGysglxxDao.queryList(tGysglxxDTO);
     }
 }

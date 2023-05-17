@@ -20,44 +20,47 @@
     </resultMap>
 
     <sql id="baseColumn">
-        id,
-        RISK_EVENT_ID,
-        TYSHXYDM,
-        DATA_SRC,
-        RISK_MEASURE_DESC,
-        CLASSIFY1,
-        CLASSIFY2,
-        CLASSIFY3,
-        TROUBLESHOOT_CONTENT,
-        create_time,
-        create_by,
-        update_time,
-        update_by,
-        delete_mark,
-        COMPANY_CODE
+        'id',
+        'RISK_EVENT_ID',
+        'TYSHXYDM',
+        'DATA_SRC',
+        'RISK_MEASURE_DESC',
+        'CLASSIFY1',
+        'CLASSIFY2',
+        'CLASSIFY3',
+        'TROUBLESHOOT_CONTENT',
+        'create_time',
+        'create_by',
+        'update_time',
+        'update_by',
+        'delete_mark',
+        'COMPANY_CODE'
     </sql>
 
-    <select id="selectList" resultType="com.lyc.wwyt.vo.TAqfxgkcsVO">
+    <select id="queryList" resultType="com.lyc.wwyt.vo.TAqfxgkcsVO">
         select
-        id,
-        RISK_EVENT_ID,
-        TYSHXYDM,
-        DATA_SRC,
-        RISK_MEASURE_DESC,
-        CLASSIFY1,
-        CLASSIFY2,
-        CLASSIFY3,
-        TROUBLESHOOT_CONTENT,
-        create_time,
-        create_by,
-        update_time,
-        update_by,
-        delete_mark,
-        COMPANY_CODE
+        'id',
+        'RISK_EVENT_ID',
+        'TYSHXYDM',
+        'DATA_SRC',
+        'RISK_MEASURE_DESC',
+        'CLASSIFY1',
+        'CLASSIFY2',
+        'CLASSIFY3',
+        'TROUBLESHOOT_CONTENT',
+        'create_time',
+        'create_by',
+        'update_time',
+        'update_by',
+        'delete_mark',
+        'COMPANY_CODE'
         from t_aqfxgkcs
         where delete_mark = 0
-        <if test="tAqfxgkcsDTO != null and tAqfxgkcsDTO != ''">
+        <if test="tAqfxgkcsDTO.id != null and tAqfxgkcsDTO.id != ''">
             AND id = #{tAqfxgkcsDTO.id}
+        </if>
+        <if test="tAqfxgkcsDTO.tyshxydm != null and tAqfxgkcsDTO.tyshxydm != ''">
+            AND TYSHXYDM = #{tAqfxgkcsDTO.tyshxydm}
         </if>
     </select>
 </mapper>

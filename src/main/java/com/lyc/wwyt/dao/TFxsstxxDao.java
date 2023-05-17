@@ -15,17 +15,10 @@ import java.util.List;
  * 风险四色图信息表(t_fxsstxx)表数据库访问层
  *
  * @author chenqi
- * @since 2023-05-16 16:33:38
+ * @since 2023-05-17 16:22:44
  */
 @Mapper
 public interface TFxsstxxDao extends BaseMapper<TFxsstxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TFxsstxxVO>
-     */
-    List<TFxsstxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TFxsstxxDao extends BaseMapper<TFxsstxxEntity> {
      * @param tFxsstxxDTO 查询参数
      * @return IPage<TFxsstxxVO>
      */
-    IPage<TFxsstxxVO> selectList(Page<TFxsstxxDTO> page, @Param("tFxsstxxDTO") TFxsstxxDTO tFxsstxxDTO);
+    IPage<TFxsstxxVO> queryList(Page<TFxsstxxDTO> page, @Param("tFxsstxxDTO") TFxsstxxDTO tFxsstxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tFxsstxxDTO 查询参数
+     * @return List<TFxsstxxVO>
+     */
+    List<TFxsstxxVO> queryList(@Param("tFxsstxxDTO") TFxsstxxDTO tFxsstxxDTO);
 }

@@ -29,7 +29,7 @@ import java.util.List;
  * 承包商相关证书表(t_cbsxgzs)表控制层
  *
  * @author chenqi
- * @since 2023-05-16 16:33:56
+ * @since 2023-05-17 16:22:40
  */
 @Validated
 @RestController
@@ -59,28 +59,28 @@ public class TCbsxgzsController {
     }
 
     /**
-     * 查询当前账户下所有承包商相关证书表     *
+     * 查询当前账户下所有承包商相关证书表信息
      *
-     * @return List<TCbsxgzsEntity> 当前账户下所有承包商相关证书表
+     * @return List<TCbsxgzsEntity> 当前账户下所有承包商相关证书表信息
      */
     @Operation(description = "查询承包商相关证书表信息表数据", summary = "查询承包商相关证书表信息表数据", tags = {"查询所有数据"})
     @GetMapping
     @Idempotent(expireTime = 180, info = "3分钟内最多请求一次!")
-    public List<TCbsxgzsVO> selectAll() {
-        return this.tCbsxgzsService.selectList();
+    public List<TCbsxgzsVO> selectAll(@ParameterObject TCbsxgzsDTO tCbsxgzsDTO) {
+        return this.tCbsxgzsService.queryList(tCbsxgzsDTO);
     }
 
     /**
-     * 分页查询当前账户下所有承包商相关证书表     *
+     * 分页查询当前账户下所有承包商相关证书表信息
      *
-     * @return List<TCbsxgzsDTO> 分页当前账户下所有承包商相关证书表
+     * @return List<TCbsxgzsDTO> 分页当前账户下所有承包商相关证书表信息
      */
     @Operation(description = "分页承包商相关证书表信息表数据", summary = "分页查询承包商相关证书表信息表数据", tags = {"分页查询所有数据"})
     @GetMapping("page")
     @Parameters({@Parameter(description = "当前页", name = "current", in = ParameterIn.QUERY, required = true, schema = @Schema(implementation = Integer.class)), @Parameter(description = "当前页条数", name = "size", in = ParameterIn.QUERY, required = true, schema = @Schema(implementation = Integer.class))})
     @Idempotent(expireTime = 180, info = "3分钟内最多请求一次!", key = "#page.current")
     public IPage<TCbsxgzsVO> selectPage(@ParameterObject Page<TCbsxgzsDTO> page, @ParameterObject TCbsxgzsDTO tCbsxgzsDTO) {
-        return this.tCbsxgzsService.selectPage(page, tCbsxgzsDTO);
+        return this.tCbsxgzsService.queryPage(page, tCbsxgzsDTO);
     }
 
 }

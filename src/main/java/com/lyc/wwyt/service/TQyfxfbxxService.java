@@ -13,16 +13,9 @@ import java.util.List;
  * 企业安全风险分布信息表(t_qyfxfbxx)表服务接口
  *
  * @author chenqi
- * @since 2023-05-16 16:33:59
+ * @since 2023-05-17 16:22:44
  */
 public interface TQyfxfbxxService extends IService<TQyfxfbxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TQyfxfbxxVO>
-     */
-    List<TQyfxfbxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -31,5 +24,13 @@ public interface TQyfxfbxxService extends IService<TQyfxfbxxEntity> {
      * @param tQyfxfbxxDTO 查询参数
      * @return IPage<TQyfxfbxxVO> tQyfxfbxxDTO
      */
-    IPage<TQyfxfbxxVO> selectPage(Page<TQyfxfbxxDTO> page, TQyfxfbxxDTO tQyfxfbxxDTO);
+    IPage<TQyfxfbxxVO> queryPage(Page<TQyfxfbxxDTO> page, TQyfxfbxxDTO tQyfxfbxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tQyfxfbxxDTO 查询参数
+     * @return List<TQyfxfbxxVO>
+     */
+    List<TQyfxfbxxVO> queryList(TQyfxfbxxDTO tQyfxfbxxDTO);
 }

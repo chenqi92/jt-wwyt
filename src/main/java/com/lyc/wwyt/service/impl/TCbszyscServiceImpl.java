@@ -17,23 +17,13 @@ import java.util.List;
  * 承包商安全作业规程审查表(t_cbszysc)表服务实现类
  *
  * @author chenqi
- * @since 2023-05-16 16:33:54
+ * @since 2023-05-17 16:22:45
  */
 @Service("tCbszyscService")
 @RequiredArgsConstructor
 public class TCbszyscServiceImpl extends ServiceImpl<TCbszyscDao, TCbszyscEntity> implements TCbszyscService {
 
     private final TCbszyscDao tCbszyscDao;
-
-    /**
-     * 查询所有数据
-     *
-     * @return 所有数据
-     */
-    @Override
-    public List<TCbszyscVO> selectList() {
-        return this.tCbszyscDao.selectList();
-    }
 
     /**
      * 分页查询所有数据
@@ -43,7 +33,18 @@ public class TCbszyscServiceImpl extends ServiceImpl<TCbszyscDao, TCbszyscEntity
      * @return 指定页码和条数的数据
      */
     @Override
-    public IPage<TCbszyscVO> selectPage(Page<TCbszyscDTO> page, TCbszyscDTO tCbszyscDTO) {
-        return this.tCbszyscDao.selectList(page, tCbszyscDTO);
+    public IPage<TCbszyscVO> queryPage(Page<TCbszyscDTO> page, TCbszyscDTO tCbszyscDTO) {
+        return this.tCbszyscDao.queryList(page, tCbszyscDTO);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param tCbszyscDTO 查询参数
+     * @return 所有数据
+     */
+    @Override
+    public List<TCbszyscVO> queryList(TCbszyscDTO tCbszyscDTO) {
+        return this.tCbszyscDao.queryList(tCbszyscDTO);
     }
 }

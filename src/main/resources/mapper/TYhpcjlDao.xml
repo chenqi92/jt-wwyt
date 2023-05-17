@@ -18,40 +18,43 @@
     </resultMap>
 
     <sql id="baseColumn">
-        id,
-        CHECK_TASK_ID,
-        TYSHXYDM,
-        CHECK_TIME,
-        CHECK_STATUS,
-        CREATE_BY_MOBILE,
-        UPDATE_BY_MOBILE,
-        create_time,
-        create_by,
-        update_time,
-        update_by,
-        delete_mark,
-        COMPANY_CODE
+        'id',
+        'CHECK_TASK_ID',
+        'TYSHXYDM',
+        'CHECK_TIME',
+        'CHECK_STATUS',
+        'CREATE_BY_MOBILE',
+        'UPDATE_BY_MOBILE',
+        'create_time',
+        'create_by',
+        'update_time',
+        'update_by',
+        'delete_mark',
+        'COMPANY_CODE'
     </sql>
 
-    <select id="selectList" resultType="com.lyc.wwyt.vo.TYhpcjlVO">
+    <select id="queryList" resultType="com.lyc.wwyt.vo.TYhpcjlVO">
         select
-        id,
-        CHECK_TASK_ID,
-        TYSHXYDM,
-        CHECK_TIME,
-        CHECK_STATUS,
-        CREATE_BY_MOBILE,
-        UPDATE_BY_MOBILE,
-        create_time,
-        create_by,
-        update_time,
-        update_by,
-        delete_mark,
-        COMPANY_CODE
+        'id',
+        'CHECK_TASK_ID',
+        'TYSHXYDM',
+        'CHECK_TIME',
+        'CHECK_STATUS',
+        'CREATE_BY_MOBILE',
+        'UPDATE_BY_MOBILE',
+        'create_time',
+        'create_by',
+        'update_time',
+        'update_by',
+        'delete_mark',
+        'COMPANY_CODE'
         from t_yhpcjl
         where delete_mark = 0
-        <if test="tYhpcjlDTO != null and tYhpcjlDTO != ''">
+        <if test="tYhpcjlDTO.id != null and tYhpcjlDTO.id != ''">
             AND id = #{tYhpcjlDTO.id}
+        </if>
+        <if test="tYhpcjlDTO.tyshxydm != null and tYhpcjlDTO.tyshxydm != ''">
+            AND TYSHXYDM = #{tYhpcjlDTO.tyshxydm}
         </if>
     </select>
 </mapper>

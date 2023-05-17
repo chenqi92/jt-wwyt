@@ -13,16 +13,9 @@ import java.util.List;
  * 承包商评定管理信息表(t_cbspdglxx)表服务接口
  *
  * @author chenqi
- * @since 2023-05-16 16:33:48
+ * @since 2023-05-17 16:22:39
  */
 public interface TCbspdglxxService extends IService<TCbspdglxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TCbspdglxxVO>
-     */
-    List<TCbspdglxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -31,5 +24,13 @@ public interface TCbspdglxxService extends IService<TCbspdglxxEntity> {
      * @param tCbspdglxxDTO 查询参数
      * @return IPage<TCbspdglxxVO> tCbspdglxxDTO
      */
-    IPage<TCbspdglxxVO> selectPage(Page<TCbspdglxxDTO> page, TCbspdglxxDTO tCbspdglxxDTO);
+    IPage<TCbspdglxxVO> queryPage(Page<TCbspdglxxDTO> page, TCbspdglxxDTO tCbspdglxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tCbspdglxxDTO 查询参数
+     * @return List<TCbspdglxxVO>
+     */
+    List<TCbspdglxxVO> queryList(TCbspdglxxDTO tCbspdglxxDTO);
 }

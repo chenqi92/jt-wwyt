@@ -18,40 +18,43 @@
     </resultMap>
 
     <sql id="baseColumn">
-        id,
-        TYSHXYDM,
-        EMPLOYEE_ID,
-        NAME,
-        PLAN_NAME,
-        SCORE,
-        LEVEL,
-        SUGGEST,
-        create_time,
-        create_by,
-        update_time,
-        update_by,
-        delete_mark
+        'id',
+        'TYSHXYDM',
+        'EMPLOYEE_ID',
+        'NAME',
+        'PLAN_NAME',
+        'SCORE',
+        'LEVEL',
+        'SUGGEST',
+        'create_time',
+        'create_by',
+        'update_time',
+        'update_by',
+        'delete_mark'
     </sql>
 
-    <select id="selectList" resultType="com.lyc.wwyt.vo.TPxjyxgpjjlVO">
+    <select id="queryList" resultType="com.lyc.wwyt.vo.TPxjyxgpjjlVO">
         select
-        id,
-        TYSHXYDM,
-        EMPLOYEE_ID,
-        NAME,
-        PLAN_NAME,
-        SCORE,
-        LEVEL,
-        SUGGEST,
-        create_time,
-        create_by,
-        update_time,
-        update_by,
-        delete_mark
+        'id',
+        'TYSHXYDM',
+        'EMPLOYEE_ID',
+        'NAME',
+        'PLAN_NAME',
+        'SCORE',
+        'LEVEL',
+        'SUGGEST',
+        'create_time',
+        'create_by',
+        'update_time',
+        'update_by',
+        'delete_mark'
         from t_pxjyxgpjjl
         where delete_mark = 0
-        <if test="tPxjyxgpjjlDTO != null and tPxjyxgpjjlDTO != ''">
+        <if test="tPxjyxgpjjlDTO.id != null and tPxjyxgpjjlDTO.id != ''">
             AND id = #{tPxjyxgpjjlDTO.id}
+        </if>
+        <if test="tPxjyxgpjjlDTO.tyshxydm != null and tPxjyxgpjjlDTO.tyshxydm != ''">
+            AND TYSHXYDM = #{tPxjyxgpjjlDTO.tyshxydm}
         </if>
     </select>
 </mapper>

@@ -17,23 +17,13 @@ import java.util.List;
  * 隐患排查记录表(t_yhpcjl)表服务实现类
  *
  * @author chenqi
- * @since 2023-05-16 16:33:45
+ * @since 2023-05-17 16:22:42
  */
 @Service("tYhpcjlService")
 @RequiredArgsConstructor
 public class TYhpcjlServiceImpl extends ServiceImpl<TYhpcjlDao, TYhpcjlEntity> implements TYhpcjlService {
 
     private final TYhpcjlDao tYhpcjlDao;
-
-    /**
-     * 查询所有数据
-     *
-     * @return 所有数据
-     */
-    @Override
-    public List<TYhpcjlVO> selectList() {
-        return this.tYhpcjlDao.selectList();
-    }
 
     /**
      * 分页查询所有数据
@@ -43,7 +33,18 @@ public class TYhpcjlServiceImpl extends ServiceImpl<TYhpcjlDao, TYhpcjlEntity> i
      * @return 指定页码和条数的数据
      */
     @Override
-    public IPage<TYhpcjlVO> selectPage(Page<TYhpcjlDTO> page, TYhpcjlDTO tYhpcjlDTO) {
-        return this.tYhpcjlDao.selectList(page, tYhpcjlDTO);
+    public IPage<TYhpcjlVO> queryPage(Page<TYhpcjlDTO> page, TYhpcjlDTO tYhpcjlDTO) {
+        return this.tYhpcjlDao.queryList(page, tYhpcjlDTO);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param tYhpcjlDTO 查询参数
+     * @return 所有数据
+     */
+    @Override
+    public List<TYhpcjlVO> queryList(TYhpcjlDTO tYhpcjlDTO) {
+        return this.tYhpcjlDao.queryList(tYhpcjlDTO);
     }
 }

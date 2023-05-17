@@ -29,7 +29,7 @@ import java.util.List;
  * 应急处置卡信息表：t_yjczkxx(t_yjczkxx)表控制层
  *
  * @author chenqi
- * @since 2023-05-16 16:33:39
+ * @since 2023-05-17 16:22:40
  */
 @Validated
 @RestController
@@ -59,28 +59,28 @@ public class TYjczkxxController {
     }
 
     /**
-     * 查询当前账户下所有应急处置卡信息表：t_yjczkxx     *
+     * 查询当前账户下所有应急处置卡信息表：t_yjczkxx信息
      *
-     * @return List<TYjczkxxEntity> 当前账户下所有应急处置卡信息表：t_yjczkxx
+     * @return List<TYjczkxxEntity> 当前账户下所有应急处置卡信息表：t_yjczkxx信息
      */
     @Operation(description = "查询应急处置卡信息表：t_yjczkxx信息表数据", summary = "查询应急处置卡信息表：t_yjczkxx信息表数据", tags = {"查询所有数据"})
     @GetMapping
     @Idempotent(expireTime = 180, info = "3分钟内最多请求一次!")
-    public List<TYjczkxxVO> selectAll() {
-        return this.tYjczkxxService.selectList();
+    public List<TYjczkxxVO> selectAll(@ParameterObject TYjczkxxDTO tYjczkxxDTO) {
+        return this.tYjczkxxService.queryList(tYjczkxxDTO);
     }
 
     /**
-     * 分页查询当前账户下所有应急处置卡信息表：t_yjczkxx     *
+     * 分页查询当前账户下所有应急处置卡信息表：t_yjczkxx信息
      *
-     * @return List<TYjczkxxDTO> 分页当前账户下所有应急处置卡信息表：t_yjczkxx
+     * @return List<TYjczkxxDTO> 分页当前账户下所有应急处置卡信息表：t_yjczkxx信息
      */
     @Operation(description = "分页应急处置卡信息表：t_yjczkxx信息表数据", summary = "分页查询应急处置卡信息表：t_yjczkxx信息表数据", tags = {"分页查询所有数据"})
     @GetMapping("page")
     @Parameters({@Parameter(description = "当前页", name = "current", in = ParameterIn.QUERY, required = true, schema = @Schema(implementation = Integer.class)), @Parameter(description = "当前页条数", name = "size", in = ParameterIn.QUERY, required = true, schema = @Schema(implementation = Integer.class))})
     @Idempotent(expireTime = 180, info = "3分钟内最多请求一次!", key = "#page.current")
     public IPage<TYjczkxxVO> selectPage(@ParameterObject Page<TYjczkxxDTO> page, @ParameterObject TYjczkxxDTO tYjczkxxDTO) {
-        return this.tYjczkxxService.selectPage(page, tYjczkxxDTO);
+        return this.tYjczkxxService.queryPage(page, tYjczkxxDTO);
     }
 
 }

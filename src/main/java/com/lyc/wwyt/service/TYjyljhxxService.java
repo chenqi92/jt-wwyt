@@ -13,16 +13,9 @@ import java.util.List;
  * 应急演练计划信息表(t_yjyljhxx)表服务接口
  *
  * @author chenqi
- * @since 2023-05-16 16:33:41
+ * @since 2023-05-17 16:22:45
  */
 public interface TYjyljhxxService extends IService<TYjyljhxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TYjyljhxxVO>
-     */
-    List<TYjyljhxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -31,5 +24,13 @@ public interface TYjyljhxxService extends IService<TYjyljhxxEntity> {
      * @param tYjyljhxxDTO 查询参数
      * @return IPage<TYjyljhxxVO> tYjyljhxxDTO
      */
-    IPage<TYjyljhxxVO> selectPage(Page<TYjyljhxxDTO> page, TYjyljhxxDTO tYjyljhxxDTO);
+    IPage<TYjyljhxxVO> queryPage(Page<TYjyljhxxDTO> page, TYjyljhxxDTO tYjyljhxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tYjyljhxxDTO 查询参数
+     * @return List<TYjyljhxxVO>
+     */
+    List<TYjyljhxxVO> queryList(TYjyljhxxDTO tYjyljhxxDTO);
 }

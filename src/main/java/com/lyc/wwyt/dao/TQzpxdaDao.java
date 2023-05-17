@@ -15,17 +15,10 @@ import java.util.List;
  * 取证培训档案表(t_qzpxda)表数据库访问层
  *
  * @author chenqi
- * @since 2023-05-16 16:33:56
+ * @since 2023-05-17 16:22:45
  */
 @Mapper
 public interface TQzpxdaDao extends BaseMapper<TQzpxdaEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TQzpxdaVO>
-     */
-    List<TQzpxdaVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TQzpxdaDao extends BaseMapper<TQzpxdaEntity> {
      * @param tQzpxdaDTO 查询参数
      * @return IPage<TQzpxdaVO>
      */
-    IPage<TQzpxdaVO> selectList(Page<TQzpxdaDTO> page, @Param("tQzpxdaDTO") TQzpxdaDTO tQzpxdaDTO);
+    IPage<TQzpxdaVO> queryList(Page<TQzpxdaDTO> page, @Param("tQzpxdaDTO") TQzpxdaDTO tQzpxdaDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tQzpxdaDTO 查询参数
+     * @return List<TQzpxdaVO>
+     */
+    List<TQzpxdaVO> queryList(@Param("tQzpxdaDTO") TQzpxdaDTO tQzpxdaDTO);
 }

@@ -17,23 +17,13 @@ import java.util.List;
  * 人员培训信息表(t_rypxxx)表服务实现类
  *
  * @author chenqi
- * @since 2023-05-16 16:33:59
+ * @since 2023-05-17 16:22:44
  */
 @Service("tRypxxxService")
 @RequiredArgsConstructor
 public class TRypxxxServiceImpl extends ServiceImpl<TRypxxxDao, TRypxxxEntity> implements TRypxxxService {
 
     private final TRypxxxDao tRypxxxDao;
-
-    /**
-     * 查询所有数据
-     *
-     * @return 所有数据
-     */
-    @Override
-    public List<TRypxxxVO> selectList() {
-        return this.tRypxxxDao.selectList();
-    }
 
     /**
      * 分页查询所有数据
@@ -43,7 +33,18 @@ public class TRypxxxServiceImpl extends ServiceImpl<TRypxxxDao, TRypxxxEntity> i
      * @return 指定页码和条数的数据
      */
     @Override
-    public IPage<TRypxxxVO> selectPage(Page<TRypxxxDTO> page, TRypxxxDTO tRypxxxDTO) {
-        return this.tRypxxxDao.selectList(page, tRypxxxDTO);
+    public IPage<TRypxxxVO> queryPage(Page<TRypxxxDTO> page, TRypxxxDTO tRypxxxDTO) {
+        return this.tRypxxxDao.queryList(page, tRypxxxDTO);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param tRypxxxDTO 查询参数
+     * @return 所有数据
+     */
+    @Override
+    public List<TRypxxxVO> queryList(TRypxxxDTO tRypxxxDTO) {
+        return this.tRypxxxDao.queryList(tRypxxxDTO);
     }
 }

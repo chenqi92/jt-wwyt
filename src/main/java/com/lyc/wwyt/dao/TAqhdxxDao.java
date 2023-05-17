@@ -15,17 +15,10 @@ import java.util.List;
  * 安全活动信息表(t_aqhdxx)表数据库访问层
  *
  * @author chenqi
- * @since 2023-05-16 16:33:52
+ * @since 2023-05-17 16:22:48
  */
 @Mapper
 public interface TAqhdxxDao extends BaseMapper<TAqhdxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TAqhdxxVO>
-     */
-    List<TAqhdxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TAqhdxxDao extends BaseMapper<TAqhdxxEntity> {
      * @param tAqhdxxDTO 查询参数
      * @return IPage<TAqhdxxVO>
      */
-    IPage<TAqhdxxVO> selectList(Page<TAqhdxxDTO> page, @Param("tAqhdxxDTO") TAqhdxxDTO tAqhdxxDTO);
+    IPage<TAqhdxxVO> queryList(Page<TAqhdxxDTO> page, @Param("tAqhdxxDTO") TAqhdxxDTO tAqhdxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tAqhdxxDTO 查询参数
+     * @return List<TAqhdxxVO>
+     */
+    List<TAqhdxxVO> queryList(@Param("tAqhdxxDTO") TAqhdxxDTO tAqhdxxDTO);
 }

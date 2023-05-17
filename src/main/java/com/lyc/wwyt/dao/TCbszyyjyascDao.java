@@ -15,17 +15,10 @@ import java.util.List;
  * 承包商作业应急预案审查表(t_cbszyyjyasc)表数据库访问层
  *
  * @author chenqi
- * @since 2023-05-16 16:33:49
+ * @since 2023-05-17 16:22:41
  */
 @Mapper
 public interface TCbszyyjyascDao extends BaseMapper<TCbszyyjyascEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TCbszyyjyascVO>
-     */
-    List<TCbszyyjyascVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TCbszyyjyascDao extends BaseMapper<TCbszyyjyascEntity> {
      * @param tCbszyyjyascDTO 查询参数
      * @return IPage<TCbszyyjyascVO>
      */
-    IPage<TCbszyyjyascVO> selectList(Page<TCbszyyjyascDTO> page, @Param("tCbszyyjyascDTO") TCbszyyjyascDTO tCbszyyjyascDTO);
+    IPage<TCbszyyjyascVO> queryList(Page<TCbszyyjyascDTO> page, @Param("tCbszyyjyascDTO") TCbszyyjyascDTO tCbszyyjyascDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tCbszyyjyascDTO 查询参数
+     * @return List<TCbszyyjyascVO>
+     */
+    List<TCbszyyjyascVO> queryList(@Param("tCbszyyjyascDTO") TCbszyyjyascDTO tCbszyyjyascDTO);
 }

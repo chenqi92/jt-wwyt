@@ -17,23 +17,13 @@ import java.util.List;
  * 隐患治理信息表(t_yhzlxx)表服务实现类
  *
  * @author chenqi
- * @since 2023-05-16 16:33:45
+ * @since 2023-05-17 16:22:42
  */
 @Service("tYhzlxxService")
 @RequiredArgsConstructor
 public class TYhzlxxServiceImpl extends ServiceImpl<TYhzlxxDao, TYhzlxxEntity> implements TYhzlxxService {
 
     private final TYhzlxxDao tYhzlxxDao;
-
-    /**
-     * 查询所有数据
-     *
-     * @return 所有数据
-     */
-    @Override
-    public List<TYhzlxxVO> selectList() {
-        return this.tYhzlxxDao.selectList();
-    }
 
     /**
      * 分页查询所有数据
@@ -43,7 +33,18 @@ public class TYhzlxxServiceImpl extends ServiceImpl<TYhzlxxDao, TYhzlxxEntity> i
      * @return 指定页码和条数的数据
      */
     @Override
-    public IPage<TYhzlxxVO> selectPage(Page<TYhzlxxDTO> page, TYhzlxxDTO tYhzlxxDTO) {
-        return this.tYhzlxxDao.selectList(page, tYhzlxxDTO);
+    public IPage<TYhzlxxVO> queryPage(Page<TYhzlxxDTO> page, TYhzlxxDTO tYhzlxxDTO) {
+        return this.tYhzlxxDao.queryList(page, tYhzlxxDTO);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param tYhzlxxDTO 查询参数
+     * @return 所有数据
+     */
+    @Override
+    public List<TYhzlxxVO> queryList(TYhzlxxDTO tYhzlxxDTO) {
+        return this.tYhzlxxDao.queryList(tYhzlxxDTO);
     }
 }

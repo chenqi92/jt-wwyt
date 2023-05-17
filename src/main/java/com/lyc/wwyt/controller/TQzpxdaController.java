@@ -29,7 +29,7 @@ import java.util.List;
  * 取证培训档案表(t_qzpxda)表控制层
  *
  * @author chenqi
- * @since 2023-05-16 16:33:56
+ * @since 2023-05-17 16:22:46
  */
 @Validated
 @RestController
@@ -59,28 +59,28 @@ public class TQzpxdaController {
     }
 
     /**
-     * 查询当前账户下所有取证培训档案表     *
+     * 查询当前账户下所有取证培训档案表信息
      *
-     * @return List<TQzpxdaEntity> 当前账户下所有取证培训档案表
+     * @return List<TQzpxdaEntity> 当前账户下所有取证培训档案表信息
      */
     @Operation(description = "查询取证培训档案表信息表数据", summary = "查询取证培训档案表信息表数据", tags = {"查询所有数据"})
     @GetMapping
     @Idempotent(expireTime = 180, info = "3分钟内最多请求一次!")
-    public List<TQzpxdaVO> selectAll() {
-        return this.tQzpxdaService.selectList();
+    public List<TQzpxdaVO> selectAll(@ParameterObject TQzpxdaDTO tQzpxdaDTO) {
+        return this.tQzpxdaService.queryList(tQzpxdaDTO);
     }
 
     /**
-     * 分页查询当前账户下所有取证培训档案表     *
+     * 分页查询当前账户下所有取证培训档案表信息
      *
-     * @return List<TQzpxdaDTO> 分页当前账户下所有取证培训档案表
+     * @return List<TQzpxdaDTO> 分页当前账户下所有取证培训档案表信息
      */
     @Operation(description = "分页取证培训档案表信息表数据", summary = "分页查询取证培训档案表信息表数据", tags = {"分页查询所有数据"})
     @GetMapping("page")
     @Parameters({@Parameter(description = "当前页", name = "current", in = ParameterIn.QUERY, required = true, schema = @Schema(implementation = Integer.class)), @Parameter(description = "当前页条数", name = "size", in = ParameterIn.QUERY, required = true, schema = @Schema(implementation = Integer.class))})
     @Idempotent(expireTime = 180, info = "3分钟内最多请求一次!", key = "#page.current")
     public IPage<TQzpxdaVO> selectPage(@ParameterObject Page<TQzpxdaDTO> page, @ParameterObject TQzpxdaDTO tQzpxdaDTO) {
-        return this.tQzpxdaService.selectPage(page, tQzpxdaDTO);
+        return this.tQzpxdaService.queryPage(page, tQzpxdaDTO);
     }
 
 }

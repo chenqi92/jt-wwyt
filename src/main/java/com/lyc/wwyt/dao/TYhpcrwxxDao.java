@@ -15,17 +15,10 @@ import java.util.List;
  * 隐患排查任务信息表(t_yhpcrwxx)表数据库访问层
  *
  * @author chenqi
- * @since 2023-05-16 16:33:52
+ * @since 2023-05-17 16:22:39
  */
 @Mapper
 public interface TYhpcrwxxDao extends BaseMapper<TYhpcrwxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TYhpcrwxxVO>
-     */
-    List<TYhpcrwxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TYhpcrwxxDao extends BaseMapper<TYhpcrwxxEntity> {
      * @param tYhpcrwxxDTO 查询参数
      * @return IPage<TYhpcrwxxVO>
      */
-    IPage<TYhpcrwxxVO> selectList(Page<TYhpcrwxxDTO> page, @Param("tYhpcrwxxDTO") TYhpcrwxxDTO tYhpcrwxxDTO);
+    IPage<TYhpcrwxxVO> queryList(Page<TYhpcrwxxDTO> page, @Param("tYhpcrwxxDTO") TYhpcrwxxDTO tYhpcrwxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tYhpcrwxxDTO 查询参数
+     * @return List<TYhpcrwxxVO>
+     */
+    List<TYhpcrwxxVO> queryList(@Param("tYhpcrwxxDTO") TYhpcrwxxDTO tYhpcrwxxDTO);
 }

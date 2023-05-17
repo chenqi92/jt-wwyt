@@ -15,17 +15,10 @@ import java.util.List;
  * 培训资料信息表(t_pxzlxx)表数据库访问层
  *
  * @author chenqi
- * @since 2023-05-16 16:33:50
+ * @since 2023-05-17 16:22:42
  */
 @Mapper
 public interface TPxzlxxDao extends BaseMapper<TPxzlxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TPxzlxxVO>
-     */
-    List<TPxzlxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TPxzlxxDao extends BaseMapper<TPxzlxxEntity> {
      * @param tPxzlxxDTO 查询参数
      * @return IPage<TPxzlxxVO>
      */
-    IPage<TPxzlxxVO> selectList(Page<TPxzlxxDTO> page, @Param("tPxzlxxDTO") TPxzlxxDTO tPxzlxxDTO);
+    IPage<TPxzlxxVO> queryList(Page<TPxzlxxDTO> page, @Param("tPxzlxxDTO") TPxzlxxDTO tPxzlxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tPxzlxxDTO 查询参数
+     * @return List<TPxzlxxVO>
+     */
+    List<TPxzlxxVO> queryList(@Param("tPxzlxxDTO") TPxzlxxDTO tPxzlxxDTO);
 }

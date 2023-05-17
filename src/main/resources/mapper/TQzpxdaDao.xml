@@ -21,46 +21,49 @@
     </resultMap>
 
     <sql id="baseColumn">
-        id,
-        TYSHXYDM,
-        NAME,
-        POST,
-        CERTIFICATE_TYPE,
-        ISSUING_AUTHORITY,
-        DESCRIBE,
-            FILE,
-            CERTIFICATE_NAME,
-            CERTIFICATE_NO,
-            VALIDATE,
-            create_time,
-            create_by,
-            update_time,
-            update_by,
-            delete_mark
+        'id',
+        'TYSHXYDM',
+        'NAME',
+        'POST',
+        'CERTIFICATE_TYPE',
+        'ISSUING_AUTHORITY',
+        'DESCRIBE',
+        'FILE',
+        'CERTIFICATE_NAME',
+        'CERTIFICATE_NO',
+        'VALIDATE',
+        'create_time',
+        'create_by',
+        'update_time',
+        'update_by',
+        'delete_mark'
     </sql>
 
-    <select id="selectList" resultType="com.lyc.wwyt.vo.TQzpxdaVO">
+    <select id="queryList" resultType="com.lyc.wwyt.vo.TQzpxdaVO">
         select
-        id,
-        TYSHXYDM,
-        NAME,
-        POST,
-        CERTIFICATE_TYPE,
-        ISSUING_AUTHORITY,
-        DESCRIBE,
-        FILE,
-        CERTIFICATE_NAME,
-        CERTIFICATE_NO,
-        VALIDATE,
-        create_time,
-        create_by,
-        update_time,
-        update_by,
-        delete_mark
+        'id',
+        'TYSHXYDM',
+        'NAME',
+        'POST',
+        'CERTIFICATE_TYPE',
+        'ISSUING_AUTHORITY',
+        'DESCRIBE',
+        'FILE',
+        'CERTIFICATE_NAME',
+        'CERTIFICATE_NO',
+        'VALIDATE',
+        'create_time',
+        'create_by',
+        'update_time',
+        'update_by',
+        'delete_mark'
         from t_qzpxda
         where delete_mark = 0
-        <if test="tQzpxdaDTO != null and tQzpxdaDTO != ''">
+        <if test="tQzpxdaDTO.id != null and tQzpxdaDTO.id != ''">
             AND id = #{tQzpxdaDTO.id}
+        </if>
+        <if test="tQzpxdaDTO.tyshxydm != null and tQzpxdaDTO.tyshxydm != ''">
+            AND TYSHXYDM = #{tQzpxdaDTO.tyshxydm}
         </if>
     </select>
 </mapper>

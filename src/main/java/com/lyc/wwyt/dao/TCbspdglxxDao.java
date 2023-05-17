@@ -15,17 +15,10 @@ import java.util.List;
  * 承包商评定管理信息表(t_cbspdglxx)表数据库访问层
  *
  * @author chenqi
- * @since 2023-05-16 16:33:48
+ * @since 2023-05-17 16:22:39
  */
 @Mapper
 public interface TCbspdglxxDao extends BaseMapper<TCbspdglxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TCbspdglxxVO>
-     */
-    List<TCbspdglxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TCbspdglxxDao extends BaseMapper<TCbspdglxxEntity> {
      * @param tCbspdglxxDTO 查询参数
      * @return IPage<TCbspdglxxVO>
      */
-    IPage<TCbspdglxxVO> selectList(Page<TCbspdglxxDTO> page, @Param("tCbspdglxxDTO") TCbspdglxxDTO tCbspdglxxDTO);
+    IPage<TCbspdglxxVO> queryList(Page<TCbspdglxxDTO> page, @Param("tCbspdglxxDTO") TCbspdglxxDTO tCbspdglxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tCbspdglxxDTO 查询参数
+     * @return List<TCbspdglxxVO>
+     */
+    List<TCbspdglxxVO> queryList(@Param("tCbspdglxxDTO") TCbspdglxxDTO tCbspdglxxDTO);
 }

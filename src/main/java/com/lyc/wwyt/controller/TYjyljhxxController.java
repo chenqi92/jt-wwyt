@@ -29,7 +29,7 @@ import java.util.List;
  * 应急演练计划信息表(t_yjyljhxx)表控制层
  *
  * @author chenqi
- * @since 2023-05-16 16:33:41
+ * @since 2023-05-17 16:22:45
  */
 @Validated
 @RestController
@@ -59,28 +59,28 @@ public class TYjyljhxxController {
     }
 
     /**
-     * 查询当前账户下所有应急演练计划信息表     *
+     * 查询当前账户下所有应急演练计划信息表信息
      *
-     * @return List<TYjyljhxxEntity> 当前账户下所有应急演练计划信息表
+     * @return List<TYjyljhxxEntity> 当前账户下所有应急演练计划信息表信息
      */
     @Operation(description = "查询应急演练计划信息表信息表数据", summary = "查询应急演练计划信息表信息表数据", tags = {"查询所有数据"})
     @GetMapping
     @Idempotent(expireTime = 180, info = "3分钟内最多请求一次!")
-    public List<TYjyljhxxVO> selectAll() {
-        return this.tYjyljhxxService.selectList();
+    public List<TYjyljhxxVO> selectAll(@ParameterObject TYjyljhxxDTO tYjyljhxxDTO) {
+        return this.tYjyljhxxService.queryList(tYjyljhxxDTO);
     }
 
     /**
-     * 分页查询当前账户下所有应急演练计划信息表     *
+     * 分页查询当前账户下所有应急演练计划信息表信息
      *
-     * @return List<TYjyljhxxDTO> 分页当前账户下所有应急演练计划信息表
+     * @return List<TYjyljhxxDTO> 分页当前账户下所有应急演练计划信息表信息
      */
     @Operation(description = "分页应急演练计划信息表信息表数据", summary = "分页查询应急演练计划信息表信息表数据", tags = {"分页查询所有数据"})
     @GetMapping("page")
     @Parameters({@Parameter(description = "当前页", name = "current", in = ParameterIn.QUERY, required = true, schema = @Schema(implementation = Integer.class)), @Parameter(description = "当前页条数", name = "size", in = ParameterIn.QUERY, required = true, schema = @Schema(implementation = Integer.class))})
     @Idempotent(expireTime = 180, info = "3分钟内最多请求一次!", key = "#page.current")
     public IPage<TYjyljhxxVO> selectPage(@ParameterObject Page<TYjyljhxxDTO> page, @ParameterObject TYjyljhxxDTO tYjyljhxxDTO) {
-        return this.tYjyljhxxService.selectPage(page, tYjyljhxxDTO);
+        return this.tYjyljhxxService.queryPage(page, tYjyljhxxDTO);
     }
 
 }

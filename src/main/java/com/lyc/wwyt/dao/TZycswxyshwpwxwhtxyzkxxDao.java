@@ -15,17 +15,10 @@ import java.util.List;
  * 作业场所岗位风险应知卡信息表(t_zycswxyshwpwxwhtxyzkxx)表数据库访问层
  *
  * @author chenqi
- * @since 2023-05-16 16:33:46
+ * @since 2023-05-17 16:22:40
  */
 @Mapper
 public interface TZycswxyshwpwxwhtxyzkxxDao extends BaseMapper<TZycswxyshwpwxwhtxyzkxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TZycswxyshwpwxwhtxyzkxxVO>
-     */
-    List<TZycswxyshwpwxwhtxyzkxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TZycswxyshwpwxwhtxyzkxxDao extends BaseMapper<TZycswxyshwpwxwht
      * @param tZycswxyshwpwxwhtxyzkxxDTO 查询参数
      * @return IPage<TZycswxyshwpwxwhtxyzkxxVO>
      */
-    IPage<TZycswxyshwpwxwhtxyzkxxVO> selectList(Page<TZycswxyshwpwxwhtxyzkxxDTO> page, @Param("tZycswxyshwpwxwhtxyzkxxDTO") TZycswxyshwpwxwhtxyzkxxDTO tZycswxyshwpwxwhtxyzkxxDTO);
+    IPage<TZycswxyshwpwxwhtxyzkxxVO> queryList(Page<TZycswxyshwpwxwhtxyzkxxDTO> page, @Param("tZycswxyshwpwxwhtxyzkxxDTO") TZycswxyshwpwxwhtxyzkxxDTO tZycswxyshwpwxwhtxyzkxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tZycswxyshwpwxwhtxyzkxxDTO 查询参数
+     * @return List<TZycswxyshwpwxwhtxyzkxxVO>
+     */
+    List<TZycswxyshwpwxwhtxyzkxxVO> queryList(@Param("tZycswxyshwpwxwhtxyzkxxDTO") TZycswxyshwpwxwhtxyzkxxDTO tZycswxyshwpwxwhtxyzkxxDTO);
 }

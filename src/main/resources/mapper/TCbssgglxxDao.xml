@@ -26,56 +26,59 @@
     </resultMap>
 
     <sql id="baseColumn">
-        id,
-        TYSHXYDM,
-        SSCBS,
-        SGDWYYDJ,
-        ZRSQDRQ,
-        ZRSDQRQ,
-        TZSBAZXKZ,
-        SGDWFZR,
-        SGDWFZRLXDH,
-        SGDWFZRSFZ,
-        AQFZR,
-        AQFZRLXDH,
-        AQFZRSFZ,
-        JCRQ,
-        KHRZ,
-        SGDWJJ,
-        create_time,
-        create_by,
-        update_time,
-        update_by,
-        delete_mark
+        'id',
+        'TYSHXYDM',
+        'SSCBS',
+        'SGDWYYDJ',
+        'ZRSQDRQ',
+        'ZRSDQRQ',
+        'TZSBAZXKZ',
+        'SGDWFZR',
+        'SGDWFZRLXDH',
+        'SGDWFZRSFZ',
+        'AQFZR',
+        'AQFZRLXDH',
+        'AQFZRSFZ',
+        'JCRQ',
+        'KHRZ',
+        'SGDWJJ',
+        'create_time',
+        'create_by',
+        'update_time',
+        'update_by',
+        'delete_mark'
     </sql>
 
-    <select id="selectList" resultType="com.lyc.wwyt.vo.TCbssgglxxVO">
+    <select id="queryList" resultType="com.lyc.wwyt.vo.TCbssgglxxVO">
         select
-        id,
-        TYSHXYDM,
-        SSCBS,
-        SGDWYYDJ,
-        ZRSQDRQ,
-        ZRSDQRQ,
-        TZSBAZXKZ,
-        SGDWFZR,
-        SGDWFZRLXDH,
-        SGDWFZRSFZ,
-        AQFZR,
-        AQFZRLXDH,
-        AQFZRSFZ,
-        JCRQ,
-        KHRZ,
-        SGDWJJ,
-        create_time,
-        create_by,
-        update_time,
-        update_by,
-        delete_mark
+        'id',
+        'TYSHXYDM',
+        'SSCBS',
+        'SGDWYYDJ',
+        'ZRSQDRQ',
+        'ZRSDQRQ',
+        'TZSBAZXKZ',
+        'SGDWFZR',
+        'SGDWFZRLXDH',
+        'SGDWFZRSFZ',
+        'AQFZR',
+        'AQFZRLXDH',
+        'AQFZRSFZ',
+        'JCRQ',
+        'KHRZ',
+        'SGDWJJ',
+        'create_time',
+        'create_by',
+        'update_time',
+        'update_by',
+        'delete_mark'
         from t_cbssgglxx
         where delete_mark = 0
-        <if test="tCbssgglxxDTO != null and tCbssgglxxDTO != ''">
+        <if test="tCbssgglxxDTO.id != null and tCbssgglxxDTO.id != ''">
             AND id = #{tCbssgglxxDTO.id}
+        </if>
+        <if test="tCbssgglxxDTO.tyshxydm != null and tCbssgglxxDTO.tyshxydm != ''">
+            AND TYSHXYDM = #{tCbssgglxxDTO.tyshxydm}
         </if>
     </select>
 </mapper>

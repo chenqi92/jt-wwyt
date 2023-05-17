@@ -26,56 +26,59 @@
     </resultMap>
 
     <sql id="baseColumn">
-        id,
-        TYSHXYDM,
-        PXLB,
-        PXXS,
-        PXRQ,
-        PXDW,
-        PXJS,
-        PXJJ,
-        CJRS,
-        JGFS,
-        PXDD,
-        KHDW,
-        PXFY,
-        CJRY,
-        QDB,
-        XCZP,
-        create_time,
-        create_by,
-        update_time,
-        update_by,
-        delete_mark
+        'id',
+        'TYSHXYDM',
+        'PXLB',
+        'PXXS',
+        'PXRQ',
+        'PXDW',
+        'PXJS',
+        'PXJJ',
+        'CJRS',
+        'JGFS',
+        'PXDD',
+        'KHDW',
+        'PXFY',
+        'CJRY',
+        'QDB',
+        'XCZP',
+        'create_time',
+        'create_by',
+        'update_time',
+        'update_by',
+        'delete_mark'
     </sql>
 
-    <select id="selectList" resultType="com.lyc.wwyt.vo.TPxhdxxVO">
+    <select id="queryList" resultType="com.lyc.wwyt.vo.TPxhdxxVO">
         select
-        id,
-        TYSHXYDM,
-        PXLB,
-        PXXS,
-        PXRQ,
-        PXDW,
-        PXJS,
-        PXJJ,
-        CJRS,
-        JGFS,
-        PXDD,
-        KHDW,
-        PXFY,
-        CJRY,
-        QDB,
-        XCZP,
-        create_time,
-        create_by,
-        update_time,
-        update_by,
-        delete_mark
+        'id',
+        'TYSHXYDM',
+        'PXLB',
+        'PXXS',
+        'PXRQ',
+        'PXDW',
+        'PXJS',
+        'PXJJ',
+        'CJRS',
+        'JGFS',
+        'PXDD',
+        'KHDW',
+        'PXFY',
+        'CJRY',
+        'QDB',
+        'XCZP',
+        'create_time',
+        'create_by',
+        'update_time',
+        'update_by',
+        'delete_mark'
         from t_pxhdxx
         where delete_mark = 0
-        <if test="tPxhdxxDTO != null and tPxhdxxDTO != ''">
+        <if test="tPxhdxxDTO.id != null and tPxhdxxDTO.id != ''">
             AND id = #{tPxhdxxDTO.id}
+        </if>
+        <if test="tPxhdxxDTO.tyshxydm != null and tPxhdxxDTO.tyshxydm != ''">
+            AND TYSHXYDM = #{tPxhdxxDTO.tyshxydm}
         </if>
     </select>
 </mapper>

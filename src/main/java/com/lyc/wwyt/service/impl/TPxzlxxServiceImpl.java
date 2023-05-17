@@ -17,23 +17,13 @@ import java.util.List;
  * 培训资料信息表(t_pxzlxx)表服务实现类
  *
  * @author chenqi
- * @since 2023-05-16 16:33:50
+ * @since 2023-05-17 16:22:42
  */
 @Service("tPxzlxxService")
 @RequiredArgsConstructor
 public class TPxzlxxServiceImpl extends ServiceImpl<TPxzlxxDao, TPxzlxxEntity> implements TPxzlxxService {
 
     private final TPxzlxxDao tPxzlxxDao;
-
-    /**
-     * 查询所有数据
-     *
-     * @return 所有数据
-     */
-    @Override
-    public List<TPxzlxxVO> selectList() {
-        return this.tPxzlxxDao.selectList();
-    }
 
     /**
      * 分页查询所有数据
@@ -43,7 +33,18 @@ public class TPxzlxxServiceImpl extends ServiceImpl<TPxzlxxDao, TPxzlxxEntity> i
      * @return 指定页码和条数的数据
      */
     @Override
-    public IPage<TPxzlxxVO> selectPage(Page<TPxzlxxDTO> page, TPxzlxxDTO tPxzlxxDTO) {
-        return this.tPxzlxxDao.selectList(page, tPxzlxxDTO);
+    public IPage<TPxzlxxVO> queryPage(Page<TPxzlxxDTO> page, TPxzlxxDTO tPxzlxxDTO) {
+        return this.tPxzlxxDao.queryList(page, tPxzlxxDTO);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param tPxzlxxDTO 查询参数
+     * @return 所有数据
+     */
+    @Override
+    public List<TPxzlxxVO> queryList(TPxzlxxDTO tPxzlxxDTO) {
+        return this.tPxzlxxDao.queryList(tPxzlxxDTO);
     }
 }

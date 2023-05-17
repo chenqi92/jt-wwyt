@@ -26,56 +26,59 @@
     </resultMap>
 
     <sql id="baseColumn">
-        id,
-        TYSHXYDM,
-        YLJH,
-        SJYLRQ,
-        YLSSRY,
-        ZYCYRY,
-        QTCYBM,
-        YLNR,
-        YLMD,
-        YLGC,
-        YLXJ,
-        BZYSMS,
-        SFZG,
-        PJYJ,
-        PJZT,
-        XGFJ,
-        create_time,
-        create_by,
-        update_time,
-        update_by,
-        delete_mark
+        'id',
+        'TYSHXYDM',
+        'YLJH',
+        'SJYLRQ',
+        'YLSSRY',
+        'ZYCYRY',
+        'QTCYBM',
+        'YLNR',
+        'YLMD',
+        'YLGC',
+        'YLXJ',
+        'BZYSMS',
+        'SFZG',
+        'PJYJ',
+        'PJZT',
+        'XGFJ',
+        'create_time',
+        'create_by',
+        'update_time',
+        'update_by',
+        'delete_mark'
     </sql>
 
-    <select id="selectList" resultType="com.lyc.wwyt.vo.TYjylpjxxVO">
+    <select id="queryList" resultType="com.lyc.wwyt.vo.TYjylpjxxVO">
         select
-        id,
-        TYSHXYDM,
-        YLJH,
-        SJYLRQ,
-        YLSSRY,
-        ZYCYRY,
-        QTCYBM,
-        YLNR,
-        YLMD,
-        YLGC,
-        YLXJ,
-        BZYSMS,
-        SFZG,
-        PJYJ,
-        PJZT,
-        XGFJ,
-        create_time,
-        create_by,
-        update_time,
-        update_by,
-        delete_mark
+        'id',
+        'TYSHXYDM',
+        'YLJH',
+        'SJYLRQ',
+        'YLSSRY',
+        'ZYCYRY',
+        'QTCYBM',
+        'YLNR',
+        'YLMD',
+        'YLGC',
+        'YLXJ',
+        'BZYSMS',
+        'SFZG',
+        'PJYJ',
+        'PJZT',
+        'XGFJ',
+        'create_time',
+        'create_by',
+        'update_time',
+        'update_by',
+        'delete_mark'
         from t_yjylpjxx
         where delete_mark = 0
-        <if test="tYjylpjxxDTO != null and tYjylpjxxDTO != ''">
+        <if test="tYjylpjxxDTO.id != null and tYjylpjxxDTO.id != ''">
             AND id = #{tYjylpjxxDTO.id}
+        </if>
+        <if test="tYjylpjxxDTO.tyshxydm != null and tYjylpjxxDTO.tyshxydm != ''">
+            AND TYSHXYDM = #{tYjylpjxxDTO.tyshxydm}
         </if>
     </select>
 </mapper>

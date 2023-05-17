@@ -15,17 +15,10 @@ import java.util.List;
  * 安全风险管控措施表结构(t_aqfxgkcs)表数据库访问层
  *
  * @author chenqi
- * @since 2023-05-16 16:33:51
+ * @since 2023-05-17 16:22:38
  */
 @Mapper
 public interface TAqfxgkcsDao extends BaseMapper<TAqfxgkcsEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TAqfxgkcsVO>
-     */
-    List<TAqfxgkcsVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TAqfxgkcsDao extends BaseMapper<TAqfxgkcsEntity> {
      * @param tAqfxgkcsDTO 查询参数
      * @return IPage<TAqfxgkcsVO>
      */
-    IPage<TAqfxgkcsVO> selectList(Page<TAqfxgkcsDTO> page, @Param("tAqfxgkcsDTO") TAqfxgkcsDTO tAqfxgkcsDTO);
+    IPage<TAqfxgkcsVO> queryList(Page<TAqfxgkcsDTO> page, @Param("tAqfxgkcsDTO") TAqfxgkcsDTO tAqfxgkcsDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tAqfxgkcsDTO 查询参数
+     * @return List<TAqfxgkcsVO>
+     */
+    List<TAqfxgkcsVO> queryList(@Param("tAqfxgkcsDTO") TAqfxgkcsDTO tAqfxgkcsDTO);
 }

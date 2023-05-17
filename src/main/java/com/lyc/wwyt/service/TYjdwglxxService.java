@@ -13,16 +13,9 @@ import java.util.List;
  * 应急队伍管理信息表(t_yjdwglxx)表服务接口
  *
  * @author chenqi
- * @since 2023-05-16 16:33:40
+ * @since 2023-05-17 16:22:39
  */
 public interface TYjdwglxxService extends IService<TYjdwglxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TYjdwglxxVO>
-     */
-    List<TYjdwglxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -31,5 +24,13 @@ public interface TYjdwglxxService extends IService<TYjdwglxxEntity> {
      * @param tYjdwglxxDTO 查询参数
      * @return IPage<TYjdwglxxVO> tYjdwglxxDTO
      */
-    IPage<TYjdwglxxVO> selectPage(Page<TYjdwglxxDTO> page, TYjdwglxxDTO tYjdwglxxDTO);
+    IPage<TYjdwglxxVO> queryPage(Page<TYjdwglxxDTO> page, TYjdwglxxDTO tYjdwglxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tYjdwglxxDTO 查询参数
+     * @return List<TYjdwglxxVO>
+     */
+    List<TYjdwglxxVO> queryList(TYjdwglxxDTO tYjdwglxxDTO);
 }

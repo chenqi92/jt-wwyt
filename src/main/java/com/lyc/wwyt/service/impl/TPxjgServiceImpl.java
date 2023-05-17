@@ -17,23 +17,13 @@ import java.util.List;
  * 培训结果表(t_pxjg)表服务实现类
  *
  * @author chenqi
- * @since 2023-05-16 16:33:46
+ * @since 2023-05-17 16:22:47
  */
 @Service("tPxjgService")
 @RequiredArgsConstructor
 public class TPxjgServiceImpl extends ServiceImpl<TPxjgDao, TPxjgEntity> implements TPxjgService {
 
     private final TPxjgDao tPxjgDao;
-
-    /**
-     * 查询所有数据
-     *
-     * @return 所有数据
-     */
-    @Override
-    public List<TPxjgVO> selectList() {
-        return this.tPxjgDao.selectList();
-    }
 
     /**
      * 分页查询所有数据
@@ -43,7 +33,18 @@ public class TPxjgServiceImpl extends ServiceImpl<TPxjgDao, TPxjgEntity> impleme
      * @return 指定页码和条数的数据
      */
     @Override
-    public IPage<TPxjgVO> selectPage(Page<TPxjgDTO> page, TPxjgDTO tPxjgDTO) {
-        return this.tPxjgDao.selectList(page, tPxjgDTO);
+    public IPage<TPxjgVO> queryPage(Page<TPxjgDTO> page, TPxjgDTO tPxjgDTO) {
+        return this.tPxjgDao.queryList(page, tPxjgDTO);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param tPxjgDTO 查询参数
+     * @return 所有数据
+     */
+    @Override
+    public List<TPxjgVO> queryList(TPxjgDTO tPxjgDTO) {
+        return this.tPxjgDao.queryList(tPxjgDTO);
     }
 }

@@ -15,17 +15,10 @@ import java.util.List;
  * 安全培训奖惩记录表(t_aqpxjcjl)表数据库访问层
  *
  * @author chenqi
- * @since 2023-05-16 16:33:54
+ * @since 2023-05-17 16:22:43
  */
 @Mapper
 public interface TAqpxjcjlDao extends BaseMapper<TAqpxjcjlEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TAqpxjcjlVO>
-     */
-    List<TAqpxjcjlVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TAqpxjcjlDao extends BaseMapper<TAqpxjcjlEntity> {
      * @param tAqpxjcjlDTO 查询参数
      * @return IPage<TAqpxjcjlVO>
      */
-    IPage<TAqpxjcjlVO> selectList(Page<TAqpxjcjlDTO> page, @Param("tAqpxjcjlDTO") TAqpxjcjlDTO tAqpxjcjlDTO);
+    IPage<TAqpxjcjlVO> queryList(Page<TAqpxjcjlDTO> page, @Param("tAqpxjcjlDTO") TAqpxjcjlDTO tAqpxjcjlDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tAqpxjcjlDTO 查询参数
+     * @return List<TAqpxjcjlVO>
+     */
+    List<TAqpxjcjlVO> queryList(@Param("tAqpxjcjlDTO") TAqpxjcjlDTO tAqpxjcjlDTO);
 }

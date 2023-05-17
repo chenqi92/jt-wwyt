@@ -29,7 +29,7 @@ import java.util.List;
  * 应急物资管理信息表(t_yjwzglxx)表控制层
  *
  * @author chenqi
- * @since 2023-05-16 16:33:58
+ * @since 2023-05-17 16:22:41
  */
 @Validated
 @RestController
@@ -59,28 +59,28 @@ public class TYjwzglxxController {
     }
 
     /**
-     * 查询当前账户下所有应急物资管理信息表     *
+     * 查询当前账户下所有应急物资管理信息表信息
      *
-     * @return List<TYjwzglxxEntity> 当前账户下所有应急物资管理信息表
+     * @return List<TYjwzglxxEntity> 当前账户下所有应急物资管理信息表信息
      */
     @Operation(description = "查询应急物资管理信息表信息表数据", summary = "查询应急物资管理信息表信息表数据", tags = {"查询所有数据"})
     @GetMapping
     @Idempotent(expireTime = 180, info = "3分钟内最多请求一次!")
-    public List<TYjwzglxxVO> selectAll() {
-        return this.tYjwzglxxService.selectList();
+    public List<TYjwzglxxVO> selectAll(@ParameterObject TYjwzglxxDTO tYjwzglxxDTO) {
+        return this.tYjwzglxxService.queryList(tYjwzglxxDTO);
     }
 
     /**
-     * 分页查询当前账户下所有应急物资管理信息表     *
+     * 分页查询当前账户下所有应急物资管理信息表信息
      *
-     * @return List<TYjwzglxxDTO> 分页当前账户下所有应急物资管理信息表
+     * @return List<TYjwzglxxDTO> 分页当前账户下所有应急物资管理信息表信息
      */
     @Operation(description = "分页应急物资管理信息表信息表数据", summary = "分页查询应急物资管理信息表信息表数据", tags = {"分页查询所有数据"})
     @GetMapping("page")
     @Parameters({@Parameter(description = "当前页", name = "current", in = ParameterIn.QUERY, required = true, schema = @Schema(implementation = Integer.class)), @Parameter(description = "当前页条数", name = "size", in = ParameterIn.QUERY, required = true, schema = @Schema(implementation = Integer.class))})
     @Idempotent(expireTime = 180, info = "3分钟内最多请求一次!", key = "#page.current")
     public IPage<TYjwzglxxVO> selectPage(@ParameterObject Page<TYjwzglxxDTO> page, @ParameterObject TYjwzglxxDTO tYjwzglxxDTO) {
-        return this.tYjwzglxxService.selectPage(page, tYjwzglxxDTO);
+        return this.tYjwzglxxService.queryPage(page, tYjwzglxxDTO);
     }
 
 }

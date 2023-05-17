@@ -21,46 +21,49 @@
     </resultMap>
 
     <sql id="baseColumn">
-        id,
-        TYSHXYDM,
-        CONTRACTOR_NAME,
-        JOB_NAME,
-        CONTENT,
-        PROBLEM_ANALYSIS,
-        IMPROVEMENTS,
-        RECTIFICATION_TIME,
-        ASSESSOR,
-        REVIEW_TIME,
-        APPENDIX,
-        create_time,
-        create_by,
-        update_time,
-        update_by,
-        delete_mark
+        'id',
+        'TYSHXYDM',
+        'CONTRACTOR_NAME',
+        'JOB_NAME',
+        'CONTENT',
+        'PROBLEM_ANALYSIS',
+        'IMPROVEMENTS',
+        'RECTIFICATION_TIME',
+        'ASSESSOR',
+        'REVIEW_TIME',
+        'APPENDIX',
+        'create_time',
+        'create_by',
+        'update_time',
+        'update_by',
+        'delete_mark'
     </sql>
 
-    <select id="selectList" resultType="com.lyc.wwyt.vo.TCbszyyjyascVO">
+    <select id="queryList" resultType="com.lyc.wwyt.vo.TCbszyyjyascVO">
         select
-        id,
-        TYSHXYDM,
-        CONTRACTOR_NAME,
-        JOB_NAME,
-        CONTENT,
-        PROBLEM_ANALYSIS,
-        IMPROVEMENTS,
-        RECTIFICATION_TIME,
-        ASSESSOR,
-        REVIEW_TIME,
-        APPENDIX,
-        create_time,
-        create_by,
-        update_time,
-        update_by,
-        delete_mark
+        'id',
+        'TYSHXYDM',
+        'CONTRACTOR_NAME',
+        'JOB_NAME',
+        'CONTENT',
+        'PROBLEM_ANALYSIS',
+        'IMPROVEMENTS',
+        'RECTIFICATION_TIME',
+        'ASSESSOR',
+        'REVIEW_TIME',
+        'APPENDIX',
+        'create_time',
+        'create_by',
+        'update_time',
+        'update_by',
+        'delete_mark'
         from t_cbszyyjyasc
         where delete_mark = 0
-        <if test="tCbszyyjyascDTO != null and tCbszyyjyascDTO != ''">
+        <if test="tCbszyyjyascDTO.id != null and tCbszyyjyascDTO.id != ''">
             AND id = #{tCbszyyjyascDTO.id}
+        </if>
+        <if test="tCbszyyjyascDTO.tyshxydm != null and tCbszyyjyascDTO.tyshxydm != ''">
+            AND TYSHXYDM = #{tCbszyyjyascDTO.tyshxydm}
         </if>
     </select>
 </mapper>

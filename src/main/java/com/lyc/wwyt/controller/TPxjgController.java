@@ -29,7 +29,7 @@ import java.util.List;
  * 培训结果表(t_pxjg)表控制层
  *
  * @author chenqi
- * @since 2023-05-16 16:33:46
+ * @since 2023-05-17 16:22:47
  */
 @Validated
 @RestController
@@ -59,28 +59,28 @@ public class TPxjgController {
     }
 
     /**
-     * 查询当前账户下所有培训结果表     *
+     * 查询当前账户下所有培训结果表信息
      *
-     * @return List<TPxjgEntity> 当前账户下所有培训结果表
+     * @return List<TPxjgEntity> 当前账户下所有培训结果表信息
      */
     @Operation(description = "查询培训结果表信息表数据", summary = "查询培训结果表信息表数据", tags = {"查询所有数据"})
     @GetMapping
     @Idempotent(expireTime = 180, info = "3分钟内最多请求一次!")
-    public List<TPxjgVO> selectAll() {
-        return this.tPxjgService.selectList();
+    public List<TPxjgVO> selectAll(@ParameterObject TPxjgDTO tPxjgDTO) {
+        return this.tPxjgService.queryList(tPxjgDTO);
     }
 
     /**
-     * 分页查询当前账户下所有培训结果表     *
+     * 分页查询当前账户下所有培训结果表信息
      *
-     * @return List<TPxjgDTO> 分页当前账户下所有培训结果表
+     * @return List<TPxjgDTO> 分页当前账户下所有培训结果表信息
      */
     @Operation(description = "分页培训结果表信息表数据", summary = "分页查询培训结果表信息表数据", tags = {"分页查询所有数据"})
     @GetMapping("page")
     @Parameters({@Parameter(description = "当前页", name = "current", in = ParameterIn.QUERY, required = true, schema = @Schema(implementation = Integer.class)), @Parameter(description = "当前页条数", name = "size", in = ParameterIn.QUERY, required = true, schema = @Schema(implementation = Integer.class))})
     @Idempotent(expireTime = 180, info = "3分钟内最多请求一次!", key = "#page.current")
     public IPage<TPxjgVO> selectPage(@ParameterObject Page<TPxjgDTO> page, @ParameterObject TPxjgDTO tPxjgDTO) {
-        return this.tPxjgService.selectPage(page, tPxjgDTO);
+        return this.tPxjgService.queryPage(page, tPxjgDTO);
     }
 
 }

@@ -23,50 +23,53 @@
     </resultMap>
 
     <sql id="baseColumn">
-        id,
-        TYSHXYDM,
-        YLMC,
-        YLDD,
-        ZBBM,
-        YLFS,
-        YJYA,
-        YLJB,
-        JHDZRQ,
-        JHYLRQ,
-        JHZDR,
-        BZ,
-        XGFJ,
-        create_time,
-        create_by,
-        update_time,
-        update_by,
-        delete_mark
+        'id',
+        'TYSHXYDM',
+        'YLMC',
+        'YLDD',
+        'ZBBM',
+        'YLFS',
+        'YJYA',
+        'YLJB',
+        'JHDZRQ',
+        'JHYLRQ',
+        'JHZDR',
+        'BZ',
+        'XGFJ',
+        'create_time',
+        'create_by',
+        'update_time',
+        'update_by',
+        'delete_mark'
     </sql>
 
-    <select id="selectList" resultType="com.lyc.wwyt.vo.TYjyljhxxVO">
+    <select id="queryList" resultType="com.lyc.wwyt.vo.TYjyljhxxVO">
         select
-        id,
-        TYSHXYDM,
-        YLMC,
-        YLDD,
-        ZBBM,
-        YLFS,
-        YJYA,
-        YLJB,
-        JHDZRQ,
-        JHYLRQ,
-        JHZDR,
-        BZ,
-        XGFJ,
-        create_time,
-        create_by,
-        update_time,
-        update_by,
-        delete_mark
+        'id',
+        'TYSHXYDM',
+        'YLMC',
+        'YLDD',
+        'ZBBM',
+        'YLFS',
+        'YJYA',
+        'YLJB',
+        'JHDZRQ',
+        'JHYLRQ',
+        'JHZDR',
+        'BZ',
+        'XGFJ',
+        'create_time',
+        'create_by',
+        'update_time',
+        'update_by',
+        'delete_mark'
         from t_yjyljhxx
         where delete_mark = 0
-        <if test="tYjyljhxxDTO != null and tYjyljhxxDTO != ''">
+        <if test="tYjyljhxxDTO.id != null and tYjyljhxxDTO.id != ''">
             AND id = #{tYjyljhxxDTO.id}
+        </if>
+        <if test="tYjyljhxxDTO.tyshxydm != null and tYjyljhxxDTO.tyshxydm != ''">
+            AND TYSHXYDM = #{tYjyljhxxDTO.tyshxydm}
         </if>
     </select>
 </mapper>

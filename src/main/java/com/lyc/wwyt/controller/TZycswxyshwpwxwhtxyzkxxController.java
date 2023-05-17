@@ -29,7 +29,7 @@ import java.util.List;
  * 作业场所岗位风险应知卡信息表(t_zycswxyshwpwxwhtxyzkxx)表控制层
  *
  * @author chenqi
- * @since 2023-05-16 16:33:46
+ * @since 2023-05-17 16:22:40
  */
 @Validated
 @RestController
@@ -59,28 +59,28 @@ public class TZycswxyshwpwxwhtxyzkxxController {
     }
 
     /**
-     * 查询当前账户下所有作业场所岗位风险应知卡信息表     *
+     * 查询当前账户下所有作业场所岗位风险应知卡信息表信息
      *
-     * @return List<TZycswxyshwpwxwhtxyzkxxEntity> 当前账户下所有作业场所岗位风险应知卡信息表
+     * @return List<TZycswxyshwpwxwhtxyzkxxEntity> 当前账户下所有作业场所岗位风险应知卡信息表信息
      */
     @Operation(description = "查询作业场所岗位风险应知卡信息表信息表数据", summary = "查询作业场所岗位风险应知卡信息表信息表数据", tags = {"查询所有数据"})
     @GetMapping
     @Idempotent(expireTime = 180, info = "3分钟内最多请求一次!")
-    public List<TZycswxyshwpwxwhtxyzkxxVO> selectAll() {
-        return this.tZycswxyshwpwxwhtxyzkxxService.selectList();
+    public List<TZycswxyshwpwxwhtxyzkxxVO> selectAll(@ParameterObject TZycswxyshwpwxwhtxyzkxxDTO tZycswxyshwpwxwhtxyzkxxDTO) {
+        return this.tZycswxyshwpwxwhtxyzkxxService.queryList(tZycswxyshwpwxwhtxyzkxxDTO);
     }
 
     /**
-     * 分页查询当前账户下所有作业场所岗位风险应知卡信息表     *
+     * 分页查询当前账户下所有作业场所岗位风险应知卡信息表信息
      *
-     * @return List<TZycswxyshwpwxwhtxyzkxxDTO> 分页当前账户下所有作业场所岗位风险应知卡信息表
+     * @return List<TZycswxyshwpwxwhtxyzkxxDTO> 分页当前账户下所有作业场所岗位风险应知卡信息表信息
      */
     @Operation(description = "分页作业场所岗位风险应知卡信息表信息表数据", summary = "分页查询作业场所岗位风险应知卡信息表信息表数据", tags = {"分页查询所有数据"})
     @GetMapping("page")
     @Parameters({@Parameter(description = "当前页", name = "current", in = ParameterIn.QUERY, required = true, schema = @Schema(implementation = Integer.class)), @Parameter(description = "当前页条数", name = "size", in = ParameterIn.QUERY, required = true, schema = @Schema(implementation = Integer.class))})
     @Idempotent(expireTime = 180, info = "3分钟内最多请求一次!", key = "#page.current")
     public IPage<TZycswxyshwpwxwhtxyzkxxVO> selectPage(@ParameterObject Page<TZycswxyshwpwxwhtxyzkxxDTO> page, @ParameterObject TZycswxyshwpwxwhtxyzkxxDTO tZycswxyshwpwxwhtxyzkxxDTO) {
-        return this.tZycswxyshwpwxwhtxyzkxxService.selectPage(page, tZycswxyshwpwxwhtxyzkxxDTO);
+        return this.tZycswxyshwpwxwhtxyzkxxService.queryPage(page, tZycswxyshwpwxwhtxyzkxxDTO);
     }
 
 }

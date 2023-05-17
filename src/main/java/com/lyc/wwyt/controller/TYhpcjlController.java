@@ -29,7 +29,7 @@ import java.util.List;
  * 隐患排查记录表(t_yhpcjl)表控制层
  *
  * @author chenqi
- * @since 2023-05-16 16:33:45
+ * @since 2023-05-17 16:22:42
  */
 @Validated
 @RestController
@@ -59,28 +59,28 @@ public class TYhpcjlController {
     }
 
     /**
-     * 查询当前账户下所有隐患排查记录表     *
+     * 查询当前账户下所有隐患排查记录表信息
      *
-     * @return List<TYhpcjlEntity> 当前账户下所有隐患排查记录表
+     * @return List<TYhpcjlEntity> 当前账户下所有隐患排查记录表信息
      */
     @Operation(description = "查询隐患排查记录表信息表数据", summary = "查询隐患排查记录表信息表数据", tags = {"查询所有数据"})
     @GetMapping
     @Idempotent(expireTime = 180, info = "3分钟内最多请求一次!")
-    public List<TYhpcjlVO> selectAll() {
-        return this.tYhpcjlService.selectList();
+    public List<TYhpcjlVO> selectAll(@ParameterObject TYhpcjlDTO tYhpcjlDTO) {
+        return this.tYhpcjlService.queryList(tYhpcjlDTO);
     }
 
     /**
-     * 分页查询当前账户下所有隐患排查记录表     *
+     * 分页查询当前账户下所有隐患排查记录表信息
      *
-     * @return List<TYhpcjlDTO> 分页当前账户下所有隐患排查记录表
+     * @return List<TYhpcjlDTO> 分页当前账户下所有隐患排查记录表信息
      */
     @Operation(description = "分页隐患排查记录表信息表数据", summary = "分页查询隐患排查记录表信息表数据", tags = {"分页查询所有数据"})
     @GetMapping("page")
     @Parameters({@Parameter(description = "当前页", name = "current", in = ParameterIn.QUERY, required = true, schema = @Schema(implementation = Integer.class)), @Parameter(description = "当前页条数", name = "size", in = ParameterIn.QUERY, required = true, schema = @Schema(implementation = Integer.class))})
     @Idempotent(expireTime = 180, info = "3分钟内最多请求一次!", key = "#page.current")
     public IPage<TYhpcjlVO> selectPage(@ParameterObject Page<TYhpcjlDTO> page, @ParameterObject TYhpcjlDTO tYhpcjlDTO) {
-        return this.tYhpcjlService.selectPage(page, tYhpcjlDTO);
+        return this.tYhpcjlService.queryPage(page, tYhpcjlDTO);
     }
 
 }

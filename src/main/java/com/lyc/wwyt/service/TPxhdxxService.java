@@ -13,16 +13,9 @@ import java.util.List;
  * 培训活动信息表(t_pxhdxx)表服务接口
  *
  * @author chenqi
- * @since 2023-05-16 16:33:51
+ * @since 2023-05-17 16:22:43
  */
 public interface TPxhdxxService extends IService<TPxhdxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TPxhdxxVO>
-     */
-    List<TPxhdxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -31,5 +24,13 @@ public interface TPxhdxxService extends IService<TPxhdxxEntity> {
      * @param tPxhdxxDTO 查询参数
      * @return IPage<TPxhdxxVO> tPxhdxxDTO
      */
-    IPage<TPxhdxxVO> selectPage(Page<TPxhdxxDTO> page, TPxhdxxDTO tPxhdxxDTO);
+    IPage<TPxhdxxVO> queryPage(Page<TPxhdxxDTO> page, TPxhdxxDTO tPxhdxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tPxhdxxDTO 查询参数
+     * @return List<TPxhdxxVO>
+     */
+    List<TPxhdxxVO> queryList(TPxhdxxDTO tPxhdxxDTO);
 }

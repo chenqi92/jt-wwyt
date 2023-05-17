@@ -17,23 +17,13 @@ import java.util.List;
  * 培训教育效果评价记录表(t_pxjyxgpjjl)表服务实现类
  *
  * @author chenqi
- * @since 2023-05-16 16:33:57
+ * @since 2023-05-17 16:22:47
  */
 @Service("tPxjyxgpjjlService")
 @RequiredArgsConstructor
 public class TPxjyxgpjjlServiceImpl extends ServiceImpl<TPxjyxgpjjlDao, TPxjyxgpjjlEntity> implements TPxjyxgpjjlService {
 
     private final TPxjyxgpjjlDao tPxjyxgpjjlDao;
-
-    /**
-     * 查询所有数据
-     *
-     * @return 所有数据
-     */
-    @Override
-    public List<TPxjyxgpjjlVO> selectList() {
-        return this.tPxjyxgpjjlDao.selectList();
-    }
 
     /**
      * 分页查询所有数据
@@ -43,7 +33,18 @@ public class TPxjyxgpjjlServiceImpl extends ServiceImpl<TPxjyxgpjjlDao, TPxjyxgp
      * @return 指定页码和条数的数据
      */
     @Override
-    public IPage<TPxjyxgpjjlVO> selectPage(Page<TPxjyxgpjjlDTO> page, TPxjyxgpjjlDTO tPxjyxgpjjlDTO) {
-        return this.tPxjyxgpjjlDao.selectList(page, tPxjyxgpjjlDTO);
+    public IPage<TPxjyxgpjjlVO> queryPage(Page<TPxjyxgpjjlDTO> page, TPxjyxgpjjlDTO tPxjyxgpjjlDTO) {
+        return this.tPxjyxgpjjlDao.queryList(page, tPxjyxgpjjlDTO);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param tPxjyxgpjjlDTO 查询参数
+     * @return 所有数据
+     */
+    @Override
+    public List<TPxjyxgpjjlVO> queryList(TPxjyxgpjjlDTO tPxjyxgpjjlDTO) {
+        return this.tPxjyxgpjjlDao.queryList(tPxjyxgpjjlDTO);
     }
 }

@@ -13,16 +13,9 @@ import java.util.List;
  * 安全生产责任承诺卡信息表(t_aqsczrclkxx)表服务接口
  *
  * @author chenqi
- * @since 2023-05-16 16:33:49
+ * @since 2023-05-17 16:22:45
  */
 public interface TAqsczrclkxxService extends IService<TAqsczrclkxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TAqsczrclkxxVO>
-     */
-    List<TAqsczrclkxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -31,5 +24,13 @@ public interface TAqsczrclkxxService extends IService<TAqsczrclkxxEntity> {
      * @param tAqsczrclkxxDTO 查询参数
      * @return IPage<TAqsczrclkxxVO> tAqsczrclkxxDTO
      */
-    IPage<TAqsczrclkxxVO> selectPage(Page<TAqsczrclkxxDTO> page, TAqsczrclkxxDTO tAqsczrclkxxDTO);
+    IPage<TAqsczrclkxxVO> queryPage(Page<TAqsczrclkxxDTO> page, TAqsczrclkxxDTO tAqsczrclkxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tAqsczrclkxxDTO 查询参数
+     * @return List<TAqsczrclkxxVO>
+     */
+    List<TAqsczrclkxxVO> queryList(TAqsczrclkxxDTO tAqsczrclkxxDTO);
 }

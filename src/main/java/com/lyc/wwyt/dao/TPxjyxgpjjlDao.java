@@ -15,17 +15,10 @@ import java.util.List;
  * 培训教育效果评价记录表(t_pxjyxgpjjl)表数据库访问层
  *
  * @author chenqi
- * @since 2023-05-16 16:33:57
+ * @since 2023-05-17 16:22:47
  */
 @Mapper
 public interface TPxjyxgpjjlDao extends BaseMapper<TPxjyxgpjjlEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TPxjyxgpjjlVO>
-     */
-    List<TPxjyxgpjjlVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TPxjyxgpjjlDao extends BaseMapper<TPxjyxgpjjlEntity> {
      * @param tPxjyxgpjjlDTO 查询参数
      * @return IPage<TPxjyxgpjjlVO>
      */
-    IPage<TPxjyxgpjjlVO> selectList(Page<TPxjyxgpjjlDTO> page, @Param("tPxjyxgpjjlDTO") TPxjyxgpjjlDTO tPxjyxgpjjlDTO);
+    IPage<TPxjyxgpjjlVO> queryList(Page<TPxjyxgpjjlDTO> page, @Param("tPxjyxgpjjlDTO") TPxjyxgpjjlDTO tPxjyxgpjjlDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tPxjyxgpjjlDTO 查询参数
+     * @return List<TPxjyxgpjjlVO>
+     */
+    List<TPxjyxgpjjlVO> queryList(@Param("tPxjyxgpjjlDTO") TPxjyxgpjjlDTO tPxjyxgpjjlDTO);
 }

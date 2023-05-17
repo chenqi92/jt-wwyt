@@ -13,16 +13,9 @@ import java.util.List;
  * 承包商施工管理信息表(t_cbssgglxx)表服务接口
  *
  * @author chenqi
- * @since 2023-05-16 16:33:50
+ * @since 2023-05-17 16:22:46
  */
 public interface TCbssgglxxService extends IService<TCbssgglxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TCbssgglxxVO>
-     */
-    List<TCbssgglxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -31,5 +24,13 @@ public interface TCbssgglxxService extends IService<TCbssgglxxEntity> {
      * @param tCbssgglxxDTO 查询参数
      * @return IPage<TCbssgglxxVO> tCbssgglxxDTO
      */
-    IPage<TCbssgglxxVO> selectPage(Page<TCbssgglxxDTO> page, TCbssgglxxDTO tCbssgglxxDTO);
+    IPage<TCbssgglxxVO> queryPage(Page<TCbssgglxxDTO> page, TCbssgglxxDTO tCbssgglxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tCbssgglxxDTO 查询参数
+     * @return List<TCbssgglxxVO>
+     */
+    List<TCbssgglxxVO> queryList(TCbssgglxxDTO tCbssgglxxDTO);
 }

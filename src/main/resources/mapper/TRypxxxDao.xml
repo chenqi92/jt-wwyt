@@ -22,48 +22,51 @@
     </resultMap>
 
     <sql id="baseColumn">
-        id,
-        TYSHXYDM,
-        ZSMC,
-        ZSBH,
-        QZRQ,
-        DQRQ,
-        PXYXQ,
-        PXRXM,
-        PXTJ,
-        PXCJ,
-        PXJG,
-        XGPG,
-        create_time,
-        create_by,
-        update_time,
-        update_by,
-        delete_mark
+        'id',
+        'TYSHXYDM',
+        'ZSMC',
+        'ZSBH',
+        'QZRQ',
+        'DQRQ',
+        'PXYXQ',
+        'PXRXM',
+        'PXTJ',
+        'PXCJ',
+        'PXJG',
+        'XGPG',
+        'create_time',
+        'create_by',
+        'update_time',
+        'update_by',
+        'delete_mark'
     </sql>
 
-    <select id="selectList" resultType="com.lyc.wwyt.vo.TRypxxxVO">
+    <select id="queryList" resultType="com.lyc.wwyt.vo.TRypxxxVO">
         select
-        id,
-        TYSHXYDM,
-        ZSMC,
-        ZSBH,
-        QZRQ,
-        DQRQ,
-        PXYXQ,
-        PXRXM,
-        PXTJ,
-        PXCJ,
-        PXJG,
-        XGPG,
-        create_time,
-        create_by,
-        update_time,
-        update_by,
-        delete_mark
+        'id',
+        'TYSHXYDM',
+        'ZSMC',
+        'ZSBH',
+        'QZRQ',
+        'DQRQ',
+        'PXYXQ',
+        'PXRXM',
+        'PXTJ',
+        'PXCJ',
+        'PXJG',
+        'XGPG',
+        'create_time',
+        'create_by',
+        'update_time',
+        'update_by',
+        'delete_mark'
         from t_rypxxx
         where delete_mark = 0
-        <if test="tRypxxxDTO != null and tRypxxxDTO != ''">
+        <if test="tRypxxxDTO.id != null and tRypxxxDTO.id != ''">
             AND id = #{tRypxxxDTO.id}
+        </if>
+        <if test="tRypxxxDTO.tyshxydm != null and tRypxxxDTO.tyshxydm != ''">
+            AND TYSHXYDM = #{tRypxxxDTO.tyshxydm}
         </if>
     </select>
 </mapper>

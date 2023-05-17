@@ -17,23 +17,13 @@ import java.util.List;
  * 安全风险分析单元表(t_aqfxfxdy)表服务实现类
  *
  * @author chenqi
- * @since 2023-05-16 16:33:51
+ * @since 2023-05-17 16:22:41
  */
 @Service("tAqfxfxdyService")
 @RequiredArgsConstructor
 public class TAqfxfxdyServiceImpl extends ServiceImpl<TAqfxfxdyDao, TAqfxfxdyEntity> implements TAqfxfxdyService {
 
     private final TAqfxfxdyDao tAqfxfxdyDao;
-
-    /**
-     * 查询所有数据
-     *
-     * @return 所有数据
-     */
-    @Override
-    public List<TAqfxfxdyVO> selectList() {
-        return this.tAqfxfxdyDao.selectList();
-    }
 
     /**
      * 分页查询所有数据
@@ -43,7 +33,18 @@ public class TAqfxfxdyServiceImpl extends ServiceImpl<TAqfxfxdyDao, TAqfxfxdyEnt
      * @return 指定页码和条数的数据
      */
     @Override
-    public IPage<TAqfxfxdyVO> selectPage(Page<TAqfxfxdyDTO> page, TAqfxfxdyDTO tAqfxfxdyDTO) {
-        return this.tAqfxfxdyDao.selectList(page, tAqfxfxdyDTO);
+    public IPage<TAqfxfxdyVO> queryPage(Page<TAqfxfxdyDTO> page, TAqfxfxdyDTO tAqfxfxdyDTO) {
+        return this.tAqfxfxdyDao.queryList(page, tAqfxfxdyDTO);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param tAqfxfxdyDTO 查询参数
+     * @return 所有数据
+     */
+    @Override
+    public List<TAqfxfxdyVO> queryList(TAqfxfxdyDTO tAqfxfxdyDTO) {
+        return this.tAqfxfxdyDao.queryList(tAqfxfxdyDTO);
     }
 }

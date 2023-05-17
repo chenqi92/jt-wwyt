@@ -25,54 +25,57 @@
     </resultMap>
 
     <sql id="baseColumn">
-        id,
-        TYSHXYDM,
-        DWMC,
-        DWJB,
-        DWFZR,
-        FZRBM,
-        FZRSJ,
-        GDDH,
-        DWMS,
-        RYGH,
-        RYMC,
-        RYXB,
-        SJHM,
-        ZW,
-        XGFJ,
-        create_time,
-        create_by,
-        update_time,
-        update_by,
-        delete_mark
+        'id',
+        'TYSHXYDM',
+        'DWMC',
+        'DWJB',
+        'DWFZR',
+        'FZRBM',
+        'FZRSJ',
+        'GDDH',
+        'DWMS',
+        'RYGH',
+        'RYMC',
+        'RYXB',
+        'SJHM',
+        'ZW',
+        'XGFJ',
+        'create_time',
+        'create_by',
+        'update_time',
+        'update_by',
+        'delete_mark'
     </sql>
 
-    <select id="selectList" resultType="com.lyc.wwyt.vo.TYjdwglxxVO">
+    <select id="queryList" resultType="com.lyc.wwyt.vo.TYjdwglxxVO">
         select
-        id,
-        TYSHXYDM,
-        DWMC,
-        DWJB,
-        DWFZR,
-        FZRBM,
-        FZRSJ,
-        GDDH,
-        DWMS,
-        RYGH,
-        RYMC,
-        RYXB,
-        SJHM,
-        ZW,
-        XGFJ,
-        create_time,
-        create_by,
-        update_time,
-        update_by,
-        delete_mark
+        'id',
+        'TYSHXYDM',
+        'DWMC',
+        'DWJB',
+        'DWFZR',
+        'FZRBM',
+        'FZRSJ',
+        'GDDH',
+        'DWMS',
+        'RYGH',
+        'RYMC',
+        'RYXB',
+        'SJHM',
+        'ZW',
+        'XGFJ',
+        'create_time',
+        'create_by',
+        'update_time',
+        'update_by',
+        'delete_mark'
         from t_yjdwglxx
         where delete_mark = 0
-        <if test="tYjdwglxxDTO != null and tYjdwglxxDTO != ''">
+        <if test="tYjdwglxxDTO.id != null and tYjdwglxxDTO.id != ''">
             AND id = #{tYjdwglxxDTO.id}
+        </if>
+        <if test="tYjdwglxxDTO.tyshxydm != null and tYjdwglxxDTO.tyshxydm != ''">
+            AND TYSHXYDM = #{tYjdwglxxDTO.tyshxydm}
         </if>
     </select>
 </mapper>

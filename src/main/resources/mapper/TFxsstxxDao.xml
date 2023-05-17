@@ -24,52 +24,55 @@
     </resultMap>
 
     <sql id="baseColumn">
-        id,
-        TYSHXYDM,
-        FXFQBM,
-        FXFQMC,
-        FXDJ,
-        FXZBFW,
-        GYFXDJ,
-        KZFXDJ,
-        FXJZYS,
-        FXJZDJ,
-        SZBM,
-        ZRR,
-        FPRQ,
-        create_time,
-        create_by,
-        update_time,
-        update_by,
-        delete_mark,
-        COMPANY_CODE
+        'id',
+        'TYSHXYDM',
+        'FXFQBM',
+        'FXFQMC',
+        'FXDJ',
+        'FXZBFW',
+        'GYFXDJ',
+        'KZFXDJ',
+        'FXJZYS',
+        'FXJZDJ',
+        'SZBM',
+        'ZRR',
+        'FPRQ',
+        'create_time',
+        'create_by',
+        'update_time',
+        'update_by',
+        'delete_mark',
+        'COMPANY_CODE'
     </sql>
 
-    <select id="selectList" resultType="com.lyc.wwyt.vo.TFxsstxxVO">
+    <select id="queryList" resultType="com.lyc.wwyt.vo.TFxsstxxVO">
         select
-        id,
-        TYSHXYDM,
-        FXFQBM,
-        FXFQMC,
-        FXDJ,
-        FXZBFW,
-        GYFXDJ,
-        KZFXDJ,
-        FXJZYS,
-        FXJZDJ,
-        SZBM,
-        ZRR,
-        FPRQ,
-        create_time,
-        create_by,
-        update_time,
-        update_by,
-        delete_mark,
-        COMPANY_CODE
+        'id',
+        'TYSHXYDM',
+        'FXFQBM',
+        'FXFQMC',
+        'FXDJ',
+        'FXZBFW',
+        'GYFXDJ',
+        'KZFXDJ',
+        'FXJZYS',
+        'FXJZDJ',
+        'SZBM',
+        'ZRR',
+        'FPRQ',
+        'create_time',
+        'create_by',
+        'update_time',
+        'update_by',
+        'delete_mark',
+        'COMPANY_CODE'
         from t_fxsstxx
         where delete_mark = 0
-        <if test="tFxsstxxDTO != null and tFxsstxxDTO != ''">
+        <if test="tFxsstxxDTO.id != null and tFxsstxxDTO.id != ''">
             AND id = #{tFxsstxxDTO.id}
+        </if>
+        <if test="tFxsstxxDTO.tyshxydm != null and tFxsstxxDTO.tyshxydm != ''">
+            AND TYSHXYDM = #{tFxsstxxDTO.tyshxydm}
         </if>
     </select>
 </mapper>

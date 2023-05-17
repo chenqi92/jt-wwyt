@@ -29,7 +29,7 @@ import java.util.List;
  * 安全检查记录表(t_aqjcjl)表控制层
  *
  * @author chenqi
- * @since 2023-05-16 16:33:47
+ * @since 2023-05-17 16:22:38
  */
 @Validated
 @RestController
@@ -59,28 +59,28 @@ public class TAqjcjlController {
     }
 
     /**
-     * 查询当前账户下所有安全检查记录表     *
+     * 查询当前账户下所有安全检查记录表信息
      *
-     * @return List<TAqjcjlEntity> 当前账户下所有安全检查记录表
+     * @return List<TAqjcjlEntity> 当前账户下所有安全检查记录表信息
      */
     @Operation(description = "查询安全检查记录表信息表数据", summary = "查询安全检查记录表信息表数据", tags = {"查询所有数据"})
     @GetMapping
     @Idempotent(expireTime = 180, info = "3分钟内最多请求一次!")
-    public List<TAqjcjlVO> selectAll() {
-        return this.tAqjcjlService.selectList();
+    public List<TAqjcjlVO> selectAll(@ParameterObject TAqjcjlDTO tAqjcjlDTO) {
+        return this.tAqjcjlService.queryList(tAqjcjlDTO);
     }
 
     /**
-     * 分页查询当前账户下所有安全检查记录表     *
+     * 分页查询当前账户下所有安全检查记录表信息
      *
-     * @return List<TAqjcjlDTO> 分页当前账户下所有安全检查记录表
+     * @return List<TAqjcjlDTO> 分页当前账户下所有安全检查记录表信息
      */
     @Operation(description = "分页安全检查记录表信息表数据", summary = "分页查询安全检查记录表信息表数据", tags = {"分页查询所有数据"})
     @GetMapping("page")
     @Parameters({@Parameter(description = "当前页", name = "current", in = ParameterIn.QUERY, required = true, schema = @Schema(implementation = Integer.class)), @Parameter(description = "当前页条数", name = "size", in = ParameterIn.QUERY, required = true, schema = @Schema(implementation = Integer.class))})
     @Idempotent(expireTime = 180, info = "3分钟内最多请求一次!", key = "#page.current")
     public IPage<TAqjcjlVO> selectPage(@ParameterObject Page<TAqjcjlDTO> page, @ParameterObject TAqjcjlDTO tAqjcjlDTO) {
-        return this.tAqjcjlService.selectPage(page, tAqjcjlDTO);
+        return this.tAqjcjlService.queryPage(page, tAqjcjlDTO);
     }
 
 }

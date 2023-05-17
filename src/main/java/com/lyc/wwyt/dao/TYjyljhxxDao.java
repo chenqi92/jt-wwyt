@@ -15,17 +15,10 @@ import java.util.List;
  * 应急演练计划信息表(t_yjyljhxx)表数据库访问层
  *
  * @author chenqi
- * @since 2023-05-16 16:33:41
+ * @since 2023-05-17 16:22:45
  */
 @Mapper
 public interface TYjyljhxxDao extends BaseMapper<TYjyljhxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TYjyljhxxVO>
-     */
-    List<TYjyljhxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TYjyljhxxDao extends BaseMapper<TYjyljhxxEntity> {
      * @param tYjyljhxxDTO 查询参数
      * @return IPage<TYjyljhxxVO>
      */
-    IPage<TYjyljhxxVO> selectList(Page<TYjyljhxxDTO> page, @Param("tYjyljhxxDTO") TYjyljhxxDTO tYjyljhxxDTO);
+    IPage<TYjyljhxxVO> queryList(Page<TYjyljhxxDTO> page, @Param("tYjyljhxxDTO") TYjyljhxxDTO tYjyljhxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tYjyljhxxDTO 查询参数
+     * @return List<TYjyljhxxVO>
+     */
+    List<TYjyljhxxVO> queryList(@Param("tYjyljhxxDTO") TYjyljhxxDTO tYjyljhxxDTO);
 }

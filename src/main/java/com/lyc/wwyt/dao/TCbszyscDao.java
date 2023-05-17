@@ -15,17 +15,10 @@ import java.util.List;
  * 承包商安全作业规程审查表(t_cbszysc)表数据库访问层
  *
  * @author chenqi
- * @since 2023-05-16 16:33:54
+ * @since 2023-05-17 16:22:45
  */
 @Mapper
 public interface TCbszyscDao extends BaseMapper<TCbszyscEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TCbszyscVO>
-     */
-    List<TCbszyscVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TCbszyscDao extends BaseMapper<TCbszyscEntity> {
      * @param tCbszyscDTO 查询参数
      * @return IPage<TCbszyscVO>
      */
-    IPage<TCbszyscVO> selectList(Page<TCbszyscDTO> page, @Param("tCbszyscDTO") TCbszyscDTO tCbszyscDTO);
+    IPage<TCbszyscVO> queryList(Page<TCbszyscDTO> page, @Param("tCbszyscDTO") TCbszyscDTO tCbszyscDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tCbszyscDTO 查询参数
+     * @return List<TCbszyscVO>
+     */
+    List<TCbszyscVO> queryList(@Param("tCbszyscDTO") TCbszyscDTO tCbszyscDTO);
 }

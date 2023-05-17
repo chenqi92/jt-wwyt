@@ -13,16 +13,9 @@ import java.util.List;
  * 承包商安全作业规程审查表(t_cbszysc)表服务接口
  *
  * @author chenqi
- * @since 2023-05-16 16:33:54
+ * @since 2023-05-17 16:22:45
  */
 public interface TCbszyscService extends IService<TCbszyscEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TCbszyscVO>
-     */
-    List<TCbszyscVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -31,5 +24,13 @@ public interface TCbszyscService extends IService<TCbszyscEntity> {
      * @param tCbszyscDTO 查询参数
      * @return IPage<TCbszyscVO> tCbszyscDTO
      */
-    IPage<TCbszyscVO> selectPage(Page<TCbszyscDTO> page, TCbszyscDTO tCbszyscDTO);
+    IPage<TCbszyscVO> queryPage(Page<TCbszyscDTO> page, TCbszyscDTO tCbszyscDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tCbszyscDTO 查询参数
+     * @return List<TCbszyscVO>
+     */
+    List<TCbszyscVO> queryList(TCbszyscDTO tCbszyscDTO);
 }

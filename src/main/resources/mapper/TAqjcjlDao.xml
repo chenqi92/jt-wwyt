@@ -23,50 +23,53 @@
     </resultMap>
 
     <sql id="baseColumn">
-        id,
-        TYSHXYDM,
-        JCBT,
-        JCDBH,
-        JCR,
-        JCRQ,
-        JCZCY,
-        SJDX,
-        JCLX,
-        JCXM,
-        JCNR,
-        JCJL,
-        create_time,
-        create_by,
-        update_time,
-        update_by,
-        delete_mark,
-        COMPANY_CODE
+        'id',
+        'TYSHXYDM',
+        'JCBT',
+        'JCDBH',
+        'JCR',
+        'JCRQ',
+        'JCZCY',
+        'SJDX',
+        'JCLX',
+        'JCXM',
+        'JCNR',
+        'JCJL',
+        'create_time',
+        'create_by',
+        'update_time',
+        'update_by',
+        'delete_mark',
+        'COMPANY_CODE'
     </sql>
 
-    <select id="selectList" resultType="com.lyc.wwyt.vo.TAqjcjlVO">
+    <select id="queryList" resultType="com.lyc.wwyt.vo.TAqjcjlVO">
         select
-        id,
-        TYSHXYDM,
-        JCBT,
-        JCDBH,
-        JCR,
-        JCRQ,
-        JCZCY,
-        SJDX,
-        JCLX,
-        JCXM,
-        JCNR,
-        JCJL,
-        create_time,
-        create_by,
-        update_time,
-        update_by,
-        delete_mark,
-        COMPANY_CODE
+        'id',
+        'TYSHXYDM',
+        'JCBT',
+        'JCDBH',
+        'JCR',
+        'JCRQ',
+        'JCZCY',
+        'SJDX',
+        'JCLX',
+        'JCXM',
+        'JCNR',
+        'JCJL',
+        'create_time',
+        'create_by',
+        'update_time',
+        'update_by',
+        'delete_mark',
+        'COMPANY_CODE'
         from t_aqjcjl
         where delete_mark = 0
-        <if test="tAqjcjlDTO != null and tAqjcjlDTO != ''">
+        <if test="tAqjcjlDTO.id != null and tAqjcjlDTO.id != ''">
             AND id = #{tAqjcjlDTO.id}
+        </if>
+        <if test="tAqjcjlDTO.tyshxydm != null and tAqjcjlDTO.tyshxydm != ''">
+            AND TYSHXYDM = #{tAqjcjlDTO.tyshxydm}
         </if>
     </select>
 </mapper>

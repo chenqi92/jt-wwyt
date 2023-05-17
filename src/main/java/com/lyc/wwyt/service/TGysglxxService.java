@@ -13,16 +13,9 @@ import java.util.List;
  * 供应商管理信息表(t_gysglxx)表服务接口
  *
  * @author chenqi
- * @since 2023-05-16 16:33:56
+ * @since 2023-05-17 16:22:41
  */
 public interface TGysglxxService extends IService<TGysglxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TGysglxxVO>
-     */
-    List<TGysglxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -31,5 +24,13 @@ public interface TGysglxxService extends IService<TGysglxxEntity> {
      * @param tGysglxxDTO 查询参数
      * @return IPage<TGysglxxVO> tGysglxxDTO
      */
-    IPage<TGysglxxVO> selectPage(Page<TGysglxxDTO> page, TGysglxxDTO tGysglxxDTO);
+    IPage<TGysglxxVO> queryPage(Page<TGysglxxDTO> page, TGysglxxDTO tGysglxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tGysglxxDTO 查询参数
+     * @return List<TGysglxxVO>
+     */
+    List<TGysglxxVO> queryList(TGysglxxDTO tGysglxxDTO);
 }

@@ -15,17 +15,10 @@ import java.util.List;
  * 安全检查记录表(t_aqjcjl)表数据库访问层
  *
  * @author chenqi
- * @since 2023-05-16 16:33:47
+ * @since 2023-05-17 16:22:38
  */
 @Mapper
 public interface TAqjcjlDao extends BaseMapper<TAqjcjlEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TAqjcjlVO>
-     */
-    List<TAqjcjlVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TAqjcjlDao extends BaseMapper<TAqjcjlEntity> {
      * @param tAqjcjlDTO 查询参数
      * @return IPage<TAqjcjlVO>
      */
-    IPage<TAqjcjlVO> selectList(Page<TAqjcjlDTO> page, @Param("tAqjcjlDTO") TAqjcjlDTO tAqjcjlDTO);
+    IPage<TAqjcjlVO> queryList(Page<TAqjcjlDTO> page, @Param("tAqjcjlDTO") TAqjcjlDTO tAqjcjlDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tAqjcjlDTO 查询参数
+     * @return List<TAqjcjlVO>
+     */
+    List<TAqjcjlVO> queryList(@Param("tAqjcjlDTO") TAqjcjlDTO tAqjcjlDTO);
 }

@@ -15,17 +15,10 @@ import java.util.List;
  * 供应商管理信息表(t_gysglxx)表数据库访问层
  *
  * @author chenqi
- * @since 2023-05-16 16:33:56
+ * @since 2023-05-17 16:22:41
  */
 @Mapper
 public interface TGysglxxDao extends BaseMapper<TGysglxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TGysglxxVO>
-     */
-    List<TGysglxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TGysglxxDao extends BaseMapper<TGysglxxEntity> {
      * @param tGysglxxDTO 查询参数
      * @return IPage<TGysglxxVO>
      */
-    IPage<TGysglxxVO> selectList(Page<TGysglxxDTO> page, @Param("tGysglxxDTO") TGysglxxDTO tGysglxxDTO);
+    IPage<TGysglxxVO> queryList(Page<TGysglxxDTO> page, @Param("tGysglxxDTO") TGysglxxDTO tGysglxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tGysglxxDTO 查询参数
+     * @return List<TGysglxxVO>
+     */
+    List<TGysglxxVO> queryList(@Param("tGysglxxDTO") TGysglxxDTO tGysglxxDTO);
 }

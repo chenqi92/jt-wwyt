@@ -15,17 +15,10 @@ import java.util.List;
  * 企业安全风险分布信息表(t_qyfxfbxx)表数据库访问层
  *
  * @author chenqi
- * @since 2023-05-16 16:33:59
+ * @since 2023-05-17 16:22:43
  */
 @Mapper
 public interface TQyfxfbxxDao extends BaseMapper<TQyfxfbxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TQyfxfbxxVO>
-     */
-    List<TQyfxfbxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TQyfxfbxxDao extends BaseMapper<TQyfxfbxxEntity> {
      * @param tQyfxfbxxDTO 查询参数
      * @return IPage<TQyfxfbxxVO>
      */
-    IPage<TQyfxfbxxVO> selectList(Page<TQyfxfbxxDTO> page, @Param("tQyfxfbxxDTO") TQyfxfbxxDTO tQyfxfbxxDTO);
+    IPage<TQyfxfbxxVO> queryList(Page<TQyfxfbxxDTO> page, @Param("tQyfxfbxxDTO") TQyfxfbxxDTO tQyfxfbxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tQyfxfbxxDTO 查询参数
+     * @return List<TQyfxfbxxVO>
+     */
+    List<TQyfxfbxxVO> queryList(@Param("tQyfxfbxxDTO") TQyfxfbxxDTO tQyfxfbxxDTO);
 }

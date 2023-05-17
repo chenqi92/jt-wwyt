@@ -13,16 +13,9 @@ import java.util.List;
  * 承包商相关证书表(t_cbsxgzs)表服务接口
  *
  * @author chenqi
- * @since 2023-05-16 16:33:55
+ * @since 2023-05-17 16:22:40
  */
 public interface TCbsxgzsService extends IService<TCbsxgzsEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TCbsxgzsVO>
-     */
-    List<TCbsxgzsVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -31,5 +24,13 @@ public interface TCbsxgzsService extends IService<TCbsxgzsEntity> {
      * @param tCbsxgzsDTO 查询参数
      * @return IPage<TCbsxgzsVO> tCbsxgzsDTO
      */
-    IPage<TCbsxgzsVO> selectPage(Page<TCbsxgzsDTO> page, TCbsxgzsDTO tCbsxgzsDTO);
+    IPage<TCbsxgzsVO> queryPage(Page<TCbsxgzsDTO> page, TCbsxgzsDTO tCbsxgzsDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tCbsxgzsDTO 查询参数
+     * @return List<TCbsxgzsVO>
+     */
+    List<TCbsxgzsVO> queryList(TCbsxgzsDTO tCbsxgzsDTO);
 }

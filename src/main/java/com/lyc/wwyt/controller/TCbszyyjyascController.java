@@ -29,7 +29,7 @@ import java.util.List;
  * 承包商作业应急预案审查表(t_cbszyyjyasc)表控制层
  *
  * @author chenqi
- * @since 2023-05-16 16:33:49
+ * @since 2023-05-17 16:22:41
  */
 @Validated
 @RestController
@@ -59,28 +59,28 @@ public class TCbszyyjyascController {
     }
 
     /**
-     * 查询当前账户下所有承包商作业应急预案审查表     *
+     * 查询当前账户下所有承包商作业应急预案审查表信息
      *
-     * @return List<TCbszyyjyascEntity> 当前账户下所有承包商作业应急预案审查表
+     * @return List<TCbszyyjyascEntity> 当前账户下所有承包商作业应急预案审查表信息
      */
     @Operation(description = "查询承包商作业应急预案审查表信息表数据", summary = "查询承包商作业应急预案审查表信息表数据", tags = {"查询所有数据"})
     @GetMapping
     @Idempotent(expireTime = 180, info = "3分钟内最多请求一次!")
-    public List<TCbszyyjyascVO> selectAll() {
-        return this.tCbszyyjyascService.selectList();
+    public List<TCbszyyjyascVO> selectAll(@ParameterObject TCbszyyjyascDTO tCbszyyjyascDTO) {
+        return this.tCbszyyjyascService.queryList(tCbszyyjyascDTO);
     }
 
     /**
-     * 分页查询当前账户下所有承包商作业应急预案审查表     *
+     * 分页查询当前账户下所有承包商作业应急预案审查表信息
      *
-     * @return List<TCbszyyjyascDTO> 分页当前账户下所有承包商作业应急预案审查表
+     * @return List<TCbszyyjyascDTO> 分页当前账户下所有承包商作业应急预案审查表信息
      */
     @Operation(description = "分页承包商作业应急预案审查表信息表数据", summary = "分页查询承包商作业应急预案审查表信息表数据", tags = {"分页查询所有数据"})
     @GetMapping("page")
     @Parameters({@Parameter(description = "当前页", name = "current", in = ParameterIn.QUERY, required = true, schema = @Schema(implementation = Integer.class)), @Parameter(description = "当前页条数", name = "size", in = ParameterIn.QUERY, required = true, schema = @Schema(implementation = Integer.class))})
     @Idempotent(expireTime = 180, info = "3分钟内最多请求一次!", key = "#page.current")
     public IPage<TCbszyyjyascVO> selectPage(@ParameterObject Page<TCbszyyjyascDTO> page, @ParameterObject TCbszyyjyascDTO tCbszyyjyascDTO) {
-        return this.tCbszyyjyascService.selectPage(page, tCbszyyjyascDTO);
+        return this.tCbszyyjyascService.queryPage(page, tCbszyyjyascDTO);
     }
 
 }

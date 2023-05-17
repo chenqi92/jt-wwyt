@@ -17,23 +17,13 @@ import java.util.List;
  * 安全活动记录表(t_aqhdjl)表服务实现类
  *
  * @author chenqi
- * @since 2023-05-16 16:33:57
+ * @since 2023-05-17 16:22:47
  */
 @Service("tAqhdjlService")
 @RequiredArgsConstructor
 public class TAqhdjlServiceImpl extends ServiceImpl<TAqhdjlDao, TAqhdjlEntity> implements TAqhdjlService {
 
     private final TAqhdjlDao tAqhdjlDao;
-
-    /**
-     * 查询所有数据
-     *
-     * @return 所有数据
-     */
-    @Override
-    public List<TAqhdjlVO> selectList() {
-        return this.tAqhdjlDao.selectList();
-    }
 
     /**
      * 分页查询所有数据
@@ -43,7 +33,18 @@ public class TAqhdjlServiceImpl extends ServiceImpl<TAqhdjlDao, TAqhdjlEntity> i
      * @return 指定页码和条数的数据
      */
     @Override
-    public IPage<TAqhdjlVO> selectPage(Page<TAqhdjlDTO> page, TAqhdjlDTO tAqhdjlDTO) {
-        return this.tAqhdjlDao.selectList(page, tAqhdjlDTO);
+    public IPage<TAqhdjlVO> queryPage(Page<TAqhdjlDTO> page, TAqhdjlDTO tAqhdjlDTO) {
+        return this.tAqhdjlDao.queryList(page, tAqhdjlDTO);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param tAqhdjlDTO 查询参数
+     * @return 所有数据
+     */
+    @Override
+    public List<TAqhdjlVO> queryList(TAqhdjlDTO tAqhdjlDTO) {
+        return this.tAqhdjlDao.queryList(tAqhdjlDTO);
     }
 }

@@ -17,38 +17,41 @@
     </resultMap>
 
     <sql id="baseColumn">
-        id,
-        RISK_MEASURE_ID,
-        TYSHXYDM,
-        TROUBLESHOOT_CONTENT,
-        CHECK_CYCLE,
-        CHECK_CYCLE_UNIT,
-        create_time,
-        create_by,
-        update_time,
-        update_by,
-        delete_mark,
-        COMPANY_CODE
+        'id',
+        'RISK_MEASURE_ID',
+        'TYSHXYDM',
+        'TROUBLESHOOT_CONTENT',
+        'CHECK_CYCLE',
+        'CHECK_CYCLE_UNIT',
+        'create_time',
+        'create_by',
+        'update_time',
+        'update_by',
+        'delete_mark',
+        'COMPANY_CODE'
     </sql>
 
-    <select id="selectList" resultType="com.lyc.wwyt.vo.TYhpcrwxxVO">
+    <select id="queryList" resultType="com.lyc.wwyt.vo.TYhpcrwxxVO">
         select
-        id,
-        RISK_MEASURE_ID,
-        TYSHXYDM,
-        TROUBLESHOOT_CONTENT,
-        CHECK_CYCLE,
-        CHECK_CYCLE_UNIT,
-        create_time,
-        create_by,
-        update_time,
-        update_by,
-        delete_mark,
-        COMPANY_CODE
+        'id',
+        'RISK_MEASURE_ID',
+        'TYSHXYDM',
+        'TROUBLESHOOT_CONTENT',
+        'CHECK_CYCLE',
+        'CHECK_CYCLE_UNIT',
+        'create_time',
+        'create_by',
+        'update_time',
+        'update_by',
+        'delete_mark',
+        'COMPANY_CODE'
         from t_yhpcrwxx
         where delete_mark = 0
-        <if test="tYhpcrwxxDTO != null and tYhpcrwxxDTO != ''">
+        <if test="tYhpcrwxxDTO.id != null and tYhpcrwxxDTO.id != ''">
             AND id = #{tYhpcrwxxDTO.id}
+        </if>
+        <if test="tYhpcrwxxDTO.tyshxydm != null and tYhpcrwxxDTO.tyshxydm != ''">
+            AND TYSHXYDM = #{tYhpcrwxxDTO.tyshxydm}
         </if>
     </select>
 </mapper>

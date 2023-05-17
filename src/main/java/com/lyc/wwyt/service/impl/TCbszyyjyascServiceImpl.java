@@ -17,23 +17,13 @@ import java.util.List;
  * 承包商作业应急预案审查表(t_cbszyyjyasc)表服务实现类
  *
  * @author chenqi
- * @since 2023-05-16 16:33:49
+ * @since 2023-05-17 16:22:41
  */
 @Service("tCbszyyjyascService")
 @RequiredArgsConstructor
 public class TCbszyyjyascServiceImpl extends ServiceImpl<TCbszyyjyascDao, TCbszyyjyascEntity> implements TCbszyyjyascService {
 
     private final TCbszyyjyascDao tCbszyyjyascDao;
-
-    /**
-     * 查询所有数据
-     *
-     * @return 所有数据
-     */
-    @Override
-    public List<TCbszyyjyascVO> selectList() {
-        return this.tCbszyyjyascDao.selectList();
-    }
 
     /**
      * 分页查询所有数据
@@ -43,7 +33,18 @@ public class TCbszyyjyascServiceImpl extends ServiceImpl<TCbszyyjyascDao, TCbszy
      * @return 指定页码和条数的数据
      */
     @Override
-    public IPage<TCbszyyjyascVO> selectPage(Page<TCbszyyjyascDTO> page, TCbszyyjyascDTO tCbszyyjyascDTO) {
-        return this.tCbszyyjyascDao.selectList(page, tCbszyyjyascDTO);
+    public IPage<TCbszyyjyascVO> queryPage(Page<TCbszyyjyascDTO> page, TCbszyyjyascDTO tCbszyyjyascDTO) {
+        return this.tCbszyyjyascDao.queryList(page, tCbszyyjyascDTO);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param tCbszyyjyascDTO 查询参数
+     * @return 所有数据
+     */
+    @Override
+    public List<TCbszyyjyascVO> queryList(TCbszyyjyascDTO tCbszyyjyascDTO) {
+        return this.tCbszyyjyascDao.queryList(tCbszyyjyascDTO);
     }
 }

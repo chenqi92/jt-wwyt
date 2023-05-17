@@ -15,17 +15,10 @@ import java.util.List;
  * 应急处置卡信息表：t_yjczkxx(t_yjczkxx)表数据库访问层
  *
  * @author chenqi
- * @since 2023-05-16 16:33:39
+ * @since 2023-05-17 16:22:39
  */
 @Mapper
 public interface TYjczkxxDao extends BaseMapper<TYjczkxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TYjczkxxVO>
-     */
-    List<TYjczkxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TYjczkxxDao extends BaseMapper<TYjczkxxEntity> {
      * @param tYjczkxxDTO 查询参数
      * @return IPage<TYjczkxxVO>
      */
-    IPage<TYjczkxxVO> selectList(Page<TYjczkxxDTO> page, @Param("tYjczkxxDTO") TYjczkxxDTO tYjczkxxDTO);
+    IPage<TYjczkxxVO> queryList(Page<TYjczkxxDTO> page, @Param("tYjczkxxDTO") TYjczkxxDTO tYjczkxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tYjczkxxDTO 查询参数
+     * @return List<TYjczkxxVO>
+     */
+    List<TYjczkxxVO> queryList(@Param("tYjczkxxDTO") TYjczkxxDTO tYjczkxxDTO);
 }

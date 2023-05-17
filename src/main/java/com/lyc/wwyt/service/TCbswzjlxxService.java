@@ -13,16 +13,9 @@ import java.util.List;
  * 承包商违章记录信息表(t_cbswzjlxx)表服务接口
  *
  * @author chenqi
- * @since 2023-05-16 16:33:43
+ * @since 2023-05-17 16:22:42
  */
 public interface TCbswzjlxxService extends IService<TCbswzjlxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TCbswzjlxxVO>
-     */
-    List<TCbswzjlxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -31,5 +24,13 @@ public interface TCbswzjlxxService extends IService<TCbswzjlxxEntity> {
      * @param tCbswzjlxxDTO 查询参数
      * @return IPage<TCbswzjlxxVO> tCbswzjlxxDTO
      */
-    IPage<TCbswzjlxxVO> selectPage(Page<TCbswzjlxxDTO> page, TCbswzjlxxDTO tCbswzjlxxDTO);
+    IPage<TCbswzjlxxVO> queryPage(Page<TCbswzjlxxDTO> page, TCbswzjlxxDTO tCbswzjlxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tCbswzjlxxDTO 查询参数
+     * @return List<TCbswzjlxxVO>
+     */
+    List<TCbswzjlxxVO> queryList(TCbswzjlxxDTO tCbswzjlxxDTO);
 }

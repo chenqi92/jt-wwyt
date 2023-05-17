@@ -17,23 +17,13 @@ import java.util.List;
  * 作业场所岗位风险应知卡信息表(t_zycswxyshwpwxwhtxyzkxx)表服务实现类
  *
  * @author chenqi
- * @since 2023-05-16 16:33:46
+ * @since 2023-05-17 16:22:40
  */
 @Service("tZycswxyshwpwxwhtxyzkxxService")
 @RequiredArgsConstructor
 public class TZycswxyshwpwxwhtxyzkxxServiceImpl extends ServiceImpl<TZycswxyshwpwxwhtxyzkxxDao, TZycswxyshwpwxwhtxyzkxxEntity> implements TZycswxyshwpwxwhtxyzkxxService {
 
     private final TZycswxyshwpwxwhtxyzkxxDao tZycswxyshwpwxwhtxyzkxxDao;
-
-    /**
-     * 查询所有数据
-     *
-     * @return 所有数据
-     */
-    @Override
-    public List<TZycswxyshwpwxwhtxyzkxxVO> selectList() {
-        return this.tZycswxyshwpwxwhtxyzkxxDao.selectList();
-    }
 
     /**
      * 分页查询所有数据
@@ -43,7 +33,18 @@ public class TZycswxyshwpwxwhtxyzkxxServiceImpl extends ServiceImpl<TZycswxyshwp
      * @return 指定页码和条数的数据
      */
     @Override
-    public IPage<TZycswxyshwpwxwhtxyzkxxVO> selectPage(Page<TZycswxyshwpwxwhtxyzkxxDTO> page, TZycswxyshwpwxwhtxyzkxxDTO tZycswxyshwpwxwhtxyzkxxDTO) {
-        return this.tZycswxyshwpwxwhtxyzkxxDao.selectList(page, tZycswxyshwpwxwhtxyzkxxDTO);
+    public IPage<TZycswxyshwpwxwhtxyzkxxVO> queryPage(Page<TZycswxyshwpwxwhtxyzkxxDTO> page, TZycswxyshwpwxwhtxyzkxxDTO tZycswxyshwpwxwhtxyzkxxDTO) {
+        return this.tZycswxyshwpwxwhtxyzkxxDao.queryList(page, tZycswxyshwpwxwhtxyzkxxDTO);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param tZycswxyshwpwxwhtxyzkxxDTO 查询参数
+     * @return 所有数据
+     */
+    @Override
+    public List<TZycswxyshwpwxwhtxyzkxxVO> queryList(TZycswxyshwpwxwhtxyzkxxDTO tZycswxyshwpwxwhtxyzkxxDTO) {
+        return this.tZycswxyshwpwxwhtxyzkxxDao.queryList(tZycswxyshwpwxwhtxyzkxxDTO);
     }
 }

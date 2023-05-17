@@ -15,17 +15,10 @@ import java.util.List;
  * 人员培训信息表(t_rypxxx)表数据库访问层
  *
  * @author chenqi
- * @since 2023-05-16 16:33:59
+ * @since 2023-05-17 16:22:44
  */
 @Mapper
 public interface TRypxxxDao extends BaseMapper<TRypxxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TRypxxxVO>
-     */
-    List<TRypxxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TRypxxxDao extends BaseMapper<TRypxxxEntity> {
      * @param tRypxxxDTO 查询参数
      * @return IPage<TRypxxxVO>
      */
-    IPage<TRypxxxVO> selectList(Page<TRypxxxDTO> page, @Param("tRypxxxDTO") TRypxxxDTO tRypxxxDTO);
+    IPage<TRypxxxVO> queryList(Page<TRypxxxDTO> page, @Param("tRypxxxDTO") TRypxxxDTO tRypxxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tRypxxxDTO 查询参数
+     * @return List<TRypxxxVO>
+     */
+    List<TRypxxxVO> queryList(@Param("tRypxxxDTO") TRypxxxDTO tRypxxxDTO);
 }

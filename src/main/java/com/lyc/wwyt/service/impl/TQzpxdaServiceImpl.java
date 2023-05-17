@@ -17,23 +17,13 @@ import java.util.List;
  * 取证培训档案表(t_qzpxda)表服务实现类
  *
  * @author chenqi
- * @since 2023-05-16 16:33:56
+ * @since 2023-05-17 16:22:45
  */
 @Service("tQzpxdaService")
 @RequiredArgsConstructor
 public class TQzpxdaServiceImpl extends ServiceImpl<TQzpxdaDao, TQzpxdaEntity> implements TQzpxdaService {
 
     private final TQzpxdaDao tQzpxdaDao;
-
-    /**
-     * 查询所有数据
-     *
-     * @return 所有数据
-     */
-    @Override
-    public List<TQzpxdaVO> selectList() {
-        return this.tQzpxdaDao.selectList();
-    }
 
     /**
      * 分页查询所有数据
@@ -43,7 +33,18 @@ public class TQzpxdaServiceImpl extends ServiceImpl<TQzpxdaDao, TQzpxdaEntity> i
      * @return 指定页码和条数的数据
      */
     @Override
-    public IPage<TQzpxdaVO> selectPage(Page<TQzpxdaDTO> page, TQzpxdaDTO tQzpxdaDTO) {
-        return this.tQzpxdaDao.selectList(page, tQzpxdaDTO);
+    public IPage<TQzpxdaVO> queryPage(Page<TQzpxdaDTO> page, TQzpxdaDTO tQzpxdaDTO) {
+        return this.tQzpxdaDao.queryList(page, tQzpxdaDTO);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param tQzpxdaDTO 查询参数
+     * @return 所有数据
+     */
+    @Override
+    public List<TQzpxdaVO> queryList(TQzpxdaDTO tQzpxdaDTO) {
+        return this.tQzpxdaDao.queryList(tQzpxdaDTO);
     }
 }
