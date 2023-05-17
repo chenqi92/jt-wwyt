@@ -12,12 +12,12 @@ public enum KhjgEnum implements CodeEnum {
     /**
      * 合格
      */
-    HEGE("合格", "1"),
+    HEGE("合格承包商", "1"),
 
     /**
      * 不合格
      */
-    BUHEGE("不合格", "2");
+    BUHEGE("不合格承包商", "2");
 
     private final String code;
     private final String value;

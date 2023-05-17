@@ -152,8 +152,8 @@ public class RestExceptionTranslator {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public R<Object> handleError(DecryptException e) {
         String message = e.getMessage();
-        log.error("接口数据体解密失败:{}", message);
-        return R.fail(message);
+        log.error("接口数据体解密失败{}", message);
+        return R.fail(com.lyc.wwyt.config.SystemCode.DES_ERROR.getCode(), message);
     }
 
     @ExceptionHandler(UserNameNotExistException.class)

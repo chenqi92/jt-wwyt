@@ -77,7 +77,8 @@ public class DecryptingHttpMessageConverter extends MappingJackson2HttpMessageCo
             res = this.objectMapper.readValue(byteArrayInputStream, javaType);
         } catch (InvalidFormatException e) {
             String fieldName = e.getPath().get(1).getFieldName();
-            throw new DecryptException(StringUtil.format(ErrorCodeEnum.TYPE_MISMATCH_EXCEPTION_RESPONSE.getMsg(), "字段:", fieldName));
+            int index = e.getPath().get(0).getIndex() + 1;
+            throw new DecryptException(StringUtil.format("第{}条数据中字段:{}{}", index, fieldName, ErrorCodeEnum.TYPE_MISMATCH_EXCEPTION_RESPONSE.getMsg()));
         } catch (Exception e) {
             throw new DecryptException("消息体解密失败!");
         }
