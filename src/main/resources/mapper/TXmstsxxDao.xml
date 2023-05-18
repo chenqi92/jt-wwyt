@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.wwyt.dao.TXmstsxxDao">
+
+    <resultMap type="com.lyc.wwyt.entity.TXmstsxxEntity" id="TXmstsxxMap">
+        <result property="id" column="id"/>
+        <result property="tyshxydm" column="TYSHXYDM"/>
+        <result property="xmmc" column="XMMC"/>
+        <result property="xmbh" column="XMBH"/>
+        <result property="xmxz" column="XMXZ"/>
+        <result property="xmjsdw" column="XMJSDW"/>
+        <result property="xmztz" column="XMZTZ"/>
+        <result property="xmjsdd" column="XMJSDD"/>
+        <result property="xmjzqk" column="XMJZQK"/>
+        <result property="xmkgrq" column="XMKGRQ"/>
+        <result property="xmjgysrq" column="XMJGYSRQ"/>
+        <result property="xmms" column="XMMS"/>
+        <result property="xmstslb" column="XMSTSLB"/>
+        <result property="fj" column="FJ"/>
+        <result property="fjmc" column="FJMC"/>
+        <result property="createTime" column="create_time"/>
+        <result property="createBy" column="create_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="deleteMark" column="delete_mark"/>
+    </resultMap>
+
+    <sql id="baseColumn">
+        id
+        ,
+        TYSHXYDM,        
+        XMMC,        
+        XMBH,        
+        XMXZ,        
+        XMJSDW,        
+        XMZTZ,        
+        XMJSDD,        
+        XMJZQK,        
+        XMKGRQ,        
+        XMJGYSRQ,        
+        XMMS,        
+        XMSTSLB,        
+        FJ,        
+        FJMC,        
+        create_time,        
+        create_by,        
+        update_time,        
+        update_by,        
+        delete_mark
+    </sql>
+
+    <select id="selectList" resultType="com.lyc.wwyt.vo.TXmstsxxVO">
+        select
+        id,
+        TYSHXYDM,
+        XMMC,
+        XMBH,
+        XMXZ,
+        XMJSDW,
+        XMZTZ,
+        XMJSDD,
+        XMJZQK,
+        XMKGRQ,
+        XMJGYSRQ,
+        XMMS,
+        XMSTSLB,
+        FJ,
+        FJMC,
+        create_time,
+        create_by,
+        update_time,
+        update_by,
+        delete_mark
+        from t_xmstsxx
+        where delete_mark = 0
+        <if test="tXmstsxxDTO != null and tXmstsxxDTO != ''">
+            AND id = #{tXmstsxxDTO.id}
+        </if>
+    </select>
+
+</mapper>

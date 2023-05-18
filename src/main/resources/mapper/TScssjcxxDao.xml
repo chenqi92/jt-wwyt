@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.wwyt.dao.TScssjcxxDao">
+
+    <resultMap type="com.lyc.wwyt.entity.TScssjcxxEntity" id="TScssjcxxMap">
+        <result property="id" column="id"/>
+        <result property="tyshxydm" column="TYSHXYDM"/>
+        <result property="scssid" column="SCSSID"/>
+        <result property="jcnr" column="JCNR"/>
+        <result property="fzbm" column="FZBM"/>
+        <result property="jczb" column="JCZB"/>
+        <result property="yjz" column="YJZ"/>
+        <result property="lsz" column="LSZ"/>
+        <result property="jcr" column="JCR"/>
+        <result property="jcrq" column="JCRQ"/>
+        <result property="jcrbm" column="JCRBM"/>
+        <result property="jcjg" column="JCJG"/>
+        <result property="jczt" column="JCZT"/>
+        <result property="fjmc" column="FJMC"/>
+        <result property="fj" column="FJ"/>
+        <result property="createTime" column="create_time"/>
+        <result property="createBy" column="create_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="deleteMark" column="delete_mark"/>
+    </resultMap>
+
+    <sql id="baseColumn">
+        id
+        ,
+        TYSHXYDM,        
+        SCSSID,        
+        JCNR,        
+        FZBM,        
+        JCZB,        
+        YJZ,        
+        LSZ,        
+        JCR,        
+        JCRQ,        
+        JCRBM,        
+        JCJG,        
+        JCZT,        
+        FJMC,        
+        FJ,        
+        create_time,        
+        create_by,        
+        update_time,        
+        update_by,        
+        delete_mark
+    </sql>
+
+    <select id="selectList" resultType="com.lyc.wwyt.vo.TScssjcxxVO">
+        select
+        id,
+        TYSHXYDM,
+        SCSSID,
+        JCNR,
+        FZBM,
+        JCZB,
+        YJZ,
+        LSZ,
+        JCR,
+        JCRQ,
+        JCRBM,
+        JCJG,
+        JCZT,
+        FJMC,
+        FJ,
+        create_time,
+        create_by,
+        update_time,
+        update_by,
+        delete_mark
+        from t_scssjcxx
+        where delete_mark = 0
+        <if test="tScssjcxxDTO != null and tScssjcxxDTO != ''">
+            AND id = #{tScssjcxxDTO.id}
+        </if>
+    </select>
+
+</mapper>

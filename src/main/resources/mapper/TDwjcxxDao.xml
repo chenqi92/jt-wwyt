@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.wwyt.dao.TDwjcxxDao">
+
+    <resultMap type="com.lyc.wwyt.entity.TDwjcxxEntity" id="TDwjcxxMap">
+        <result property="id" column="id"/>
+        <result property="tyshxydm" column="TYSHXYDM"/>
+        <result property="rwmc" column="RWMC"/>
+        <result property="xjr" column="XJR"/>
+        <result property="szgw" column="SZGW"/>
+        <result property="szbm" column="SZBM"/>
+        <result property="jcpc" column="JCPC"/>
+        <result property="xjscqy" column="XJSCQY"/>
+        <result property="xjsbss" column="XJSBSS"/>
+        <result property="xjdwbh" column="XJDWBH"/>
+        <result property="xjsj" column="XJSJ"/>
+        <result property="xjbz" column="XJBZ"/>
+        <result property="xjyhjb" column="XJYHJB"/>
+        <result property="xjyhms" column="XJYHMS"/>
+        <result property="xjyhzp" column="XJYHZP"/>
+        <result property="zgr" column="ZGR"/>
+        <result property="hssj" column="HSSJ"/>
+        <result property="hsjg" column="HSJG"/>
+        <result property="hsr" column="HSR"/>
+        <result property="czcs" column="CZCS"/>
+        <result property="czsj" column="CZSJ"/>
+        <result property="czr" column="CZR"/>
+        <result property="czjg" column="CZJG"/>
+        <result property="fcsj" column="FCSJ"/>
+        <result property="chjg" column="CHJG"/>
+        <result property="chr" column="CHR"/>
+        <result property="bz" column="BZ"/>
+        <result property="createTime" column="create_time"/>
+        <result property="createBy" column="create_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="deleteMark" column="delete_mark"/>
+    </resultMap>
+
+    <sql id="baseColumn">
+        id
+        ,
+        TYSHXYDM,        
+        RWMC,        
+        XJR,        
+        SZGW,        
+        SZBM,        
+        JCPC,        
+        XJSCQY,        
+        XJSBSS,        
+        XJDWBH,        
+        XJSJ,        
+        XJBZ,        
+        XJYHJB,        
+        XJYHMS,        
+        XJYHZP,        
+        ZGR,        
+        HSSJ,        
+        HSJG,        
+        HSR,        
+        CZCS,        
+        CZSJ,        
+        CZR,        
+        CZJG,        
+        FCSJ,        
+        CHJG,        
+        CHR,        
+        BZ,        
+        create_time,        
+        create_by,        
+        update_time,        
+        update_by,        
+        delete_mark
+    </sql>
+
+    <select id="selectList" resultType="com.lyc.wwyt.vo.TDwjcxxVO">
+        select
+        id,
+        TYSHXYDM,
+        RWMC,
+        XJR,
+        SZGW,
+        SZBM,
+        JCPC,
+        XJSCQY,
+        XJSBSS,
+        XJDWBH,
+        XJSJ,
+        XJBZ,
+        XJYHJB,
+        XJYHMS,
+        XJYHZP,
+        ZGR,
+        HSSJ,
+        HSJG,
+        HSR,
+        CZCS,
+        CZSJ,
+        CZR,
+        CZJG,
+        FCSJ,
+        CHJG,
+        CHR,
+        BZ,
+        create_time,
+        create_by,
+        update_time,
+        update_by,
+        delete_mark
+        from t_dwjcxx
+        where delete_mark = 0
+        <if test="tDwjcxxDTO != null and tDwjcxxDTO != ''">
+            AND id = #{tDwjcxxDTO.id}
+        </if>
+    </select>
+
+</mapper>

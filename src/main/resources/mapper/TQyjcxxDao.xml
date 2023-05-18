@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.wwyt.dao.TQyjcxxDao">
+
+    <resultMap type="com.lyc.wwyt.entity.TQyjcxxEntity" id="TQyjcxxMap">
+        <result property="id" column="id"/>
+        <result property="tyshxydm" column="TYSHXYDM"/>
+        <result property="qymc" column="QYMC"/>
+        <result property="xzqy" column="XZQY"/>
+        <result property="szs1" column="SZS1"/>
+        <result property="szs2" column="SZS2"/>
+        <result property="szx" column="SZX"/>
+        <result property="szxz" column="SZXZ"/>
+        <result property="szc" column="SZC"/>
+        <result property="szyq" column="SZYQ"/>
+        <result property="gszcdz" column="GSZCDZ"/>
+        <result property="scjydz" column="SCJYDZ"/>
+        <result property="yzbm" column="YZBM"/>
+        <result property="clrq" column="CLRQ"/>
+        <result property="fddbr" column="FDDBR"/>
+        <result property="qygddh" column="QYGDDH"/>
+        <result property="aqzbdh" column="AQZBDH"/>
+        <result property="dzyx" column="DZYX"/>
+        <result property="lxqqh" column="LXQQH"/>
+        <result property="gfwzdz" column="GFWZDZ"/>
+        <result property="dwcz" column="DWCZ"/>
+        <result property="zyfzr" column="ZYFZR"/>
+        <result property="zyfzrgddh" column="ZYFZRGDDH"/>
+        <result property="zyfzryddh" column="ZYFZRYDDH"/>
+        <result property="zyfzrdzyx" column="ZYFZRDZYX"/>
+        <result property="aqfzr" column="AQFZR"/>
+        <result property="aqfzrgddh" column="AQFZRGDDH"/>
+        <result property="aqfzryddh" column="AQFZRYDDH"/>
+        <result property="aqfzrdzyx" column="AQFZRDZYX"/>
+        <result property="jjlxdl" column="JJLXDL"/>
+        <result property="jjlxxl" column="JJLXXL"/>
+        <result property="hylbml" column="HYLBML"/>
+        <result property="hylbdl" column="HYLBDL"/>
+        <result property="hylbzl" column="HYLBZL"/>
+        <result property="hylbxl" column="HYLBXL"/>
+        <result property="hyjgdl" column="HYJGDL"/>
+        <result property="hyjgxl" column="HYJGXL"/>
+        <result property="zxzllb" column="ZXZLLB"/>
+        <result property="sfwgyqy" column="SFWGYQY"/>
+        <result property="lsgx" column="LSGX"/>
+        <result property="jyfw" column="JYFW"/>
+        <result property="jyzt" column="JYZT"/>
+        <result property="zczj" column="ZCZJ"/>
+        <result property="zdmj" column="ZDMJ"/>
+        <result property="cyrysl" column="CYRYSL"/>
+        <result property="tzzyrysl" column="TZZYRYSL"/>
+        <result property="zzaqscglry" column="ZZAQSCGLRY"/>
+        <result property="jzaqscglry" column="JZAQSCGLRY"/>
+        <result property="zzyjglry" column="ZZYJGLRY"/>
+        <result property="zcaqgcsrs" column="ZCAQGCSRS"/>
+        <result property="sfyzmaqjg" column="SFYZMAQJG"/>
+        <result property="aqgljgmc" column="AQGLJGMC"/>
+        <result property="aqgljgzz" column="AQGLJGZZ"/>
+        <result property="aagljgcysl" column="AAGLJGCYSL"/>
+        <result property="sfyzzaqry" column="SFYZZAQRY"/>
+        <result property="gmqk" column="GMQK"/>
+        <result property="gygm" column="GYGM"/>
+        <result property="sfymgs" column="SFYMGS"/>
+        <result property="mgsmc" column="MGSMC"/>
+        <result property="jtgsmc" column="JTGSMC"/>
+        <result property="bzhdj" column="BZHDJ"/>
+        <result property="bzhzsyxqqsrq" column="BZHZSYXQQSRQ"/>
+        <result property="bzhzsyxqzzrq" column="BZHZSYXQZZRQ"/>
+        <result property="aqjgdj" column="AQJGDJ"/>
+        <result property="sfczzdwxy" column="SFCZZDWXY"/>
+        <result property="zdwxyzgdj" column="ZDWXYZGDJ"/>
+        <result property="qypmt" column="QYPMT"/>
+        <result property="qyyyzz" column="QYYYZZ"/>
+        <result property="qyzp" column="QYZP"/>
+        <result property="jd" column="JD"/>
+        <result property="wd" column="WD"/>
+        <result property="bz" column="BZ"/>
+        <result property="createTime" column="create_time"/>
+        <result property="createBy" column="create_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="deleteMark" column="delete_mark"/>
+    </resultMap>
+
+    <sql id="baseColumn">
+        id
+        ,
+        TYSHXYDM,        
+        QYMC,        
+        XZQY,        
+        SZS1,        
+        SZS2,        
+        SZX,        
+        SZXZ,        
+        SZC,        
+        SZYQ,        
+        GSZCDZ,        
+        SCJYDZ,        
+        YZBM,        
+        CLRQ,        
+        FDDBR,        
+        QYGDDH,        
+        AQZBDH,        
+        DZYX,        
+        LXQQH,        
+        GFWZDZ,        
+        DWCZ,        
+        ZYFZR,        
+        ZYFZRGDDH,        
+        ZYFZRYDDH,        
+        ZYFZRDZYX,        
+        AQFZR,        
+        AQFZRGDDH,        
+        AQFZRYDDH,        
+        AQFZRDZYX,        
+        JJLXDL,        
+        JJLXXL,        
+        HYLBML,        
+        HYLBDL,        
+        HYLBZL,        
+        HYLBXL,        
+        HYJGDL,        
+        HYJGXL,        
+        ZXZLLB,        
+        SFWGYQY,        
+        LSGX,        
+        JYFW,        
+        JYZT,        
+        ZCZJ,        
+        ZDMJ,        
+        CYRYSL,        
+        TZZYRYSL,        
+        ZZAQSCGLRY,        
+        JZAQSCGLRY,        
+        ZZYJGLRY,        
+        ZCAQGCSRS,        
+        SFYZMAQJG,        
+        AQGLJGMC,        
+        AQGLJGZZ,        
+        AAGLJGCYSL,        
+        SFYZZAQRY,        
+        GMQK,        
+        GYGM,        
+        SFYMGS,        
+        MGSMC,        
+        JTGSMC,        
+        BZHDJ,        
+        BZHZSYXQQSRQ,        
+        BZHZSYXQZZRQ,        
+        AQJGDJ,        
+        SFCZZDWXY,        
+        ZDWXYZGDJ,        
+        QYPMT,        
+        QYYYZZ,        
+        QYZP,        
+        JD,        
+        WD,        
+        BZ,        
+        create_time,        
+        create_by,        
+        update_time,        
+        update_by,        
+        delete_mark
+    </sql>
+
+    <select id="selectList" resultType="com.lyc.wwyt.vo.TQyjcxxVO">
+        select
+        id,
+        TYSHXYDM,
+        QYMC,
+        XZQY,
+        SZS1,
+        SZS2,
+        SZX,
+        SZXZ,
+        SZC,
+        SZYQ,
+        GSZCDZ,
+        SCJYDZ,
+        YZBM,
+        CLRQ,
+        FDDBR,
+        QYGDDH,
+        AQZBDH,
+        DZYX,
+        LXQQH,
+        GFWZDZ,
+        DWCZ,
+        ZYFZR,
+        ZYFZRGDDH,
+        ZYFZRYDDH,
+        ZYFZRDZYX,
+        AQFZR,
+        AQFZRGDDH,
+        AQFZRYDDH,
+        AQFZRDZYX,
+        JJLXDL,
+        JJLXXL,
+        HYLBML,
+        HYLBDL,
+        HYLBZL,
+        HYLBXL,
+        HYJGDL,
+        HYJGXL,
+        ZXZLLB,
+        SFWGYQY,
+        LSGX,
+        JYFW,
+        JYZT,
+        ZCZJ,
+        ZDMJ,
+        CYRYSL,
+        TZZYRYSL,
+        ZZAQSCGLRY,
+        JZAQSCGLRY,
+        ZZYJGLRY,
+        ZCAQGCSRS,
+        SFYZMAQJG,
+        AQGLJGMC,
+        AQGLJGZZ,
+        AAGLJGCYSL,
+        SFYZZAQRY,
+        GMQK,
+        GYGM,
+        SFYMGS,
+        MGSMC,
+        JTGSMC,
+        BZHDJ,
+        BZHZSYXQQSRQ,
+        BZHZSYXQZZRQ,
+        AQJGDJ,
+        SFCZZDWXY,
+        ZDWXYZGDJ,
+        QYPMT,
+        QYYYZZ,
+        QYZP,
+        JD,
+        WD,
+        BZ,
+        create_time,
+        create_by,
+        update_time,
+        update_by,
+        delete_mark
+        from t_qyjcxx
+        where delete_mark = 0
+        <if test="tQyjcxxDTO != null and tQyjcxxDTO != ''">
+            AND id = #{tQyjcxxDTO.id}
+        </if>
+    </select>
+
+</mapper>

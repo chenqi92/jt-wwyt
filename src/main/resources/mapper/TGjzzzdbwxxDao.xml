@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.wwyt.dao.TGjzzzdbwxxDao">
+
+    <resultMap type="com.lyc.wwyt.entity.TGjzzzdbwxxEntity" id="TGjzzzdbwxxMap">
+        <result property="id" column="id"/>
+        <result property="tyshxydm" column="TYSHXYDM"/>
+        <result property="zzbwmc" column="ZZBWMC"/>
+        <result property="ssbm" column="SSBM"/>
+        <result property="jtwz" column="JTWZ"/>
+        <result property="fzrxm" column="FZRXM"/>
+        <result property="lxr" column="LXR"/>
+        <result property="lrr" column="LRR"/>
+        <result property="zrr" column="ZRR"/>
+        <result property="zzbwfl" column="ZZBWFL"/>
+        <result property="jczq" column="JCZQ"/>
+        <result property="xgyjya" column="XGYJYA"/>
+        <result property="zywxyhys" column="ZYWXYHYS"/>
+        <result property="ydzfx" column="YDZFX"/>
+        <result property="yjczcs" column="YJCZCS"/>
+        <result property="xczp" column="XCZP"/>
+        <result property="jd" column="JD"/>
+        <result property="wd" column="WD"/>
+        <result property="bz" column="BZ"/>
+        <result property="createTime" column="create_time"/>
+        <result property="createBy" column="create_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="deleteMark" column="delete_mark"/>
+    </resultMap>
+
+    <sql id="baseColumn">
+        id
+        ,
+        TYSHXYDM,        
+        ZZBWMC,        
+        SSBM,        
+        JTWZ,        
+        FZRXM,        
+        LXR,        
+        LRR,        
+        ZRR,        
+        ZZBWFL,        
+        JCZQ,        
+        XGYJYA,        
+        ZYWXYHYS,        
+        YDZFX,        
+        YJCZCS,        
+        XCZP,        
+        JD,        
+        WD,        
+        BZ,        
+        create_time,        
+        create_by,        
+        update_time,        
+        update_by,        
+        delete_mark
+    </sql>
+
+    <select id="selectList" resultType="com.lyc.wwyt.vo.TGjzzzdbwxxVO">
+        select
+        id,
+        TYSHXYDM,
+        ZZBWMC,
+        SSBM,
+        JTWZ,
+        FZRXM,
+        LXR,
+        LRR,
+        ZRR,
+        ZZBWFL,
+        JCZQ,
+        XGYJYA,
+        ZYWXYHYS,
+        YDZFX,
+        YJCZCS,
+        XCZP,
+        JD,
+        WD,
+        BZ,
+        create_time,
+        create_by,
+        update_time,
+        update_by,
+        delete_mark
+        from t_gjzzzdbwxx
+        where delete_mark = 0
+        <if test="tGjzzzdbwxxDTO != null and tGjzzzdbwxxDTO != ''">
+            AND id = #{tGjzzzdbwxxDTO.id}
+        </if>
+    </select>
+
+</mapper>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.wwyt.dao.TScssxxDao">
+
+    <resultMap type="com.lyc.wwyt.entity.TScssxxEntity" id="TScssxxMap">
+        <result property="id" column="id"/>
+        <result property="tyshxydm" column="TYSHXYDM"/>
+        <result property="sfsstqy" column="sfsstqy"/>
+        <result property="fssstid" column="fssstid"/>
+        <result property="zzssmc" column="ZZSSMC"/>
+        <result property="zzsswh" column="ZZSSWH"/>
+        <result property="zzbm" column="zzbm"/>
+        <result property="zzssyt" column="ZZSSYT"/>
+        <result property="zzssxh" column="ZZSSXH"/>
+        <result property="lxlb" column="LXLB"/>
+        <result property="dwbm" column="DWBM"/>
+        <result property="szbw" column="SZBW"/>
+        <result property="scrq" column="SCRQ"/>
+        <result property="syqx" column="SYQX"/>
+        <result property="smzq" column="SMZQ"/>
+        <result property="tyrq" column="TYRQ"/>
+        <result property="wxzt" column="WXZT"/>
+        <result property="tyzt" column="TYZT"/>
+        <result property="scjcrq" column="SCJCRQ"/>
+        <result property="scjcrq1" column="SCJCRQ_1"/>
+        <result property="scbyrq" column="SCBYRQ"/>
+        <result property="xcjcrq" column="XCJCRQ"/>
+        <result property="xcjcrq1" column="XCJCRQ_1"/>
+        <result property="xcbyrq" column="XCBYRQ"/>
+        <result property="fzr" column="FZR"/>
+        <result property="fzrdw" column="FZRDW"/>
+        <result property="gys" column="GYS"/>
+        <result property="sysm" column="SYSM"/>
+        <result property="sfjc" column="SFJC"/>
+        <result property="jczq" column="JCZQ"/>
+        <result property="jctqtx" column="JCTQTX"/>
+        <result property="sfjc1" column="SFJC_1"/>
+        <result property="jczq1" column="JCZQ_1"/>
+        <result property="jctqtx1" column="JCTQTX_1"/>
+        <result property="sfstzsb" column="SFSTZSB"/>
+        <result property="createTime" column="create_time"/>
+        <result property="createBy" column="create_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="deleteMark" column="delete_mark"/>
+        <result property="companyCode" column="company_code"/>
+    </resultMap>
+
+    <sql id="baseColumn">
+        id
+        ,
+        TYSHXYDM,        
+        sfsstqy,        
+        fssstid,        
+        ZZSSMC,        
+        ZZSSWH,        
+        zzbm,        
+        ZZSSYT,        
+        ZZSSXH,        
+        LXLB,        
+        DWBM,        
+        SZBW,        
+        SCRQ,        
+        SYQX,        
+        SMZQ,        
+        TYRQ,        
+        WXZT,        
+        TYZT,        
+        SCJCRQ,        
+        SCJCRQ_1,        
+        SCBYRQ,        
+        XCJCRQ,        
+        XCJCRQ_1,        
+        XCBYRQ,        
+        FZR,        
+        FZRDW,        
+        GYS,        
+        SYSM,        
+        SFJC,        
+        JCZQ,        
+        JCTQTX,        
+        SFJC_1,        
+        JCZQ_1,        
+        JCTQTX_1,        
+        SFSTZSB,        
+        create_time,        
+        create_by,        
+        update_time,        
+        update_by,        
+        delete_mark,        
+        company_code
+    </sql>
+
+    <select id="selectList" resultType="com.lyc.wwyt.vo.TScssxxVO">
+        select
+        id,
+        TYSHXYDM,
+        sfsstqy,
+        fssstid,
+        ZZSSMC,
+        ZZSSWH,
+        zzbm,
+        ZZSSYT,
+        ZZSSXH,
+        LXLB,
+        DWBM,
+        SZBW,
+        SCRQ,
+        SYQX,
+        SMZQ,
+        TYRQ,
+        WXZT,
+        TYZT,
+        SCJCRQ,
+        SCJCRQ_1,
+        SCBYRQ,
+        XCJCRQ,
+        XCJCRQ_1,
+        XCBYRQ,
+        FZR,
+        FZRDW,
+        GYS,
+        SYSM,
+        SFJC,
+        JCZQ,
+        JCTQTX,
+        SFJC_1,
+        JCZQ_1,
+        JCTQTX_1,
+        SFSTZSB,
+        create_time,
+        create_by,
+        update_time,
+        update_by,
+        delete_mark,
+        company_code
+        from t_scssxx
+        where delete_mark = 0
+        <if test="tScssxxDTO != null and tScssxxDTO != ''">
+            AND id = #{tScssxxDTO.id}
+        </if>
+    </select>
+
+</mapper>

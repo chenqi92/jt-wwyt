@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.wwyt.dao.TScsstyxxDao">
+
+    <resultMap type="com.lyc.wwyt.entity.TScsstyxxEntity" id="TScsstyxxMap">
+        <result property="id" column="id"/>
+        <result property="tyshxydm" column="TYSHXYDM"/>
+        <result property="scssid" column="SCSSID"/>
+        <result property="tyly" column="TYLY"/>
+        <result property="tyhcs" column="TYHCS"/>
+        <result property="sjtyrq" column="SJTYRQ"/>
+        <result property="tytjr" column="TYTJR"/>
+        <result property="tytjrq" column="TYTJRQ"/>
+        <result property="createTime" column="create_time"/>
+        <result property="createBy" column="create_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="deleteMark" column="delete_mark"/>
+    </resultMap>
+
+    <sql id="baseColumn">
+        id
+        ,
+        TYSHXYDM,        
+        SCSSID,        
+        TYLY,        
+        TYHCS,        
+        SJTYRQ,        
+        TYTJR,        
+        TYTJRQ,        
+        create_time,        
+        create_by,        
+        update_time,        
+        update_by,        
+        delete_mark
+    </sql>
+
+    <select id="selectList" resultType="com.lyc.wwyt.vo.TScsstyxxVO">
+        select
+        id,
+        TYSHXYDM,
+        SCSSID,
+        TYLY,
+        TYHCS,
+        SJTYRQ,
+        TYTJR,
+        TYTJRQ,
+        create_time,
+        create_by,
+        update_time,
+        update_by,
+        delete_mark
+        from t_scsstyxx
+        where delete_mark = 0
+        <if test="tScsstyxxDTO != null and tScsstyxxDTO != ''">
+            AND id = #{tScsstyxxDTO.id}
+        </if>
+    </select>
+
+</mapper>
