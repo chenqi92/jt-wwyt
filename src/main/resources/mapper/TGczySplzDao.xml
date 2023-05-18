@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.wwyt.dao.TGczySplzDao">
+
+    <resultMap type="com.lyc.wwyt.entity.TGczySplzEntity" id="TGczySplzMap">
+        <result property="id" column="id"/>
+        <result property="zyid" column="zyid"/>
+        <result property="zylx" column="zylx"/>
+        <result property="lcjd" column="lcjd"/>
+        <result property="clry" column="clry"/>
+        <result property="clyj" column="clyj"/>
+        <result property="clsj" column="clsj"/>
+        <result property="qmtp" column="qmtp"/>
+    </resultMap>
+
+    <sql id="baseColumn">
+        id
+        ,
+        zyid,        
+        zylx,        
+        lcjd,        
+        clry,        
+        clyj,        
+        clsj,        
+        qmtp
+    </sql>
+
+    <select id="selectList" resultType="com.lyc.wwyt.vo.TGczySplzVO">
+        select
+        id,
+        zyid,
+        zylx,
+        lcjd,
+        clry,
+        clyj,
+        clsj,
+        qmtp
+        from t_gczy_splz
+        where delete_mark = 0
+        <if test="tGczySplzDTO != null and tGczySplzDTO != ''">
+            AND id = #{tGczySplzDTO.id}
+        </if>
+    </select>
+
+</mapper>

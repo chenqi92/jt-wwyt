@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.wwyt.dao.TMbcdzyAqcsDao">
+
+    <resultMap type="com.lyc.wwyt.entity.TMbcdzyAqcsEntity" id="TMbcdzyAqcsMap">
+        <result property="id" column="id"/>
+        <result property="zyid" column="zyid"/>
+        <result property="zylx" column="zylx"/>
+        <result property="xh" column="xh"/>
+        <result property="aqcsnr" column="aqcsnr"/>
+        <result property="sfsj" column="sfsj"/>
+        <result property="qrr" column="qrr"/>
+        <result property="qmtp" column="qmtp"/>
+    </resultMap>
+
+    <sql id="baseColumn">
+        id
+        ,
+        zyid,        
+        zylx,        
+        xh,        
+        aqcsnr,        
+        sfsj,        
+        qrr,        
+        qmtp
+    </sql>
+
+    <select id="selectList" resultType="com.lyc.wwyt.vo.TMbcdzyAqcsVO">
+        select
+        id,
+        zyid,
+        zylx,
+        xh,
+        aqcsnr,
+        sfsj,
+        qrr,
+        qmtp
+        from t_mbcdzy_aqcs
+        where delete_mark = 0
+        <if test="tMbcdzyAqcsDTO != null and tMbcdzyAqcsDTO != ''">
+            AND id = #{tMbcdzyAqcsDTO.id}
+        </if>
+    </select>
+
+</mapper>

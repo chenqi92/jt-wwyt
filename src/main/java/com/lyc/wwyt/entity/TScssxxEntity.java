@@ -27,7 +27,7 @@ import java.time.LocalDate;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Schema(description = "生产设施信息表", name = "t_scssxx")
-@RequiredIf(field = "fssstid", fieldValue = "1", dependentField = "sfsstqy")
+@RequiredIf(dependentField = "sfsstqy", field = "fssstid", fieldValue = "1")
 @TableName("t_scssxx")
 public class TScssxxEntity extends BaseEntity {
 

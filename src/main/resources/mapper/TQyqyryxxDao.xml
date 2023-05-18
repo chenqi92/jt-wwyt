@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.wwyt.dao.TQyqyryxxDao">
+
+    <resultMap type="com.lyc.wwyt.entity.TQyqyryxxEntity" id="TQyqyryxxMap">
+        <result property="id" column="id"/>
+        <result property="tyshxydm" column="TYSHXYDM"/>
+        <result property="regiontype" column="regionType"/>
+        <result property="regionname" column="regionName"/>
+        <result property="sstid" column="sstId"/>
+        <result property="sstfxdj" column="sstfxdj"/>
+        <result property="sstqymc" column="sstqymc"/>
+        <result property="zjhm" column="zjhm"/>
+        <result property="ryxm" column="ryxm"/>
+        <result property="ssdw" column="ssdw"/>
+        <result property="createTime" column="create_time"/>
+        <result property="createBy" column="create_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="deleteMark" column="delete_mark"/>
+        <result property="companyCode" column="company_code"/>
+    </resultMap>
+
+    <sql id="baseColumn">
+        id
+        ,
+        TYSHXYDM,        
+        regionType,        
+        regionName,        
+        sstId,        
+        sstfxdj,        
+        sstqymc,        
+        zjhm,        
+        ryxm,        
+        ssdw,        
+        create_time,        
+        create_by,        
+        update_time,        
+        update_by,        
+        delete_mark,        
+        company_code
+    </sql>
+
+    <select id="selectList" resultType="com.lyc.wwyt.vo.TQyqyryxxVO">
+        select
+        id,
+        TYSHXYDM,
+        regionType,
+        regionName,
+        sstId,
+        sstfxdj,
+        sstqymc,
+        zjhm,
+        ryxm,
+        ssdw,
+        create_time,
+        create_by,
+        update_time,
+        update_by,
+        delete_mark,
+        company_code
+        from t_qyqyryxx
+        where delete_mark = 0
+        <if test="tQyqyryxxDTO != null and tQyqyryxxDTO != ''">
+            AND id = #{tQyqyryxxDTO.id}
+        </if>
+    </select>
+
+</mapper>
