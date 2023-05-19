@@ -50,6 +50,15 @@
                     show-overflow-tooltip
                     :key="index"
                     :label="item.name">
+                <template slot="header">
+                    <div>{{item.comment}}</div>
+                </template>
+                <template slot="header">
+                    <div>{{item.name}}</div>
+                </template>
+                <template slot-scope="scope">
+                    <div>{{ scope.row[item.code] }}</div>
+                </template>
             </el-table-column>
         </el-table>
 

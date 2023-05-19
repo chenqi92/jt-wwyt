@@ -47,7 +47,6 @@ new Vue({
             params.append('tyshxydm', _this.queryParams.tyscxydm);
             this.$refs["queryParams"].validate((valid) => {
                 if (valid) {
-                    _this.dataList = [];
                     _this.dataListLoading = true;
                     Promise.all([
                         fetch('/api/wwyt/' + _this.queryParams.table + '/heads', {
