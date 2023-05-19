@@ -21,42 +21,42 @@
     </resultMap>
 
     <sql id="baseColumn">
-        'id',
-        'TYSHXYDM',
-        'GWMC',
-        'ZYWXYHYS',
-        'YDZSGFX',
-        'FXDJ',
-        'FXGKCS',
-        'YJCSDC',
-        'AQJSBS',
-        'FJ',
-        'create_time',
-        'create_by',
-        'update_time',
-        'update_by',
-        'delete_mark',
-        'COMPANY_CODE'
+        `id`,
+        `TYSHXYDM`,
+        `GWMC`,
+        `ZYWXYHYS`,
+        `YDZSGFX`,
+        `FXDJ`,
+        `FXGKCS`,
+        `YJCSDC`,
+        `AQJSBS`,
+        `FJ`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`,
+        `COMPANY_CODE`
     </sql>
 
     <select id="queryList" resultType="com.lyc.wwyt.vo.TZycswxyshwpwxwhtxyzkxxVO">
         select
-        'id',
-        'TYSHXYDM',
-        'GWMC',
-        'ZYWXYHYS',
-        'YDZSGFX',
-        'FXDJ',
-        'FXGKCS',
-        'YJCSDC',
-        'AQJSBS',
-        'FJ',
-        'create_time',
-        'create_by',
-        'update_time',
-        'update_by',
-        'delete_mark',
-        'COMPANY_CODE'
+        `id`,
+        `TYSHXYDM`,
+        `GWMC`,
+        `ZYWXYHYS`,
+        `YDZSGFX`,
+        `FXDJ`,
+        `FXGKCS`,
+        `YJCSDC`,
+        `AQJSBS`,
+        `FJ`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`,
+        `COMPANY_CODE`
         from t_zycswxyshwpwxwhtxyzkxx
         where delete_mark = 0
         <if test="tZycswxyshwpwxwhtxyzkxxDTO.id != null and tZycswxyshwpwxwhtxyzkxxDTO.id != ''">

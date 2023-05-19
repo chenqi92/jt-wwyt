@@ -13,7 +13,7 @@ import java.util.List;
  * 风险四色图信息表(t_fxsstxx)表服务接口
  *
  * @author chenqi
- * @since 2023-05-17 16:22:44
+ * @since 2023-05-19 14:56:44
  */
 public interface TFxsstxxService extends IService<TFxsstxxEntity> {
 

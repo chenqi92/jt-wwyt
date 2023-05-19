@@ -13,7 +13,7 @@ import java.util.List;
  * 作业场所岗位风险应知卡信息表(t_zycswxyshwpwxwhtxyzkxx)表服务接口
  *
  * @author chenqi
- * @since 2023-05-17 16:22:40
+ * @since 2023-05-19 14:56:50
  */
 public interface TZycswxyshwpwxwhtxyzkxxService extends IService<TZycswxyshwpwxwhtxyzkxxEntity> {
 

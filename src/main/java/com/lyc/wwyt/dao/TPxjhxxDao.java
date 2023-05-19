@@ -15,7 +15,7 @@ import java.util.List;
  * 培训计划信息表(t_pxjhxx)表数据库访问层
  *
  * @author chenqi
- * @since 2023-05-17 16:22:47
+ * @since 2023-05-19 14:56:49
  */
 @Mapper
 public interface TPxjhxxDao extends BaseMapper<TPxjhxxEntity> {

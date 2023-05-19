@@ -18,36 +18,36 @@
     </resultMap>
 
     <sql id="baseColumn">
-        'id',
-        'CHECK_TASK_ID',
-        'TYSHXYDM',
-        'CHECK_TIME',
-        'CHECK_STATUS',
-        'CREATE_BY_MOBILE',
-        'UPDATE_BY_MOBILE',
-        'create_time',
-        'create_by',
-        'update_time',
-        'update_by',
-        'delete_mark',
-        'COMPANY_CODE'
+        `id`,
+        `CHECK_TASK_ID`,
+        `TYSHXYDM`,
+        `CHECK_TIME`,
+        `CHECK_STATUS`,
+        `CREATE_BY_MOBILE`,
+        `UPDATE_BY_MOBILE`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`,
+        `COMPANY_CODE`
     </sql>
 
     <select id="queryList" resultType="com.lyc.wwyt.vo.TYhpcjlVO">
         select
-        'id',
-        'CHECK_TASK_ID',
-        'TYSHXYDM',
-        'CHECK_TIME',
-        'CHECK_STATUS',
-        'CREATE_BY_MOBILE',
-        'UPDATE_BY_MOBILE',
-        'create_time',
-        'create_by',
-        'update_time',
-        'update_by',
-        'delete_mark',
-        'COMPANY_CODE'
+        `id`,
+        `CHECK_TASK_ID`,
+        `TYSHXYDM`,
+        `CHECK_TIME`,
+        `CHECK_STATUS`,
+        `CREATE_BY_MOBILE`,
+        `UPDATE_BY_MOBILE`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`,
+        `COMPANY_CODE`
         from t_yhpcjl
         where delete_mark = 0
         <if test="tYhpcjlDTO.id != null and tYhpcjlDTO.id != ''">

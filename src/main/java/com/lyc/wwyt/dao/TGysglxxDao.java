@@ -15,7 +15,7 @@ import java.util.List;
  * 供应商管理信息表(t_gysglxx)表数据库访问层
  *
  * @author chenqi
- * @since 2023-05-17 16:22:41
+ * @since 2023-05-19 14:56:39
  */
 @Mapper
 public interface TGysglxxDao extends BaseMapper<TGysglxxEntity> {

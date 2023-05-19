@@ -69,7 +69,7 @@ public class TCbsglxxEntity extends BaseEntity {
     private String cbsdh;
 
     @Schema(description = "邮箱", name = "yx", implementation = String.class)
-    @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\\\.[a-zA-Z]{2,6}$", message = "邮箱格式不正确!")
+    @Pattern(regexp = "^[A-Za-z0-9\\u4e00-\\u9fa5]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$", message = "邮箱格式不正确!")
     @Size(max = 100, message = "邮箱不能超过100个字符!")
     private String yx;
 

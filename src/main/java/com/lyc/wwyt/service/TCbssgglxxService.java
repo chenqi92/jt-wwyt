@@ -13,7 +13,7 @@ import java.util.List;
  * 承包商施工管理信息表(t_cbssgglxx)表服务接口
  *
  * @author chenqi
- * @since 2023-05-17 16:22:46
+ * @since 2023-05-19 14:56:43
  */
 public interface TCbssgglxxService extends IService<TCbssgglxxEntity> {
 

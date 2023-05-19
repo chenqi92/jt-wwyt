@@ -17,7 +17,7 @@ import java.util.List;
  * 安全检查表维护信息表结构(t_jcbwhxx)表服务实现类
  *
  * @author chenqi
- * @since 2023-05-17 16:22:40
+ * @since 2023-05-19 14:56:50
  */
 @Service("tJcbwhxxService")
 @RequiredArgsConstructor

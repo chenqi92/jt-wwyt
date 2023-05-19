@@ -17,7 +17,7 @@ import java.util.List;
  * 应急预案管理信息表(t_yjyaglxx)表服务实现类
  *
  * @author chenqi
- * @since 2023-05-17 16:22:46
+ * @since 2023-05-19 14:56:48
  */
 @Service("tYjyaglxxService")
 @RequiredArgsConstructor

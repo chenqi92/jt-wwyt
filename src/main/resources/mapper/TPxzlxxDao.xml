@@ -20,40 +20,40 @@
     </resultMap>
 
     <sql id="baseColumn">
-        'id',
-        'TYSHXYDM',
-        'ZLBT',
-        'SSLB',
-        'SCR',
-        'SCRQ',
-        'GJZ',
-        'WJLX',
-        'JCJJ',
-        'ZLFJ',
-        'create_time',
-        'create_by',
-        'update_time',
-        'update_by',
-        'delete_mark'
+        `id`,
+        `TYSHXYDM`,
+        `ZLBT`,
+        `SSLB`,
+        `SCR`,
+        `SCRQ`,
+        `GJZ`,
+        `WJLX`,
+        `JCJJ`,
+        `ZLFJ`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`
     </sql>
 
     <select id="queryList" resultType="com.lyc.wwyt.vo.TPxzlxxVO">
         select
-        'id',
-        'TYSHXYDM',
-        'ZLBT',
-        'SSLB',
-        'SCR',
-        'SCRQ',
-        'GJZ',
-        'WJLX',
-        'JCJJ',
-        'ZLFJ',
-        'create_time',
-        'create_by',
-        'update_time',
-        'update_by',
-        'delete_mark'
+        `id`,
+        `TYSHXYDM`,
+        `ZLBT`,
+        `SSLB`,
+        `SCR`,
+        `SCRQ`,
+        `GJZ`,
+        `WJLX`,
+        `JCJJ`,
+        `ZLFJ`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`
         from t_pxzlxx
         where delete_mark = 0
         <if test="tPxzlxxDTO.id != null and tPxzlxxDTO.id != ''">

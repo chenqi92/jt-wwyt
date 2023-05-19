@@ -15,7 +15,7 @@ import java.util.List;
  * 安全生产责任承诺卡信息表(t_aqsczrclkxx)表数据库访问层
  *
  * @author chenqi
- * @since 2023-05-17 16:22:45
+ * @since 2023-05-19 14:56:41
  */
 @Mapper
 public interface TAqsczrclkxxDao extends BaseMapper<TAqsczrclkxxEntity> {

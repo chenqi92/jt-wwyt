@@ -13,7 +13,7 @@ import java.util.List;
  * 培训结果表(t_pxjg)表服务接口
  *
  * @author chenqi
- * @since 2023-05-17 16:22:47
+ * @since 2023-05-19 14:56:42
  */
 public interface TPxjgService extends IService<TPxjgEntity> {
 

@@ -15,7 +15,7 @@ import java.util.List;
  * 应急演练计划信息表(t_yjyljhxx)表数据库访问层
  *
  * @author chenqi
- * @since 2023-05-17 16:22:45
+ * @since 2023-05-19 14:56:43
  */
 @Mapper
 public interface TYjyljhxxDao extends BaseMapper<TYjyljhxxEntity> {

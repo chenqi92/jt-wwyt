@@ -15,7 +15,7 @@ import java.util.List;
  * 应急处置卡信息表：t_yjczkxx(t_yjczkxx)表数据库访问层
  *
  * @author chenqi
- * @since 2023-05-17 16:22:39
+ * @since 2023-05-19 14:56:41
  */
 @Mapper
 public interface TYjczkxxDao extends BaseMapper<TYjczkxxEntity> {

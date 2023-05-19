@@ -21,42 +21,42 @@
     </resultMap>
 
     <sql id="baseColumn">
-        'id',
-        'TYSHXYDM',
-        'CONTRACTOR_NAME',
-        'JOB_NAME',
-        'CONTENT',
-        'PROBLEM_ANALYSIS',
-        'IMPROVEMENTS',
-        'RECTIFICATION_TIME',
-        'ASSESSOR',
-        'REVIEW_TIME',
-        'APPENDIX',
-        'create_time',
-        'create_by',
-        'update_time',
-        'update_by',
-        'delete_mark'
+        `id`,
+        `TYSHXYDM`,
+        `CONTRACTOR_NAME`,
+        `JOB_NAME`,
+        `CONTENT`,
+        `PROBLEM_ANALYSIS`,
+        `IMPROVEMENTS`,
+        `RECTIFICATION_TIME`,
+        `ASSESSOR`,
+        `REVIEW_TIME`,
+        `APPENDIX`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`
     </sql>
 
     <select id="queryList" resultType="com.lyc.wwyt.vo.TCbszyscVO">
         select
-        'id',
-        'TYSHXYDM',
-        'CONTRACTOR_NAME',
-        'JOB_NAME',
-        'CONTENT',
-        'PROBLEM_ANALYSIS',
-        'IMPROVEMENTS',
-        'RECTIFICATION_TIME',
-        'ASSESSOR',
-        'REVIEW_TIME',
-        'APPENDIX',
-        'create_time',
-        'create_by',
-        'update_time',
-        'update_by',
-        'delete_mark'
+        `id`,
+        `TYSHXYDM`,
+        `CONTRACTOR_NAME`,
+        `JOB_NAME`,
+        `CONTENT`,
+        `PROBLEM_ANALYSIS`,
+        `IMPROVEMENTS`,
+        `RECTIFICATION_TIME`,
+        `ASSESSOR`,
+        `REVIEW_TIME`,
+        `APPENDIX`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`
         from t_cbszysc
         where delete_mark = 0
         <if test="tCbszyscDTO.id != null and tCbszyscDTO.id != ''">

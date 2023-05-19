@@ -162,7 +162,7 @@ public class TQyjcxxEntity extends BaseEntity {
 
     @Schema(description = "安全负责人电子邮箱", name = "aqfzrdzyx", implementation = String.class, maxLength = 100)
     @Size(max = 100, message = "安全负责人电子邮箱不能超过100个字符(1个汉字记两个字符)!")
-    @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\\\.[a-zA-Z]{2,6}$", message = "安全负责人电子邮箱格式不正确!")
+    @Pattern(regexp = "^[A-Za-z0-9\\u4e00-\\u9fa5]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$", message = "安全负责人电子邮箱格式不正确!")
     private String aqfzrdzyx;
 
     @Schema(description = "经济类型大类", name = "jjlxdl", implementation = String.class, maxLength = 50)

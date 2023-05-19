@@ -13,7 +13,7 @@ import java.util.List;
  * 安全风险事件表(t_aqfxsj)表服务接口
  *
  * @author chenqi
- * @since 2023-05-17 16:22:39
+ * @since 2023-05-19 14:56:52
  */
 public interface TAqfxsjService extends IService<TAqfxsjEntity> {
 

@@ -13,7 +13,7 @@ import java.util.List;
  * 隐患排查任务信息表(t_yhpcrwxx)表服务接口
  *
  * @author chenqi
- * @since 2023-05-17 16:22:39
+ * @since 2023-05-19 14:56:48
  */
 public interface TYhpcrwxxService extends IService<TYhpcrwxxEntity> {
 

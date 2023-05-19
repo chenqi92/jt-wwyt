@@ -15,7 +15,7 @@ import java.util.List;
  * 安全风险分析单元表(t_aqfxfxdy)表数据库访问层
  *
  * @author chenqi
- * @since 2023-05-17 16:22:41
+ * @since 2023-05-19 14:56:40
  */
 @Mapper
 public interface TAqfxfxdyDao extends BaseMapper<TAqfxfxdyEntity> {

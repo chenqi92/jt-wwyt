@@ -13,7 +13,7 @@ import java.util.List;
  * 培训活动信息表(t_pxhdxx)表服务接口
  *
  * @author chenqi
- * @since 2023-05-17 16:22:43
+ * @since 2023-05-19 14:56:41
  */
 public interface TPxhdxxService extends IService<TPxhdxxEntity> {
 

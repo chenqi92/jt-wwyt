@@ -13,7 +13,7 @@ import java.util.List;
  * 隐患排查记录表(t_yhpcjl)表服务接口
  *
  * @author chenqi
- * @since 2023-05-17 16:22:42
+ * @since 2023-05-19 14:56:44
  */
 public interface TYhpcjlService extends IService<TYhpcjlEntity> {
 

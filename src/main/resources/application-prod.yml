@@ -55,6 +55,18 @@ mybatis-plus:
     update-name: updateBy
   chine-rate: 1.5
   data-pms: false
+security:
+  ignore-urls:
+    - /v3/api-docs/**
+    - /doc.html
+    - /webjars/**
+    - /druid/**
+    - /configuration/ui
+    - /swagger-resources/**
+    - /js/**
+    - /page/**
+    - /css/**
+    - /plugins/**
 custom:
   aes-key: JTXCLYWWYTSJJKWD
   initialization-vector: JTXCLYWWYTSJJKWD

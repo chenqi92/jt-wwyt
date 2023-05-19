@@ -15,30 +15,30 @@
     </resultMap>
 
     <sql id="baseColumn">
-        'id',
-        'RISK_UNIT_ID',
-        'TYSHXYDM',
-        'RISK_EVENT_NAME',
-        'create_time',
-        'create_by',
-        'update_time',
-        'update_by',
-        'delete_mark',
-        'COMPANY_CODE'
+        `id`,
+        `RISK_UNIT_ID`,
+        `TYSHXYDM`,
+        `RISK_EVENT_NAME`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`,
+        `COMPANY_CODE`
     </sql>
 
     <select id="queryList" resultType="com.lyc.wwyt.vo.TAqfxsjVO">
         select
-        'id',
-        'RISK_UNIT_ID',
-        'TYSHXYDM',
-        'RISK_EVENT_NAME',
-        'create_time',
-        'create_by',
-        'update_time',
-        'update_by',
-        'delete_mark',
-        'COMPANY_CODE'
+        `id`,
+        `RISK_UNIT_ID`,
+        `TYSHXYDM`,
+        `RISK_EVENT_NAME`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`,
+        `COMPANY_CODE`
         from t_aqfxsj
         where delete_mark = 0
         <if test="tAqfxsjDTO.id != null and tAqfxsjDTO.id != ''">

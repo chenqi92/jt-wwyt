@@ -15,7 +15,7 @@ import java.util.List;
  * 安全风险管控措施表结构(t_aqfxgkcs)表数据库访问层
  *
  * @author chenqi
- * @since 2023-05-17 16:22:38
+ * @since 2023-05-19 14:56:47
  */
 @Mapper
 public interface TAqfxgkcsDao extends BaseMapper<TAqfxgkcsEntity> {

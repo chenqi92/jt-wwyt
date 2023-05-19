@@ -17,7 +17,7 @@ import java.util.List;
  * 取证培训档案表(t_qzpxda)表服务实现类
  *
  * @author chenqi
- * @since 2023-05-17 16:22:45
+ * @since 2023-05-19 14:56:46
  */
 @Service("tQzpxdaService")
 @RequiredArgsConstructor

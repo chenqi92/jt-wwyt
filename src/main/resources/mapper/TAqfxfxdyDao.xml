@@ -19,38 +19,38 @@
     </resultMap>
 
     <sql id="baseColumn">
-        'id',
-        'TYSHXYDM',
-        'HAZARD_CODE',
-        'HAZARD_CODE1',
-        'HAZARD_DEP',
-        'HAZARD_LIABLE_PERSON',
-        'RISK_UNIT_NAME',
-        'RISK_CLASS',
-        'create_time',
-        'create_by',
-        'update_time',
-        'update_by',
-        'delete_mark',
-        'COMPANY_CODE'
+        `id`,
+        `TYSHXYDM`,
+        `HAZARD_CODE`,
+        `HAZARD_CODE1`,
+        `HAZARD_DEP`,
+        `HAZARD_LIABLE_PERSON`,
+        `RISK_UNIT_NAME`,
+        `RISK_CLASS`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`,
+        `COMPANY_CODE`
     </sql>
 
     <select id="queryList" resultType="com.lyc.wwyt.vo.TAqfxfxdyVO">
         select
-        'id',
-        'TYSHXYDM',
-        'HAZARD_CODE',
-        'HAZARD_CODE1',
-        'HAZARD_DEP',
-        'HAZARD_LIABLE_PERSON',
-        'RISK_UNIT_NAME',
-        'RISK_CLASS',
-        'create_time',
-        'create_by',
-        'update_time',
-        'update_by',
-        'delete_mark',
-        'COMPANY_CODE'
+        `id`,
+        `TYSHXYDM`,
+        `HAZARD_CODE`,
+        `HAZARD_CODE1`,
+        `HAZARD_DEP`,
+        `HAZARD_LIABLE_PERSON`,
+        `RISK_UNIT_NAME`,
+        `RISK_CLASS`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`,
+        `COMPANY_CODE`
         from t_aqfxfxdy
         where delete_mark = 0
         <if test="tAqfxfxdyDTO.id != null and tAqfxfxdyDTO.id != ''">

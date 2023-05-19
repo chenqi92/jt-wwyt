@@ -20,40 +20,40 @@
     </resultMap>
 
     <sql id="baseColumn">
-        'id',
-        'TYSHXYDM',
-        'SSCBS',
-        'NAME',
-        'LEVEL',
-        'CONTENT',
-        'START_TIME',
-        'DUE_TIME',
-        'APPENDIX',
-        'NO',
-        'create_time',
-        'create_by',
-        'update_time',
-        'update_by',
-        'delete_mark'
+        `id`,
+        `TYSHXYDM`,
+        `SSCBS`,
+        `NAME`,
+        `LEVEL`,
+        `CONTENT`,
+        `START_TIME`,
+        `DUE_TIME`,
+        `APPENDIX`,
+        `NO`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`
     </sql>
 
     <select id="queryList" resultType="com.lyc.wwyt.vo.TCbsxgzsVO">
         select
-        'id',
-        'TYSHXYDM',
-        'SSCBS',
-        'NAME',
-        'LEVEL',
-        'CONTENT',
-        'START_TIME',
-        'DUE_TIME',
-        'APPENDIX',
-        'NO',
-        'create_time',
-        'create_by',
-        'update_time',
-        'update_by',
-        'delete_mark'
+        `id`,
+        `TYSHXYDM`,
+        `SSCBS`,
+        `NAME`,
+        `LEVEL`,
+        `CONTENT`,
+        `START_TIME`,
+        `DUE_TIME`,
+        `APPENDIX`,
+        `NO`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`
         from t_cbsxgzs
         where delete_mark = 0
         <if test="tCbsxgzsDTO.id != null and tCbsxgzsDTO.id != ''">

@@ -87,9 +87,12 @@ security:
     - /doc.html
     - /webjars/**
     - /druid/**
-    - /static/**
     - /configuration/ui
     - /swagger-resources/**
+    - /js/**
+    - /page/**
+    - /css/**
+    - /plugins/**
 custom:
   aes-key: JTXCLYWWYTSJJKWD
   initialization-vector: JTXCLYWWYTSJJKWD

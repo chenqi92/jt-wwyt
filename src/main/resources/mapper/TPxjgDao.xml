@@ -18,36 +18,36 @@
     </resultMap>
 
     <sql id="baseColumn">
-        'id',
-        'TYSHXYDM',
-        'THEME',
-        'ACTIVITY',
-        'MEMBER',
-        'RESULT',
-        'START_TIME',
-        'END_TIME',
-        'create_time',
-        'create_by',
-        'update_time',
-        'update_by',
-        'delete_mark'
+        `id`,
+        `TYSHXYDM`,
+        `THEME`,
+        `ACTIVITY`,
+        `MEMBER`,
+        `RESULT`,
+        `START_TIME`,
+        `END_TIME`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`
     </sql>
 
     <select id="queryList" resultType="com.lyc.wwyt.vo.TPxjgVO">
         select
-        'id',
-        'TYSHXYDM',
-        'THEME',
-        'ACTIVITY',
-        'MEMBER',
-        'RESULT',
-        'START_TIME',
-        'END_TIME',
-        'create_time',
-        'create_by',
-        'update_time',
-        'update_by',
-        'delete_mark'
+        `id`,
+        `TYSHXYDM`,
+        `THEME`,
+        `ACTIVITY`,
+        `MEMBER`,
+        `RESULT`,
+        `START_TIME`,
+        `END_TIME`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`
         from t_pxjg
         where delete_mark = 0
         <if test="tPxjgDTO.id != null and tPxjgDTO.id != ''">

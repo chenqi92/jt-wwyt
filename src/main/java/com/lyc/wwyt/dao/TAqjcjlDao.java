@@ -15,7 +15,7 @@ import java.util.List;
  * 安全检查记录表(t_aqjcjl)表数据库访问层
  *
  * @author chenqi
- * @since 2023-05-17 16:22:38
+ * @since 2023-05-19 14:56:40
  */
 @Mapper
 public interface TAqjcjlDao extends BaseMapper<TAqjcjlEntity> {

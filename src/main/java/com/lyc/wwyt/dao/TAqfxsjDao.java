@@ -15,7 +15,7 @@ import java.util.List;
  * 安全风险事件表(t_aqfxsj)表数据库访问层
  *
  * @author chenqi
- * @since 2023-05-17 16:22:39
+ * @since 2023-05-19 14:56:52
  */
 @Mapper
 public interface TAqfxsjDao extends BaseMapper<TAqfxsjEntity> {

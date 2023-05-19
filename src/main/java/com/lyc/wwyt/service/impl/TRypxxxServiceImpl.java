@@ -17,7 +17,7 @@ import java.util.List;
  * 人员培训信息表(t_rypxxx)表服务实现类
  *
  * @author chenqi
- * @since 2023-05-17 16:22:44
+ * @since 2023-05-19 14:56:42
  */
 @Service("tRypxxxService")
 @RequiredArgsConstructor

@@ -15,7 +15,7 @@ import java.util.List;
  * 培训结果表(t_pxjg)表数据库访问层
  *
  * @author chenqi
- * @since 2023-05-17 16:22:47
+ * @since 2023-05-19 14:56:42
  */
 @Mapper
 public interface TPxjgDao extends BaseMapper<TPxjgEntity> {

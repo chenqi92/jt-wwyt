@@ -17,7 +17,7 @@ import java.util.List;
  * 安全活动记录表(t_aqhdjl)表服务实现类
  *
  * @author chenqi
- * @since 2023-05-17 16:22:47
+ * @since 2023-05-19 14:56:39
  */
 @Service("tAqhdjlService")
 @RequiredArgsConstructor

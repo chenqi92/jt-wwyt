@@ -53,6 +53,9 @@ public class CustomPermissionHandler implements DataPmsHandler {
             return where;
         }
         TableInfo tableInfo = TableInfoHelper.getTableInfo(table.getName());
+        if (tableInfo == null) {
+            return where;
+        }
         String fieldName = tableInfo.getFieldList().stream().filter(a -> a.getField().getAnnotation(ScopeField.class) != null).map(a -> a.getField().getAnnotation(ScopeField.class).value()).findFirst().orElse(DEFAULT_FILTER_FIELD);
         Alias fromItemAlias = table.getAlias();
         String finalFieldName = Optional.ofNullable(fromItemAlias).map(a -> a.getName() + StringPool.DOT + fieldName).orElse(fieldName);

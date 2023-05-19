@@ -1,17 +1,19 @@
 package com.lyc.wwyt.controller;
 
+import cn.allbs.excel.annotation.ExportExcel;
+import cn.allbs.excel.annotation.Sheet;
 import cn.allbs.idempotent.annotation.Idempotent;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lyc.wwyt.config.log.annotation.SysLog;
 import com.lyc.wwyt.entity.TQzpxdaEntity;
 import com.lyc.wwyt.service.TQzpxdaService;
+import com.lyc.wwyt.service.CommonService;
 import com.lyc.wwyt.dto.TQzpxdaDTO;
 import com.lyc.wwyt.vo.TQzpxdaVO;
-import io.swagger.v3.oas.annotations.OpenAPIDefinition;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.Parameters;
+import com.lyc.wwyt.vo.TableInfoVO;
+import com.lyc.wwyt.utils.NameUtils;
+import io.swagger.v3.oas.annotations.*;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -23,13 +25,14 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
  * 取证培训档案表(t_qzpxda)表控制层
  *
  * @author chenqi
- * @since 2023-05-17 16:22:46
+ * @since 2023-05-19 14:57:26
  */
 @Validated
 @RestController
@@ -43,6 +46,11 @@ public class TQzpxdaController {
      * 服务对象
      */
     private final TQzpxdaService tQzpxdaService;
+
+    /**
+     * 通用数据查询
+     */
+    private final CommonService commonService;
 
     /**
      * 取证培训档案表新增或修改
@@ -66,6 +74,7 @@ public class TQzpxdaController {
     @Operation(description = "查询取证培训档案表信息表数据", summary = "查询取证培训档案表信息表数据", tags = {"查询所有数据"})
     @GetMapping
     @Idempotent(expireTime = 180, info = "3分钟内最多请求一次!")
+    @ExportExcel(name = "取证培训档案表", sheets = @Sheet(sheetName = "t_qzpxda"))
     public List<TQzpxdaVO> selectAll(@ParameterObject TQzpxdaDTO tQzpxdaDTO) {
         return this.tQzpxdaService.queryList(tQzpxdaDTO);
     }
@@ -81,6 +90,29 @@ public class TQzpxdaController {
     @Idempotent(expireTime = 180, info = "3分钟内最多请求一次!", key = "#page.current")
     public IPage<TQzpxdaVO> selectPage(@ParameterObject Page<TQzpxdaDTO> page, @ParameterObject TQzpxdaDTO tQzpxdaDTO) {
         return this.tQzpxdaService.queryPage(page, tQzpxdaDTO);
+    }
+
+    /**
+     * 查询取证培训档案表的所有字段信息
+     *
+     * @return 所有字段信息
+     */
+    @GetMapping("heads")
+    @Hidden
+    public List<TableInfoVO> heads() {
+        // 查询所有列名
+        List<TableInfoVO> queryInfos = this.commonService.queryTableHeaders("t_qzpxda");
+        List<TableInfoVO> tableInfoVOS = new LinkedList<>();
+        queryInfos.forEach(a -> {
+            if (!"delete_mark".equals(a.getName())) {
+                TableInfoVO table = new TableInfoVO();
+                table.setCode(NameUtils.getClassName(a.getName()));
+                table.setName(a.getName());
+                table.setComment(a.getComment());
+                tableInfoVOS.add(table);
+            }
+        });
+        return tableInfoVOS;
     }
 
 }

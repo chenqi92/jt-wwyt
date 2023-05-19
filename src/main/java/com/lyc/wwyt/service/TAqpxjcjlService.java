@@ -13,7 +13,7 @@ import java.util.List;
  * 安全培训奖惩记录表(t_aqpxjcjl)表服务接口
  *
  * @author chenqi
- * @since 2023-05-17 16:22:43
+ * @since 2023-05-19 14:56:44
  */
 public interface TAqpxjcjlService extends IService<TAqpxjcjlEntity> {
 

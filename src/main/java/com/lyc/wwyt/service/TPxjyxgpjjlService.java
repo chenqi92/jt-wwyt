@@ -13,7 +13,7 @@ import java.util.List;
  * 培训教育效果评价记录表(t_pxjyxgpjjl)表服务接口
  *
  * @author chenqi
- * @since 2023-05-17 16:22:47
+ * @since 2023-05-19 14:56:49
  */
 public interface TPxjyxgpjjlService extends IService<TPxjyxgpjjlEntity> {
 

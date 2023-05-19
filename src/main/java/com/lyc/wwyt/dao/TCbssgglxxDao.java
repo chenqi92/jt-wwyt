@@ -15,7 +15,7 @@ import java.util.List;
  * 承包商施工管理信息表(t_cbssgglxx)表数据库访问层
  *
  * @author chenqi
- * @since 2023-05-17 16:22:46
+ * @since 2023-05-19 14:56:43
  */
 @Mapper
 public interface TCbssgglxxDao extends BaseMapper<TCbssgglxxEntity> {

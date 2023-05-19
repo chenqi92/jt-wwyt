@@ -15,7 +15,7 @@ import java.util.List;
  * 安全活动信息表(t_aqhdxx)表数据库访问层
  *
  * @author chenqi
- * @since 2023-05-17 16:22:48
+ * @since 2023-05-19 14:56:48
  */
 @Mapper
 public interface TAqhdxxDao extends BaseMapper<TAqhdxxEntity> {

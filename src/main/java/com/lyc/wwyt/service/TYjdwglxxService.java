@@ -13,7 +13,7 @@ import java.util.List;
  * 应急队伍管理信息表(t_yjdwglxx)表服务接口
  *
  * @author chenqi
- * @since 2023-05-17 16:22:39
+ * @since 2023-05-19 14:56:47
  */
 public interface TYjdwglxxService extends IService<TYjdwglxxEntity> {
 

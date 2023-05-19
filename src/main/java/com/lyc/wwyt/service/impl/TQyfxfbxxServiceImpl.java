@@ -17,7 +17,7 @@ import java.util.List;
  * 企业安全风险分布信息表(t_qyfxfbxx)表服务实现类
  *
  * @author chenqi
- * @since 2023-05-17 16:22:44
+ * @since 2023-05-19 14:56:38
  */
 @Service("tQyfxfbxxService")
 @RequiredArgsConstructor

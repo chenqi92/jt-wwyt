@@ -13,7 +13,7 @@ import java.util.List;
  * 人员培训信息表(t_rypxxx)表服务接口
  *
  * @author chenqi
- * @since 2023-05-17 16:22:44
+ * @since 2023-05-19 14:56:42
  */
 public interface TRypxxxService extends IService<TRypxxxEntity> {
 

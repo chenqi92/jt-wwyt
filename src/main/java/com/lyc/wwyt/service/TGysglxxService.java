@@ -13,7 +13,7 @@ import java.util.List;
  * 供应商管理信息表(t_gysglxx)表服务接口
  *
  * @author chenqi
- * @since 2023-05-17 16:22:41
+ * @since 2023-05-19 14:56:39
  */
 public interface TGysglxxService extends IService<TGysglxxEntity> {
 

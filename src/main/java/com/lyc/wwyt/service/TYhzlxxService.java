@@ -13,7 +13,7 @@ import java.util.List;
  * 隐患治理信息表(t_yhzlxx)表服务接口
  *
  * @author chenqi
- * @since 2023-05-17 16:22:42
+ * @since 2023-05-19 14:56:41
  */
 public interface TYhzlxxService extends IService<TYhzlxxEntity> {
 
