@@ -113,12 +113,17 @@ new Vue({
                     },
                     responseType: 'arraybuffer',
                 }).then(r => {
+                    const contentType = r.headers.get('Content-Type');
                     if (!r.ok) {
-                        this.$message.error("文件导出失败!");
+                        // 当出现异常时，从后端获取错误提示并展示
+                        return r.text()
+                            .then(textData => {
+                                const res = JSON.parse(textData)
+                                _this.$message.error(res.msg);
+                            });
                     }
                     // 从响应头中获取文件名和文件类型
                     const filename = decodeURIComponent(r.headers.get('Content-Disposition').split("filename*=utf-8''")[1]);
-                    const contentType = r.headers.get('Content-Type');
                     return r.arrayBuffer()
                         .then(arrayBufferData => {
                             return {
@@ -127,7 +132,6 @@ new Vue({
                                 data: new Blob([arrayBufferData], {type: contentType})
                             };
                         });
-                    ;
                 }).then(({filename, contentType, data}) => {
                     // 创建虚拟的 URL
                     const url = URL.createObjectURL(data);
@@ -143,7 +147,7 @@ new Vue({
                 })
             }).catch(error => {
                 // 处理错误
-                this.$message.error(error);
+                _this.$message.error(error);
             })
         },
         handleQuery() {
