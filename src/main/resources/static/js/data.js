@@ -3,11 +3,11 @@ new Vue({
     data() {
         return {
             queryParams: {
-                table: "t_cbsglxx",
+                table: "",
                 id: "",
                 tyscxydm: "",
-                userName: "chenqi",
-                password: "123456"
+                userName: "",
+                password: ""
             },
             tableHeight: 0,
             dataList: [],
@@ -75,7 +75,7 @@ new Vue({
                         })
                         .catch((error) => {
                             _this.dataListLoading = false;
-                            this.$message.error(error);
+                            this.$message.error("不存在的表名或账号密码错误!");
                         });
                 }
             });
@@ -117,8 +117,7 @@ new Vue({
                         // 当出现异常时，从后端获取错误提示并展示
                         return r.text()
                             .then(textData => {
-                                const res = JSON.parse(textData)
-                                _this.$message.error(res.msg);
+                                _this.$message.error("不存在的表名或账号密码错误!");
                             });
                     }
                     // 从响应头中获取文件名和文件类型

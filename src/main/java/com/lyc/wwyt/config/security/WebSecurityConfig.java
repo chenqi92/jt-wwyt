@@ -37,6 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // @formatter:off
         // 防止iframe内容无法展示
         http.headers().frameOptions().disable();
+        http.formLogin().disable();
         // 需要权限验证的提示code和文字说明自定义
         http.exceptionHandling().authenticationEntryPoint(new Http401AuthenticationEntryPoint());
         // 自定义403forbidden
