@@ -5,6 +5,7 @@ import cn.allbs.excel.annotation.Sheet;
 import cn.allbs.idempotent.annotation.Idempotent;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.lyc.wwyt.config.excel.CustomHead;
 import com.lyc.wwyt.config.log.annotation.SysLog;
 import com.lyc.wwyt.entity.TAqsczrclkxxEntity;
 import com.lyc.wwyt.service.TAqsczrclkxxService;
@@ -32,7 +33,7 @@ import java.util.List;
  * 安全生产责任承诺卡信息表(t_aqsczrclkxx)表控制层
  *
  * @author chenqi
- * @since 2023-05-19 14:57:25
+ * @since 2023-05-22 14:50:43
  */
 @Validated
 @RestController
@@ -74,7 +75,7 @@ public class TAqsczrclkxxController {
     @Operation(description = "查询安全生产责任承诺卡信息表信息表数据", summary = "查询安全生产责任承诺卡信息表信息表数据", tags = {"查询所有数据"})
     @GetMapping
     @Idempotent(expireTime = 180, info = "3分钟内最多请求一次!")
-    @ExportExcel(name = "安全生产责任承诺卡信息表", sheets = @Sheet(sheetName = "t_aqsczrclkxx"))
+    @ExportExcel(name = "安全生产责任承诺卡信息表", sheets = @Sheet(sheetName = "t_aqsczrclkxx"), headGenerator = CustomHead.class)
     public List<TAqsczrclkxxVO> selectAll(@ParameterObject TAqsczrclkxxDTO tAqsczrclkxxDTO) {
         return this.tAqsczrclkxxService.queryList(tAqsczrclkxxDTO);
     }

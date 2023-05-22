@@ -37,4 +37,9 @@ public interface SecurityConstant {
      * token
      */
     String TOKEN = "token";
+
+    /**
+     * 超级用户,查询所有企业数据
+     */
+    String SUPER_USER = "admin";
 }

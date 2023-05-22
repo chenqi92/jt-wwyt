@@ -5,6 +5,7 @@ import cn.allbs.excel.annotation.Sheet;
 import cn.allbs.idempotent.annotation.Idempotent;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.lyc.wwyt.config.excel.CustomHead;
 import com.lyc.wwyt.config.log.annotation.SysLog;
 import com.lyc.wwyt.entity.TYjylpjxxEntity;
 import com.lyc.wwyt.service.TYjylpjxxService;
@@ -32,7 +33,7 @@ import java.util.List;
  * 应急演练评价表（t_yjylpjxx）(t_yjylpjxx)表控制层
  *
  * @author chenqi
- * @since 2023-05-19 14:57:26
+ * @since 2023-05-22 14:50:43
  */
 @Validated
 @RestController
@@ -74,7 +75,7 @@ public class TYjylpjxxController {
     @Operation(description = "查询应急演练评价表（t_yjylpjxx）信息表数据", summary = "查询应急演练评价表（t_yjylpjxx）信息表数据", tags = {"查询所有数据"})
     @GetMapping
     @Idempotent(expireTime = 180, info = "3分钟内最多请求一次!")
-    @ExportExcel(name = "应急演练评价表（t_yjylpjxx）", sheets = @Sheet(sheetName = "t_yjylpjxx"))
+    @ExportExcel(name = "应急演练评价表（t_yjylpjxx）", sheets = @Sheet(sheetName = "t_yjylpjxx"), headGenerator = CustomHead.class)
     public List<TYjylpjxxVO> selectAll(@ParameterObject TYjylpjxxDTO tYjylpjxxDTO) {
         return this.tYjylpjxxService.queryList(tYjylpjxxDTO);
     }

@@ -5,6 +5,7 @@ import cn.allbs.excel.annotation.Sheet;
 import cn.allbs.idempotent.annotation.Idempotent;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.lyc.wwyt.config.excel.CustomHead;
 import com.lyc.wwyt.config.log.annotation.SysLog;
 import com.lyc.wwyt.entity.TPxjyxgpjjlEntity;
 import com.lyc.wwyt.service.TPxjyxgpjjlService;
@@ -32,7 +33,7 @@ import java.util.List;
  * 培训教育效果评价记录表(t_pxjyxgpjjl)表控制层
  *
  * @author chenqi
- * @since 2023-05-19 14:57:27
+ * @since 2023-05-22 14:50:44
  */
 @Validated
 @RestController
@@ -74,7 +75,7 @@ public class TPxjyxgpjjlController {
     @Operation(description = "查询培训教育效果评价记录表信息表数据", summary = "查询培训教育效果评价记录表信息表数据", tags = {"查询所有数据"})
     @GetMapping
     @Idempotent(expireTime = 180, info = "3分钟内最多请求一次!")
-    @ExportExcel(name = "培训教育效果评价记录表", sheets = @Sheet(sheetName = "t_pxjyxgpjjl"))
+    @ExportExcel(name = "培训教育效果评价记录表", sheets = @Sheet(sheetName = "t_pxjyxgpjjl"), headGenerator = CustomHead.class)
     public List<TPxjyxgpjjlVO> selectAll(@ParameterObject TPxjyxgpjjlDTO tPxjyxgpjjlDTO) {
         return this.tPxjyxgpjjlService.queryList(tPxjyxgpjjlDTO);
     }

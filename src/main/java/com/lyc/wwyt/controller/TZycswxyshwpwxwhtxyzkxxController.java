@@ -5,6 +5,7 @@ import cn.allbs.excel.annotation.Sheet;
 import cn.allbs.idempotent.annotation.Idempotent;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.lyc.wwyt.config.excel.CustomHead;
 import com.lyc.wwyt.config.log.annotation.SysLog;
 import com.lyc.wwyt.entity.TZycswxyshwpwxwhtxyzkxxEntity;
 import com.lyc.wwyt.service.TZycswxyshwpwxwhtxyzkxxService;
@@ -32,7 +33,7 @@ import java.util.List;
  * 作业场所岗位风险应知卡信息表(t_zycswxyshwpwxwhtxyzkxx)表控制层
  *
  * @author chenqi
- * @since 2023-05-19 14:57:27
+ * @since 2023-05-22 14:50:42
  */
 @Validated
 @RestController
@@ -74,7 +75,7 @@ public class TZycswxyshwpwxwhtxyzkxxController {
     @Operation(description = "查询作业场所岗位风险应知卡信息表信息表数据", summary = "查询作业场所岗位风险应知卡信息表信息表数据", tags = {"查询所有数据"})
     @GetMapping
     @Idempotent(expireTime = 180, info = "3分钟内最多请求一次!")
-    @ExportExcel(name = "作业场所岗位风险应知卡信息表", sheets = @Sheet(sheetName = "t_zycswxyshwpwxwhtxyzkxx"))
+    @ExportExcel(name = "作业场所岗位风险应知卡信息表", sheets = @Sheet(sheetName = "t_zycswxyshwpwxwhtxyzkxx"), headGenerator = CustomHead.class)
     public List<TZycswxyshwpwxwhtxyzkxxVO> selectAll(@ParameterObject TZycswxyshwpwxwhtxyzkxxDTO tZycswxyshwpwxwhtxyzkxxDTO) {
         return this.tZycswxyshwpwxwhtxyzkxxService.queryList(tZycswxyshwpwxwhtxyzkxxDTO);
     }
