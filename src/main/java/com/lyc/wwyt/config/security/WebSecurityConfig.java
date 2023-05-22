@@ -3,10 +3,12 @@ package com.lyc.wwyt.config.security;
 import com.lyc.wwyt.config.security.handler.Http401AuthenticationEntryPoint;
 import com.lyc.wwyt.config.security.handler.Http403AccessDeniedEntryPoint;
 import com.lyc.wwyt.config.security.handler.PermitAllUrlProperties;
+import com.lyc.wwyt.config.security.service.CustomUserServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -32,12 +34,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Resource
     private PermitAllUrlProperties permitAllUrlProperties;
 
+    @Resource
+    private CustomUserServiceImpl customUserService;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         // @formatter:off
         // 防止iframe内容无法展示
         http.headers().frameOptions().disable();
-        http.formLogin().disable();
         // 需要权限验证的提示code和文字说明自定义
         http.exceptionHandling().authenticationEntryPoint(new Http401AuthenticationEntryPoint());
         // 自定义403forbidden
@@ -59,6 +63,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         // @formatter:on
+    }
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(customUserService).passwordEncoder(passwordEncoder());
     }
 
     @Bean
