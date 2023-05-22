@@ -10,7 +10,7 @@ import lombok.EqualsAndHashCode;
  * 临时用电作业审批流转记录表(t_lsydzy_splz)DTO
  *
  * @author lhh
- * @since 2023-05-18 15:55:02
+ * @since 2023-05-22 14:22:30
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

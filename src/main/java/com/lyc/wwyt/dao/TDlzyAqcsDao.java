@@ -15,17 +15,10 @@ import java.util.List;
  * 断路作业安全措施表(t_dlzy_aqcs)表数据库访问层
  *
  * @author lhh
- * @since 2023-05-18 15:54:28
+ * @since 2023-05-22 14:13:41
  */
 @Mapper
 public interface TDlzyAqcsDao extends BaseMapper<TDlzyAqcsEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TDlzyAqcsVO>
-     */
-    List<TDlzyAqcsVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TDlzyAqcsDao extends BaseMapper<TDlzyAqcsEntity> {
      * @param tDlzyAqcsDTO 查询参数
      * @return IPage<TDlzyAqcsVO>
      */
-    IPage<TDlzyAqcsVO> selectList(Page<TDlzyAqcsDTO> page, @Param("tDlzyAqcsDTO") TDlzyAqcsDTO tDlzyAqcsDTO);
+    IPage<TDlzyAqcsVO> queryList(Page<TDlzyAqcsDTO> page, @Param("tDlzyAqcsDTO") TDlzyAqcsDTO tDlzyAqcsDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tDlzyAqcsDTO 查询参数
+     * @return List<TDlzyAqcsVO>
+     */
+    List<TDlzyAqcsVO> queryList(@Param("tDlzyAqcsDTO") TDlzyAqcsDTO tDlzyAqcsDTO);
 }

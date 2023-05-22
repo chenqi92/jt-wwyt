@@ -14,32 +14,31 @@
     </resultMap>
 
     <sql id="baseColumn">
-        id
+        `id`
         ,
-        zyid,        
-        zylx,        
-        xh,        
-        aqcsnr,        
-        sfsj,        
-        qrr,        
-        qmtp
+        `zyid`,        
+        `zylx`,        
+        `xh`,        
+        `aqcsnr`,        
+        `sfsj`,        
+        `qrr`,        
+        `qmtp`
     </sql>
 
-    <select id="selectList" resultType="com.lyc.wwyt.vo.TDlzyAqcsVO">
+    <select id="queryList" resultType="com.lyc.wwyt.vo.TDlzyAqcsVO">
         select
-        id,
-        zyid,
-        zylx,
-        xh,
-        aqcsnr,
-        sfsj,
-        qrr,
-        qmtp
+        `id`,
+        `zyid`,
+        `zylx`,
+        `xh`,
+        `aqcsnr`,
+        `sfsj`,
+        `qrr`,
+        `qmtp`
         from t_dlzy_aqcs
         where delete_mark = 0
-        <if test="tDlzyAqcsDTO != null and tDlzyAqcsDTO != ''">
+        <if test="tDlzyAqcsDTO.id != null and tDlzyAqcsDTO.id != ''">
             AND id = #{tDlzyAqcsDTO.id}
         </if>
     </select>
-
 </mapper>

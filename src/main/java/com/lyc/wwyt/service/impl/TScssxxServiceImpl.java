@@ -17,23 +17,13 @@ import java.util.List;
  * 生产设施信息表(t_scssxx)表服务实现类
  *
  * @author lhh
- * @since 2023-05-17 17:22:12
+ * @since 2023-05-22 14:22:37
  */
 @Service("tScssxxService")
 @RequiredArgsConstructor
 public class TScssxxServiceImpl extends ServiceImpl<TScssxxDao, TScssxxEntity> implements TScssxxService {
 
     private final TScssxxDao tScssxxDao;
-
-    /**
-     * 查询所有数据
-     *
-     * @return 所有数据
-     */
-    @Override
-    public List<TScssxxVO> selectList() {
-        return this.tScssxxDao.selectList();
-    }
 
     /**
      * 分页查询所有数据
@@ -43,7 +33,18 @@ public class TScssxxServiceImpl extends ServiceImpl<TScssxxDao, TScssxxEntity> i
      * @return 指定页码和条数的数据
      */
     @Override
-    public IPage<TScssxxVO> selectPage(Page<TScssxxDTO> page, TScssxxDTO tScssxxDTO) {
-        return this.tScssxxDao.selectList(page, tScssxxDTO);
+    public IPage<TScssxxVO> queryPage(Page<TScssxxDTO> page, TScssxxDTO tScssxxDTO) {
+        return this.tScssxxDao.queryList(page, tScssxxDTO);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param tScssxxDTO 查询参数
+     * @return 所有数据
+     */
+    @Override
+    public List<TScssxxVO> queryList(TScssxxDTO tScssxxDTO) {
+        return this.tScssxxDao.queryList(tScssxxDTO);
     }
 }

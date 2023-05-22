@@ -15,17 +15,10 @@ import java.util.List;
  * 生产设备报废信息(t_scssbfxx)表数据库访问层
  *
  * @author lhh
- * @since 2023-05-17 17:22:09
+ * @since 2023-05-22 14:22:33
  */
 @Mapper
 public interface TScssbfxxDao extends BaseMapper<TScssbfxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TScssbfxxVO>
-     */
-    List<TScssbfxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TScssbfxxDao extends BaseMapper<TScssbfxxEntity> {
      * @param tScssbfxxDTO 查询参数
      * @return IPage<TScssbfxxVO>
      */
-    IPage<TScssbfxxVO> selectList(Page<TScssbfxxDTO> page, @Param("tScssbfxxDTO") TScssbfxxDTO tScssbfxxDTO);
+    IPage<TScssbfxxVO> queryList(Page<TScssbfxxDTO> page, @Param("tScssbfxxDTO") TScssbfxxDTO tScssbfxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tScssbfxxDTO 查询参数
+     * @return List<TScssbfxxVO>
+     */
+    List<TScssbfxxVO> queryList(@Param("tScssbfxxDTO") TScssbfxxDTO tScssbfxxDTO);
 }

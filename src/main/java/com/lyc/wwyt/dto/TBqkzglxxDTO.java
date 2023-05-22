@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
  * 标签扩展管理信息表(t_bqkzglxx)DTO
  *
  * @author lhh
- * @since 2023-05-18 16:32:22
+ * @since 2023-05-22 14:13:07
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

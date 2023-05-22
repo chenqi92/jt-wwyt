@@ -17,23 +17,13 @@ import java.util.List;
  * 点位检查信息表(t_dwjcxx)表服务实现类
  *
  * @author lhh
- * @since 2023-05-17 17:22:13
+ * @since 2023-05-22 14:16:23
  */
 @Service("tDwjcxxService")
 @RequiredArgsConstructor
 public class TDwjcxxServiceImpl extends ServiceImpl<TDwjcxxDao, TDwjcxxEntity> implements TDwjcxxService {
 
     private final TDwjcxxDao tDwjcxxDao;
-
-    /**
-     * 查询所有数据
-     *
-     * @return 所有数据
-     */
-    @Override
-    public List<TDwjcxxVO> selectList() {
-        return this.tDwjcxxDao.selectList();
-    }
 
     /**
      * 分页查询所有数据
@@ -43,7 +33,18 @@ public class TDwjcxxServiceImpl extends ServiceImpl<TDwjcxxDao, TDwjcxxEntity> i
      * @return 指定页码和条数的数据
      */
     @Override
-    public IPage<TDwjcxxVO> selectPage(Page<TDwjcxxDTO> page, TDwjcxxDTO tDwjcxxDTO) {
-        return this.tDwjcxxDao.selectList(page, tDwjcxxDTO);
+    public IPage<TDwjcxxVO> queryPage(Page<TDwjcxxDTO> page, TDwjcxxDTO tDwjcxxDTO) {
+        return this.tDwjcxxDao.queryList(page, tDwjcxxDTO);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param tDwjcxxDTO 查询参数
+     * @return 所有数据
+     */
+    @Override
+    public List<TDwjcxxVO> queryList(TDwjcxxDTO tDwjcxxDTO) {
+        return this.tDwjcxxDao.queryList(tDwjcxxDTO);
     }
 }

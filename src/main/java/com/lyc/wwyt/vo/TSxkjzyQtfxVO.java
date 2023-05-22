@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
  * 受限空间作业气体分析数据表(t_sxkjzy_qtfx)VO
  *
  * @author lhh
- * @since 2023-05-18 15:55:17
+ * @since 2023-05-22 14:22:38
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

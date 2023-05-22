@@ -15,17 +15,10 @@ import java.util.List;
  * 定位信标管理信息表(t_dwxbglxx)表数据库访问层
  *
  * @author lhh
- * @since 2023-05-18 16:32:18
+ * @since 2023-05-22 14:16:23
  */
 @Mapper
 public interface TDwxbglxxDao extends BaseMapper<TDwxbglxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TDwxbglxxVO>
-     */
-    List<TDwxbglxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TDwxbglxxDao extends BaseMapper<TDwxbglxxEntity> {
      * @param tDwxbglxxDTO 查询参数
      * @return IPage<TDwxbglxxVO>
      */
-    IPage<TDwxbglxxVO> selectList(Page<TDwxbglxxDTO> page, @Param("tDwxbglxxDTO") TDwxbglxxDTO tDwxbglxxDTO);
+    IPage<TDwxbglxxVO> queryList(Page<TDwxbglxxDTO> page, @Param("tDwxbglxxDTO") TDwxbglxxDTO tDwxbglxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tDwxbglxxDTO 查询参数
+     * @return List<TDwxbglxxVO>
+     */
+    List<TDwxbglxxVO> queryList(@Param("tDwxbglxxDTO") TDwxbglxxDTO tDwxbglxxDTO);
 }

@@ -15,17 +15,10 @@ import java.util.List;
  * 动土作业信息表(t_dtzy)表数据库访问层
  *
  * @author lhh
- * @since 2023-05-18 15:54:33
+ * @since 2023-05-22 14:13:41
  */
 @Mapper
 public interface TDtzyDao extends BaseMapper<TDtzyEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TDtzyVO>
-     */
-    List<TDtzyVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TDtzyDao extends BaseMapper<TDtzyEntity> {
      * @param tDtzyDTO 查询参数
      * @return IPage<TDtzyVO>
      */
-    IPage<TDtzyVO> selectList(Page<TDtzyDTO> page, @Param("tDtzyDTO") TDtzyDTO tDtzyDTO);
+    IPage<TDtzyVO> queryList(Page<TDtzyDTO> page, @Param("tDtzyDTO") TDtzyDTO tDtzyDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tDtzyDTO 查询参数
+     * @return List<TDtzyVO>
+     */
+    List<TDtzyVO> queryList(@Param("tDtzyDTO") TDtzyDTO tDtzyDTO);
 }

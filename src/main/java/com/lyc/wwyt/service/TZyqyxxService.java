@@ -13,16 +13,9 @@ import java.util.List;
  * 作业区域信息表(t_zyqyxx)表服务接口
  *
  * @author lhh
- * @since 2023-05-18 16:44:13
+ * @since 2023-05-22 14:22:39
  */
 public interface TZyqyxxService extends IService<TZyqyxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TZyqyxxVO>
-     */
-    List<TZyqyxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -31,5 +24,13 @@ public interface TZyqyxxService extends IService<TZyqyxxEntity> {
      * @param tZyqyxxDTO 查询参数
      * @return IPage<TZyqyxxVO> tZyqyxxDTO
      */
-    IPage<TZyqyxxVO> selectPage(Page<TZyqyxxDTO> page, TZyqyxxDTO tZyqyxxDTO);
+    IPage<TZyqyxxVO> queryPage(Page<TZyqyxxDTO> page, TZyqyxxDTO tZyqyxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tZyqyxxDTO 查询参数
+     * @return List<TZyqyxxVO>
+     */
+    List<TZyqyxxVO> queryList(TZyqyxxDTO tZyqyxxDTO);
 }

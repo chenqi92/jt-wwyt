@@ -10,7 +10,7 @@ import lombok.EqualsAndHashCode;
  * 临时用电安全措施表(t_lsydzy_aqcs)VO
  *
  * @author lhh
- * @since 2023-05-18 15:54:57
+ * @since 2023-05-22 14:22:30
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

@@ -13,7 +13,7 @@ import lombok.EqualsAndHashCode;
  * 企业人员信息表(t_qyryxx)DTO
  *
  * @author lhh
- * @since 2023-05-17 11:20:43
+ * @since 2023-05-22 14:22:32
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

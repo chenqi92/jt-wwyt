@@ -15,17 +15,10 @@ import java.util.List;
  * 生产区域信息表(t_scqyxx)表数据库访问层
  *
  * @author lhh
- * @since 2023-05-17 17:22:12
+ * @since 2023-05-22 14:22:33
  */
 @Mapper
 public interface TScqyxxDao extends BaseMapper<TScqyxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TScqyxxVO>
-     */
-    List<TScqyxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TScqyxxDao extends BaseMapper<TScqyxxEntity> {
      * @param tScqyxxDTO 查询参数
      * @return IPage<TScqyxxVO>
      */
-    IPage<TScqyxxVO> selectList(Page<TScqyxxDTO> page, @Param("tScqyxxDTO") TScqyxxDTO tScqyxxDTO);
+    IPage<TScqyxxVO> queryList(Page<TScqyxxDTO> page, @Param("tScqyxxDTO") TScqyxxDTO tScqyxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tScqyxxDTO 查询参数
+     * @return List<TScqyxxVO>
+     */
+    List<TScqyxxVO> queryList(@Param("tScqyxxDTO") TScqyxxDTO tScqyxxDTO);
 }

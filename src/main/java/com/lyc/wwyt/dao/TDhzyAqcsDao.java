@@ -15,17 +15,10 @@ import java.util.List;
  * 动火作业安全措施表(t_dhzy_aqcs)表数据库访问层
  *
  * @author lhh
- * @since 2023-05-18 15:54:21
+ * @since 2023-05-22 14:13:08
  */
 @Mapper
 public interface TDhzyAqcsDao extends BaseMapper<TDhzyAqcsEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TDhzyAqcsVO>
-     */
-    List<TDhzyAqcsVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TDhzyAqcsDao extends BaseMapper<TDhzyAqcsEntity> {
      * @param tDhzyAqcsDTO 查询参数
      * @return IPage<TDhzyAqcsVO>
      */
-    IPage<TDhzyAqcsVO> selectList(Page<TDhzyAqcsDTO> page, @Param("tDhzyAqcsDTO") TDhzyAqcsDTO tDhzyAqcsDTO);
+    IPage<TDhzyAqcsVO> queryList(Page<TDhzyAqcsDTO> page, @Param("tDhzyAqcsDTO") TDhzyAqcsDTO tDhzyAqcsDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tDhzyAqcsDTO 查询参数
+     * @return List<TDhzyAqcsVO>
+     */
+    List<TDhzyAqcsVO> queryList(@Param("tDhzyAqcsDTO") TDhzyAqcsDTO tDhzyAqcsDTO);
 }

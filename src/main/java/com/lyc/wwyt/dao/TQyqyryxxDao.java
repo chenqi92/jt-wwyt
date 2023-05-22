@@ -15,17 +15,10 @@ import java.util.List;
  * 人员在岗在位信息表(t_qyqyryxx)表数据库访问层
  *
  * @author lhh
- * @since 2023-05-18 16:32:14
+ * @since 2023-05-22 14:22:32
  */
 @Mapper
 public interface TQyqyryxxDao extends BaseMapper<TQyqyryxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TQyqyryxxVO>
-     */
-    List<TQyqyryxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TQyqyryxxDao extends BaseMapper<TQyqyryxxEntity> {
      * @param tQyqyryxxDTO 查询参数
      * @return IPage<TQyqyryxxVO>
      */
-    IPage<TQyqyryxxVO> selectList(Page<TQyqyryxxDTO> page, @Param("tQyqyryxxDTO") TQyqyryxxDTO tQyqyryxxDTO);
+    IPage<TQyqyryxxVO> queryList(Page<TQyqyryxxDTO> page, @Param("tQyqyryxxDTO") TQyqyryxxDTO tQyqyryxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tQyqyryxxDTO 查询参数
+     * @return List<TQyqyryxxVO>
+     */
+    List<TQyqyryxxVO> queryList(@Param("tQyqyryxxDTO") TQyqyryxxDTO tQyqyryxxDTO);
 }

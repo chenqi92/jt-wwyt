@@ -15,17 +15,10 @@ import java.util.List;
  * 高处作业信息表(t_gczy)表数据库访问层
  *
  * @author lhh
- * @since 2023-05-18 15:54:47
+ * @since 2023-05-22 14:16:25
  */
 @Mapper
 public interface TGczyDao extends BaseMapper<TGczyEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TGczyVO>
-     */
-    List<TGczyVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TGczyDao extends BaseMapper<TGczyEntity> {
      * @param tGczyDTO 查询参数
      * @return IPage<TGczyVO>
      */
-    IPage<TGczyVO> selectList(Page<TGczyDTO> page, @Param("tGczyDTO") TGczyDTO tGczyDTO);
+    IPage<TGczyVO> queryList(Page<TGczyDTO> page, @Param("tGczyDTO") TGczyDTO tGczyDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tGczyDTO 查询参数
+     * @return List<TGczyVO>
+     */
+    List<TGczyVO> queryList(@Param("tGczyDTO") TGczyDTO tGczyDTO);
 }

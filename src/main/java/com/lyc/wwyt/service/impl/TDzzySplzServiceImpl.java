@@ -17,23 +17,13 @@ import java.util.List;
  * 吊装作业审批流转记录表(t_dzzy_splz)表服务实现类
  *
  * @author lhh
- * @since 2023-05-18 15:54:44
+ * @since 2023-05-22 14:16:25
  */
 @Service("tDzzySplzService")
 @RequiredArgsConstructor
 public class TDzzySplzServiceImpl extends ServiceImpl<TDzzySplzDao, TDzzySplzEntity> implements TDzzySplzService {
 
     private final TDzzySplzDao tDzzySplzDao;
-
-    /**
-     * 查询所有数据
-     *
-     * @return 所有数据
-     */
-    @Override
-    public List<TDzzySplzVO> selectList() {
-        return this.tDzzySplzDao.selectList();
-    }
 
     /**
      * 分页查询所有数据
@@ -43,7 +33,18 @@ public class TDzzySplzServiceImpl extends ServiceImpl<TDzzySplzDao, TDzzySplzEnt
      * @return 指定页码和条数的数据
      */
     @Override
-    public IPage<TDzzySplzVO> selectPage(Page<TDzzySplzDTO> page, TDzzySplzDTO tDzzySplzDTO) {
-        return this.tDzzySplzDao.selectList(page, tDzzySplzDTO);
+    public IPage<TDzzySplzVO> queryPage(Page<TDzzySplzDTO> page, TDzzySplzDTO tDzzySplzDTO) {
+        return this.tDzzySplzDao.queryList(page, tDzzySplzDTO);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param tDzzySplzDTO 查询参数
+     * @return 所有数据
+     */
+    @Override
+    public List<TDzzySplzVO> queryList(TDzzySplzDTO tDzzySplzDTO) {
+        return this.tDzzySplzDao.queryList(tDzzySplzDTO);
     }
 }

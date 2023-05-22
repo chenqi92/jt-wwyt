@@ -17,23 +17,13 @@ import java.util.List;
  * 受限空间作业审批流转记录表(t_sxkjzy_splz)表服务实现类
  *
  * @author lhh
- * @since 2023-05-18 15:55:18
+ * @since 2023-05-22 14:22:38
  */
 @Service("tSxkjzySplzService")
 @RequiredArgsConstructor
 public class TSxkjzySplzServiceImpl extends ServiceImpl<TSxkjzySplzDao, TSxkjzySplzEntity> implements TSxkjzySplzService {
 
     private final TSxkjzySplzDao tSxkjzySplzDao;
-
-    /**
-     * 查询所有数据
-     *
-     * @return 所有数据
-     */
-    @Override
-    public List<TSxkjzySplzVO> selectList() {
-        return this.tSxkjzySplzDao.selectList();
-    }
 
     /**
      * 分页查询所有数据
@@ -43,7 +33,18 @@ public class TSxkjzySplzServiceImpl extends ServiceImpl<TSxkjzySplzDao, TSxkjzyS
      * @return 指定页码和条数的数据
      */
     @Override
-    public IPage<TSxkjzySplzVO> selectPage(Page<TSxkjzySplzDTO> page, TSxkjzySplzDTO tSxkjzySplzDTO) {
-        return this.tSxkjzySplzDao.selectList(page, tSxkjzySplzDTO);
+    public IPage<TSxkjzySplzVO> queryPage(Page<TSxkjzySplzDTO> page, TSxkjzySplzDTO tSxkjzySplzDTO) {
+        return this.tSxkjzySplzDao.queryList(page, tSxkjzySplzDTO);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param tSxkjzySplzDTO 查询参数
+     * @return 所有数据
+     */
+    @Override
+    public List<TSxkjzySplzVO> queryList(TSxkjzySplzDTO tSxkjzySplzDTO) {
+        return this.tSxkjzySplzDao.queryList(tSxkjzySplzDTO);
     }
 }

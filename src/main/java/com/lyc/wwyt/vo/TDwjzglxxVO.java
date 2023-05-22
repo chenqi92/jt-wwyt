@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
  * 定位基站管理信息表(t_dwjzglxx)VO
  *
  * @author lhh
- * @since 2023-05-18 16:32:18
+ * @since 2023-05-22 14:16:23
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

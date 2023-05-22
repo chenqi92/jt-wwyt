@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
  * 关键装置重点部位信息表(t_gjzzzdbwxx)DTO
  *
  * @author lhh
- * @since 2023-05-17 17:22:12
+ * @since 2023-05-22 14:16:27
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

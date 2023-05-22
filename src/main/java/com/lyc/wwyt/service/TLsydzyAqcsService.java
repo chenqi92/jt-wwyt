@@ -13,16 +13,9 @@ import java.util.List;
  * 临时用电安全措施表(t_lsydzy_aqcs)表服务接口
  *
  * @author lhh
- * @since 2023-05-18 15:54:56
+ * @since 2023-05-22 14:22:29
  */
 public interface TLsydzyAqcsService extends IService<TLsydzyAqcsEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TLsydzyAqcsVO>
-     */
-    List<TLsydzyAqcsVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -31,5 +24,13 @@ public interface TLsydzyAqcsService extends IService<TLsydzyAqcsEntity> {
      * @param tLsydzyAqcsDTO 查询参数
      * @return IPage<TLsydzyAqcsVO> tLsydzyAqcsDTO
      */
-    IPage<TLsydzyAqcsVO> selectPage(Page<TLsydzyAqcsDTO> page, TLsydzyAqcsDTO tLsydzyAqcsDTO);
+    IPage<TLsydzyAqcsVO> queryPage(Page<TLsydzyAqcsDTO> page, TLsydzyAqcsDTO tLsydzyAqcsDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tLsydzyAqcsDTO 查询参数
+     * @return List<TLsydzyAqcsVO>
+     */
+    List<TLsydzyAqcsVO> queryList(TLsydzyAqcsDTO tLsydzyAqcsDTO);
 }

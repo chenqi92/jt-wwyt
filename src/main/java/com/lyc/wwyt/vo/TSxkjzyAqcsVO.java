@@ -10,7 +10,7 @@ import lombok.EqualsAndHashCode;
  * 受限空间作业安全措施表(t_sxkjzy_aqcs)VO
  *
  * @author lhh
- * @since 2023-05-18 15:55:14
+ * @since 2023-05-22 14:22:37
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

@@ -1,17 +1,20 @@
 package com.lyc.wwyt.controller;
 
+import cn.allbs.excel.annotation.ExportExcel;
+import cn.allbs.excel.annotation.Sheet;
 import cn.allbs.idempotent.annotation.Idempotent;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.lyc.wwyt.config.excel.CustomHead;
 import com.lyc.wwyt.config.log.annotation.SysLog;
 import com.lyc.wwyt.entity.TDlzyEntity;
 import com.lyc.wwyt.service.TDlzyService;
+import com.lyc.wwyt.service.CommonService;
 import com.lyc.wwyt.dto.TDlzyDTO;
 import com.lyc.wwyt.vo.TDlzyVO;
-import io.swagger.v3.oas.annotations.OpenAPIDefinition;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.Parameters;
+import com.lyc.wwyt.vo.TableInfoVO;
+import com.lyc.wwyt.utils.NameUtils;
+import io.swagger.v3.oas.annotations.*;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -23,13 +26,14 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
  * 断路作业信息表(t_dlzy)表控制层
  *
  * @author lhh
- * @since 2023-05-18 15:54:27
+ * @since 2023-05-22 17:47:36
  */
 @Validated
 @RestController
@@ -43,6 +47,11 @@ public class TDlzyController {
      * 服务对象
      */
     private final TDlzyService tDlzyService;
+
+    /**
+     * 通用数据查询
+     */
+    private final CommonService commonService;
 
     /**
      * 断路作业信息表新增或修改
@@ -59,28 +68,52 @@ public class TDlzyController {
     }
 
     /**
-     * 查询当前账户下所有断路作业信息表     *
+     * 查询当前账户下所有断路作业信息表信息
      *
-     * @return List<TDlzyEntity> 当前账户下所有断路作业信息表
+     * @return List<TDlzyEntity> 当前账户下所有断路作业信息表信息
      */
     @Operation(description = "查询断路作业信息表信息表数据", summary = "查询断路作业信息表信息表数据", tags = {"查询所有数据"})
     @GetMapping
     @Idempotent(expireTime = 180, info = "3分钟内最多请求一次!")
-    public List<TDlzyVO> selectAll() {
-        return this.tDlzyService.selectList();
+    @ExportExcel(name = "断路作业信息表", sheets = @Sheet(sheetName = "t_dlzy"), headGenerator = CustomHead.class)
+    public List<TDlzyVO> selectAll(@ParameterObject TDlzyDTO tDlzyDTO) {
+        return this.tDlzyService.queryList(tDlzyDTO);
     }
 
     /**
-     * 分页查询当前账户下所有断路作业信息表     *
+     * 分页查询当前账户下所有断路作业信息表信息
      *
-     * @return List<TDlzyDTO> 分页当前账户下所有断路作业信息表
+     * @return List<TDlzyDTO> 分页当前账户下所有断路作业信息表信息
      */
     @Operation(description = "分页断路作业信息表信息表数据", summary = "分页查询断路作业信息表信息表数据", tags = {"分页查询所有数据"})
     @GetMapping("page")
     @Parameters({@Parameter(description = "当前页", name = "current", in = ParameterIn.QUERY, required = true, schema = @Schema(implementation = Integer.class)), @Parameter(description = "当前页条数", name = "size", in = ParameterIn.QUERY, required = true, schema = @Schema(implementation = Integer.class))})
     @Idempotent(expireTime = 180, info = "3分钟内最多请求一次!", key = "#page.current")
     public IPage<TDlzyVO> selectPage(@ParameterObject Page<TDlzyDTO> page, @ParameterObject TDlzyDTO tDlzyDTO) {
-        return this.tDlzyService.selectPage(page, tDlzyDTO);
+        return this.tDlzyService.queryPage(page, tDlzyDTO);
+    }
+
+    /**
+     * 查询断路作业信息表的所有字段信息
+     *
+     * @return 所有字段信息
+     */
+    @GetMapping("heads")
+    @Hidden
+    public List<TableInfoVO> heads() {
+        // 查询所有列名
+        List<TableInfoVO> queryInfos = this.commonService.queryTableHeaders("t_dlzy");
+        List<TableInfoVO> tableInfoVOS = new LinkedList<>();
+        queryInfos.forEach(a -> {
+            if (!"delete_mark".equals(a.getName())) {
+                TableInfoVO table = new TableInfoVO();
+                table.setCode(NameUtils.getClassName(a.getName()));
+                table.setName(a.getName());
+                table.setComment(a.getComment());
+                tableInfoVOS.add(table);
+            }
+        });
+        return tableInfoVOS;
     }
 
 }

@@ -15,17 +15,10 @@ import java.util.List;
  * 作业区域信息表(t_zyqyxx)表数据库访问层
  *
  * @author lhh
- * @since 2023-05-18 16:44:12
+ * @since 2023-05-22 14:22:39
  */
 @Mapper
 public interface TZyqyxxDao extends BaseMapper<TZyqyxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TZyqyxxVO>
-     */
-    List<TZyqyxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TZyqyxxDao extends BaseMapper<TZyqyxxEntity> {
      * @param tZyqyxxDTO 查询参数
      * @return IPage<TZyqyxxVO>
      */
-    IPage<TZyqyxxVO> selectList(Page<TZyqyxxDTO> page, @Param("tZyqyxxDTO") TZyqyxxDTO tZyqyxxDTO);
+    IPage<TZyqyxxVO> queryList(Page<TZyqyxxDTO> page, @Param("tZyqyxxDTO") TZyqyxxDTO tZyqyxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tZyqyxxDTO 查询参数
+     * @return List<TZyqyxxVO>
+     */
+    List<TZyqyxxVO> queryList(@Param("tZyqyxxDTO") TZyqyxxDTO tZyqyxxDTO);
 }

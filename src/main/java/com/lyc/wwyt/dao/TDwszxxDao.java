@@ -15,17 +15,10 @@ import java.util.List;
  * 点位设置信息表(t_dwszxx)表数据库访问层
  *
  * @author lhh
- * @since 2023-05-17 17:22:12
+ * @since 2023-05-22 14:16:23
  */
 @Mapper
 public interface TDwszxxDao extends BaseMapper<TDwszxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TDwszxxVO>
-     */
-    List<TDwszxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TDwszxxDao extends BaseMapper<TDwszxxEntity> {
      * @param tDwszxxDTO 查询参数
      * @return IPage<TDwszxxVO>
      */
-    IPage<TDwszxxVO> selectList(Page<TDwszxxDTO> page, @Param("tDwszxxDTO") TDwszxxDTO tDwszxxDTO);
+    IPage<TDwszxxVO> queryList(Page<TDwszxxDTO> page, @Param("tDwszxxDTO") TDwszxxDTO tDwszxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tDwszxxDTO 查询参数
+     * @return List<TDwszxxVO>
+     */
+    List<TDwszxxVO> queryList(@Param("tDwszxxDTO") TDwszxxDTO tDwszxxDTO);
 }

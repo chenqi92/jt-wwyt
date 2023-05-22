@@ -15,17 +15,10 @@ import java.util.List;
  * 断路作业信息表(t_dlzy)表数据库访问层
  *
  * @author lhh
- * @since 2023-05-18 15:54:26
+ * @since 2023-05-22 14:13:40
  */
 @Mapper
 public interface TDlzyDao extends BaseMapper<TDlzyEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TDlzyVO>
-     */
-    List<TDlzyVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TDlzyDao extends BaseMapper<TDlzyEntity> {
      * @param tDlzyDTO 查询参数
      * @return IPage<TDlzyVO>
      */
-    IPage<TDlzyVO> selectList(Page<TDlzyDTO> page, @Param("tDlzyDTO") TDlzyDTO tDlzyDTO);
+    IPage<TDlzyVO> queryList(Page<TDlzyDTO> page, @Param("tDlzyDTO") TDlzyDTO tDlzyDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tDlzyDTO 查询参数
+     * @return List<TDlzyVO>
+     */
+    List<TDlzyVO> queryList(@Param("tDlzyDTO") TDlzyDTO tDlzyDTO);
 }

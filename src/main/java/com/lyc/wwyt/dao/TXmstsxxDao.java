@@ -15,17 +15,10 @@ import java.util.List;
  * 项目三同时信息表(t_xmstsxx)表数据库访问层
  *
  * @author lhh
- * @since 2023-05-17 17:19:44
+ * @since 2023-05-22 14:22:38
  */
 @Mapper
 public interface TXmstsxxDao extends BaseMapper<TXmstsxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TXmstsxxVO>
-     */
-    List<TXmstsxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TXmstsxxDao extends BaseMapper<TXmstsxxEntity> {
      * @param tXmstsxxDTO 查询参数
      * @return IPage<TXmstsxxVO>
      */
-    IPage<TXmstsxxVO> selectList(Page<TXmstsxxDTO> page, @Param("tXmstsxxDTO") TXmstsxxDTO tXmstsxxDTO);
+    IPage<TXmstsxxVO> queryList(Page<TXmstsxxDTO> page, @Param("tXmstsxxDTO") TXmstsxxDTO tXmstsxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tXmstsxxDTO 查询参数
+     * @return List<TXmstsxxVO>
+     */
+    List<TXmstsxxVO> queryList(@Param("tXmstsxxDTO") TXmstsxxDTO tXmstsxxDTO);
 }

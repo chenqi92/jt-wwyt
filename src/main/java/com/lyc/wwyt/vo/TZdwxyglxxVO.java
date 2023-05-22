@@ -13,7 +13,7 @@ import lombok.EqualsAndHashCode;
  * 重大危险源管理信息表(t_zdwxyglxx)VO
  *
  * @author lhh
- * @since 2023-05-17 14:04:26
+ * @since 2023-05-22 14:22:39
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

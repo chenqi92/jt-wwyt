@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
  * 检查频次设定信息表(t_jcpcsdxx)VO
  *
  * @author lhh
- * @since 2023-05-17 17:22:13
+ * @since 2023-05-22 14:16:28
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

@@ -17,23 +17,13 @@ import java.util.List;
  * 重大危险源管理信息表(t_zdwxyglxx)表服务实现类
  *
  * @author lhh
- * @since 2023-05-17 14:04:25
+ * @since 2023-05-22 14:22:39
  */
 @Service("tZdwxyglxxService")
 @RequiredArgsConstructor
 public class TZdwxyglxxServiceImpl extends ServiceImpl<TZdwxyglxxDao, TZdwxyglxxEntity> implements TZdwxyglxxService {
 
     private final TZdwxyglxxDao tZdwxyglxxDao;
-
-    /**
-     * 查询所有数据
-     *
-     * @return 所有数据
-     */
-    @Override
-    public List<TZdwxyglxxVO> selectList() {
-        return this.tZdwxyglxxDao.selectList();
-    }
 
     /**
      * 分页查询所有数据
@@ -43,7 +33,18 @@ public class TZdwxyglxxServiceImpl extends ServiceImpl<TZdwxyglxxDao, TZdwxyglxx
      * @return 指定页码和条数的数据
      */
     @Override
-    public IPage<TZdwxyglxxVO> selectPage(Page<TZdwxyglxxDTO> page, TZdwxyglxxDTO tZdwxyglxxDTO) {
-        return this.tZdwxyglxxDao.selectList(page, tZdwxyglxxDTO);
+    public IPage<TZdwxyglxxVO> queryPage(Page<TZdwxyglxxDTO> page, TZdwxyglxxDTO tZdwxyglxxDTO) {
+        return this.tZdwxyglxxDao.queryList(page, tZdwxyglxxDTO);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param tZdwxyglxxDTO 查询参数
+     * @return 所有数据
+     */
+    @Override
+    public List<TZdwxyglxxVO> queryList(TZdwxyglxxDTO tZdwxyglxxDTO) {
+        return this.tZdwxyglxxDao.queryList(tZdwxyglxxDTO);
     }
 }

@@ -17,23 +17,13 @@ import java.util.List;
  * 断路作业信息表(t_dlzy)表服务实现类
  *
  * @author lhh
- * @since 2023-05-18 15:54:27
+ * @since 2023-05-22 14:13:40
  */
 @Service("tDlzyService")
 @RequiredArgsConstructor
 public class TDlzyServiceImpl extends ServiceImpl<TDlzyDao, TDlzyEntity> implements TDlzyService {
 
     private final TDlzyDao tDlzyDao;
-
-    /**
-     * 查询所有数据
-     *
-     * @return 所有数据
-     */
-    @Override
-    public List<TDlzyVO> selectList() {
-        return this.tDlzyDao.selectList();
-    }
 
     /**
      * 分页查询所有数据
@@ -43,7 +33,18 @@ public class TDlzyServiceImpl extends ServiceImpl<TDlzyDao, TDlzyEntity> impleme
      * @return 指定页码和条数的数据
      */
     @Override
-    public IPage<TDlzyVO> selectPage(Page<TDlzyDTO> page, TDlzyDTO tDlzyDTO) {
-        return this.tDlzyDao.selectList(page, tDlzyDTO);
+    public IPage<TDlzyVO> queryPage(Page<TDlzyDTO> page, TDlzyDTO tDlzyDTO) {
+        return this.tDlzyDao.queryList(page, tDlzyDTO);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param tDlzyDTO 查询参数
+     * @return 所有数据
+     */
+    @Override
+    public List<TDlzyVO> queryList(TDlzyDTO tDlzyDTO) {
+        return this.tDlzyDao.queryList(tDlzyDTO);
     }
 }

@@ -15,17 +15,10 @@ import java.util.List;
  * 企业基础信息表(t_qyjcxx)表数据库访问层
  *
  * @author lhh
- * @since 2023-05-17 11:20:38
+ * @since 2023-05-22 14:22:31
  */
 @Mapper
 public interface TQyjcxxDao extends BaseMapper<TQyjcxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TQyjcxxVO>
-     */
-    List<TQyjcxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TQyjcxxDao extends BaseMapper<TQyjcxxEntity> {
      * @param tQyjcxxDTO 查询参数
      * @return IPage<TQyjcxxVO>
      */
-    IPage<TQyjcxxVO> selectList(Page<TQyjcxxDTO> page, @Param("tQyjcxxDTO") TQyjcxxDTO tQyjcxxDTO);
+    IPage<TQyjcxxVO> queryList(Page<TQyjcxxDTO> page, @Param("tQyjcxxDTO") TQyjcxxDTO tQyjcxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tQyjcxxDTO 查询参数
+     * @return List<TQyjcxxVO>
+     */
+    List<TQyjcxxVO> queryList(@Param("tQyjcxxDTO") TQyjcxxDTO tQyjcxxDTO);
 }

@@ -15,17 +15,10 @@ import java.util.List;
  * 生产设施停用信息(t_scsstyxx)表数据库访问层
  *
  * @author lhh
- * @since 2023-05-17 17:22:11
+ * @since 2023-05-22 14:22:36
  */
 @Mapper
 public interface TScsstyxxDao extends BaseMapper<TScsstyxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TScsstyxxVO>
-     */
-    List<TScsstyxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TScsstyxxDao extends BaseMapper<TScsstyxxEntity> {
      * @param tScsstyxxDTO 查询参数
      * @return IPage<TScsstyxxVO>
      */
-    IPage<TScsstyxxVO> selectList(Page<TScsstyxxDTO> page, @Param("tScsstyxxDTO") TScsstyxxDTO tScsstyxxDTO);
+    IPage<TScsstyxxVO> queryList(Page<TScsstyxxDTO> page, @Param("tScsstyxxDTO") TScsstyxxDTO tScsstyxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tScsstyxxDTO 查询参数
+     * @return List<TScsstyxxVO>
+     */
+    List<TScsstyxxVO> queryList(@Param("tScsstyxxDTO") TScsstyxxDTO tScsstyxxDTO);
 }

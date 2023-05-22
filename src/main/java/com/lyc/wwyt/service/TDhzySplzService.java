@@ -13,16 +13,9 @@ import java.util.List;
  * 动火作业作业审批流转记录表(t_dhzy_splz)表服务接口
  *
  * @author lhh
- * @since 2023-05-18 15:54:24
+ * @since 2023-05-22 14:13:08
  */
 public interface TDhzySplzService extends IService<TDhzySplzEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TDhzySplzVO>
-     */
-    List<TDhzySplzVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -31,5 +24,13 @@ public interface TDhzySplzService extends IService<TDhzySplzEntity> {
      * @param tDhzySplzDTO 查询参数
      * @return IPage<TDhzySplzVO> tDhzySplzDTO
      */
-    IPage<TDhzySplzVO> selectPage(Page<TDhzySplzDTO> page, TDhzySplzDTO tDhzySplzDTO);
+    IPage<TDhzySplzVO> queryPage(Page<TDhzySplzDTO> page, TDhzySplzDTO tDhzySplzDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tDhzySplzDTO 查询参数
+     * @return List<TDhzySplzVO>
+     */
+    List<TDhzySplzVO> queryList(TDhzySplzDTO tDhzySplzDTO);
 }

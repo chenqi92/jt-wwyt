@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
  * 临时用电信息表(t_lsydzy)DTO
  *
  * @author lhh
- * @since 2023-05-18 15:54:55
+ * @since 2023-05-22 14:22:29
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

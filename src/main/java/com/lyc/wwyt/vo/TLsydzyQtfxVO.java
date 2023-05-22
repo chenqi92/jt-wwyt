@@ -10,7 +10,7 @@ import lombok.EqualsAndHashCode;
  * 临时用电气体分析数据表(t_lsydzy_qtfx)VO
  *
  * @author lhh
- * @since 2023-05-18 15:55:00
+ * @since 2023-05-22 14:22:30
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

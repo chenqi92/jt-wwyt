@@ -17,23 +17,13 @@ import java.util.List;
  * 临时用电信息表(t_lsydzy)表服务实现类
  *
  * @author lhh
- * @since 2023-05-18 15:54:54
+ * @since 2023-05-22 14:22:29
  */
 @Service("tLsydzyService")
 @RequiredArgsConstructor
 public class TLsydzyServiceImpl extends ServiceImpl<TLsydzyDao, TLsydzyEntity> implements TLsydzyService {
 
     private final TLsydzyDao tLsydzyDao;
-
-    /**
-     * 查询所有数据
-     *
-     * @return 所有数据
-     */
-    @Override
-    public List<TLsydzyVO> selectList() {
-        return this.tLsydzyDao.selectList();
-    }
 
     /**
      * 分页查询所有数据
@@ -43,7 +33,18 @@ public class TLsydzyServiceImpl extends ServiceImpl<TLsydzyDao, TLsydzyEntity> i
      * @return 指定页码和条数的数据
      */
     @Override
-    public IPage<TLsydzyVO> selectPage(Page<TLsydzyDTO> page, TLsydzyDTO tLsydzyDTO) {
-        return this.tLsydzyDao.selectList(page, tLsydzyDTO);
+    public IPage<TLsydzyVO> queryPage(Page<TLsydzyDTO> page, TLsydzyDTO tLsydzyDTO) {
+        return this.tLsydzyDao.queryList(page, tLsydzyDTO);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param tLsydzyDTO 查询参数
+     * @return 所有数据
+     */
+    @Override
+    public List<TLsydzyVO> queryList(TLsydzyDTO tLsydzyDTO) {
+        return this.tLsydzyDao.queryList(tLsydzyDTO);
     }
 }

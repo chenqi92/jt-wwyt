@@ -15,17 +15,10 @@ import java.util.List;
  * 受限空间作业气体分析数据表(t_sxkjzy_qtfx)表数据库访问层
  *
  * @author lhh
- * @since 2023-05-18 15:55:14
+ * @since 2023-05-22 14:22:37
  */
 @Mapper
 public interface TSxkjzyQtfxDao extends BaseMapper<TSxkjzyQtfxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TSxkjzyQtfxVO>
-     */
-    List<TSxkjzyQtfxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TSxkjzyQtfxDao extends BaseMapper<TSxkjzyQtfxEntity> {
      * @param tSxkjzyQtfxDTO 查询参数
      * @return IPage<TSxkjzyQtfxVO>
      */
-    IPage<TSxkjzyQtfxVO> selectList(Page<TSxkjzyQtfxDTO> page, @Param("tSxkjzyQtfxDTO") TSxkjzyQtfxDTO tSxkjzyQtfxDTO);
+    IPage<TSxkjzyQtfxVO> queryList(Page<TSxkjzyQtfxDTO> page, @Param("tSxkjzyQtfxDTO") TSxkjzyQtfxDTO tSxkjzyQtfxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tSxkjzyQtfxDTO 查询参数
+     * @return List<TSxkjzyQtfxVO>
+     */
+    List<TSxkjzyQtfxVO> queryList(@Param("tSxkjzyQtfxDTO") TSxkjzyQtfxDTO tSxkjzyQtfxDTO);
 }

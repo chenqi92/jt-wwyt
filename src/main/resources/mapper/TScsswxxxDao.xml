@@ -22,48 +22,50 @@
     </resultMap>
 
     <sql id="baseColumn">
-        id
+        `id`
         ,
-        TYSHXYDM,        
-        SCSSID,        
-        SSYCX,        
-        WXZT,        
-        WXQK,        
-        WXFZR,        
-        WXFZRDW,        
-        WXKSRQ,        
-        WXJSRQ,        
-        WXBZFJ,        
-        create_time,        
-        create_by,        
-        update_time,        
-        update_by,        
-        delete_mark
+        `TYSHXYDM`,        
+        `SCSSID`,        
+        `SSYCX`,        
+        `WXZT`,        
+        `WXQK`,        
+        `WXFZR`,        
+        `WXFZRDW`,        
+        `WXKSRQ`,        
+        `WXJSRQ`,        
+        `WXBZFJ`,        
+        `create_time`,        
+        `create_by`,        
+        `update_time`,        
+        `update_by`,        
+        `delete_mark`
     </sql>
 
-    <select id="selectList" resultType="com.lyc.wwyt.vo.TScsswxxxVO">
+    <select id="queryList" resultType="com.lyc.wwyt.vo.TScsswxxxVO">
         select
-        id,
-        TYSHXYDM,
-        SCSSID,
-        SSYCX,
-        WXZT,
-        WXQK,
-        WXFZR,
-        WXFZRDW,
-        WXKSRQ,
-        WXJSRQ,
-        WXBZFJ,
-        create_time,
-        create_by,
-        update_time,
-        update_by,
-        delete_mark
+        `id`,
+        `TYSHXYDM`,
+        `SCSSID`,
+        `SSYCX`,
+        `WXZT`,
+        `WXQK`,
+        `WXFZR`,
+        `WXFZRDW`,
+        `WXKSRQ`,
+        `WXJSRQ`,
+        `WXBZFJ`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`
         from t_scsswxxx
         where delete_mark = 0
-        <if test="tScsswxxxDTO != null and tScsswxxxDTO != ''">
+        <if test="tScsswxxxDTO.id != null and tScsswxxxDTO.id != ''">
             AND id = #{tScsswxxxDTO.id}
         </if>
+        <if test="tScsswxxxDTO.tyshxydm != null and tScsswxxxDTO.tyshxydm != ''">
+            AND TYSHXYDM = #{tScsswxxxDTO.tyshxydm}
+        </if>
     </select>
-
 </mapper>

@@ -13,16 +13,9 @@ import java.util.List;
  * 吊装作业信息表(t_dzzy)表服务接口
  *
  * @author lhh
- * @since 2023-05-18 15:54:40
+ * @since 2023-05-22 14:16:24
  */
 public interface TDzzyService extends IService<TDzzyEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TDzzyVO>
-     */
-    List<TDzzyVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -31,5 +24,13 @@ public interface TDzzyService extends IService<TDzzyEntity> {
      * @param tDzzyDTO 查询参数
      * @return IPage<TDzzyVO> tDzzyDTO
      */
-    IPage<TDzzyVO> selectPage(Page<TDzzyDTO> page, TDzzyDTO tDzzyDTO);
+    IPage<TDzzyVO> queryPage(Page<TDzzyDTO> page, TDzzyDTO tDzzyDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tDzzyDTO 查询参数
+     * @return List<TDzzyVO>
+     */
+    List<TDzzyVO> queryList(TDzzyDTO tDzzyDTO);
 }

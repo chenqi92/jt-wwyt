@@ -17,23 +17,13 @@ import java.util.List;
  * 动土作业信息表(t_dtzy)表服务实现类
  *
  * @author lhh
- * @since 2023-05-18 15:54:33
+ * @since 2023-05-22 14:13:42
  */
 @Service("tDtzyService")
 @RequiredArgsConstructor
 public class TDtzyServiceImpl extends ServiceImpl<TDtzyDao, TDtzyEntity> implements TDtzyService {
 
     private final TDtzyDao tDtzyDao;
-
-    /**
-     * 查询所有数据
-     *
-     * @return 所有数据
-     */
-    @Override
-    public List<TDtzyVO> selectList() {
-        return this.tDtzyDao.selectList();
-    }
 
     /**
      * 分页查询所有数据
@@ -43,7 +33,18 @@ public class TDtzyServiceImpl extends ServiceImpl<TDtzyDao, TDtzyEntity> impleme
      * @return 指定页码和条数的数据
      */
     @Override
-    public IPage<TDtzyVO> selectPage(Page<TDtzyDTO> page, TDtzyDTO tDtzyDTO) {
-        return this.tDtzyDao.selectList(page, tDtzyDTO);
+    public IPage<TDtzyVO> queryPage(Page<TDtzyDTO> page, TDtzyDTO tDtzyDTO) {
+        return this.tDtzyDao.queryList(page, tDtzyDTO);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param tDtzyDTO 查询参数
+     * @return 所有数据
+     */
+    @Override
+    public List<TDtzyVO> queryList(TDtzyDTO tDtzyDTO) {
+        return this.tDtzyDao.queryList(tDtzyDTO);
     }
 }

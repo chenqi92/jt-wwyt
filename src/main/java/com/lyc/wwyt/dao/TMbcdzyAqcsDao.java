@@ -15,17 +15,10 @@ import java.util.List;
  * 盲板抽堵安全措施表(t_mbcdzy_aqcs)表数据库访问层
  *
  * @author lhh
- * @since 2023-05-18 15:55:06
+ * @since 2023-05-22 14:22:31
  */
 @Mapper
 public interface TMbcdzyAqcsDao extends BaseMapper<TMbcdzyAqcsEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TMbcdzyAqcsVO>
-     */
-    List<TMbcdzyAqcsVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TMbcdzyAqcsDao extends BaseMapper<TMbcdzyAqcsEntity> {
      * @param tMbcdzyAqcsDTO 查询参数
      * @return IPage<TMbcdzyAqcsVO>
      */
-    IPage<TMbcdzyAqcsVO> selectList(Page<TMbcdzyAqcsDTO> page, @Param("tMbcdzyAqcsDTO") TMbcdzyAqcsDTO tMbcdzyAqcsDTO);
+    IPage<TMbcdzyAqcsVO> queryList(Page<TMbcdzyAqcsDTO> page, @Param("tMbcdzyAqcsDTO") TMbcdzyAqcsDTO tMbcdzyAqcsDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tMbcdzyAqcsDTO 查询参数
+     * @return List<TMbcdzyAqcsVO>
+     */
+    List<TMbcdzyAqcsVO> queryList(@Param("tMbcdzyAqcsDTO") TMbcdzyAqcsDTO tMbcdzyAqcsDTO);
 }

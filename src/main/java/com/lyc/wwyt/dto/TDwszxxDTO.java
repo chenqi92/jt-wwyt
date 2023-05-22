@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
  * 点位设置信息表(t_dwszxx)DTO
  *
  * @author lhh
- * @since 2023-05-17 17:22:13
+ * @since 2023-05-22 14:16:23
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

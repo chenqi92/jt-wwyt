@@ -13,16 +13,9 @@ import java.util.List;
  * 盲板抽堵安全措施表(t_mbcdzy_aqcs)表服务接口
  *
  * @author lhh
- * @since 2023-05-18 15:55:06
+ * @since 2023-05-22 14:22:31
  */
 public interface TMbcdzyAqcsService extends IService<TMbcdzyAqcsEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TMbcdzyAqcsVO>
-     */
-    List<TMbcdzyAqcsVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -31,5 +24,13 @@ public interface TMbcdzyAqcsService extends IService<TMbcdzyAqcsEntity> {
      * @param tMbcdzyAqcsDTO 查询参数
      * @return IPage<TMbcdzyAqcsVO> tMbcdzyAqcsDTO
      */
-    IPage<TMbcdzyAqcsVO> selectPage(Page<TMbcdzyAqcsDTO> page, TMbcdzyAqcsDTO tMbcdzyAqcsDTO);
+    IPage<TMbcdzyAqcsVO> queryPage(Page<TMbcdzyAqcsDTO> page, TMbcdzyAqcsDTO tMbcdzyAqcsDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tMbcdzyAqcsDTO 查询参数
+     * @return List<TMbcdzyAqcsVO>
+     */
+    List<TMbcdzyAqcsVO> queryList(TMbcdzyAqcsDTO tMbcdzyAqcsDTO);
 }

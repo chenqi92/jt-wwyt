@@ -15,17 +15,10 @@ import java.util.List;
  * 高处作业信息安全措施表(t_gczy_aqcs)表数据库访问层
  *
  * @author lhh
- * @since 2023-05-18 15:54:49
+ * @since 2023-05-22 14:16:26
  */
 @Mapper
 public interface TGczyAqcsDao extends BaseMapper<TGczyAqcsEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TGczyAqcsVO>
-     */
-    List<TGczyAqcsVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TGczyAqcsDao extends BaseMapper<TGczyAqcsEntity> {
      * @param tGczyAqcsDTO 查询参数
      * @return IPage<TGczyAqcsVO>
      */
-    IPage<TGczyAqcsVO> selectList(Page<TGczyAqcsDTO> page, @Param("tGczyAqcsDTO") TGczyAqcsDTO tGczyAqcsDTO);
+    IPage<TGczyAqcsVO> queryList(Page<TGczyAqcsDTO> page, @Param("tGczyAqcsDTO") TGczyAqcsDTO tGczyAqcsDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tGczyAqcsDTO 查询参数
+     * @return List<TGczyAqcsVO>
+     */
+    List<TGczyAqcsVO> queryList(@Param("tGczyAqcsDTO") TGczyAqcsDTO tGczyAqcsDTO);
 }

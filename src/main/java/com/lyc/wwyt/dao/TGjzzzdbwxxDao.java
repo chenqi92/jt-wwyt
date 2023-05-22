@@ -15,17 +15,10 @@ import java.util.List;
  * 关键装置重点部位信息表(t_gjzzzdbwxx)表数据库访问层
  *
  * @author lhh
- * @since 2023-05-17 17:22:12
+ * @since 2023-05-22 14:16:27
  */
 @Mapper
 public interface TGjzzzdbwxxDao extends BaseMapper<TGjzzzdbwxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TGjzzzdbwxxVO>
-     */
-    List<TGjzzzdbwxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TGjzzzdbwxxDao extends BaseMapper<TGjzzzdbwxxEntity> {
      * @param tGjzzzdbwxxDTO 查询参数
      * @return IPage<TGjzzzdbwxxVO>
      */
-    IPage<TGjzzzdbwxxVO> selectList(Page<TGjzzzdbwxxDTO> page, @Param("tGjzzzdbwxxDTO") TGjzzzdbwxxDTO tGjzzzdbwxxDTO);
+    IPage<TGjzzzdbwxxVO> queryList(Page<TGjzzzdbwxxDTO> page, @Param("tGjzzzdbwxxDTO") TGjzzzdbwxxDTO tGjzzzdbwxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tGjzzzdbwxxDTO 查询参数
+     * @return List<TGjzzzdbwxxVO>
+     */
+    List<TGjzzzdbwxxVO> queryList(@Param("tGjzzzdbwxxDTO") TGjzzzdbwxxDTO tGjzzzdbwxxDTO);
 }

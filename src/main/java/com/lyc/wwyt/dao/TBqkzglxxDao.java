@@ -15,17 +15,10 @@ import java.util.List;
  * 标签扩展管理信息表(t_bqkzglxx)表数据库访问层
  *
  * @author lhh
- * @since 2023-05-18 16:32:20
+ * @since 2023-05-22 14:13:07
  */
 @Mapper
 public interface TBqkzglxxDao extends BaseMapper<TBqkzglxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TBqkzglxxVO>
-     */
-    List<TBqkzglxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TBqkzglxxDao extends BaseMapper<TBqkzglxxEntity> {
      * @param tBqkzglxxDTO 查询参数
      * @return IPage<TBqkzglxxVO>
      */
-    IPage<TBqkzglxxVO> selectList(Page<TBqkzglxxDTO> page, @Param("tBqkzglxxDTO") TBqkzglxxDTO tBqkzglxxDTO);
+    IPage<TBqkzglxxVO> queryList(Page<TBqkzglxxDTO> page, @Param("tBqkzglxxDTO") TBqkzglxxDTO tBqkzglxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tBqkzglxxDTO 查询参数
+     * @return List<TBqkzglxxVO>
+     */
+    List<TBqkzglxxVO> queryList(@Param("tBqkzglxxDTO") TBqkzglxxDTO tBqkzglxxDTO);
 }

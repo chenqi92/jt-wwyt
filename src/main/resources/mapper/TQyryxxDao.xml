@@ -26,56 +26,58 @@
     </resultMap>
 
     <sql id="baseColumn">
-        id
+        `id`
         ,
-        TYSHXYDM,        
-        xm,        
-        xb,        
-        rylx,        
-        mz,        
-        zgxl,        
-        zy,        
-        gzjl,        
-        zhbyyx,        
-        zjlx,        
-        zjhm,        
-        jrbdwrq,        
-        bz,        
-        create_time,        
-        create_by,        
-        update_time,        
-        update_by,        
-        delete_mark,        
-        company_code
+        `TYSHXYDM`,        
+        `xm`,        
+        `xb`,        
+        `rylx`,        
+        `mz`,        
+        `zgxl`,        
+        `zy`,        
+        `gzjl`,        
+        `zhbyyx`,        
+        `zjlx`,        
+        `zjhm`,        
+        `jrbdwrq`,        
+        `bz`,        
+        `create_time`,        
+        `create_by`,        
+        `update_time`,        
+        `update_by`,        
+        `delete_mark`,        
+        `company_code`
     </sql>
 
-    <select id="selectList" resultType="com.lyc.wwyt.vo.TQyryxxVO">
+    <select id="queryList" resultType="com.lyc.wwyt.vo.TQyryxxVO">
         select
-        id,
-        TYSHXYDM,
-        xm,
-        xb,
-        rylx,
-        mz,
-        zgxl,
-        zy,
-        gzjl,
-        zhbyyx,
-        zjlx,
-        zjhm,
-        jrbdwrq,
-        bz,
-        create_time,
-        create_by,
-        update_time,
-        update_by,
-        delete_mark,
-        company_code
+        `id`,
+        `TYSHXYDM`,
+        `xm`,
+        `xb`,
+        `rylx`,
+        `mz`,
+        `zgxl`,
+        `zy`,
+        `gzjl`,
+        `zhbyyx`,
+        `zjlx`,
+        `zjhm`,
+        `jrbdwrq`,
+        `bz`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`,
+        `company_code`
         from t_qyryxx
         where delete_mark = 0
-        <if test="tQyryxxDTO != null and tQyryxxDTO != ''">
+        <if test="tQyryxxDTO.id != null and tQyryxxDTO.id != ''">
             AND id = #{tQyryxxDTO.id}
         </if>
+        <if test="tQyryxxDTO.tyshxydm != null and tQyryxxDTO.tyshxydm != ''">
+            AND TYSHXYDM = #{tQyryxxDTO.tyshxydm}
+        </if>
     </select>
-
 </mapper>

@@ -17,23 +17,13 @@ import java.util.List;
  * 生产设施检测信息(t_scssjc1xx)表服务实现类
  *
  * @author lhh
- * @since 2023-05-17 17:22:10
+ * @since 2023-05-22 14:22:34
  */
 @Service("tScssjc1xxService")
 @RequiredArgsConstructor
 public class TScssjc1xxServiceImpl extends ServiceImpl<TScssjc1xxDao, TScssjc1xxEntity> implements TScssjc1xxService {
 
     private final TScssjc1xxDao tScssjc1xxDao;
-
-    /**
-     * 查询所有数据
-     *
-     * @return 所有数据
-     */
-    @Override
-    public List<TScssjc1xxVO> selectList() {
-        return this.tScssjc1xxDao.selectList();
-    }
 
     /**
      * 分页查询所有数据
@@ -43,7 +33,18 @@ public class TScssjc1xxServiceImpl extends ServiceImpl<TScssjc1xxDao, TScssjc1xx
      * @return 指定页码和条数的数据
      */
     @Override
-    public IPage<TScssjc1xxVO> selectPage(Page<TScssjc1xxDTO> page, TScssjc1xxDTO tScssjc1xxDTO) {
-        return this.tScssjc1xxDao.selectList(page, tScssjc1xxDTO);
+    public IPage<TScssjc1xxVO> queryPage(Page<TScssjc1xxDTO> page, TScssjc1xxDTO tScssjc1xxDTO) {
+        return this.tScssjc1xxDao.queryList(page, tScssjc1xxDTO);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param tScssjc1xxDTO 查询参数
+     * @return 所有数据
+     */
+    @Override
+    public List<TScssjc1xxVO> queryList(TScssjc1xxDTO tScssjc1xxDTO) {
+        return this.tScssjc1xxDao.queryList(tScssjc1xxDTO);
     }
 }

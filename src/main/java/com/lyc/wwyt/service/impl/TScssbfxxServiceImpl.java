@@ -17,23 +17,13 @@ import java.util.List;
  * 生产设备报废信息(t_scssbfxx)表服务实现类
  *
  * @author lhh
- * @since 2023-05-17 17:22:10
+ * @since 2023-05-22 14:22:33
  */
 @Service("tScssbfxxService")
 @RequiredArgsConstructor
 public class TScssbfxxServiceImpl extends ServiceImpl<TScssbfxxDao, TScssbfxxEntity> implements TScssbfxxService {
 
     private final TScssbfxxDao tScssbfxxDao;
-
-    /**
-     * 查询所有数据
-     *
-     * @return 所有数据
-     */
-    @Override
-    public List<TScssbfxxVO> selectList() {
-        return this.tScssbfxxDao.selectList();
-    }
 
     /**
      * 分页查询所有数据
@@ -43,7 +33,18 @@ public class TScssbfxxServiceImpl extends ServiceImpl<TScssbfxxDao, TScssbfxxEnt
      * @return 指定页码和条数的数据
      */
     @Override
-    public IPage<TScssbfxxVO> selectPage(Page<TScssbfxxDTO> page, TScssbfxxDTO tScssbfxxDTO) {
-        return this.tScssbfxxDao.selectList(page, tScssbfxxDTO);
+    public IPage<TScssbfxxVO> queryPage(Page<TScssbfxxDTO> page, TScssbfxxDTO tScssbfxxDTO) {
+        return this.tScssbfxxDao.queryList(page, tScssbfxxDTO);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param tScssbfxxDTO 查询参数
+     * @return 所有数据
+     */
+    @Override
+    public List<TScssbfxxVO> queryList(TScssbfxxDTO tScssbfxxDTO) {
+        return this.tScssbfxxDao.queryList(tScssbfxxDTO);
     }
 }

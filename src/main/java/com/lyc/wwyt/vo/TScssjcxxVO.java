@@ -13,7 +13,7 @@ import lombok.EqualsAndHashCode;
  * 生产设施检查信息(t_scssjcxx)VO
  *
  * @author lhh
- * @since 2023-05-17 17:22:11
+ * @since 2023-05-22 14:22:36
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

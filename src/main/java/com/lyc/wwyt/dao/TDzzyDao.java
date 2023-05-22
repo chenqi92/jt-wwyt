@@ -15,17 +15,10 @@ import java.util.List;
  * 吊装作业信息表(t_dzzy)表数据库访问层
  *
  * @author lhh
- * @since 2023-05-18 15:54:39
+ * @since 2023-05-22 14:16:24
  */
 @Mapper
 public interface TDzzyDao extends BaseMapper<TDzzyEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TDzzyVO>
-     */
-    List<TDzzyVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TDzzyDao extends BaseMapper<TDzzyEntity> {
      * @param tDzzyDTO 查询参数
      * @return IPage<TDzzyVO>
      */
-    IPage<TDzzyVO> selectList(Page<TDzzyDTO> page, @Param("tDzzyDTO") TDzzyDTO tDzzyDTO);
+    IPage<TDzzyVO> queryList(Page<TDzzyDTO> page, @Param("tDzzyDTO") TDzzyDTO tDzzyDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tDzzyDTO 查询参数
+     * @return List<TDzzyVO>
+     */
+    List<TDzzyVO> queryList(@Param("tDzzyDTO") TDzzyDTO tDzzyDTO);
 }

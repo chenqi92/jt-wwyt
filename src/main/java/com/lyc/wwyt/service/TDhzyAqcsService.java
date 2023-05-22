@@ -13,16 +13,9 @@ import java.util.List;
  * 动火作业安全措施表(t_dhzy_aqcs)表服务接口
  *
  * @author lhh
- * @since 2023-05-18 15:54:21
+ * @since 2023-05-22 14:13:08
  */
 public interface TDhzyAqcsService extends IService<TDhzyAqcsEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TDhzyAqcsVO>
-     */
-    List<TDhzyAqcsVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -31,5 +24,13 @@ public interface TDhzyAqcsService extends IService<TDhzyAqcsEntity> {
      * @param tDhzyAqcsDTO 查询参数
      * @return IPage<TDhzyAqcsVO> tDhzyAqcsDTO
      */
-    IPage<TDhzyAqcsVO> selectPage(Page<TDhzyAqcsDTO> page, TDhzyAqcsDTO tDhzyAqcsDTO);
+    IPage<TDhzyAqcsVO> queryPage(Page<TDhzyAqcsDTO> page, TDhzyAqcsDTO tDhzyAqcsDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tDhzyAqcsDTO 查询参数
+     * @return List<TDhzyAqcsVO>
+     */
+    List<TDhzyAqcsVO> queryList(TDhzyAqcsDTO tDhzyAqcsDTO);
 }

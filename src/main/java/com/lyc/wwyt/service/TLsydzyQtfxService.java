@@ -13,16 +13,9 @@ import java.util.List;
  * 临时用电气体分析数据表(t_lsydzy_qtfx)表服务接口
  *
  * @author lhh
- * @since 2023-05-18 15:54:58
+ * @since 2023-05-22 14:22:30
  */
 public interface TLsydzyQtfxService extends IService<TLsydzyQtfxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TLsydzyQtfxVO>
-     */
-    List<TLsydzyQtfxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -31,5 +24,13 @@ public interface TLsydzyQtfxService extends IService<TLsydzyQtfxEntity> {
      * @param tLsydzyQtfxDTO 查询参数
      * @return IPage<TLsydzyQtfxVO> tLsydzyQtfxDTO
      */
-    IPage<TLsydzyQtfxVO> selectPage(Page<TLsydzyQtfxDTO> page, TLsydzyQtfxDTO tLsydzyQtfxDTO);
+    IPage<TLsydzyQtfxVO> queryPage(Page<TLsydzyQtfxDTO> page, TLsydzyQtfxDTO tLsydzyQtfxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tLsydzyQtfxDTO 查询参数
+     * @return List<TLsydzyQtfxVO>
+     */
+    List<TLsydzyQtfxVO> queryList(TLsydzyQtfxDTO tLsydzyQtfxDTO);
 }

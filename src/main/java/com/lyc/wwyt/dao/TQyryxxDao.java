@@ -15,17 +15,10 @@ import java.util.List;
  * 企业人员信息表(t_qyryxx)表数据库访问层
  *
  * @author lhh
- * @since 2023-05-17 11:20:41
+ * @since 2023-05-22 14:22:32
  */
 @Mapper
 public interface TQyryxxDao extends BaseMapper<TQyryxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TQyryxxVO>
-     */
-    List<TQyryxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TQyryxxDao extends BaseMapper<TQyryxxEntity> {
      * @param tQyryxxDTO 查询参数
      * @return IPage<TQyryxxVO>
      */
-    IPage<TQyryxxVO> selectList(Page<TQyryxxDTO> page, @Param("tQyryxxDTO") TQyryxxDTO tQyryxxDTO);
+    IPage<TQyryxxVO> queryList(Page<TQyryxxDTO> page, @Param("tQyryxxDTO") TQyryxxDTO tQyryxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tQyryxxDTO 查询参数
+     * @return List<TQyryxxVO>
+     */
+    List<TQyryxxVO> queryList(@Param("tQyryxxDTO") TQyryxxDTO tQyryxxDTO);
 }

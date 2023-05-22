@@ -23,50 +23,52 @@
     </resultMap>
 
     <sql id="baseColumn">
-        id
+        `id`
         ,
-        TYSHXYDM,        
-        SZQY,        
-        BQMZ,        
-        XBBM,        
-        DWXBLX,        
-        CRKBJ,        
-        LC,        
-        GD,        
-        WZMS,        
-        JD,        
-        WD,        
-        create_time,        
-        create_by,        
-        update_time,        
-        update_by,        
-        delete_mark
+        `TYSHXYDM`,        
+        `SZQY`,        
+        `BQMZ`,        
+        `XBBM`,        
+        `DWXBLX`,        
+        `CRKBJ`,        
+        `LC`,        
+        `GD`,        
+        `WZMS`,        
+        `JD`,        
+        `WD`,        
+        `create_time`,        
+        `create_by`,        
+        `update_time`,        
+        `update_by`,        
+        `delete_mark`
     </sql>
 
-    <select id="selectList" resultType="com.lyc.wwyt.vo.TDwxbglxxVO">
+    <select id="queryList" resultType="com.lyc.wwyt.vo.TDwxbglxxVO">
         select
-        id,
-        TYSHXYDM,
-        SZQY,
-        BQMZ,
-        XBBM,
-        DWXBLX,
-        CRKBJ,
-        LC,
-        GD,
-        WZMS,
-        JD,
-        WD,
-        create_time,
-        create_by,
-        update_time,
-        update_by,
-        delete_mark
+        `id`,
+        `TYSHXYDM`,
+        `SZQY`,
+        `BQMZ`,
+        `XBBM`,
+        `DWXBLX`,
+        `CRKBJ`,
+        `LC`,
+        `GD`,
+        `WZMS`,
+        `JD`,
+        `WD`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`
         from t_dwxbglxx
         where delete_mark = 0
-        <if test="tDwxbglxxDTO != null and tDwxbglxxDTO != ''">
+        <if test="tDwxbglxxDTO.id != null and tDwxbglxxDTO.id != ''">
             AND id = #{tDwxbglxxDTO.id}
         </if>
+        <if test="tDwxbglxxDTO.tyshxydm != null and tDwxbglxxDTO.tyshxydm != ''">
+            AND TYSHXYDM = #{tDwxbglxxDTO.tyshxydm}
+        </if>
     </select>
-
 </mapper>

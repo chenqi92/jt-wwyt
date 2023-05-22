@@ -13,16 +13,9 @@ import java.util.List;
  * 点位设置信息表(t_dwszxx)表服务接口
  *
  * @author lhh
- * @since 2023-05-17 17:22:13
+ * @since 2023-05-22 14:16:23
  */
 public interface TDwszxxService extends IService<TDwszxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TDwszxxVO>
-     */
-    List<TDwszxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -31,5 +24,13 @@ public interface TDwszxxService extends IService<TDwszxxEntity> {
      * @param tDwszxxDTO 查询参数
      * @return IPage<TDwszxxVO> tDwszxxDTO
      */
-    IPage<TDwszxxVO> selectPage(Page<TDwszxxDTO> page, TDwszxxDTO tDwszxxDTO);
+    IPage<TDwszxxVO> queryPage(Page<TDwszxxDTO> page, TDwszxxDTO tDwszxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tDwszxxDTO 查询参数
+     * @return List<TDwszxxVO>
+     */
+    List<TDwszxxVO> queryList(TDwszxxDTO tDwszxxDTO);
 }

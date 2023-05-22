@@ -15,17 +15,10 @@ import java.util.List;
  * 动火作业作业审批流转记录表(t_dhzy_splz)表数据库访问层
  *
  * @author lhh
- * @since 2023-05-18 15:54:24
+ * @since 2023-05-22 14:13:08
  */
 @Mapper
 public interface TDhzySplzDao extends BaseMapper<TDhzySplzEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TDhzySplzVO>
-     */
-    List<TDhzySplzVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TDhzySplzDao extends BaseMapper<TDhzySplzEntity> {
      * @param tDhzySplzDTO 查询参数
      * @return IPage<TDhzySplzVO>
      */
-    IPage<TDhzySplzVO> selectList(Page<TDhzySplzDTO> page, @Param("tDhzySplzDTO") TDhzySplzDTO tDhzySplzDTO);
+    IPage<TDhzySplzVO> queryList(Page<TDhzySplzDTO> page, @Param("tDhzySplzDTO") TDhzySplzDTO tDhzySplzDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tDhzySplzDTO 查询参数
+     * @return List<TDhzySplzVO>
+     */
+    List<TDhzySplzVO> queryList(@Param("tDhzySplzDTO") TDhzySplzDTO tDhzySplzDTO);
 }

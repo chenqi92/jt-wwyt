@@ -13,16 +13,9 @@ import java.util.List;
  * 人员在岗在位信息表(t_qyqyryxx)表服务接口
  *
  * @author lhh
- * @since 2023-05-18 16:32:14
+ * @since 2023-05-22 14:22:32
  */
 public interface TQyqyryxxService extends IService<TQyqyryxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TQyqyryxxVO>
-     */
-    List<TQyqyryxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -31,5 +24,13 @@ public interface TQyqyryxxService extends IService<TQyqyryxxEntity> {
      * @param tQyqyryxxDTO 查询参数
      * @return IPage<TQyqyryxxVO> tQyqyryxxDTO
      */
-    IPage<TQyqyryxxVO> selectPage(Page<TQyqyryxxDTO> page, TQyqyryxxDTO tQyqyryxxDTO);
+    IPage<TQyqyryxxVO> queryPage(Page<TQyqyryxxDTO> page, TQyqyryxxDTO tQyqyryxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tQyqyryxxDTO 查询参数
+     * @return List<TQyqyryxxVO>
+     */
+    List<TQyqyryxxVO> queryList(TQyqyryxxDTO tQyqyryxxDTO);
 }

@@ -17,23 +17,13 @@ import java.util.List;
  * 受限空间作业安全措施表(t_sxkjzy_aqcs)表服务实现类
  *
  * @author lhh
- * @since 2023-05-18 15:55:13
+ * @since 2023-05-22 14:22:37
  */
 @Service("tSxkjzyAqcsService")
 @RequiredArgsConstructor
 public class TSxkjzyAqcsServiceImpl extends ServiceImpl<TSxkjzyAqcsDao, TSxkjzyAqcsEntity> implements TSxkjzyAqcsService {
 
     private final TSxkjzyAqcsDao tSxkjzyAqcsDao;
-
-    /**
-     * 查询所有数据
-     *
-     * @return 所有数据
-     */
-    @Override
-    public List<TSxkjzyAqcsVO> selectList() {
-        return this.tSxkjzyAqcsDao.selectList();
-    }
 
     /**
      * 分页查询所有数据
@@ -43,7 +33,18 @@ public class TSxkjzyAqcsServiceImpl extends ServiceImpl<TSxkjzyAqcsDao, TSxkjzyA
      * @return 指定页码和条数的数据
      */
     @Override
-    public IPage<TSxkjzyAqcsVO> selectPage(Page<TSxkjzyAqcsDTO> page, TSxkjzyAqcsDTO tSxkjzyAqcsDTO) {
-        return this.tSxkjzyAqcsDao.selectList(page, tSxkjzyAqcsDTO);
+    public IPage<TSxkjzyAqcsVO> queryPage(Page<TSxkjzyAqcsDTO> page, TSxkjzyAqcsDTO tSxkjzyAqcsDTO) {
+        return this.tSxkjzyAqcsDao.queryList(page, tSxkjzyAqcsDTO);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param tSxkjzyAqcsDTO 查询参数
+     * @return 所有数据
+     */
+    @Override
+    public List<TSxkjzyAqcsVO> queryList(TSxkjzyAqcsDTO tSxkjzyAqcsDTO) {
+        return this.tSxkjzyAqcsDao.queryList(tSxkjzyAqcsDTO);
     }
 }

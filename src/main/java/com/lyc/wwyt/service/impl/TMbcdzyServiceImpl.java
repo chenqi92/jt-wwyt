@@ -17,23 +17,13 @@ import java.util.List;
  * 盲板抽堵信息表(t_mbcdzy)表服务实现类
  *
  * @author lhh
- * @since 2023-05-18 15:55:04
+ * @since 2023-05-22 14:22:30
  */
 @Service("tMbcdzyService")
 @RequiredArgsConstructor
 public class TMbcdzyServiceImpl extends ServiceImpl<TMbcdzyDao, TMbcdzyEntity> implements TMbcdzyService {
 
     private final TMbcdzyDao tMbcdzyDao;
-
-    /**
-     * 查询所有数据
-     *
-     * @return 所有数据
-     */
-    @Override
-    public List<TMbcdzyVO> selectList() {
-        return this.tMbcdzyDao.selectList();
-    }
 
     /**
      * 分页查询所有数据
@@ -43,7 +33,18 @@ public class TMbcdzyServiceImpl extends ServiceImpl<TMbcdzyDao, TMbcdzyEntity> i
      * @return 指定页码和条数的数据
      */
     @Override
-    public IPage<TMbcdzyVO> selectPage(Page<TMbcdzyDTO> page, TMbcdzyDTO tMbcdzyDTO) {
-        return this.tMbcdzyDao.selectList(page, tMbcdzyDTO);
+    public IPage<TMbcdzyVO> queryPage(Page<TMbcdzyDTO> page, TMbcdzyDTO tMbcdzyDTO) {
+        return this.tMbcdzyDao.queryList(page, tMbcdzyDTO);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param tMbcdzyDTO 查询参数
+     * @return 所有数据
+     */
+    @Override
+    public List<TMbcdzyVO> queryList(TMbcdzyDTO tMbcdzyDTO) {
+        return this.tMbcdzyDao.queryList(tMbcdzyDTO);
     }
 }

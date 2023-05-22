@@ -26,56 +26,58 @@
     </resultMap>
 
     <sql id="baseColumn">
-        id
+        `id`
         ,
-        TYSHXYDM,        
-        XMMC,        
-        XMBH,        
-        XMXZ,        
-        XMJSDW,        
-        XMZTZ,        
-        XMJSDD,        
-        XMJZQK,        
-        XMKGRQ,        
-        XMJGYSRQ,        
-        XMMS,        
-        XMSTSLB,        
-        FJ,        
-        FJMC,        
-        create_time,        
-        create_by,        
-        update_time,        
-        update_by,        
-        delete_mark
+        `TYSHXYDM`,        
+        `XMMC`,        
+        `XMBH`,        
+        `XMXZ`,        
+        `XMJSDW`,        
+        `XMZTZ`,        
+        `XMJSDD`,        
+        `XMJZQK`,        
+        `XMKGRQ`,        
+        `XMJGYSRQ`,        
+        `XMMS`,        
+        `XMSTSLB`,        
+        `FJ`,        
+        `FJMC`,        
+        `create_time`,        
+        `create_by`,        
+        `update_time`,        
+        `update_by`,        
+        `delete_mark`
     </sql>
 
-    <select id="selectList" resultType="com.lyc.wwyt.vo.TXmstsxxVO">
+    <select id="queryList" resultType="com.lyc.wwyt.vo.TXmstsxxVO">
         select
-        id,
-        TYSHXYDM,
-        XMMC,
-        XMBH,
-        XMXZ,
-        XMJSDW,
-        XMZTZ,
-        XMJSDD,
-        XMJZQK,
-        XMKGRQ,
-        XMJGYSRQ,
-        XMMS,
-        XMSTSLB,
-        FJ,
-        FJMC,
-        create_time,
-        create_by,
-        update_time,
-        update_by,
-        delete_mark
+        `id`,
+        `TYSHXYDM`,
+        `XMMC`,
+        `XMBH`,
+        `XMXZ`,
+        `XMJSDW`,
+        `XMZTZ`,
+        `XMJSDD`,
+        `XMJZQK`,
+        `XMKGRQ`,
+        `XMJGYSRQ`,
+        `XMMS`,
+        `XMSTSLB`,
+        `FJ`,
+        `FJMC`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`
         from t_xmstsxx
         where delete_mark = 0
-        <if test="tXmstsxxDTO != null and tXmstsxxDTO != ''">
+        <if test="tXmstsxxDTO.id != null and tXmstsxxDTO.id != ''">
             AND id = #{tXmstsxxDTO.id}
         </if>
+        <if test="tXmstsxxDTO.tyshxydm != null and tXmstsxxDTO.tyshxydm != ''">
+            AND TYSHXYDM = #{tXmstsxxDTO.tyshxydm}
+        </if>
     </select>
-
 </mapper>

@@ -17,23 +17,13 @@ import java.util.List;
  * 作业区域信息表(t_zyqyxx)表服务实现类
  *
  * @author lhh
- * @since 2023-05-18 16:44:13
+ * @since 2023-05-22 14:22:39
  */
 @Service("tZyqyxxService")
 @RequiredArgsConstructor
 public class TZyqyxxServiceImpl extends ServiceImpl<TZyqyxxDao, TZyqyxxEntity> implements TZyqyxxService {
 
     private final TZyqyxxDao tZyqyxxDao;
-
-    /**
-     * 查询所有数据
-     *
-     * @return 所有数据
-     */
-    @Override
-    public List<TZyqyxxVO> selectList() {
-        return this.tZyqyxxDao.selectList();
-    }
 
     /**
      * 分页查询所有数据
@@ -43,7 +33,18 @@ public class TZyqyxxServiceImpl extends ServiceImpl<TZyqyxxDao, TZyqyxxEntity> i
      * @return 指定页码和条数的数据
      */
     @Override
-    public IPage<TZyqyxxVO> selectPage(Page<TZyqyxxDTO> page, TZyqyxxDTO tZyqyxxDTO) {
-        return this.tZyqyxxDao.selectList(page, tZyqyxxDTO);
+    public IPage<TZyqyxxVO> queryPage(Page<TZyqyxxDTO> page, TZyqyxxDTO tZyqyxxDTO) {
+        return this.tZyqyxxDao.queryList(page, tZyqyxxDTO);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param tZyqyxxDTO 查询参数
+     * @return 所有数据
+     */
+    @Override
+    public List<TZyqyxxVO> queryList(TZyqyxxDTO tZyqyxxDTO) {
+        return this.tZyqyxxDao.queryList(tZyqyxxDTO);
     }
 }

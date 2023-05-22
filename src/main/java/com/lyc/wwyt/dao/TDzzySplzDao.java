@@ -15,17 +15,10 @@ import java.util.List;
  * 吊装作业审批流转记录表(t_dzzy_splz)表数据库访问层
  *
  * @author lhh
- * @since 2023-05-18 15:54:44
+ * @since 2023-05-22 14:16:25
  */
 @Mapper
 public interface TDzzySplzDao extends BaseMapper<TDzzySplzEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TDzzySplzVO>
-     */
-    List<TDzzySplzVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TDzzySplzDao extends BaseMapper<TDzzySplzEntity> {
      * @param tDzzySplzDTO 查询参数
      * @return IPage<TDzzySplzVO>
      */
-    IPage<TDzzySplzVO> selectList(Page<TDzzySplzDTO> page, @Param("tDzzySplzDTO") TDzzySplzDTO tDzzySplzDTO);
+    IPage<TDzzySplzVO> queryList(Page<TDzzySplzDTO> page, @Param("tDzzySplzDTO") TDzzySplzDTO tDzzySplzDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tDzzySplzDTO 查询参数
+     * @return List<TDzzySplzVO>
+     */
+    List<TDzzySplzVO> queryList(@Param("tDzzySplzDTO") TDzzySplzDTO tDzzySplzDTO);
 }

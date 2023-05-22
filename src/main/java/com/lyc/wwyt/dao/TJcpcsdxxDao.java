@@ -15,17 +15,10 @@ import java.util.List;
  * 检查频次设定信息表(t_jcpcsdxx)表数据库访问层
  *
  * @author lhh
- * @since 2023-05-17 17:22:13
+ * @since 2023-05-22 14:16:27
  */
 @Mapper
 public interface TJcpcsdxxDao extends BaseMapper<TJcpcsdxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TJcpcsdxxVO>
-     */
-    List<TJcpcsdxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TJcpcsdxxDao extends BaseMapper<TJcpcsdxxEntity> {
      * @param tJcpcsdxxDTO 查询参数
      * @return IPage<TJcpcsdxxVO>
      */
-    IPage<TJcpcsdxxVO> selectList(Page<TJcpcsdxxDTO> page, @Param("tJcpcsdxxDTO") TJcpcsdxxDTO tJcpcsdxxDTO);
+    IPage<TJcpcsdxxVO> queryList(Page<TJcpcsdxxDTO> page, @Param("tJcpcsdxxDTO") TJcpcsdxxDTO tJcpcsdxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tJcpcsdxxDTO 查询参数
+     * @return List<TJcpcsdxxVO>
+     */
+    List<TJcpcsdxxVO> queryList(@Param("tJcpcsdxxDTO") TJcpcsdxxDTO tJcpcsdxxDTO);
 }

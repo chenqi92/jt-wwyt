@@ -13,16 +13,9 @@ import java.util.List;
  * 吊装作业安全措施表(t_dzzy_aqcs)表服务接口
  *
  * @author lhh
- * @since 2023-05-18 15:54:42
+ * @since 2023-05-22 14:16:24
  */
 public interface TDzzyAqcsService extends IService<TDzzyAqcsEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TDzzyAqcsVO>
-     */
-    List<TDzzyAqcsVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -31,5 +24,13 @@ public interface TDzzyAqcsService extends IService<TDzzyAqcsEntity> {
      * @param tDzzyAqcsDTO 查询参数
      * @return IPage<TDzzyAqcsVO> tDzzyAqcsDTO
      */
-    IPage<TDzzyAqcsVO> selectPage(Page<TDzzyAqcsDTO> page, TDzzyAqcsDTO tDzzyAqcsDTO);
+    IPage<TDzzyAqcsVO> queryPage(Page<TDzzyAqcsDTO> page, TDzzyAqcsDTO tDzzyAqcsDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tDzzyAqcsDTO 查询参数
+     * @return List<TDzzyAqcsVO>
+     */
+    List<TDzzyAqcsVO> queryList(TDzzyAqcsDTO tDzzyAqcsDTO);
 }

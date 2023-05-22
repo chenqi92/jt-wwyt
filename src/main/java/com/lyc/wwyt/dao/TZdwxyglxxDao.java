@@ -15,17 +15,10 @@ import java.util.List;
  * 重大危险源管理信息表(t_zdwxyglxx)表数据库访问层
  *
  * @author lhh
- * @since 2023-05-17 14:04:25
+ * @since 2023-05-22 14:22:39
  */
 @Mapper
 public interface TZdwxyglxxDao extends BaseMapper<TZdwxyglxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TZdwxyglxxVO>
-     */
-    List<TZdwxyglxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TZdwxyglxxDao extends BaseMapper<TZdwxyglxxEntity> {
      * @param tZdwxyglxxDTO 查询参数
      * @return IPage<TZdwxyglxxVO>
      */
-    IPage<TZdwxyglxxVO> selectList(Page<TZdwxyglxxDTO> page, @Param("tZdwxyglxxDTO") TZdwxyglxxDTO tZdwxyglxxDTO);
+    IPage<TZdwxyglxxVO> queryList(Page<TZdwxyglxxDTO> page, @Param("tZdwxyglxxDTO") TZdwxyglxxDTO tZdwxyglxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tZdwxyglxxDTO 查询参数
+     * @return List<TZdwxyglxxVO>
+     */
+    List<TZdwxyglxxVO> queryList(@Param("tZdwxyglxxDTO") TZdwxyglxxDTO tZdwxyglxxDTO);
 }

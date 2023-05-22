@@ -15,17 +15,10 @@ import java.util.List;
  * 临时用电作业审批流转记录表(t_lsydzy_splz)表数据库访问层
  *
  * @author lhh
- * @since 2023-05-18 15:55:01
+ * @since 2023-05-22 14:22:30
  */
 @Mapper
 public interface TLsydzySplzDao extends BaseMapper<TLsydzySplzEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TLsydzySplzVO>
-     */
-    List<TLsydzySplzVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TLsydzySplzDao extends BaseMapper<TLsydzySplzEntity> {
      * @param tLsydzySplzDTO 查询参数
      * @return IPage<TLsydzySplzVO>
      */
-    IPage<TLsydzySplzVO> selectList(Page<TLsydzySplzDTO> page, @Param("tLsydzySplzDTO") TLsydzySplzDTO tLsydzySplzDTO);
+    IPage<TLsydzySplzVO> queryList(Page<TLsydzySplzDTO> page, @Param("tLsydzySplzDTO") TLsydzySplzDTO tLsydzySplzDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tLsydzySplzDTO 查询参数
+     * @return List<TLsydzySplzVO>
+     */
+    List<TLsydzySplzVO> queryList(@Param("tLsydzySplzDTO") TLsydzySplzDTO tLsydzySplzDTO);
 }

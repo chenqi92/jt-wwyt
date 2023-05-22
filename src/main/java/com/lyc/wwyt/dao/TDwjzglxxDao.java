@@ -15,17 +15,10 @@ import java.util.List;
  * 定位基站管理信息表(t_dwjzglxx)表数据库访问层
  *
  * @author lhh
- * @since 2023-05-18 16:32:16
+ * @since 2023-05-22 14:16:23
  */
 @Mapper
 public interface TDwjzglxxDao extends BaseMapper<TDwjzglxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TDwjzglxxVO>
-     */
-    List<TDwjzglxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TDwjzglxxDao extends BaseMapper<TDwjzglxxEntity> {
      * @param tDwjzglxxDTO 查询参数
      * @return IPage<TDwjzglxxVO>
      */
-    IPage<TDwjzglxxVO> selectList(Page<TDwjzglxxDTO> page, @Param("tDwjzglxxDTO") TDwjzglxxDTO tDwjzglxxDTO);
+    IPage<TDwjzglxxVO> queryList(Page<TDwjzglxxDTO> page, @Param("tDwjzglxxDTO") TDwjzglxxDTO tDwjzglxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tDwjzglxxDTO 查询参数
+     * @return List<TDwjzglxxVO>
+     */
+    List<TDwjzglxxVO> queryList(@Param("tDwjzglxxDTO") TDwjzglxxDTO tDwjzglxxDTO);
 }

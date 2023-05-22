@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
  * 高处作业信息表(t_gczy)DTO
  *
  * @author lhh
- * @since 2023-05-18 15:54:49
+ * @since 2023-05-22 14:16:25
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

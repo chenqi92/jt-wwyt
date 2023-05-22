@@ -17,23 +17,13 @@ import java.util.List;
  * 生产设施停用信息(t_scsstyxx)表服务实现类
  *
  * @author lhh
- * @since 2023-05-17 17:22:11
+ * @since 2023-05-22 14:22:36
  */
 @Service("tScsstyxxService")
 @RequiredArgsConstructor
 public class TScsstyxxServiceImpl extends ServiceImpl<TScsstyxxDao, TScsstyxxEntity> implements TScsstyxxService {
 
     private final TScsstyxxDao tScsstyxxDao;
-
-    /**
-     * 查询所有数据
-     *
-     * @return 所有数据
-     */
-    @Override
-    public List<TScsstyxxVO> selectList() {
-        return this.tScsstyxxDao.selectList();
-    }
 
     /**
      * 分页查询所有数据
@@ -43,7 +33,18 @@ public class TScsstyxxServiceImpl extends ServiceImpl<TScsstyxxDao, TScsstyxxEnt
      * @return 指定页码和条数的数据
      */
     @Override
-    public IPage<TScsstyxxVO> selectPage(Page<TScsstyxxDTO> page, TScsstyxxDTO tScsstyxxDTO) {
-        return this.tScsstyxxDao.selectList(page, tScsstyxxDTO);
+    public IPage<TScsstyxxVO> queryPage(Page<TScsstyxxDTO> page, TScsstyxxDTO tScsstyxxDTO) {
+        return this.tScsstyxxDao.queryList(page, tScsstyxxDTO);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param tScsstyxxDTO 查询参数
+     * @return 所有数据
+     */
+    @Override
+    public List<TScsstyxxVO> queryList(TScsstyxxDTO tScsstyxxDTO) {
+        return this.tScsstyxxDao.queryList(tScsstyxxDTO);
     }
 }

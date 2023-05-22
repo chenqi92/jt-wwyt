@@ -17,23 +17,13 @@ import java.util.List;
  * 动火作业气体分析数据表(t_dhzy_qtfx)表服务实现类
  *
  * @author lhh
- * @since 2023-05-18 15:54:23
+ * @since 2023-05-22 14:13:08
  */
 @Service("tDhzyQtfxService")
 @RequiredArgsConstructor
 public class TDhzyQtfxServiceImpl extends ServiceImpl<TDhzyQtfxDao, TDhzyQtfxEntity> implements TDhzyQtfxService {
 
     private final TDhzyQtfxDao tDhzyQtfxDao;
-
-    /**
-     * 查询所有数据
-     *
-     * @return 所有数据
-     */
-    @Override
-    public List<TDhzyQtfxVO> selectList() {
-        return this.tDhzyQtfxDao.selectList();
-    }
 
     /**
      * 分页查询所有数据
@@ -43,7 +33,18 @@ public class TDhzyQtfxServiceImpl extends ServiceImpl<TDhzyQtfxDao, TDhzyQtfxEnt
      * @return 指定页码和条数的数据
      */
     @Override
-    public IPage<TDhzyQtfxVO> selectPage(Page<TDhzyQtfxDTO> page, TDhzyQtfxDTO tDhzyQtfxDTO) {
-        return this.tDhzyQtfxDao.selectList(page, tDhzyQtfxDTO);
+    public IPage<TDhzyQtfxVO> queryPage(Page<TDhzyQtfxDTO> page, TDhzyQtfxDTO tDhzyQtfxDTO) {
+        return this.tDhzyQtfxDao.queryList(page, tDhzyQtfxDTO);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param tDhzyQtfxDTO 查询参数
+     * @return 所有数据
+     */
+    @Override
+    public List<TDhzyQtfxVO> queryList(TDhzyQtfxDTO tDhzyQtfxDTO) {
+        return this.tDhzyQtfxDao.queryList(tDhzyQtfxDTO);
     }
 }

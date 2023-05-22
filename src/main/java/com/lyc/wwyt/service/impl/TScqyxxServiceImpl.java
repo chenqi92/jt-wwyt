@@ -17,23 +17,13 @@ import java.util.List;
  * 生产区域信息表(t_scqyxx)表服务实现类
  *
  * @author lhh
- * @since 2023-05-17 17:22:12
+ * @since 2023-05-22 14:22:33
  */
 @Service("tScqyxxService")
 @RequiredArgsConstructor
 public class TScqyxxServiceImpl extends ServiceImpl<TScqyxxDao, TScqyxxEntity> implements TScqyxxService {
 
     private final TScqyxxDao tScqyxxDao;
-
-    /**
-     * 查询所有数据
-     *
-     * @return 所有数据
-     */
-    @Override
-    public List<TScqyxxVO> selectList() {
-        return this.tScqyxxDao.selectList();
-    }
 
     /**
      * 分页查询所有数据
@@ -43,7 +33,18 @@ public class TScqyxxServiceImpl extends ServiceImpl<TScqyxxDao, TScqyxxEntity> i
      * @return 指定页码和条数的数据
      */
     @Override
-    public IPage<TScqyxxVO> selectPage(Page<TScqyxxDTO> page, TScqyxxDTO tScqyxxDTO) {
-        return this.tScqyxxDao.selectList(page, tScqyxxDTO);
+    public IPage<TScqyxxVO> queryPage(Page<TScqyxxDTO> page, TScqyxxDTO tScqyxxDTO) {
+        return this.tScqyxxDao.queryList(page, tScqyxxDTO);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param tScqyxxDTO 查询参数
+     * @return 所有数据
+     */
+    @Override
+    public List<TScqyxxVO> queryList(TScqyxxDTO tScqyxxDTO) {
+        return this.tScqyxxDao.queryList(tScqyxxDTO);
     }
 }

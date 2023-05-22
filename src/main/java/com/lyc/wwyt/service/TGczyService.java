@@ -13,16 +13,9 @@ import java.util.List;
  * 高处作业信息表(t_gczy)表服务接口
  *
  * @author lhh
- * @since 2023-05-18 15:54:47
+ * @since 2023-05-22 14:16:25
  */
 public interface TGczyService extends IService<TGczyEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TGczyVO>
-     */
-    List<TGczyVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -31,5 +24,13 @@ public interface TGczyService extends IService<TGczyEntity> {
      * @param tGczyDTO 查询参数
      * @return IPage<TGczyVO> tGczyDTO
      */
-    IPage<TGczyVO> selectPage(Page<TGczyDTO> page, TGczyDTO tGczyDTO);
+    IPage<TGczyVO> queryPage(Page<TGczyDTO> page, TGczyDTO tGczyDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tGczyDTO 查询参数
+     * @return List<TGczyVO>
+     */
+    List<TGczyVO> queryList(TGczyDTO tGczyDTO);
 }

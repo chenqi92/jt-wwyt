@@ -13,16 +13,9 @@ import java.util.List;
  * 断路作业安全措施表(t_dlzy_aqcs)表服务接口
  *
  * @author lhh
- * @since 2023-05-18 15:54:28
+ * @since 2023-05-22 14:13:41
  */
 public interface TDlzyAqcsService extends IService<TDlzyAqcsEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TDlzyAqcsVO>
-     */
-    List<TDlzyAqcsVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -31,5 +24,13 @@ public interface TDlzyAqcsService extends IService<TDlzyAqcsEntity> {
      * @param tDlzyAqcsDTO 查询参数
      * @return IPage<TDlzyAqcsVO> tDlzyAqcsDTO
      */
-    IPage<TDlzyAqcsVO> selectPage(Page<TDlzyAqcsDTO> page, TDlzyAqcsDTO tDlzyAqcsDTO);
+    IPage<TDlzyAqcsVO> queryPage(Page<TDlzyAqcsDTO> page, TDlzyAqcsDTO tDlzyAqcsDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tDlzyAqcsDTO 查询参数
+     * @return List<TDlzyAqcsVO>
+     */
+    List<TDlzyAqcsVO> queryList(TDlzyAqcsDTO tDlzyAqcsDTO);
 }

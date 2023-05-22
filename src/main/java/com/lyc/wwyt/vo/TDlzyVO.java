@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
  * 断路作业信息表(t_dlzy)VO
  *
  * @author lhh
- * @since 2023-05-18 15:54:28
+ * @since 2023-05-22 14:13:41
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

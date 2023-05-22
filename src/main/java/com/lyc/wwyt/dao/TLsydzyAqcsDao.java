@@ -15,17 +15,10 @@ import java.util.List;
  * 临时用电安全措施表(t_lsydzy_aqcs)表数据库访问层
  *
  * @author lhh
- * @since 2023-05-18 15:54:56
+ * @since 2023-05-22 14:22:29
  */
 @Mapper
 public interface TLsydzyAqcsDao extends BaseMapper<TLsydzyAqcsEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TLsydzyAqcsVO>
-     */
-    List<TLsydzyAqcsVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TLsydzyAqcsDao extends BaseMapper<TLsydzyAqcsEntity> {
      * @param tLsydzyAqcsDTO 查询参数
      * @return IPage<TLsydzyAqcsVO>
      */
-    IPage<TLsydzyAqcsVO> selectList(Page<TLsydzyAqcsDTO> page, @Param("tLsydzyAqcsDTO") TLsydzyAqcsDTO tLsydzyAqcsDTO);
+    IPage<TLsydzyAqcsVO> queryList(Page<TLsydzyAqcsDTO> page, @Param("tLsydzyAqcsDTO") TLsydzyAqcsDTO tLsydzyAqcsDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tLsydzyAqcsDTO 查询参数
+     * @return List<TLsydzyAqcsVO>
+     */
+    List<TLsydzyAqcsVO> queryList(@Param("tLsydzyAqcsDTO") TLsydzyAqcsDTO tLsydzyAqcsDTO);
 }

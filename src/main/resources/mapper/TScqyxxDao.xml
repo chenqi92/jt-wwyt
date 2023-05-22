@@ -22,48 +22,50 @@
     </resultMap>
 
     <sql id="baseColumn">
-        id
+        `id`
         ,
-        TYSHXYDM,        
-        QYMC,        
-        SSBM,        
-        QYWH,        
-        QYDJ,        
-        FZR,        
-        FZRBM,        
-        FZRGH,        
-        FZRLXDH,        
-        BZ,        
-        create_time,        
-        create_by,        
-        update_time,        
-        update_by,        
-        delete_mark
+        `TYSHXYDM`,        
+        `QYMC`,        
+        `SSBM`,        
+        `QYWH`,        
+        `QYDJ`,        
+        `FZR`,        
+        `FZRBM`,        
+        `FZRGH`,        
+        `FZRLXDH`,        
+        `BZ`,        
+        `create_time`,        
+        `create_by`,        
+        `update_time`,        
+        `update_by`,        
+        `delete_mark`
     </sql>
 
-    <select id="selectList" resultType="com.lyc.wwyt.vo.TScqyxxVO">
+    <select id="queryList" resultType="com.lyc.wwyt.vo.TScqyxxVO">
         select
-        id,
-        TYSHXYDM,
-        QYMC,
-        SSBM,
-        QYWH,
-        QYDJ,
-        FZR,
-        FZRBM,
-        FZRGH,
-        FZRLXDH,
-        BZ,
-        create_time,
-        create_by,
-        update_time,
-        update_by,
-        delete_mark
+        `id`,
+        `TYSHXYDM`,
+        `QYMC`,
+        `SSBM`,
+        `QYWH`,
+        `QYDJ`,
+        `FZR`,
+        `FZRBM`,
+        `FZRGH`,
+        `FZRLXDH`,
+        `BZ`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`
         from t_scqyxx
         where delete_mark = 0
-        <if test="tScqyxxDTO != null and tScqyxxDTO != ''">
+        <if test="tScqyxxDTO.id != null and tScqyxxDTO.id != ''">
             AND id = #{tScqyxxDTO.id}
         </if>
+        <if test="tScqyxxDTO.tyshxydm != null and tScqyxxDTO.tyshxydm != ''">
+            AND TYSHXYDM = #{tScqyxxDTO.tyshxydm}
+        </if>
     </select>
-
 </mapper>

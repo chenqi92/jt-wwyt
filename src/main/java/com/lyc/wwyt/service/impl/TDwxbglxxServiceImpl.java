@@ -17,23 +17,13 @@ import java.util.List;
  * 定位信标管理信息表(t_dwxbglxx)表服务实现类
  *
  * @author lhh
- * @since 2023-05-18 16:32:19
+ * @since 2023-05-22 14:16:24
  */
 @Service("tDwxbglxxService")
 @RequiredArgsConstructor
 public class TDwxbglxxServiceImpl extends ServiceImpl<TDwxbglxxDao, TDwxbglxxEntity> implements TDwxbglxxService {
 
     private final TDwxbglxxDao tDwxbglxxDao;
-
-    /**
-     * 查询所有数据
-     *
-     * @return 所有数据
-     */
-    @Override
-    public List<TDwxbglxxVO> selectList() {
-        return this.tDwxbglxxDao.selectList();
-    }
 
     /**
      * 分页查询所有数据
@@ -43,7 +33,18 @@ public class TDwxbglxxServiceImpl extends ServiceImpl<TDwxbglxxDao, TDwxbglxxEnt
      * @return 指定页码和条数的数据
      */
     @Override
-    public IPage<TDwxbglxxVO> selectPage(Page<TDwxbglxxDTO> page, TDwxbglxxDTO tDwxbglxxDTO) {
-        return this.tDwxbglxxDao.selectList(page, tDwxbglxxDTO);
+    public IPage<TDwxbglxxVO> queryPage(Page<TDwxbglxxDTO> page, TDwxbglxxDTO tDwxbglxxDTO) {
+        return this.tDwxbglxxDao.queryList(page, tDwxbglxxDTO);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param tDwxbglxxDTO 查询参数
+     * @return 所有数据
+     */
+    @Override
+    public List<TDwxbglxxVO> queryList(TDwxbglxxDTO tDwxbglxxDTO) {
+        return this.tDwxbglxxDao.queryList(tDwxbglxxDTO);
     }
 }

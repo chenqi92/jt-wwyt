@@ -13,16 +13,9 @@ import java.util.List;
  * 断路作业审批流转记录表(t_dlzy_splz)表服务接口
  *
  * @author lhh
- * @since 2023-05-18 15:54:30
+ * @since 2023-05-22 14:13:41
  */
 public interface TDlzySplzService extends IService<TDlzySplzEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TDlzySplzVO>
-     */
-    List<TDlzySplzVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -31,5 +24,13 @@ public interface TDlzySplzService extends IService<TDlzySplzEntity> {
      * @param tDlzySplzDTO 查询参数
      * @return IPage<TDlzySplzVO> tDlzySplzDTO
      */
-    IPage<TDlzySplzVO> selectPage(Page<TDlzySplzDTO> page, TDlzySplzDTO tDlzySplzDTO);
+    IPage<TDlzySplzVO> queryPage(Page<TDlzySplzDTO> page, TDlzySplzDTO tDlzySplzDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tDlzySplzDTO 查询参数
+     * @return List<TDlzySplzVO>
+     */
+    List<TDlzySplzVO> queryList(TDlzySplzDTO tDlzySplzDTO);
 }

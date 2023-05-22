@@ -13,16 +13,9 @@ import java.util.List;
  * 高处作业审批流转记录表(t_gczy_splz)表服务接口
  *
  * @author lhh
- * @since 2023-05-18 15:54:52
+ * @since 2023-05-22 14:16:26
  */
 public interface TGczySplzService extends IService<TGczySplzEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TGczySplzVO>
-     */
-    List<TGczySplzVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -31,5 +24,13 @@ public interface TGczySplzService extends IService<TGczySplzEntity> {
      * @param tGczySplzDTO 查询参数
      * @return IPage<TGczySplzVO> tGczySplzDTO
      */
-    IPage<TGczySplzVO> selectPage(Page<TGczySplzDTO> page, TGczySplzDTO tGczySplzDTO);
+    IPage<TGczySplzVO> queryPage(Page<TGczySplzDTO> page, TGczySplzDTO tGczySplzDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tGczySplzDTO 查询参数
+     * @return List<TGczySplzVO>
+     */
+    List<TGczySplzVO> queryList(TGczySplzDTO tGczySplzDTO);
 }

@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
  * 动火作业作业审批流转记录表(t_dhzy_splz)VO
  *
  * @author lhh
- * @since 2023-05-18 15:54:26
+ * @since 2023-05-22 14:13:09
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

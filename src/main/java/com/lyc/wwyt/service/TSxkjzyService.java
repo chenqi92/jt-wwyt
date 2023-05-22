@@ -13,16 +13,9 @@ import java.util.List;
  * 受限空间作业信息表(t_sxkjzy)表服务接口
  *
  * @author lhh
- * @since 2023-05-18 15:55:10
+ * @since 2023-05-22 14:22:37
  */
 public interface TSxkjzyService extends IService<TSxkjzyEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TSxkjzyVO>
-     */
-    List<TSxkjzyVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -31,5 +24,13 @@ public interface TSxkjzyService extends IService<TSxkjzyEntity> {
      * @param tSxkjzyDTO 查询参数
      * @return IPage<TSxkjzyVO> tSxkjzyDTO
      */
-    IPage<TSxkjzyVO> selectPage(Page<TSxkjzyDTO> page, TSxkjzyDTO tSxkjzyDTO);
+    IPage<TSxkjzyVO> queryPage(Page<TSxkjzyDTO> page, TSxkjzyDTO tSxkjzyDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tSxkjzyDTO 查询参数
+     * @return List<TSxkjzyVO>
+     */
+    List<TSxkjzyVO> queryList(TSxkjzyDTO tSxkjzyDTO);
 }

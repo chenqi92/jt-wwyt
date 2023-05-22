@@ -15,17 +15,10 @@ import java.util.List;
  * 临时用电信息表(t_lsydzy)表数据库访问层
  *
  * @author lhh
- * @since 2023-05-18 15:54:54
+ * @since 2023-05-22 14:22:29
  */
 @Mapper
 public interface TLsydzyDao extends BaseMapper<TLsydzyEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TLsydzyVO>
-     */
-    List<TLsydzyVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TLsydzyDao extends BaseMapper<TLsydzyEntity> {
      * @param tLsydzyDTO 查询参数
      * @return IPage<TLsydzyVO>
      */
-    IPage<TLsydzyVO> selectList(Page<TLsydzyDTO> page, @Param("tLsydzyDTO") TLsydzyDTO tLsydzyDTO);
+    IPage<TLsydzyVO> queryList(Page<TLsydzyDTO> page, @Param("tLsydzyDTO") TLsydzyDTO tLsydzyDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tLsydzyDTO 查询参数
+     * @return List<TLsydzyVO>
+     */
+    List<TLsydzyVO> queryList(@Param("tLsydzyDTO") TLsydzyDTO tLsydzyDTO);
 }

@@ -13,16 +13,9 @@ import java.util.List;
  * 动火作业信息表(t_dhzy)表服务接口
  *
  * @author lhh
- * @since 2023-05-18 15:54:19
+ * @since 2023-05-22 14:13:07
  */
 public interface TDhzyService extends IService<TDhzyEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TDhzyVO>
-     */
-    List<TDhzyVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -31,5 +24,13 @@ public interface TDhzyService extends IService<TDhzyEntity> {
      * @param tDhzyDTO 查询参数
      * @return IPage<TDhzyVO> tDhzyDTO
      */
-    IPage<TDhzyVO> selectPage(Page<TDhzyDTO> page, TDhzyDTO tDhzyDTO);
+    IPage<TDhzyVO> queryPage(Page<TDhzyDTO> page, TDhzyDTO tDhzyDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tDhzyDTO 查询参数
+     * @return List<TDhzyVO>
+     */
+    List<TDhzyVO> queryList(TDhzyDTO tDhzyDTO);
 }

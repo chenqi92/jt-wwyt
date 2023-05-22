@@ -13,16 +13,9 @@ import java.util.List;
  * 受限空间作业安全措施表(t_sxkjzy_aqcs)表服务接口
  *
  * @author lhh
- * @since 2023-05-18 15:55:12
+ * @since 2023-05-22 14:22:37
  */
 public interface TSxkjzyAqcsService extends IService<TSxkjzyAqcsEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TSxkjzyAqcsVO>
-     */
-    List<TSxkjzyAqcsVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -31,5 +24,13 @@ public interface TSxkjzyAqcsService extends IService<TSxkjzyAqcsEntity> {
      * @param tSxkjzyAqcsDTO 查询参数
      * @return IPage<TSxkjzyAqcsVO> tSxkjzyAqcsDTO
      */
-    IPage<TSxkjzyAqcsVO> selectPage(Page<TSxkjzyAqcsDTO> page, TSxkjzyAqcsDTO tSxkjzyAqcsDTO);
+    IPage<TSxkjzyAqcsVO> queryPage(Page<TSxkjzyAqcsDTO> page, TSxkjzyAqcsDTO tSxkjzyAqcsDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tSxkjzyAqcsDTO 查询参数
+     * @return List<TSxkjzyAqcsVO>
+     */
+    List<TSxkjzyAqcsVO> queryList(TSxkjzyAqcsDTO tSxkjzyAqcsDTO);
 }

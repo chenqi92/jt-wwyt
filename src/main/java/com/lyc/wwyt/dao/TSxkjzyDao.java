@@ -15,17 +15,10 @@ import java.util.List;
  * 受限空间作业信息表(t_sxkjzy)表数据库访问层
  *
  * @author lhh
- * @since 2023-05-18 15:55:10
+ * @since 2023-05-22 14:22:37
  */
 @Mapper
 public interface TSxkjzyDao extends BaseMapper<TSxkjzyEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TSxkjzyVO>
-     */
-    List<TSxkjzyVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TSxkjzyDao extends BaseMapper<TSxkjzyEntity> {
      * @param tSxkjzyDTO 查询参数
      * @return IPage<TSxkjzyVO>
      */
-    IPage<TSxkjzyVO> selectList(Page<TSxkjzyDTO> page, @Param("tSxkjzyDTO") TSxkjzyDTO tSxkjzyDTO);
+    IPage<TSxkjzyVO> queryList(Page<TSxkjzyDTO> page, @Param("tSxkjzyDTO") TSxkjzyDTO tSxkjzyDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tSxkjzyDTO 查询参数
+     * @return List<TSxkjzyVO>
+     */
+    List<TSxkjzyVO> queryList(@Param("tSxkjzyDTO") TSxkjzyDTO tSxkjzyDTO);
 }

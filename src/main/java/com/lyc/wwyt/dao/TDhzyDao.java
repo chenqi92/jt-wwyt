@@ -15,17 +15,10 @@ import java.util.List;
  * 动火作业信息表(t_dhzy)表数据库访问层
  *
  * @author lhh
- * @since 2023-05-18 15:54:18
+ * @since 2023-05-22 14:13:07
  */
 @Mapper
 public interface TDhzyDao extends BaseMapper<TDhzyEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TDhzyVO>
-     */
-    List<TDhzyVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TDhzyDao extends BaseMapper<TDhzyEntity> {
      * @param tDhzyDTO 查询参数
      * @return IPage<TDhzyVO>
      */
-    IPage<TDhzyVO> selectList(Page<TDhzyDTO> page, @Param("tDhzyDTO") TDhzyDTO tDhzyDTO);
+    IPage<TDhzyVO> queryList(Page<TDhzyDTO> page, @Param("tDhzyDTO") TDhzyDTO tDhzyDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tDhzyDTO 查询参数
+     * @return List<TDhzyVO>
+     */
+    List<TDhzyVO> queryList(@Param("tDhzyDTO") TDhzyDTO tDhzyDTO);
 }

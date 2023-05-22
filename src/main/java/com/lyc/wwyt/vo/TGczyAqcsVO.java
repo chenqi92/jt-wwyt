@@ -10,7 +10,7 @@ import lombok.EqualsAndHashCode;
  * 高处作业信息安全措施表(t_gczy_aqcs)VO
  *
  * @author lhh
- * @since 2023-05-18 15:54:51
+ * @since 2023-05-22 14:16:26
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

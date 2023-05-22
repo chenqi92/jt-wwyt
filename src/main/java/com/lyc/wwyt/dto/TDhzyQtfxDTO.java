@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
  * 动火作业气体分析数据表(t_dhzy_qtfx)DTO
  *
  * @author lhh
- * @since 2023-05-18 15:54:23
+ * @since 2023-05-22 14:13:08
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

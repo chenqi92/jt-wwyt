@@ -13,16 +13,9 @@ import java.util.List;
  * 生产设施检查信息(t_scssjcxx)表服务接口
  *
  * @author lhh
- * @since 2023-05-17 17:22:11
+ * @since 2023-05-22 14:22:36
  */
 public interface TScssjcxxService extends IService<TScssjcxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TScssjcxxVO>
-     */
-    List<TScssjcxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -31,5 +24,13 @@ public interface TScssjcxxService extends IService<TScssjcxxEntity> {
      * @param tScssjcxxDTO 查询参数
      * @return IPage<TScssjcxxVO> tScssjcxxDTO
      */
-    IPage<TScssjcxxVO> selectPage(Page<TScssjcxxDTO> page, TScssjcxxDTO tScssjcxxDTO);
+    IPage<TScssjcxxVO> queryPage(Page<TScssjcxxDTO> page, TScssjcxxDTO tScssjcxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tScssjcxxDTO 查询参数
+     * @return List<TScssjcxxVO>
+     */
+    List<TScssjcxxVO> queryList(TScssjcxxDTO tScssjcxxDTO);
 }

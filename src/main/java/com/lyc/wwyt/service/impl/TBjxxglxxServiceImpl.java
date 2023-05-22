@@ -17,23 +17,13 @@ import java.util.List;
  * 报警信息管理信息表(t_bjxxglxx)表服务实现类
  *
  * @author lhh
- * @since 2023-05-18 16:32:23
+ * @since 2023-05-22 14:13:07
  */
 @Service("tBjxxglxxService")
 @RequiredArgsConstructor
 public class TBjxxglxxServiceImpl extends ServiceImpl<TBjxxglxxDao, TBjxxglxxEntity> implements TBjxxglxxService {
 
     private final TBjxxglxxDao tBjxxglxxDao;
-
-    /**
-     * 查询所有数据
-     *
-     * @return 所有数据
-     */
-    @Override
-    public List<TBjxxglxxVO> selectList() {
-        return this.tBjxxglxxDao.selectList();
-    }
 
     /**
      * 分页查询所有数据
@@ -43,7 +33,18 @@ public class TBjxxglxxServiceImpl extends ServiceImpl<TBjxxglxxDao, TBjxxglxxEnt
      * @return 指定页码和条数的数据
      */
     @Override
-    public IPage<TBjxxglxxVO> selectPage(Page<TBjxxglxxDTO> page, TBjxxglxxDTO tBjxxglxxDTO) {
-        return this.tBjxxglxxDao.selectList(page, tBjxxglxxDTO);
+    public IPage<TBjxxglxxVO> queryPage(Page<TBjxxglxxDTO> page, TBjxxglxxDTO tBjxxglxxDTO) {
+        return this.tBjxxglxxDao.queryList(page, tBjxxglxxDTO);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param tBjxxglxxDTO 查询参数
+     * @return 所有数据
+     */
+    @Override
+    public List<TBjxxglxxVO> queryList(TBjxxglxxDTO tBjxxglxxDTO) {
+        return this.tBjxxglxxDao.queryList(tBjxxglxxDTO);
     }
 }

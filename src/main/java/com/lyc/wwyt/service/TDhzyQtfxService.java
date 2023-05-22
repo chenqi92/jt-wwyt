@@ -13,16 +13,9 @@ import java.util.List;
  * 动火作业气体分析数据表(t_dhzy_qtfx)表服务接口
  *
  * @author lhh
- * @since 2023-05-18 15:54:22
+ * @since 2023-05-22 14:13:08
  */
 public interface TDhzyQtfxService extends IService<TDhzyQtfxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TDhzyQtfxVO>
-     */
-    List<TDhzyQtfxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -31,5 +24,13 @@ public interface TDhzyQtfxService extends IService<TDhzyQtfxEntity> {
      * @param tDhzyQtfxDTO 查询参数
      * @return IPage<TDhzyQtfxVO> tDhzyQtfxDTO
      */
-    IPage<TDhzyQtfxVO> selectPage(Page<TDhzyQtfxDTO> page, TDhzyQtfxDTO tDhzyQtfxDTO);
+    IPage<TDhzyQtfxVO> queryPage(Page<TDhzyQtfxDTO> page, TDhzyQtfxDTO tDhzyQtfxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tDhzyQtfxDTO 查询参数
+     * @return List<TDhzyQtfxVO>
+     */
+    List<TDhzyQtfxVO> queryList(TDhzyQtfxDTO tDhzyQtfxDTO);
 }

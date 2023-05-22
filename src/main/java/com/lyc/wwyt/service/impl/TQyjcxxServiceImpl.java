@@ -17,23 +17,13 @@ import java.util.List;
  * 企业基础信息表(t_qyjcxx)表服务实现类
  *
  * @author lhh
- * @since 2023-05-17 11:20:39
+ * @since 2023-05-22 14:22:31
  */
 @Service("tQyjcxxService")
 @RequiredArgsConstructor
 public class TQyjcxxServiceImpl extends ServiceImpl<TQyjcxxDao, TQyjcxxEntity> implements TQyjcxxService {
 
     private final TQyjcxxDao tQyjcxxDao;
-
-    /**
-     * 查询所有数据
-     *
-     * @return 所有数据
-     */
-    @Override
-    public List<TQyjcxxVO> selectList() {
-        return this.tQyjcxxDao.selectList();
-    }
 
     /**
      * 分页查询所有数据
@@ -43,7 +33,18 @@ public class TQyjcxxServiceImpl extends ServiceImpl<TQyjcxxDao, TQyjcxxEntity> i
      * @return 指定页码和条数的数据
      */
     @Override
-    public IPage<TQyjcxxVO> selectPage(Page<TQyjcxxDTO> page, TQyjcxxDTO tQyjcxxDTO) {
-        return this.tQyjcxxDao.selectList(page, tQyjcxxDTO);
+    public IPage<TQyjcxxVO> queryPage(Page<TQyjcxxDTO> page, TQyjcxxDTO tQyjcxxDTO) {
+        return this.tQyjcxxDao.queryList(page, tQyjcxxDTO);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param tQyjcxxDTO 查询参数
+     * @return 所有数据
+     */
+    @Override
+    public List<TQyjcxxVO> queryList(TQyjcxxDTO tQyjcxxDTO) {
+        return this.tQyjcxxDao.queryList(tQyjcxxDTO);
     }
 }

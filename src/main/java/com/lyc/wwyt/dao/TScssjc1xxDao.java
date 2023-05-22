@@ -15,17 +15,10 @@ import java.util.List;
  * 生产设施检测信息(t_scssjc1xx)表数据库访问层
  *
  * @author lhh
- * @since 2023-05-17 17:22:10
+ * @since 2023-05-22 14:22:34
  */
 @Mapper
 public interface TScssjc1xxDao extends BaseMapper<TScssjc1xxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TScssjc1xxVO>
-     */
-    List<TScssjc1xxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TScssjc1xxDao extends BaseMapper<TScssjc1xxEntity> {
      * @param tScssjc1xxDTO 查询参数
      * @return IPage<TScssjc1xxVO>
      */
-    IPage<TScssjc1xxVO> selectList(Page<TScssjc1xxDTO> page, @Param("tScssjc1xxDTO") TScssjc1xxDTO tScssjc1xxDTO);
+    IPage<TScssjc1xxVO> queryList(Page<TScssjc1xxDTO> page, @Param("tScssjc1xxDTO") TScssjc1xxDTO tScssjc1xxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tScssjc1xxDTO 查询参数
+     * @return List<TScssjc1xxVO>
+     */
+    List<TScssjc1xxVO> queryList(@Param("tScssjc1xxDTO") TScssjc1xxDTO tScssjc1xxDTO);
 }

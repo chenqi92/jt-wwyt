@@ -15,17 +15,10 @@ import java.util.List;
  * 断路作业审批流转记录表(t_dlzy_splz)表数据库访问层
  *
  * @author lhh
- * @since 2023-05-18 15:54:30
+ * @since 2023-05-22 14:13:41
  */
 @Mapper
 public interface TDlzySplzDao extends BaseMapper<TDlzySplzEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TDlzySplzVO>
-     */
-    List<TDlzySplzVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TDlzySplzDao extends BaseMapper<TDlzySplzEntity> {
      * @param tDlzySplzDTO 查询参数
      * @return IPage<TDlzySplzVO>
      */
-    IPage<TDlzySplzVO> selectList(Page<TDlzySplzDTO> page, @Param("tDlzySplzDTO") TDlzySplzDTO tDlzySplzDTO);
+    IPage<TDlzySplzVO> queryList(Page<TDlzySplzDTO> page, @Param("tDlzySplzDTO") TDlzySplzDTO tDlzySplzDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tDlzySplzDTO 查询参数
+     * @return List<TDlzySplzVO>
+     */
+    List<TDlzySplzVO> queryList(@Param("tDlzySplzDTO") TDlzySplzDTO tDlzySplzDTO);
 }

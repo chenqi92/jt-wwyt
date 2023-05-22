@@ -15,17 +15,10 @@ import java.util.List;
  * 报警信息管理信息表(t_bjxxglxx)表数据库访问层
  *
  * @author lhh
- * @since 2023-05-18 16:32:23
+ * @since 2023-05-22 14:13:06
  */
 @Mapper
 public interface TBjxxglxxDao extends BaseMapper<TBjxxglxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TBjxxglxxVO>
-     */
-    List<TBjxxglxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TBjxxglxxDao extends BaseMapper<TBjxxglxxEntity> {
      * @param tBjxxglxxDTO 查询参数
      * @return IPage<TBjxxglxxVO>
      */
-    IPage<TBjxxglxxVO> selectList(Page<TBjxxglxxDTO> page, @Param("tBjxxglxxDTO") TBjxxglxxDTO tBjxxglxxDTO);
+    IPage<TBjxxglxxVO> queryList(Page<TBjxxglxxDTO> page, @Param("tBjxxglxxDTO") TBjxxglxxDTO tBjxxglxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tBjxxglxxDTO 查询参数
+     * @return List<TBjxxglxxVO>
+     */
+    List<TBjxxglxxVO> queryList(@Param("tBjxxglxxDTO") TBjxxglxxDTO tBjxxglxxDTO);
 }

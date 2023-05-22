@@ -17,23 +17,13 @@ import java.util.List;
  * 生产设备恢复信息(t_scsshfxx)表服务实现类
  *
  * @author lhh
- * @since 2023-05-17 17:22:10
+ * @since 2023-05-22 14:22:34
  */
 @Service("tScsshfxxService")
 @RequiredArgsConstructor
 public class TScsshfxxServiceImpl extends ServiceImpl<TScsshfxxDao, TScsshfxxEntity> implements TScsshfxxService {
 
     private final TScsshfxxDao tScsshfxxDao;
-
-    /**
-     * 查询所有数据
-     *
-     * @return 所有数据
-     */
-    @Override
-    public List<TScsshfxxVO> selectList() {
-        return this.tScsshfxxDao.selectList();
-    }
 
     /**
      * 分页查询所有数据
@@ -43,7 +33,18 @@ public class TScsshfxxServiceImpl extends ServiceImpl<TScsshfxxDao, TScsshfxxEnt
      * @return 指定页码和条数的数据
      */
     @Override
-    public IPage<TScsshfxxVO> selectPage(Page<TScsshfxxDTO> page, TScsshfxxDTO tScsshfxxDTO) {
-        return this.tScsshfxxDao.selectList(page, tScsshfxxDTO);
+    public IPage<TScsshfxxVO> queryPage(Page<TScsshfxxDTO> page, TScsshfxxDTO tScsshfxxDTO) {
+        return this.tScsshfxxDao.queryList(page, tScsshfxxDTO);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param tScsshfxxDTO 查询参数
+     * @return 所有数据
+     */
+    @Override
+    public List<TScsshfxxVO> queryList(TScsshfxxDTO tScsshfxxDTO) {
+        return this.tScsshfxxDao.queryList(tScsshfxxDTO);
     }
 }

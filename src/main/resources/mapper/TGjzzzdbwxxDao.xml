@@ -30,64 +30,66 @@
     </resultMap>
 
     <sql id="baseColumn">
-        id
+        `id`
         ,
-        TYSHXYDM,        
-        ZZBWMC,        
-        SSBM,        
-        JTWZ,        
-        FZRXM,        
-        LXR,        
-        LRR,        
-        ZRR,        
-        ZZBWFL,        
-        JCZQ,        
-        XGYJYA,        
-        ZYWXYHYS,        
-        YDZFX,        
-        YJCZCS,        
-        XCZP,        
-        JD,        
-        WD,        
-        BZ,        
-        create_time,        
-        create_by,        
-        update_time,        
-        update_by,        
-        delete_mark
+        `TYSHXYDM`,        
+        `ZZBWMC`,        
+        `SSBM`,        
+        `JTWZ`,        
+        `FZRXM`,        
+        `LXR`,        
+        `LRR`,        
+        `ZRR`,        
+        `ZZBWFL`,        
+        `JCZQ`,        
+        `XGYJYA`,        
+        `ZYWXYHYS`,        
+        `YDZFX`,        
+        `YJCZCS`,        
+        `XCZP`,        
+        `JD`,        
+        `WD`,        
+        `BZ`,        
+        `create_time`,        
+        `create_by`,        
+        `update_time`,        
+        `update_by`,        
+        `delete_mark`
     </sql>
 
-    <select id="selectList" resultType="com.lyc.wwyt.vo.TGjzzzdbwxxVO">
+    <select id="queryList" resultType="com.lyc.wwyt.vo.TGjzzzdbwxxVO">
         select
-        id,
-        TYSHXYDM,
-        ZZBWMC,
-        SSBM,
-        JTWZ,
-        FZRXM,
-        LXR,
-        LRR,
-        ZRR,
-        ZZBWFL,
-        JCZQ,
-        XGYJYA,
-        ZYWXYHYS,
-        YDZFX,
-        YJCZCS,
-        XCZP,
-        JD,
-        WD,
-        BZ,
-        create_time,
-        create_by,
-        update_time,
-        update_by,
-        delete_mark
+        `id`,
+        `TYSHXYDM`,
+        `ZZBWMC`,
+        `SSBM`,
+        `JTWZ`,
+        `FZRXM`,
+        `LXR`,
+        `LRR`,
+        `ZRR`,
+        `ZZBWFL`,
+        `JCZQ`,
+        `XGYJYA`,
+        `ZYWXYHYS`,
+        `YDZFX`,
+        `YJCZCS`,
+        `XCZP`,
+        `JD`,
+        `WD`,
+        `BZ`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`
         from t_gjzzzdbwxx
         where delete_mark = 0
-        <if test="tGjzzzdbwxxDTO != null and tGjzzzdbwxxDTO != ''">
+        <if test="tGjzzzdbwxxDTO.id != null and tGjzzzdbwxxDTO.id != ''">
             AND id = #{tGjzzzdbwxxDTO.id}
         </if>
+        <if test="tGjzzzdbwxxDTO.tyshxydm != null and tGjzzzdbwxxDTO.tyshxydm != ''">
+            AND TYSHXYDM = #{tGjzzzdbwxxDTO.tyshxydm}
+        </if>
     </select>
-
 </mapper>

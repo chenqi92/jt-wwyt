@@ -13,16 +13,9 @@ import java.util.List;
  * 生产设备报废信息(t_scssbfxx)表服务接口
  *
  * @author lhh
- * @since 2023-05-17 17:22:09
+ * @since 2023-05-22 14:22:33
  */
 public interface TScssbfxxService extends IService<TScssbfxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TScssbfxxVO>
-     */
-    List<TScssbfxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -31,5 +24,13 @@ public interface TScssbfxxService extends IService<TScssbfxxEntity> {
      * @param tScssbfxxDTO 查询参数
      * @return IPage<TScssbfxxVO> tScssbfxxDTO
      */
-    IPage<TScssbfxxVO> selectPage(Page<TScssbfxxDTO> page, TScssbfxxDTO tScssbfxxDTO);
+    IPage<TScssbfxxVO> queryPage(Page<TScssbfxxDTO> page, TScssbfxxDTO tScssbfxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tScssbfxxDTO 查询参数
+     * @return List<TScssbfxxVO>
+     */
+    List<TScssbfxxVO> queryList(TScssbfxxDTO tScssbfxxDTO);
 }

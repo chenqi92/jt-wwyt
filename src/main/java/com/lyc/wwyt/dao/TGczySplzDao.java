@@ -15,17 +15,10 @@ import java.util.List;
  * 高处作业审批流转记录表(t_gczy_splz)表数据库访问层
  *
  * @author lhh
- * @since 2023-05-18 15:54:52
+ * @since 2023-05-22 14:16:26
  */
 @Mapper
 public interface TGczySplzDao extends BaseMapper<TGczySplzEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TGczySplzVO>
-     */
-    List<TGczySplzVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -34,5 +27,13 @@ public interface TGczySplzDao extends BaseMapper<TGczySplzEntity> {
      * @param tGczySplzDTO 查询参数
      * @return IPage<TGczySplzVO>
      */
-    IPage<TGczySplzVO> selectList(Page<TGczySplzDTO> page, @Param("tGczySplzDTO") TGczySplzDTO tGczySplzDTO);
+    IPage<TGczySplzVO> queryList(Page<TGczySplzDTO> page, @Param("tGczySplzDTO") TGczySplzDTO tGczySplzDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tGczySplzDTO 查询参数
+     * @return List<TGczySplzVO>
+     */
+    List<TGczySplzVO> queryList(@Param("tGczySplzDTO") TGczySplzDTO tGczySplzDTO);
 }

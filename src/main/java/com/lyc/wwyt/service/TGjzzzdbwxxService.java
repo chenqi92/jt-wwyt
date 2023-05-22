@@ -13,16 +13,9 @@ import java.util.List;
  * 关键装置重点部位信息表(t_gjzzzdbwxx)表服务接口
  *
  * @author lhh
- * @since 2023-05-17 17:22:12
+ * @since 2023-05-22 14:16:27
  */
 public interface TGjzzzdbwxxService extends IService<TGjzzzdbwxxEntity> {
-
-    /**
-     * 查询所有数据
-     *
-     * @return List<TGjzzzdbwxxVO>
-     */
-    List<TGjzzzdbwxxVO> selectList();
 
     /**
      * 分页查询所有数据
@@ -31,5 +24,13 @@ public interface TGjzzzdbwxxService extends IService<TGjzzzdbwxxEntity> {
      * @param tGjzzzdbwxxDTO 查询参数
      * @return IPage<TGjzzzdbwxxVO> tGjzzzdbwxxDTO
      */
-    IPage<TGjzzzdbwxxVO> selectPage(Page<TGjzzzdbwxxDTO> page, TGjzzzdbwxxDTO tGjzzzdbwxxDTO);
+    IPage<TGjzzzdbwxxVO> queryPage(Page<TGjzzzdbwxxDTO> page, TGjzzzdbwxxDTO tGjzzzdbwxxDTO);
+
+    /**
+     * 查询所有数据
+     *
+     * @param tGjzzzdbwxxDTO 查询参数
+     * @return List<TGjzzzdbwxxVO>
+     */
+    List<TGjzzzdbwxxVO> queryList(TGjzzzdbwxxDTO tGjzzzdbwxxDTO);
 }

@@ -17,23 +17,13 @@ import java.util.List;
  * 点位设置信息表(t_dwszxx)表服务实现类
  *
  * @author lhh
- * @since 2023-05-17 17:22:13
+ * @since 2023-05-22 14:16:23
  */
 @Service("tDwszxxService")
 @RequiredArgsConstructor
 public class TDwszxxServiceImpl extends ServiceImpl<TDwszxxDao, TDwszxxEntity> implements TDwszxxService {
 
     private final TDwszxxDao tDwszxxDao;
-
-    /**
-     * 查询所有数据
-     *
-     * @return 所有数据
-     */
-    @Override
-    public List<TDwszxxVO> selectList() {
-        return this.tDwszxxDao.selectList();
-    }
 
     /**
      * 分页查询所有数据
@@ -43,7 +33,18 @@ public class TDwszxxServiceImpl extends ServiceImpl<TDwszxxDao, TDwszxxEntity> i
      * @return 指定页码和条数的数据
      */
     @Override
-    public IPage<TDwszxxVO> selectPage(Page<TDwszxxDTO> page, TDwszxxDTO tDwszxxDTO) {
-        return this.tDwszxxDao.selectList(page, tDwszxxDTO);
+    public IPage<TDwszxxVO> queryPage(Page<TDwszxxDTO> page, TDwszxxDTO tDwszxxDTO) {
+        return this.tDwszxxDao.queryList(page, tDwszxxDTO);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param tDwszxxDTO 查询参数
+     * @return 所有数据
+     */
+    @Override
+    public List<TDwszxxVO> queryList(TDwszxxDTO tDwszxxDTO) {
+        return this.tDwszxxDao.queryList(tDwszxxDTO);
     }
 }

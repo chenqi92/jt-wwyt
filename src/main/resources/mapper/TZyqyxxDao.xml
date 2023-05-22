@@ -28,60 +28,59 @@
     </resultMap>
 
     <sql id="baseColumn">
-        TYSHXYDM
+        `TYSHXYDM`
         ,
-        YQBH,        
-        QYMC,        
-        QYLX,        
-        QYLC,        
-        QYGD,        
-        QYFXDJ,        
-        GLDXLX,        
-        GLDXBH,        
-        GLDXMC,        
-        SFZDJGQY,        
-        QYSFSYSCQ,        
-        QYFW,        
-        QYSZBM,        
-        ZDRS,        
-        JD,        
-        WD,        
-        create_time,        
-        create_by,        
-        update_time,        
-        update_by,        
-        delete_mark
+        `YQBH`,        
+        `QYMC`,        
+        `QYLX`,        
+        `QYLC`,        
+        `QYGD`,        
+        `QYFXDJ`,        
+        `GLDXLX`,        
+        `GLDXBH`,        
+        `GLDXMC`,        
+        `SFZDJGQY`,        
+        `QYSFSYSCQ`,        
+        `QYFW`,        
+        `QYSZBM`,        
+        `ZDRS`,        
+        `JD`,        
+        `WD`,        
+        `create_time`,        
+        `create_by`,        
+        `update_time`,        
+        `update_by`,        
+        `delete_mark`
     </sql>
 
-    <select id="selectList" resultType="com.lyc.wwyt.vo.TZyqyxxVO">
+    <select id="queryList" resultType="com.lyc.wwyt.vo.TZyqyxxVO">
         select
-        TYSHXYDM,
-        YQBH,
-        QYMC,
-        QYLX,
-        QYLC,
-        QYGD,
-        QYFXDJ,
-        GLDXLX,
-        GLDXBH,
-        GLDXMC,
-        SFZDJGQY,
-        QYSFSYSCQ,
-        QYFW,
-        QYSZBM,
-        ZDRS,
-        JD,
-        WD,
-        create_time,
-        create_by,
-        update_time,
-        update_by,
-        delete_mark
+        `TYSHXYDM`,
+        `YQBH`,
+        `QYMC`,
+        `QYLX`,
+        `QYLC`,
+        `QYGD`,
+        `QYFXDJ`,
+        `GLDXLX`,
+        `GLDXBH`,
+        `GLDXMC`,
+        `SFZDJGQY`,
+        `QYSFSYSCQ`,
+        `QYFW`,
+        `QYSZBM`,
+        `ZDRS`,
+        `JD`,
+        `WD`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`
         from t_zyqyxx
         where delete_mark = 0
-        <if test="tZyqyxxDTO != null and tZyqyxxDTO != ''">
-            AND id = #{tZyqyxxDTO.id}
+        <if test="tZyqyxxDTO.tyshxydm != null and tZyqyxxDTO.tyshxydm != ''">
+            AND TYSHXYDM = #{tZyqyxxDTO.tyshxydm}
         </if>
     </select>
-
 </mapper>

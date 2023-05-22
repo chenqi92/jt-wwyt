@@ -17,23 +17,13 @@ import java.util.List;
  * 受限空间作业信息表(t_sxkjzy)表服务实现类
  *
  * @author lhh
- * @since 2023-05-18 15:55:10
+ * @since 2023-05-22 14:22:37
  */
 @Service("tSxkjzyService")
 @RequiredArgsConstructor
 public class TSxkjzyServiceImpl extends ServiceImpl<TSxkjzyDao, TSxkjzyEntity> implements TSxkjzyService {
 
     private final TSxkjzyDao tSxkjzyDao;
-
-    /**
-     * 查询所有数据
-     *
-     * @return 所有数据
-     */
-    @Override
-    public List<TSxkjzyVO> selectList() {
-        return this.tSxkjzyDao.selectList();
-    }
 
     /**
      * 分页查询所有数据
@@ -43,7 +33,18 @@ public class TSxkjzyServiceImpl extends ServiceImpl<TSxkjzyDao, TSxkjzyEntity> i
      * @return 指定页码和条数的数据
      */
     @Override
-    public IPage<TSxkjzyVO> selectPage(Page<TSxkjzyDTO> page, TSxkjzyDTO tSxkjzyDTO) {
-        return this.tSxkjzyDao.selectList(page, tSxkjzyDTO);
+    public IPage<TSxkjzyVO> queryPage(Page<TSxkjzyDTO> page, TSxkjzyDTO tSxkjzyDTO) {
+        return this.tSxkjzyDao.queryList(page, tSxkjzyDTO);
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @param tSxkjzyDTO 查询参数
+     * @return 所有数据
+     */
+    @Override
+    public List<TSxkjzyVO> queryList(TSxkjzyDTO tSxkjzyDTO) {
+        return this.tSxkjzyDao.queryList(tSxkjzyDTO);
     }
 }

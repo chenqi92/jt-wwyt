@@ -13,7 +13,7 @@ import lombok.EqualsAndHashCode;
  * 项目三同时信息表(t_xmstsxx)DTO
  *
  * @author lhh
- * @since 2023-05-17 17:19:44
+ * @since 2023-05-22 14:22:38
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
  * 盲板抽堵作业审批流转记录表(t_mbcdzy_splz)DTO
  *
  * @author lhh
- * @since 2023-05-18 15:55:09
+ * @since 2023-05-22 14:22:31
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

@@ -10,7 +10,7 @@ import lombok.EqualsAndHashCode;
  * 盲板抽堵安全措施表(t_mbcdzy_aqcs)VO
  *
  * @author lhh
- * @since 2023-05-18 15:55:07
+ * @since 2023-05-22 14:22:31
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
