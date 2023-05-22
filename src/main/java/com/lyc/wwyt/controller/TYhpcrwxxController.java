@@ -5,6 +5,7 @@ import cn.allbs.excel.annotation.Sheet;
 import cn.allbs.idempotent.annotation.Idempotent;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.lyc.wwyt.config.excel.CustomHead;
 import com.lyc.wwyt.config.log.annotation.SysLog;
 import com.lyc.wwyt.entity.TYhpcrwxxEntity;
 import com.lyc.wwyt.service.TYhpcrwxxService;
@@ -32,7 +33,7 @@ import java.util.List;
  * 隐患排查任务信息表(t_yhpcrwxx)表控制层
  *
  * @author chenqi
- * @since 2023-05-19 14:57:26
+ * @since 2023-05-22 14:50:43
  */
 @Validated
 @RestController
@@ -74,7 +75,7 @@ public class TYhpcrwxxController {
     @Operation(description = "查询隐患排查任务信息表信息表数据", summary = "查询隐患排查任务信息表信息表数据", tags = {"查询所有数据"})
     @GetMapping
     @Idempotent(expireTime = 180, info = "3分钟内最多请求一次!")
-    @ExportExcel(name = "隐患排查任务信息表", sheets = @Sheet(sheetName = "t_yhpcrwxx"))
+    @ExportExcel(name = "隐患排查任务信息表", sheets = @Sheet(sheetName = "t_yhpcrwxx"), headGenerator = CustomHead.class)
     public List<TYhpcrwxxVO> selectAll(@ParameterObject TYhpcrwxxDTO tYhpcrwxxDTO) {
         return this.tYhpcrwxxService.queryList(tYhpcrwxxDTO);
     }

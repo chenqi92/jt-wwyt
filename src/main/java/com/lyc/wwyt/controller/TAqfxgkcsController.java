@@ -5,6 +5,7 @@ import cn.allbs.excel.annotation.Sheet;
 import cn.allbs.idempotent.annotation.Idempotent;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.lyc.wwyt.config.excel.CustomHead;
 import com.lyc.wwyt.config.log.annotation.SysLog;
 import com.lyc.wwyt.entity.TAqfxgkcsEntity;
 import com.lyc.wwyt.service.TAqfxgkcsService;
@@ -32,7 +33,7 @@ import java.util.List;
  * 安全风险管控措施表结构(t_aqfxgkcs)表控制层
  *
  * @author chenqi
- * @since 2023-05-19 14:57:26
+ * @since 2023-05-22 14:50:44
  */
 @Validated
 @RestController
@@ -74,7 +75,7 @@ public class TAqfxgkcsController {
     @Operation(description = "查询安全风险管控措施表结构信息表数据", summary = "查询安全风险管控措施表结构信息表数据", tags = {"查询所有数据"})
     @GetMapping
     @Idempotent(expireTime = 180, info = "3分钟内最多请求一次!")
-    @ExportExcel(name = "安全风险管控措施表结构", sheets = @Sheet(sheetName = "t_aqfxgkcs"))
+    @ExportExcel(name = "安全风险管控措施表结构", sheets = @Sheet(sheetName = "t_aqfxgkcs"), headGenerator = CustomHead.class)
     public List<TAqfxgkcsVO> selectAll(@ParameterObject TAqfxgkcsDTO tAqfxgkcsDTO) {
         return this.tAqfxgkcsService.queryList(tAqfxgkcsDTO);
     }

@@ -105,6 +105,7 @@ new Vue({
                 cancelButtonText: '取消',
                 type: 'warning'
             }).then(function () {
+                _this.dataListLoading = true;
                 fetch('/api/wwyt/' + _this.queryParams.table + '?' + params.toString(), {
                     method: 'GET',
                     headers: {
@@ -113,7 +114,13 @@ new Vue({
                     responseType: 'arraybuffer',
                 }).then(r => {
                     const contentType = r.headers.get('Content-Type');
+                    if (contentType == null) {
+                        _this.dataListLoading = false;
+                        _this.$message.error("数据信息不存在!");
+                        return;
+                    }
                     if (!r.ok) {
+                        _this.dataListLoading = false;
                         // 当出现异常时，从后端获取错误提示并展示
                         return r.text()
                             .then(textData => {
@@ -142,9 +149,11 @@ new Vue({
 
                     // 释放虚拟 URL
                     URL.revokeObjectURL(url);
+                    _this.dataListLoading = false;
                 })
             }).catch(error => {
                 // 处理错误
+                _this.dataListLoading = false;
                 _this.$message.error(error);
             })
         },
