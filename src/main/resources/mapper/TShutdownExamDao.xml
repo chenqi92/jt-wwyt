@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.wwyt.dao.TShutdownExamDao">
+    <resultMap type="com.lyc.wwyt.entity.TShutdownExamEntity" id="TShutdownExamMap">
+        <result property="id" column="id"/>
+        <result property="tyshxydm" column="TYSHXYDM"/>
+        <result property="planName" column="plan_name"/>
+        <result property="planType" column="plan_type"/>
+        <result property="startTime" column="start_time"/>
+        <result property="endTime" column="end_time"/>
+        <result property="planDescription" column="plan_description"/>
+        <result property="facilityName" column="facility_name"/>
+        <result property="applyPerson" column="apply_person"/>
+        <result property="applyTime" column="apply_time"/>
+        <result property="applyStatus" column="apply_status"/>
+        <result property="createTime" column="create_time"/>
+        <result property="createBy" column="create_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="deleteMark" column="delete_mark"/>
+        <result property="xyfjmcfj" column="XYFJMCFJ"/>
+    </resultMap>
+
+    <sql id="baseColumn">
+        `id`,
+        `TYSHXYDM`,
+        `plan_name`,
+        `plan_type`,
+        `start_time`,
+        `end_time`,
+        `plan_description`,
+        `facility_name`,
+        `apply_person`,
+        `apply_time`,
+        `apply_status`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`,
+        `XYFJMCFJ`
+    </sql>
+
+    <select id="queryList" resultType="com.lyc.wwyt.vo.TShutdownExamVO">
+        select
+        `id`,
+        `TYSHXYDM`,
+        `plan_name`,
+        `plan_type`,
+        `start_time`,
+        `end_time`,
+        `plan_description`,
+        `facility_name`,
+        `apply_person`,
+        `apply_time`,
+        `apply_status`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`,
+        `XYFJMCFJ`
+        from t_shutdown_exam
+        where delete_mark = 0
+        <if test="tShutdownExamDTO.id != null and tShutdownExamDTO.id != ''">
+            AND id = #{tShutdownExamDTO.id}
+        </if>
+        <if test="tShutdownExamDTO.tyshxydm != null and tShutdownExamDTO.tyshxydm != ''">
+            AND TYSHXYDM = #{tShutdownExamDTO.tyshxydm}
+        </if>
+    </select>
+</mapper>
