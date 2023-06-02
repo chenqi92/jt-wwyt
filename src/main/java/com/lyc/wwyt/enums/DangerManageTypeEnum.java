@@ -4,6 +4,7 @@ import com.lyc.wwyt.config.check.CodeEnum;
 
 /**
  * 治理类型枚举类
+ *
  * @author ChenQi
  */
 public enum DangerManageTypeEnum implements CodeEnum {

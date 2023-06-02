@@ -36,5 +36,5 @@ public enum JcztEnum implements CodeEnum {
     public String getValue() {
         return value;
     }
-    }
+}
 

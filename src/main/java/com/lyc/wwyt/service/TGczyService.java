@@ -3,8 +3,8 @@ package com.lyc.wwyt.service;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.lyc.wwyt.entity.TGczyEntity;
 import com.lyc.wwyt.dto.TGczyDTO;
+import com.lyc.wwyt.entity.TGczyEntity;
 import com.lyc.wwyt.vo.TGczyVO;
 
 import java.util.List;

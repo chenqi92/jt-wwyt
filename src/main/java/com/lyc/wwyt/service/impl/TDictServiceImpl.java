@@ -4,8 +4,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lyc.wwyt.dao.TDictDao;
 import com.lyc.wwyt.entity.TDictEntity;
 import com.lyc.wwyt.service.TDictService;
-import org.springframework.stereotype.Service;
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
 /**
  * 五位一体_字典表(t_dict)表服务实现类

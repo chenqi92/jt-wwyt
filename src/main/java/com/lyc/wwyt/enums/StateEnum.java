@@ -5,6 +5,7 @@ import com.lyc.wwyt.config.check.CodeEnum;
 
 /**
  * 状态枚举类，包含待开、推迟和结束三种状态
+ *
  * @author ChenQi
  */
 public enum StateEnum implements CodeEnum {

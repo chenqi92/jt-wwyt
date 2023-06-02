@@ -1,10 +1,10 @@
 package com.lyc.wwyt.dao;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.lyc.wwyt.entity.TScsswxxxEntity;
 import com.lyc.wwyt.dto.TScsswxxxDTO;
+import com.lyc.wwyt.entity.TScsswxxxEntity;
 import com.lyc.wwyt.vo.TScsswxxxVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

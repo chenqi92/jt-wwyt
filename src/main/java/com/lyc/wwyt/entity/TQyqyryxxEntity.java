@@ -1,11 +1,8 @@
 package com.lyc.wwyt.entity;
 
-import java.time.LocalDateTime;
-
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.lyc.wwyt.config.check.EnumValueConstraint;
-import com.lyc.wwyt.enums.DqztEnum;
 import com.lyc.wwyt.enums.FXDJEnum;
 import com.lyc.wwyt.enums.QylxEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
