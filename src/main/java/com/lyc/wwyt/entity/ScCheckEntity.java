@@ -163,6 +163,10 @@ public class ScCheckEntity {
 
     private LocalDateTime updateTime;
 
+    public ScCheckEntity() {
+        
+    }
+
     public ScCheckEntity(TYhzlxxEntity tYhzlxx) {
         this.tYhzlxxId = tYhzlxx.getId();
         this.checkPart = tYhzlxx.getDangerName();

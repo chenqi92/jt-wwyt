@@ -5,6 +5,7 @@ import com.lyc.wwyt.entity.ScCheckEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.RequiredArgsConstructor;
 
 /**
  * 安全_安全风险、隐患管理(sc_check)DTO
