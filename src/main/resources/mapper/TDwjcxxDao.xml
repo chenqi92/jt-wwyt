@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lyc.wwyt.dao.TDwjcxxDao">
-
     <resultMap type="com.lyc.wwyt.entity.TDwjcxxEntity" id="TDwjcxxMap">
         <result property="id" column="id"/>
         <result property="tyshxydm" column="TYSHXYDM"/>
@@ -39,37 +38,37 @@
 
     <sql id="baseColumn">
         `id`
-        ,
-        `TYSHXYDM`,        
-        `RWMC`,        
-        `XJR`,        
-        `SZGW`,        
-        `SZBM`,        
-        `JCPC`,        
-        `XJSCQY`,        
-        `XJSBSS`,        
-        `XJDWBH`,        
-        `XJSJ`,        
-        `XJBZ`,        
-        `XJYHJB`,        
-        `XJYHMS`,        
-        `XJYHZP`,        
-        `ZGR`,        
-        `HSSJ`,        
-        `HSJG`,        
-        `HSR`,        
-        `CZCS`,        
-        `CZSJ`,        
-        `CZR`,        
-        `CZJG`,        
-        `FCSJ`,        
-        `CHJG`,        
-        `CHR`,        
-        `BZ`,        
-        `create_time`,        
-        `create_by`,        
-        `update_time`,        
-        `update_by`,        
+                ,
+        `TYSHXYDM`,
+        `RWMC`,
+        `XJR`,
+        `SZGW`,
+        `SZBM`,
+        `JCPC`,
+        `XJSCQY`,
+        `XJSBSS`,
+        `XJDWBH`,
+        `XJSJ`,
+        `XJBZ`,
+        `XJYHJB`,
+        `XJYHMS`,
+        `XJYHZP`,
+        `ZGR`,
+        `HSSJ`,
+        `HSJG`,
+        `HSR`,
+        `CZCS`,
+        `CZSJ`,
+        `CZR`,
+        `CZJG`,
+        `FCSJ`,
+        `CHJG`,
+        `CHR`,
+        `BZ`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
         `delete_mark`
     </sql>
 

@@ -111,6 +111,18 @@
             <groupId>cn.allbs</groupId>
             <artifactId>allbs-idempotent</artifactId>
             <version>${allbs.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.redission</groupId>
+                    <artifactId>redission-spring-boot-starter</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- 处理打包后不兼容问题 -->
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson-spring-boot-starter</artifactId>
+            <version>3.17.7</version>
         </dependency>
         <!-- 数据导出工具 -->
         <dependency>
@@ -211,6 +223,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
+                <version>3.1.0</version>
                 <configuration>
                     <nonFilteredFileExtensions>
                         <nonFilteredFileExtension>ttf</nonFilteredFileExtension>

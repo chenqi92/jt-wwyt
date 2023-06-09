@@ -1,11 +1,8 @@
 package com.lyc.wwyt.entity;
 
-import java.time.LocalDateTime;
-
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.lyc.wwyt.config.check.EnumValueConstraint;
-import com.lyc.wwyt.enums.DqztEnum;
 import com.lyc.wwyt.enums.JgdwEnum;
 import com.lyc.wwyt.enums.QtlxEnum;
 import com.lyc.wwyt.enums.ZylxEnum;
@@ -17,6 +14,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 
 /**
  * 动火作业气体分析数据表(t_dhzy_qtfx)表实体类

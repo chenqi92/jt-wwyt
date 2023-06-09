@@ -7,13 +7,14 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lyc.wwyt.config.excel.CustomHead;
 import com.lyc.wwyt.config.log.annotation.SysLog;
-import com.lyc.wwyt.entity.TYhzlxxEntity;
-import com.lyc.wwyt.service.TYhzlxxService;
-import com.lyc.wwyt.service.CommonService;
 import com.lyc.wwyt.dto.TYhzlxxDTO;
+import com.lyc.wwyt.entity.TYhzlxxEntity;
+import com.lyc.wwyt.service.CommonService;
+import com.lyc.wwyt.service.ScCheckService;
+import com.lyc.wwyt.service.TYhzlxxService;
+import com.lyc.wwyt.utils.NameUtils;
 import com.lyc.wwyt.vo.TYhzlxxVO;
 import com.lyc.wwyt.vo.TableInfoVO;
-import com.lyc.wwyt.utils.NameUtils;
 import io.swagger.v3.oas.annotations.*;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.info.Info;
@@ -53,6 +54,8 @@ public class TYhzlxxController {
      */
     private final CommonService commonService;
 
+    private final ScCheckService scCheckService;
+
     /**
      * 隐患治理信息表新增或修改
      *
@@ -65,6 +68,8 @@ public class TYhzlxxController {
     public void save(@RequestBody @Valid List<TYhzlxxDTO> list) {
         List<TYhzlxxEntity> entityList = new ArrayList<>(list);
         this.tYhzlxxService.saveOrUpdateBatch(entityList);
+        // 同时保存已存在的sc_check表中
+        scCheckService.saveOrUpdateCheckInfo(entityList);
     }
 
     /**

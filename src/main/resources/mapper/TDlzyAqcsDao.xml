@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lyc.wwyt.dao.TDlzyAqcsDao">
-
     <resultMap type="com.lyc.wwyt.entity.TDlzyAqcsEntity" id="TDlzyAqcsMap">
         <result property="id" column="id"/>
         <result property="zyid" column="zyid"/>
@@ -15,13 +14,13 @@
 
     <sql id="baseColumn">
         `id`
-        ,
-        `zyid`,        
-        `zylx`,        
-        `xh`,        
-        `aqcsnr`,        
-        `sfsj`,        
-        `qrr`,        
+                ,
+        `zyid`,
+        `zylx`,
+        `xh`,
+        `aqcsnr`,
+        `sfsj`,
+        `qrr`,
         `qmtp`
     </sql>
 

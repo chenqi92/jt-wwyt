@@ -5,7 +5,6 @@ import com.lyc.wwyt.config.convert.time.JacksonConfig;
 import com.lyc.wwyt.config.properties.CustomConfigProperties;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.format.FormatterRegistry;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 

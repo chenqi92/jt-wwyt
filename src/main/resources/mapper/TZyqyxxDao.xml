@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lyc.wwyt.dao.TZyqyxxDao">
-
     <resultMap type="com.lyc.wwyt.entity.TZyqyxxEntity" id="TZyqyxxMap">
         <result property="tyshxydm" column="TYSHXYDM"/>
         <result property="yqbh" column="YQBH"/>
@@ -29,27 +28,27 @@
 
     <sql id="baseColumn">
         `TYSHXYDM`
-        ,
-        `YQBH`,        
-        `QYMC`,        
-        `QYLX`,        
-        `QYLC`,        
-        `QYGD`,        
-        `QYFXDJ`,        
-        `GLDXLX`,        
-        `GLDXBH`,        
-        `GLDXMC`,        
-        `SFZDJGQY`,        
-        `QYSFSYSCQ`,        
-        `QYFW`,        
-        `QYSZBM`,        
-        `ZDRS`,        
-        `JD`,        
-        `WD`,        
-        `create_time`,        
-        `create_by`,        
-        `update_time`,        
-        `update_by`,        
+                ,
+        `YQBH`,
+        `QYMC`,
+        `QYLX`,
+        `QYLC`,
+        `QYGD`,
+        `QYFXDJ`,
+        `GLDXLX`,
+        `GLDXBH`,
+        `GLDXMC`,
+        `SFZDJGQY`,
+        `QYSFSYSCQ`,
+        `QYFW`,
+        `QYSZBM`,
+        `ZDRS`,
+        `JD`,
+        `WD`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
         `delete_mark`
     </sql>
 

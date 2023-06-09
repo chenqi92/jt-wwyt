@@ -16,9 +16,14 @@ import java.lang.annotation.*;
 @Documented
 public @interface RequiredIf {
     String message() default "参数有误";
+
     Class<?>[] groups() default {};
+
     Class<? extends Payload>[] payload() default {};
+
     String field();
+
     String fieldValue();
+
     String dependentField();
 }

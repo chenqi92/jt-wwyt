@@ -4,6 +4,7 @@ import com.lyc.wwyt.config.check.CodeEnum;
 
 /**
  * 安全警示标示枚举类，包含指示标志、警示作业安全警示标志、逃生避难警示标志和风向警示标志四种类型
+ *
  * @author ChenQi
  */
 public enum AqjsbsEnum implements CodeEnum {

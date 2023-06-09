@@ -1,12 +1,8 @@
 package com.lyc.wwyt.entity;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.lyc.wwyt.config.check.EnumValueConstraint;
-import com.lyc.wwyt.enums.JcztEnum;
 import com.lyc.wwyt.enums.ScsswxxxWxztEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
@@ -16,6 +12,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
 
 /**
  * 生产设施维修信息(t_scsswxxx)表实体类
