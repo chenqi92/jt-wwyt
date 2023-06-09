@@ -1,5 +1,6 @@
 package com.lyc.wwyt.service;
 
+import com.lyc.wwyt.entity.old.CmUnitEntity;
 import com.lyc.wwyt.vo.TableInfoVO;
 
 import java.util.List;
@@ -19,4 +20,11 @@ public interface CommonService {
      * @return 查询指定表中所有的列名
      */
     List<TableInfoVO> queryTableHeaders(String tableName);
+
+    /**
+     * 查询对应unitId
+     *
+     * @return 查询对应unitId
+     */
+    CmUnitEntity queryUnitId(String code);
 }

@@ -4,13 +4,19 @@ import cn.allbs.excel.annotation.ExportExcel;
 import cn.allbs.excel.annotation.Sheet;
 import cn.allbs.idempotent.annotation.Idempotent;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lyc.wwyt.config.excel.CustomHead;
 import com.lyc.wwyt.config.log.annotation.SysLog;
+import com.lyc.wwyt.dto.TScssxxDTO;
 import com.lyc.wwyt.entity.TDhzyEntity;
+import com.lyc.wwyt.entity.old.CmUnitEntity;
+import com.lyc.wwyt.entity.old.EquipmentEntity;
+import com.lyc.wwyt.entity.old.SafeSpecialEntity;
 import com.lyc.wwyt.service.TDhzyService;
 import com.lyc.wwyt.service.CommonService;
 import com.lyc.wwyt.dto.TDhzyDTO;
+import com.lyc.wwyt.service.old.SafeSpecialService;
 import com.lyc.wwyt.vo.TDhzyVO;
 import com.lyc.wwyt.vo.TableInfoVO;
 import com.lyc.wwyt.utils.NameUtils;
@@ -25,6 +31,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.sql.Date;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -53,6 +61,8 @@ public class TDhzyController {
      */
     private final CommonService commonService;
 
+    private final SafeSpecialService safeSpecialService;
+
     /**
      * 动火作业信息表新增或修改
      *
@@ -65,6 +75,32 @@ public class TDhzyController {
     public void save(@RequestBody @Valid List<TDhzyDTO> list) {
         List<TDhzyEntity> entityList = new ArrayList<>(list);
         this.tDhzyService.saveOrUpdateBatch(entityList);
+        List<SafeSpecialEntity> saveList = new ArrayList<>();
+        if (!CollectionUtils.isEmpty(entityList)) {
+            for (TDhzyEntity dto : entityList) {
+                CmUnitEntity unit = commonService.queryUnitId(dto.getTyshxydm());
+                SafeSpecialEntity entity = SafeSpecialEntity.builder()
+                        .tId(dto.getId())
+                        .unitId(unit.getUnitId())
+                        .name(dto.getZyzbh())
+                        .code(dto.getZyzbh())
+                        .address(dto.getZywz())
+                        .applyPerson(dto.getSqr())
+                        .operator(dto.getZyryxx())
+                        .startTime(Date.from(dto.getZysskssj().atZone(ZoneId.systemDefault()).toInstant()))
+                        .endTime(Date.from(dto.getZyssjssj().atZone(ZoneId.systemDefault()).toInstant()))
+                        .longitude(dto.getLongitude())
+                        .latitude(dto.getLatitude())
+                        .build();
+                entity.setDelFlg(dto.getDeleteMark());
+                entity.setCreateId(1L);
+                entity.setUpdateId(1L);
+                entity.setCreateTime(Date.from(dto.getCreateTime().atZone(ZoneId.systemDefault()).toInstant()));
+                entity.setUpdateTime(Date.from(dto.getUpdateTime().atZone(ZoneId.systemDefault()).toInstant()));
+                saveList.add(entity);
+            }
+            safeSpecialService.saveOrUpdateBatch(saveList);
+        }
     }
 
     /**

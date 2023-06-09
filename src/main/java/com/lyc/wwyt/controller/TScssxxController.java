@@ -4,16 +4,20 @@ import cn.allbs.excel.annotation.ExportExcel;
 import cn.allbs.excel.annotation.Sheet;
 import cn.allbs.idempotent.annotation.Idempotent;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lyc.wwyt.config.excel.CustomHead;
 import com.lyc.wwyt.config.log.annotation.SysLog;
-import com.lyc.wwyt.entity.TScssxxEntity;
-import com.lyc.wwyt.service.TScssxxService;
-import com.lyc.wwyt.service.CommonService;
 import com.lyc.wwyt.dto.TScssxxDTO;
+import com.lyc.wwyt.entity.TScssxxEntity;
+import com.lyc.wwyt.entity.old.CmUnitEntity;
+import com.lyc.wwyt.entity.old.EquipmentEntity;
+import com.lyc.wwyt.service.CommonService;
+import com.lyc.wwyt.service.TScssxxService;
+import com.lyc.wwyt.service.old.EquipmentService;
+import com.lyc.wwyt.utils.NameUtils;
 import com.lyc.wwyt.vo.TScssxxVO;
 import com.lyc.wwyt.vo.TableInfoVO;
-import com.lyc.wwyt.utils.NameUtils;
 import io.swagger.v3.oas.annotations.*;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.info.Info;
@@ -25,6 +29,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.sql.Date;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -53,6 +59,8 @@ public class TScssxxController {
      */
     private final CommonService commonService;
 
+    private final EquipmentService equipmentService;
+
     /**
      * 生产设施信息表新增或修改
      *
@@ -65,6 +73,32 @@ public class TScssxxController {
     public void save(@RequestBody @Valid List<TScssxxDTO> list) {
         List<TScssxxEntity> entityList = new ArrayList<>(list);
         this.tScssxxService.saveOrUpdateBatch(entityList);
+        List<EquipmentEntity> saveList = new ArrayList<>();
+        if (!CollectionUtils.isEmpty(list)) {
+            for (TScssxxDTO dto : list) {
+                CmUnitEntity unit = commonService.queryUnitId(dto.getTyshxydm());
+                EquipmentEntity entity = EquipmentEntity.builder()
+                        .tId(dto.getId())
+                        .unitId(unit.getUnitId())
+                        .name(dto.getZzssmc())
+                        .equipCode(dto.getZzbm())
+                        .modal(dto.getZzssxh())
+                        .makeTime(Date.from(dto.getScrq().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()))
+                        .useTime(dto.getSyqx()/12)
+                        .useDate(Date.from(dto.getTyrq().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()))
+                        .leadPerson(dto.getFzr())
+                        .isSpecialFlg("1".equals(dto.getLxlb())?1:0)
+                        .equipType("1".equals(dto.getLxlb())?2:1)
+                        .build();
+                entity.setDelFlg(dto.getDeleteMark());
+                entity.setCreateId(1L);
+                entity.setUpdateId(1L);
+                entity.setCreateTime(Date.from(dto.getCreateTime().atZone(ZoneId.systemDefault()).toInstant()));
+                entity.setUpdateTime(Date.from(dto.getUpdateTime().atZone(ZoneId.systemDefault()).toInstant()));
+                saveList.add(entity);
+            }
+            equipmentService.saveOrUpdateBatch(saveList);
+        }
     }
 
     /**

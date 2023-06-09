@@ -6,4 +6,10 @@
         FROM information_schema.columns
         where table_name = #{tableName};
     </select>
+
+    <select id="queryUnitId" resultType="com.lyc.wwyt.entity.old.CmUnitEntity">
+        SELECT unit_id from cm_unit
+        where social_credit_code = #{code};
+    </select>
+
 </mapper>

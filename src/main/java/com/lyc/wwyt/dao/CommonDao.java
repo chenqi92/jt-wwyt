@@ -1,5 +1,6 @@
 package com.lyc.wwyt.dao;
 
+import com.lyc.wwyt.entity.old.CmUnitEntity;
 import com.lyc.wwyt.vo.TableInfoVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -21,4 +22,11 @@ public interface CommonDao {
      * @return 安指定表所有列名信息
      */
     List<TableInfoVO> queryTableHeaders(@Param("tableName") String tableName);
+
+    /**
+     * 查询对应unitId
+     *
+     * @return 查询对应unitId
+     */
+    List<CmUnitEntity> queryUnitId(@Param("code") String code);
 }
