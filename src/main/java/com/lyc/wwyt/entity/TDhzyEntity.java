@@ -141,33 +141,10 @@ public class TDhzyEntity extends BaseEntity {
     @EnumValueConstraint(enumClass = DqztEnum.class, message = "当前状态类型不在指定范围内,请根据字典表定义重新输入!")
     private Integer dqzt;
 
-    @Schema(description = "创建时间", name = "createtime", implementation = LocalDateTime.class)
-    @NotNull(message = "创建时间不能为空")
-    private LocalDateTime createtime;
-
-    @Schema(description = "创建人", name = "createby", implementation = String.class, maxLength = 200)
-    @NotBlank(message = "创建人不能为空!")
-    @Size(max = 200, message = "创建人不能超过200个字符(1个汉字记两个字符)!")
-    private String createby;
-
-    @Schema(description = "最后修改时间", name = "updatetime", implementation = LocalDateTime.class)
-    @NotNull(message = "最后修改时间不能为空")
-    private LocalDateTime updatetime;
-
-    @Schema(description = "最后修改人", name = "updateby", implementation = String.class, maxLength = 200)
-    @NotBlank(message = "最后修改人不能为空!")
-    @Size(max = 200, message = "最后修改人不能超过200个字符(1个汉字记两个字符)!")
-    private String updateby;
-
-    @Schema(description = "删除标识", name = "deletemark", implementation = String.class, maxLength = 1)
-    @NotBlank(message = "删除标识不能为空!")
-    @Size(max = 1, message = "删除标识不能超过1个字符(1个汉字记两个字符)!")
-    private String deletemark;
-
     @Schema(description = "企业编码", name = "companycode", implementation = String.class, maxLength = 9)
     @NotBlank(message = "企业编码不能为空!")
     @Size(max = 9, message = "企业编码不能超过9个字符(1个汉字记两个字符)!")
-    private String companycode;
+    private String companyCode;
 
     @Schema(description = "作业地点经度", name = "longitude", implementation = Double.class, maxLength = 9)
     private Double longitude;
