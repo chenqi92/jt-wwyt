@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.core.metadata.TableFieldInfo;
 import com.baomidou.mybatisplus.core.metadata.TableInfo;
 import com.baomidou.mybatisplus.core.metadata.TableInfoHelper;
 import com.lyc.wwyt.constants.SecurityConstant;
+import com.lyc.wwyt.constants.TableConstant;
 import com.lyc.wwyt.utils.SecurityUtil;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.jsqlparser.expression.Alias;
@@ -46,7 +47,9 @@ public class CustomPermissionHandler implements DataPmsHandler {
      */
     @Override
     public Expression getSqlSegment(final Table table, Expression where, String mappedStatementId) {
-
+        if (TableConstant.CM_UNIT.equals(table.getName())) {
+            return where;
+        }
         // 在有权限的情况下查询用户所关联的企业列表
         String userName = SecurityUtil.getUsername();
         // 如果非权限用户则不往下执行，执行原sql

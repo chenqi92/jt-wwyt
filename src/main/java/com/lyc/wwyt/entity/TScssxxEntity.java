@@ -121,8 +121,7 @@ public class TScssxxEntity extends BaseEntity {
     private LocalDate scjcrq;
 
     @Schema(description = "上次检测日期", name = "scjcrq1", implementation = LocalDate.class)
-    @NotNull(message = "上次检测日期不能为空")
-    private LocalDate scjcrq1;
+    private LocalDate scjcrq_1;
 
     @Schema(description = "上次保养日期", name = "scbyrq", implementation = LocalDate.class)
     @NotNull(message = "上次保养日期不能为空")
@@ -133,8 +132,7 @@ public class TScssxxEntity extends BaseEntity {
     private LocalDate xcjcrq;
 
     @Schema(description = "下次检测日期", name = "xcjcrq1", implementation = LocalDate.class)
-    @NotNull(message = "下次检测日期不能为空")
-    private LocalDate xcjcrq1;
+    private LocalDate xcjcrq_1;
 
     @Schema(description = "下次保养日期", name = "xcbyrq", implementation = LocalDate.class)
     @NotNull(message = "下次保养日期不能为空")
@@ -169,13 +167,13 @@ public class TScssxxEntity extends BaseEntity {
     private Integer jctqtx;
 
     @Schema(description = "是否检测", name = "sfjc1", implementation = Integer.class, maxLength = 2)
-    private Integer sfjc1;
+    private Integer sfjc_1;
 
     @Schema(description = "检测周期", name = "jczq1", implementation = Integer.class, maxLength = 4)
-    private Integer jczq1;
+    private Integer jczq_1;
 
     @Schema(description = "检测提前提醒", name = "jctqtx1", implementation = Integer.class, maxLength = 4)
-    private Integer jctqtx1;
+    private Integer jctqtx_1;
 
     @Schema(description = "是否是特种设备", name = "sfstzsb", implementation = String.class, maxLength = 1)
     @Size(max = 1, message = "是否是特种设备不能超过1个字符(1个汉字记两个字符)!")

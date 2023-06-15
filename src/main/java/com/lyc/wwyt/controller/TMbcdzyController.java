@@ -93,11 +93,11 @@ public class TMbcdzyController {
                 entity.setDelFlg(dto.getDeleteMark());
                 entity.setCreateId(1L);
                 entity.setUpdateId(1L);
-                entity.setCreateTime(Date.from(dto.getCreateTime().atZone(ZoneId.systemDefault()).toInstant()));
-                entity.setUpdateTime(Date.from(dto.getUpdateTime().atZone(ZoneId.systemDefault()).toInstant()));
+                entity.setCreateTime(new java.util.Date());
+                entity.setUpdateTime(new java.util.Date());
                 saveList.add(entity);
             }
-            safeSpecialService.saveOrUpdateBatch(saveList);
+//            safeSpecialService.saveOrUpdateBatch(saveList);
         }
     }
 
