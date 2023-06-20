@@ -2,6 +2,9 @@ package com.lyc.wwyt.service.impl;
 
 import cn.allbs.common.utils.StringUtil;
 import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.lang.UUID;
+import cn.hutool.core.util.IdUtil;
+import cn.hutool.core.util.RandomUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -18,6 +21,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -72,6 +76,13 @@ public class ScCheckServiceImpl extends ServiceImpl<ScCheckDao, ScCheckEntity> i
             if (socialMap.containsKey(a.getTyshxydm())) {
                 ScCheckEntity check = new ScCheckEntity(a);
                 check.setUnitId(socialMap.get(a.getTyshxydm()));
+                check.setCheckMethod(1);
+                check.setUnifiedCode(IdUtil.simpleUUID());
+                check.setDelFlg(0);
+                check.setCreateId(1L);
+                check.setCreateTime(LocalDateTime.now());
+                check.setUpdateId(1L);
+                check.setUpdateTime(LocalDateTime.now());
                 list.add(check);
             }
         });

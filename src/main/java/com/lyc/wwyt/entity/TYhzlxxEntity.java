@@ -134,12 +134,12 @@ public class TYhzlxxEntity extends BaseEntity {
     @Schema(description = "隐患照片(base64 编码)", name = "attachments1", implementation = Object.class)
     @Pattern(regexp = "^data:image/(?:png|jpeg|jpg);base64,([a-zA-Z0-9+/]{4})*([a-zA-Z0-9+/]{2}==|[a-zA-Z0-9+/]{3}=|[a-zA-Z0-9+/]{4})$", message = "图片格式必须为png或者jpg!")
     @Size(max = 7340032, message = "图片大小不能大于5M!")
-    private Object attachments1;
+    private String attachments1;
 
     @Schema(description = "隐患整改照片(base64 编码)", name = "attachments2", implementation = Object.class)
     @Pattern(regexp = "^data:image/(?:png|jpeg|jpg);base64,([a-zA-Z0-9+/]{4})*([a-zA-Z0-9+/]{2}==|[a-zA-Z0-9+/]{3}=|[a-zA-Z0-9+/]{4})$", message = "图片格式必须为png或者jpg!")
     @Size(max = 7340032, message = "图片大小不能大于5M!")
-    private Object attachments2;
+    private String attachments2;
 
     @Schema(description = "附件", name = "fj", implementation = String.class, maxLength = 1000)
     @Size(max = 1000, message = "附件不能超过1000个字符(1个汉字记两个字符)!")

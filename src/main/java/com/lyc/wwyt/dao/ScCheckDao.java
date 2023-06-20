@@ -37,5 +37,5 @@ public interface ScCheckDao extends BaseMapper<ScCheckEntity> {
      */
     List<ScCheckVO> queryList(@Param("scCheckDTO") ScCheckDTO scCheckDTO);
 
-    void saveOrUpdateCheck(@Param("list") List<ScCheckEntity> list);
+    boolean saveOrUpdateCheck(@Param("list") List<ScCheckEntity> list);
 }

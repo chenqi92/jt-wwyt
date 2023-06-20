@@ -80,11 +80,11 @@ public class TYjwzglxxEntity extends BaseEntity {
     @NotNull(message = "生产日期不能为空")
     private LocalDate scrq;
 
-    @Schema(description = "使用期限(单位：月)", name = "syqy", implementation = Object.class)
+    @Schema(description = "使用期限(单位：月)", name = "syqy", implementation = Integer.class)
     @NotNull(message = "使用期限(单位：月)不能为空")
     @Min(value = 0, message = "超出使用期限允许范围内!")
     @Max(value = 99, message = "超出使用期限允许范围内!")
-    private Object syqy;
+    private Integer syqy;
 
     @Schema(description = "生命周期", name = "smzq", implementation = String.class, maxLength = 10)
     @EnumValueConstraint(enumClass = SmzqEnum.class)
