@@ -29,4 +29,13 @@ public interface CommonDao {
      * @return 查询对应unitId
      */
     List<CmUnitEntity> queryUnitId(@Param("code") String code);
+
+    /**
+     * 保存数据
+     *
+     * @param list      数据信息
+     * @param columns   所有代保存列
+     * @param tableName 表名
+     */
+    void saveOrUpdateData(@Param("list") List<List<Object>> list, @Param("columns") List<String> columns, @Param("tableName") String tableName);
 }

@@ -94,4 +94,23 @@ public class NameUtils {
         matcher.appendTail(buffer);
         return buffer.toString();
     }
+
+    /**
+     * 通过表名获取相应的类名
+     *
+     * @param tableName
+     * @return
+     */
+    public Class<?> getEntityClass(String tableName) {
+        // 转换为驼峰风格
+        String className = getClassName(tableName);
+
+        className = "com.lyc.wwyt." + className; // 加入包名
+
+        try {
+            return Class.forName(className);
+        } catch (ClassNotFoundException e) {
+            return null;
+        }
+    }
 }

@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 类 CommonServiceImpl
@@ -34,5 +35,10 @@ public class CommonServiceImpl implements CommonService {
             return list.get(0);
         }
         return new CmUnitEntity();
+    }
+
+    @Override
+    public void saveOrUpdateData(List<List<Object>> list, List<String> columns, String tableName) {
+        commonDao.saveOrUpdateData(list, columns, tableName);
     }
 }

@@ -4,6 +4,7 @@ import com.lyc.wwyt.entity.old.CmUnitEntity;
 import com.lyc.wwyt.vo.TableInfoVO;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 接口 CommonService
@@ -27,4 +28,6 @@ public interface CommonService {
      * @return 查询对应unitId
      */
     CmUnitEntity queryUnitId(String code);
+
+    void saveOrUpdateData(List<List<Object>> list, List<String> columns, String tableName);
 }

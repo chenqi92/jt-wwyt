@@ -8,8 +8,21 @@
     </select>
 
     <select id="queryUnitId" resultType="com.lyc.wwyt.entity.old.CmUnitEntity">
-        SELECT unit_id from cm_unit
+        SELECT unit_id
+        from cm_unit
         where social_credit_code = #{code};
     </select>
 
+    <insert id="saveOrUpdateData">
+        insert into ${tableName}
+        <foreach collection="columns" separator="," item="columm" open="(" close=")">
+            ${columm}
+        </foreach>
+        VALUES
+        <foreach collection="list" item="items" separator=",">
+            <foreach collection="items" separator="," item="item" open="(" close=")" >
+                #{item}
+            </foreach>
+        </foreach>
+    </insert>
 </mapper>
