@@ -14,15 +14,19 @@
     </select>
 
     <insert id="saveOrUpdateData">
-        insert into ${tableName}
+        INSERT INTO ${tableName}
         <foreach collection="columns" separator="," item="columm" open="(" close=")">
             ${columm}
         </foreach>
         VALUES
         <foreach collection="list" item="items" separator=",">
-            <foreach collection="items" separator="," item="item" open="(" close=")" >
+            <foreach collection="items" separator="," item="item" open="(" close=")">
                 #{item}
             </foreach>
+        </foreach>
+        ON DUPLICATE KEY UPDATE
+        <foreach collection="columns" item="column" separator=",">
+            ${column}= VALUES (${column})
         </foreach>
     </insert>
 </mapper>
