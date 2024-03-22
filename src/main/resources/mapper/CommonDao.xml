@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.wwyt.dao.CommonDao">
+    <select id="queryTableHeaders" resultType="com.lyc.wwyt.vo.TableInfoVO">
+        SELECT COLUMN_NAME as name, COLUMN_COMMENT as comment
+        FROM information_schema.columns
+        where table_name = #{tableName};
+    </select>
+
+    <select id="queryUnitId" resultType="com.lyc.wwyt.entity.old.CmUnitEntity">
+        SELECT unit_id
+        from cm_unit
+        where social_credit_code = #{code};
+    </select>
+
+    <insert id="saveOrUpdateData">
+        INSERT INTO ${tableName}
+        <foreach collection="columns" separator="," item="columm" open="(" close=")">
+            ${columm}
+        </foreach>
+        VALUES
+        <foreach collection="list" item="items" separator=",">
+            <foreach collection="items" separator="," item="item" open="(" close=")">
+                #{item}
+            </foreach>
+        </foreach>
+        ON DUPLICATE KEY UPDATE
+        <foreach collection="columns" item="column" separator=",">
+            ${column}= VALUES (${column})
+        </foreach>
+    </insert>
+</mapper>

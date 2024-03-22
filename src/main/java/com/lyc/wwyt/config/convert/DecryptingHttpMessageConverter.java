@@ -1,8 +1,12 @@
 package com.lyc.wwyt.config.convert;
 
+import cn.allbs.common.enums.ErrorCodeEnum;
+import cn.allbs.common.utils.StringUtil;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.exc.InvalidFormatException;
+import com.lyc.wwyt.config.properties.CustomConfigProperties;
 import com.lyc.wwyt.exception.DecryptException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpInputMessage;
@@ -29,14 +33,14 @@ import java.util.Map;
  * @date 2023/5/11
  */
 public class DecryptingHttpMessageConverter extends MappingJackson2HttpMessageConverter {
-    private static final String KEY = "JTXCLYWWYTSJJKWD";
-    private static final String INITIALIZATION_VECTOR = "JTXCLYWWYTSJJKWD";
+    private final CustomConfigProperties customConfigProperties;
 
     private final ObjectMapper objectMapper;
 
-    public DecryptingHttpMessageConverter(ObjectMapper objectMapper) {
+    public DecryptingHttpMessageConverter(ObjectMapper objectMapper, CustomConfigProperties customConfigProperties) {
         super(objectMapper);
         this.objectMapper = objectMapper;
+        this.customConfigProperties = customConfigProperties;
         setSupportedMediaTypes(Collections.singletonList(MediaType.APPLICATION_JSON));
     }
 
@@ -68,14 +72,24 @@ public class DecryptingHttpMessageConverter extends MappingJackson2HttpMessageCo
 
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(decryptedBody.getBytes());
         HttpHeaders headers = inputMessage.getHeaders();
-        return this.objectMapper.readValue(byteArrayInputStream, javaType);
+        Object res;
+        try {
+            res = this.objectMapper.readValue(byteArrayInputStream, javaType);
+        } catch (InvalidFormatException e) {
+            String fieldName = e.getPath().get(1).getFieldName();
+            int index = e.getPath().get(0).getIndex() + 1;
+            throw new DecryptException(StringUtil.format("第{}条数据中字段:{}{}", index, fieldName, ErrorCodeEnum.TYPE_MISMATCH_EXCEPTION_RESPONSE.getMsg()));
+        } catch (Exception e) {
+            throw new DecryptException("消息体解密失败!");
+        }
+        return res;
     }
 
     private String decrypt(String encrypted) {
         try {
             Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-            SecretKeySpec key = new SecretKeySpec(KEY.getBytes(StandardCharsets.UTF_8), "AES");
-            IvParameterSpec iv = new IvParameterSpec(INITIALIZATION_VECTOR.getBytes(StandardCharsets.UTF_8));
+            SecretKeySpec key = new SecretKeySpec(customConfigProperties.getAesKey().getBytes(StandardCharsets.UTF_8), "AES");
+            IvParameterSpec iv = new IvParameterSpec(customConfigProperties.getInitializationVector().getBytes(StandardCharsets.UTF_8));
             cipher.init(Cipher.DECRYPT_MODE, key, iv);
             byte[] decrypted = cipher.doFinal(Base64.getDecoder().decode(encrypted));
             return new String(decrypted, StandardCharsets.UTF_8);

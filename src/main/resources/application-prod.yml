@@ -36,6 +36,12 @@ spring:
     lettuce:
       pool:
         min-idle: 2
+  task:
+    execution:
+      pool:
+        core-size: 10
+        max-size: 20
+        queue-capacity: 1000
 # mybatis plus 配置
 mybatis-plus:
   mapper-locations: classpath*:mapper/*.xml
@@ -55,3 +61,130 @@ mybatis-plus:
     update-name: updateBy
   chine-rate: 1.5
   data-pms: false
+security:
+  ignore-urls:
+    - /v3/api-docs/**
+    - /doc.html
+    - /webjars/**
+    - /druid/**
+    - /configuration/ui
+    - /swagger-resources/**
+    - /js/**
+    - /page/**
+    - /css/**
+    - /plugins/**
+custom:
+  aes-key: JTXCLYWWYTSJJKWD
+  initialization-vector: JTXCLYWWYTSJJKWD
+middle-table:
+  tables:
+    - t_aqfxfxdy
+    - t_aqfxgkcs
+    - t_aqfxsj
+    - t_aqhdjl
+    - t_aqhdxx
+    - t_aqjcjl
+    - t_aqpxjcjl
+    - t_aqsczrclkxx
+    - t_bjxxglxx
+    - t_bqkzglxx
+    - t_cbsglxx
+    - t_cbspdglxx
+    - t_cbssgglxx
+    - t_cbswzjlxx
+    - t_cbsxgzs
+    - t_cbszysc
+    - t_cbszyyjyasc
+    - t_cgqxx
+    - t_cgxx
+    - t_ckqxx
+    - t_cod_supply
+    - t_dhzy
+    - t_dhzy_aqcs
+    - t_dhzy_qtfx
+    - t_dhzy_splz
+    - t_dict
+    - t_dlzy
+    - t_dlzy_aqcs
+    - t_dlzy_splz
+    - t_dtzy
+    - t_dtzy_aqcs
+    - t_dtzy_splz
+    - t_dwjcxx
+    - t_dwjzglxx
+    - t_dwszxx
+    - t_dwxbglxx
+    - t_dzzy
+    - t_dzzy_aqcs
+    - t_dzzy_splz
+    - t_fxsstxx
+    - t_gczy
+    - t_gczy_aqcs
+    - t_gczy_splz
+    - t_gjzzzdbwxx
+    - t_gysglxx
+    - t_jcbwhxx
+    - t_jcpcsdxx
+    - t_kfxx
+    - t_log
+    - t_lsydzy
+    - t_lsydzy_aqcs
+    - t_lsydzy_qtfx
+    - t_lsydzy_splz
+    - t_mbcdzy
+    - t_mbcdzy_aqcs
+    - t_mbcdzy_splz
+    - t_pxhdxx
+    - t_pxjg
+    - t_pxjhxx
+    - t_pxjyxgpjjl
+    - t_pxzlxx
+    - t_qtsbssxx
+    - t_qyfxfbxx
+    - t_qyjcxx
+    - t_qyqyryxx
+    - t_qyqyryxx_location
+    - t_qyryxx
+    - t_qzpxda
+    - t_rypxxx
+    - t_scqyxx
+    - t_scssbfxx
+    - t_scssbyxx
+    - t_scsshfxx
+    - t_scssjc1xx
+    - t_scssjcxx
+    - t_scsstyxx
+    - t_scsswxxx
+    - t_scssxx
+    - t_sczzxx
+    - t_shutdown_exam
+    - t_sxkjzy
+    - t_sxkjzy_aqcs
+    - t_sxkjzy_qtfx
+    - t_sxkjzy_splz
+    - t_user
+    - t_xmstsxx
+    - t_yhpcjl
+    - t_yhpcrwxx
+    - t_yhzlxx
+    - t_yjczkxx
+    - t_yjdwglxx
+    - t_yjwzglxx
+    - t_yjyaglxx
+    - t_yjyljhxx
+    - t_yjylpjxx
+    - t_zdwxyglxx
+    - t_zycswxyshwpwxwhtxyzkxx
+    - t_zyqyxx
+xxl:
+  job:
+    admin:
+      address: http://${XXL_JOB_SERVER_HOST:192.168.0.26}:${XXL_JOB_SERVER_PORT:9000}/
+      username: admin
+      password: jt@123456
+    executor:
+      appname: xxl-job-executor-wwyt
+      port: ${YHDD_MYSQL_PORT_DEV:9003}
+      logpath: /home/server/job/logs/xxl-job-timer
+      access-token: default_token
+      auto-register: 0

@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.wwyt.dao.CmUnitDao">
+    <resultMap type="com.lyc.wwyt.entity.CmUnitEntity" id="CmUnitMap">
+        <result property="unitId" column="unit_id"/>
+        <result property="name" column="name"/>
+        <result property="unitCode" column="unit_code"/>
+        <result property="shortName" column="short_name"/>
+        <result property="address" column="address"/>
+        <result property="socialCreditCode" column="social_credit_code"/>
+        <result property="isPark" column="is_park"/>
+        <result property="parentId" column="parent_id"/>
+        <result property="legalRepresentative" column="legal_representative"/>
+        <result property="statutoryContact" column="statutory_contact"/>
+        <result property="actualController" column="actual_controller"/>
+        <result property="actualControllerContact" column="actual_controller_contact"/>
+        <result property="headOfEnvironment" column="head_of_environment"/>
+        <result property="headOfEnvironmentContact" column="head_of_environment_contact"/>
+        <result property="technicalHeadOfEnvironment" column="technical_head_of_environment"/>
+        <result property="technicalHeadOfEnvironmentContact" column="technical_head_of_environment_contact"/>
+        <result property="managerOfEnvironment" column="manager_of_environment"/>
+        <result property="managerOfEnvironmentContact" column="manager_of_environment_contact"/>
+        <result property="headOfSafe" column="head_of_safe"/>
+        <result property="headOfSafeContact" column="head_of_safe_contact"/>
+        <result property="technicalHeadOfSafe" column="technical_head_of_safe"/>
+        <result property="technicalHeadOfSafeContact" column="technical_head_of_safe_contact"/>
+        <result property="managerOfSafe" column="manager_of_safe"/>
+        <result property="managerOfSafeContact" column="manager_of_safe_contact"/>
+        <result property="alarmPush" column="alarm_push"/>
+        <result property="fullTimeSafeNum" column="full_time_safe_num"/>
+        <result property="mainBusinessincome" column="main_businessincome"/>
+        <result property="employeeNum" column="employee_num"/>
+        <result property="industryType" column="industry_type"/>
+        <result property="mainRawMaterials" column="main_raw_materials"/>
+        <result property="mainProduct" column="main_product"/>
+        <result property="hazardLevel" column="hazard_level"/>
+        <result property="enRiskLevel" column="en_risk_level"/>
+        <result property="safeRiskAssessReport" column="safe_risk_assess_report"/>
+        <result property="lastEnvironmentDate" column="last_environment_date"/>
+        <result property="lastSafeDate" column="last_safe_date"/>
+        <result property="safe" column="safe"/>
+        <result property="emergency" column="emergency"/>
+        <result property="environ" column="environ"/>
+        <result property="locks" column="locks"/>
+        <result property="energy" column="energy"/>
+        <result property="latitude" column="latitude"/>
+        <result property="longitude" column="longitude"/>
+        <result property="produceStatus" column="produce_status"/>
+        <result property="unifiedCode" column="unified_code"/>
+        <result property="delFlg" column="del_flg"/>
+        <result property="createId" column="create_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateId" column="update_id"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="introduce" column="introduce"/>
+        <result property="twoDoorUrl" column="two_door_url"/>
+        <result property="isCount" column="is_count"/>
+        <result property="sort" column="sort"/>
+        <result property="isChemical" column="is_chemical"/>
+        <result property="provinceEnterpriseId" column="province_enterprise_id"/>
+        <result property="provinceGatewayId" column="province_gateway_id"/>
+        <result property="floorArea" column="floor_area"/>
+        <result property="buildingArea" column="building_area"/>
+        <result property="coordinates" column="coordinates"/>
+        <result property="seatTotal" column="seat_total"/>
+        <result property="seatUsedCount" column="seat_used_count"/>
+        <result property="areaDivision" column="area_division"/>
+        <result property="inParkUnit" column="in_park_unit"/>
+        <result property="wwyt1Url" column="wwyt1_url"/>
+        <result property="wwyt2Url" column="wwyt2_url"/>
+        <result property="wwyt3Url" column="wwyt3_url"/>
+        <result property="wwyt4Url" column="wwyt4_url"/>
+        <result property="wwyt5Url" column="wwyt5_url"/>
+    </resultMap>
+
+    <sql id="baseColumn">
+        `unit_id`,
+        `name`,
+        `unit_code`,
+        `short_name`,
+        `address`,
+        `social_credit_code`,
+        `is_park`,
+        `parent_id`,
+        `legal_representative`,
+        `statutory_contact`,
+        `actual_controller`,
+        `actual_controller_contact`,
+        `head_of_environment`,
+        `head_of_environment_contact`,
+        `technical_head_of_environment`,
+        `technical_head_of_environment_contact`,
+        `manager_of_environment`,
+        `manager_of_environment_contact`,
+        `head_of_safe`,
+        `head_of_safe_contact`,
+        `technical_head_of_safe`,
+        `technical_head_of_safe_contact`,
+        `manager_of_safe`,
+        `manager_of_safe_contact`,
+        `alarm_push`,
+        `full_time_safe_num`,
+        `main_businessincome`,
+        `employee_num`,
+        `industry_type`,
+        `main_raw_materials`,
+        `main_product`,
+        `hazard_level`,
+        `en_risk_level`,
+        `safe_risk_assess_report`,
+        `last_environment_date`,
+        `last_safe_date`,
+        `safe`,
+        `emergency`,
+        `environ`,
+        `locks`,
+        `energy`,
+        `latitude`,
+        `longitude`,
+        `produce_status`,
+        `unified_code`,
+        `del_flg`,
+        `create_id`,
+        `create_time`,
+        `update_id`,
+        `update_time`,
+        `introduce`,
+        `two_door_url`,
+        `is_count`,
+        `sort`,
+        `is_chemical`,
+        `province_enterprise_id`,
+        `province_gateway_id`,
+        `floor_area`,
+        `building_area`,
+        `coordinates`,
+        `seat_total`,
+        `seat_used_count`,
+        `area_division`,
+        `in_park_unit`,
+        `wwyt1_url`,
+        `wwyt2_url`,
+        `wwyt3_url`,
+        `wwyt4_url`,
+        `wwyt5_url`,
+        `create_time`,
+        `update_time`
+    </sql>
+
+    <select id="queryList" resultType="com.lyc.wwyt.vo.CmUnitVO">
+        select `unit_id`,
+               `name`,
+               `unit_code`,
+               `short_name`,
+               `address`,
+               `social_credit_code`,
+               `is_park`,
+               `parent_id`,
+               `legal_representative`,
+               `statutory_contact`,
+               `actual_controller`,
+               `actual_controller_contact`,
+               `head_of_environment`,
+               `head_of_environment_contact`,
+               `technical_head_of_environment`,
+               `technical_head_of_environment_contact`,
+               `manager_of_environment`,
+               `manager_of_environment_contact`,
+               `head_of_safe`,
+               `head_of_safe_contact`,
+               `technical_head_of_safe`,
+               `technical_head_of_safe_contact`,
+               `manager_of_safe`,
+               `manager_of_safe_contact`,
+               `alarm_push`,
+               `full_time_safe_num`,
+               `main_businessincome`,
+               `employee_num`,
+               `industry_type`,
+               `main_raw_materials`,
+               `main_product`,
+               `hazard_level`,
+               `en_risk_level`,
+               `safe_risk_assess_report`,
+               `last_environment_date`,
+               `last_safe_date`,
+               `safe`,
+               `emergency`,
+               `environ`,
+               `locks`,
+               `energy`,
+               `latitude`,
+               `longitude`,
+               `produce_status`,
+               `unified_code`,
+               `del_flg`,
+               `create_id`,
+               `create_time`,
+               `update_id`,
+               `update_time`,
+               `introduce`,
+               `two_door_url`,
+               `is_count`,
+               `sort`,
+               `is_chemical`,
+               `province_enterprise_id`,
+               `province_gateway_id`,
+               `floor_area`,
+               `building_area`,
+               `coordinates`,
+               `seat_total`,
+               `seat_used_count`,
+               `area_division`,
+               `in_park_unit`,
+               `wwyt1_url`,
+               `wwyt2_url`,
+               `wwyt3_url`,
+               `wwyt4_url`,
+               `wwyt5_url`,
+               `create_time`,
+               `update_time`
+        from cm_unit
+        where del_flg = 0
+    </select>
+</mapper>

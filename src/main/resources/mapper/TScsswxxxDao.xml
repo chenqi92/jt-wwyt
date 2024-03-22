@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.wwyt.dao.TScsswxxxDao">
+    <resultMap type="com.lyc.wwyt.entity.TScsswxxxEntity" id="TScsswxxxMap">
+        <result property="id" column="id"/>
+        <result property="tyshxydm" column="TYSHXYDM"/>
+        <result property="scssid" column="SCSSID"/>
+        <result property="ssycx" column="SSYCX"/>
+        <result property="wxzt" column="WXZT"/>
+        <result property="wxqk" column="WXQK"/>
+        <result property="wxfzr" column="WXFZR"/>
+        <result property="wxfzrdw" column="WXFZRDW"/>
+        <result property="wxksrq" column="WXKSRQ"/>
+        <result property="wxjsrq" column="WXJSRQ"/>
+        <result property="wxbzfj" column="WXBZFJ"/>
+        <result property="createTime" column="create_time"/>
+        <result property="createBy" column="create_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="deleteMark" column="delete_mark"/>
+    </resultMap>
+
+    <sql id="baseColumn">
+        `id`
+                ,
+        `TYSHXYDM`,
+        `SCSSID`,
+        `SSYCX`,
+        `WXZT`,
+        `WXQK`,
+        `WXFZR`,
+        `WXFZRDW`,
+        `WXKSRQ`,
+        `WXJSRQ`,
+        `WXBZFJ`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`
+    </sql>
+
+    <select id="queryList" resultType="com.lyc.wwyt.vo.TScsswxxxVO">
+        select
+        `id`,
+        `TYSHXYDM`,
+        `SCSSID`,
+        `SSYCX`,
+        `WXZT`,
+        `WXQK`,
+        `WXFZR`,
+        `WXFZRDW`,
+        `WXKSRQ`,
+        `WXJSRQ`,
+        `WXBZFJ`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`
+        from t_scsswxxx
+        where delete_mark = 0
+        <if test="tScsswxxxDTO.id != null and tScsswxxxDTO.id != ''">
+            AND id = #{tScsswxxxDTO.id}
+        </if>
+        <if test="tScsswxxxDTO.tyshxydm != null and tScsswxxxDTO.tyshxydm != ''">
+            AND TYSHXYDM = #{tScsswxxxDTO.tyshxydm}
+        </if>
+    </select>
+</mapper>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.wwyt.dao.TLsydzyQtfxDao">
+    <resultMap type="com.lyc.wwyt.entity.TLsydzyQtfxEntity" id="TLsydzyQtfxMap">
+        <result property="id" column="id"/>
+        <result property="zyid" column="zyid"/>
+        <result property="zylx" column="zylx"/>
+        <result property="qtlx" column="qtlx"/>
+        <result property="qtmc" column="qtmc"/>
+        <result property="fxjg" column="fxjg"/>
+        <result property="jgdw" column="jgdw"/>
+        <result property="fxr" column="fxr"/>
+        <result property="fxsj" column="fxsj"/>
+        <result property="cyfxbw" column="cyfxbw"/>
+    </resultMap>
+
+    <sql id="baseColumn">
+        `id`
+                ,
+        `zyid`,
+        `zylx`,
+        `qtlx`,
+        `qtmc`,
+        `fxjg`,
+        `jgdw`,
+        `fxr`,
+        `fxsj`,
+        `cyfxbw`
+    </sql>
+
+    <select id="queryList" resultType="com.lyc.wwyt.vo.TLsydzyQtfxVO">
+        select
+        `id`,
+        `zyid`,
+        `zylx`,
+        `qtlx`,
+        `qtmc`,
+        `fxjg`,
+        `jgdw`,
+        `fxr`,
+        `fxsj`,
+        `cyfxbw`
+        from t_lsydzy_qtfx
+        where delete_mark = 0
+        <if test="tLsydzyQtfxDTO.id != null and tLsydzyQtfxDTO.id != ''">
+            AND id = #{tLsydzyQtfxDTO.id}
+        </if>
+    </select>
+</mapper>

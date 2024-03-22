@@ -4,8 +4,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lyc.wwyt.dao.TLogDao;
 import com.lyc.wwyt.entity.TLogEntity;
 import com.lyc.wwyt.service.TLogService;
-import org.springframework.stereotype.Service;
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
 /**
  * 日志表(t_log)表服务实现类

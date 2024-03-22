@@ -1,11 +1,16 @@
 package com.lyc.wwyt.config.advice;
 
 import cn.allbs.common.code.SystemCode;
+import cn.allbs.common.constant.StringPool;
 import cn.allbs.common.utils.R;
+import cn.allbs.common.utils.StringUtil;
+import cn.allbs.idempotent.exception.IdempotentException;
+import com.lyc.wwyt.config.ErrorMsg;
 import com.lyc.wwyt.exception.DecryptException;
 import com.lyc.wwyt.exception.UserNameNotExistException;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.validator.internal.engine.path.PathImpl;
+import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
@@ -28,6 +33,11 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
+import javax.validation.Path;
+import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 /**
@@ -62,7 +72,12 @@ public class RestExceptionTranslator {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public R<Object> handleError(MethodArgumentNotValidException e) {
         log.warn("参数验证失败:{}", e.getMessage());
-        return handleError(e.getBindingResult());
+        List<String> errors = new ArrayList<>();
+        e.getBindingResult().getAllErrors().forEach((error) -> {
+            String errorMessage = error.getDefaultMessage();
+            errors.add(errorMessage);
+        });
+        return R.fail(SystemCode.PARAM_BIND_ERROR, e.getMessage());
     }
 
     @ExceptionHandler(BindException.class)
@@ -74,9 +89,27 @@ public class RestExceptionTranslator {
 
     @ExceptionHandler(ConstraintViolationException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public R<Object> handleError(ConstraintViolationException e) {
-        log.warn("参数验证失败:{}", e.getMessage());
-        return handleError(e.getConstraintViolations());
+    public R handleError(ConstraintViolationException e) {
+        List<ErrorMsg> list = new ArrayList<>();
+        e.getConstraintViolations().forEach(a -> {
+            try {
+                Object leafBean = a.getLeafBean();
+                BeanWrapperImpl wrapper = new BeanWrapperImpl(leafBean);
+                Object idValue = wrapper.getPropertyValue("id");
+                Path.Node lastNode = ((PathImpl) a.getPropertyPath()).getLeafNode();
+                String fieldName = StringPool.EMPTY;
+                if (lastNode.getName() != null) {
+                    fieldName = lastNode.getName() + StringPool.SPACE;
+                }
+                list.add(ErrorMsg.builder()
+                        .uuid(Optional.ofNullable(idValue).map(Object::toString).orElse(""))
+                        .msg(StringUtil.format("{}{}", fieldName, a.getMessage()))
+                        .build());
+            } catch (Exception ex) {
+                log.error("解析id出现错误!");
+            }
+        });
+        return R.fail(SystemCode.PARAM_VALID_ERROR, list);
     }
 
     @ExceptionHandler(NoHandlerFoundException.class)
@@ -119,8 +152,8 @@ public class RestExceptionTranslator {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public R<Object> handleError(DecryptException e) {
         String message = e.getMessage();
-        log.error("接口数据体解密失败:{}", message);
-        return R.fail(message);
+        log.error("接口数据体解密失败{}", message);
+        return R.fail(com.lyc.wwyt.config.SystemCode.DES_ERROR.getCode(), message);
     }
 
     @ExceptionHandler(UserNameNotExistException.class)
@@ -128,6 +161,22 @@ public class RestExceptionTranslator {
     public R<Object> handleError(UserNameNotExistException e) {
         String message = e.getMessage();
         log.error("用户校验失败:{}", message);
+        return R.fail(message);
+    }
+
+    @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public R<Object> handleError(SQLIntegrityConstraintViolationException e) {
+        String message = e.getMessage();
+        log.error("数据库操作异常:{}", message);
+        return R.fail("存在主键想同的数据!");
+    }
+
+    @ExceptionHandler(IdempotentException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public R<Object> handleError(IdempotentException e) {
+        String message = e.getMessage();
+        log.error("超过调用频率:{}", message);
         return R.fail(message);
     }
 

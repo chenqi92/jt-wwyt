@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.wwyt.dao.TDzzyDao">
+    <resultMap type="com.lyc.wwyt.entity.TDzzyEntity" id="TDzzyMap">
+        <result property="id" column="id"/>
+        <result property="sfsstqy" column="sfsstqy"/>
+        <result property="fssstid" column="fssstid"/>
+        <result property="zyzbh" column="zyzbh"/>
+        <result property="sqdw" column="sqdw"/>
+        <result property="zysqsj" column="zysqsj"/>
+        <result property="sqr" column="sqr"/>
+        <result property="zynr" column="zynr"/>
+        <result property="zywz" column="zywz"/>
+        <result property="djmc" column="djmc"/>
+        <result property="dwzl" column="dwzl"/>
+        <result property="zyjb" column="zyjb"/>
+        <result property="zyryxx" column="zyryxx"/>
+        <result property="ssr" column="ssr"/>
+        <result property="dzzhr" column="dzzhr"/>
+        <result property="zydwlx" column="zydwlx"/>
+        <result property="zydwmc" column="zydwmc"/>
+        <result property="zyfzr" column="zyfzr"/>
+        <result property="zysskssj" column="zysskssj"/>
+        <result property="zyssjssj" column="zyssjssj"/>
+        <result property="sfsjqttszy" column="sfsjqttszy"/>
+        <result property="sjqttszyzbh" column="sjqttszyzbh"/>
+        <result property="fxbs" column="fxbs"/>
+        <result property="aqjdr" column="aqjdr"/>
+        <result property="jsjdr" column="jsjdr"/>
+        <result property="jhr" column="jhr"/>
+        <result property="dqzt" column="dqzt"/>
+        <result property="createtime" column="createTime"/>
+        <result property="createby" column="createBy"/>
+        <result property="updatetime" column="updateTime"/>
+        <result property="updateby" column="updateBy"/>
+        <result property="deletemark" column="deleteMark"/>
+        <result property="companycode" column="companyCode"/>
+        <result property="longitude" column="longitude"/>
+        <result property="latitude" column="latitude"/>
+        <result property="tyshxydm" column="tyshxydm"/>
+    </resultMap>
+
+    <sql id="baseColumn">
+        `id`
+                ,
+        `sfsstqy`,
+        `fssstid`,
+        `zyzbh`,
+        `sqdw`,
+        `zysqsj`,
+        `sqr`,
+        `zynr`,
+        `zywz`,
+        `djmc`,
+        `dwzl`,
+        `zyjb`,
+        `zyryxx`,
+        `ssr`,
+        `dzzhr`,
+        `zydwlx`,
+        `zydwmc`,
+        `zyfzr`,
+        `zysskssj`,
+        `zyssjssj`,
+        `sfsjqttszy`,
+        `sjqttszyzbh`,
+        `fxbs`,
+        `aqjdr`,
+        `jsjdr`,
+        `jhr`,
+        `dqzt`,
+        `createTime`,
+        `createBy`,
+        `updateTime`,
+        `updateBy`,
+        `deleteMark`,
+        `companyCode`,
+        `longitude`,
+        `latitude`,
+        `tyshxydm`
+    </sql>
+
+    <select id="queryList" resultType="com.lyc.wwyt.vo.TDzzyVO">
+        select
+        `id`,
+        `sfsstqy`,
+        `fssstid`,
+        `zyzbh`,
+        `sqdw`,
+        `zysqsj`,
+        `sqr`,
+        `zynr`,
+        `zywz`,
+        `djmc`,
+        `dwzl`,
+        `zyjb`,
+        `zyryxx`,
+        `ssr`,
+        `dzzhr`,
+        `zydwlx`,
+        `zydwmc`,
+        `zyfzr`,
+        `zysskssj`,
+        `zyssjssj`,
+        `sfsjqttszy`,
+        `sjqttszyzbh`,
+        `fxbs`,
+        `aqjdr`,
+        `jsjdr`,
+        `jhr`,
+        `dqzt`,
+        `createTime`,
+        `createBy`,
+        `updateTime`,
+        `updateBy`,
+        `deleteMark`,
+        `companyCode`,
+        `longitude`,
+        `latitude`,
+        `tyshxydm`
+        from t_dzzy
+        where delete_mark = 0
+        <if test="tDzzyDTO.id != null and tDzzyDTO.id != ''">
+            AND id = #{tDzzyDTO.id}
+        </if>
+    </select>
+</mapper>

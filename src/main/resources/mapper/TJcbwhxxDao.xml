@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.wwyt.dao.TJcbwhxxDao">
+    <resultMap type="com.lyc.wwyt.entity.TJcbwhxxEntity" id="TJcbwhxxMap">
+        <result property="id" column="id"/>
+        <result property="tyshxydm" column="TYSHXYDM"/>
+        <result property="jclx" column="JCLX"/>
+        <result property="jcxm" column="JCXM"/>
+        <result property="jcfs" column="JCFS"/>
+        <result property="jcnr" column="JCNR"/>
+        <result property="jcyj" column="JCYJ"/>
+        <result property="bz" column="BZ"/>
+        <result property="createTime" column="create_time"/>
+        <result property="createBy" column="create_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="deleteMark" column="delete_mark"/>
+        <result property="companyCode" column="COMPANY_CODE"/>
+    </resultMap>
+
+    <sql id="baseColumn">
+        `id`,
+        `TYSHXYDM`,
+        `JCLX`,
+        `JCXM`,
+        `JCFS`,
+        `JCNR`,
+        `JCYJ`,
+        `BZ`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`,
+        `COMPANY_CODE`
+    </sql>
+
+    <select id="queryList" resultType="com.lyc.wwyt.vo.TJcbwhxxVO">
+        select
+        `id`,
+        `TYSHXYDM`,
+        `JCLX`,
+        `JCXM`,
+        `JCFS`,
+        `JCNR`,
+        `JCYJ`,
+        `BZ`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`,
+        `COMPANY_CODE`
+        from t_jcbwhxx
+        where delete_mark = 0
+        <if test="tJcbwhxxDTO.id != null and tJcbwhxxDTO.id != ''">
+            AND id = #{tJcbwhxxDTO.id}
+        </if>
+        <if test="tJcbwhxxDTO.tyshxydm != null and tJcbwhxxDTO.tyshxydm != ''">
+            AND TYSHXYDM = #{tJcbwhxxDTO.tyshxydm}
+        </if>
+    </select>
+</mapper>

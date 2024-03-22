@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.wwyt.dao.TDwjzglxxDao">
+    <resultMap type="com.lyc.wwyt.entity.TDwjzglxxEntity" id="TDwjzglxxMap">
+        <result property="id" column="id"/>
+        <result property="tyshxydm" column="TYSHXYDM"/>
+        <result property="jzbh" column="JZBH"/>
+        <result property="jzmc" column="JZMC"/>
+        <result property="ms" column="MS"/>
+        <result property="jd" column="JD"/>
+        <result property="wd" column="WD"/>
+        <result property="createTime" column="create_time"/>
+        <result property="createBy" column="create_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="deleteMark" column="delete_mark"/>
+    </resultMap>
+
+    <sql id="baseColumn">
+        `id`
+                ,
+        `TYSHXYDM`,
+        `JZBH`,
+        `JZMC`,
+        `MS`,
+        `JD`,
+        `WD`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`
+    </sql>
+
+    <select id="queryList" resultType="com.lyc.wwyt.vo.TDwjzglxxVO">
+        select
+        `id`,
+        `TYSHXYDM`,
+        `JZBH`,
+        `JZMC`,
+        `MS`,
+        `JD`,
+        `WD`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`
+        from t_dwjzglxx
+        where delete_mark = 0
+        <if test="tDwjzglxxDTO.id != null and tDwjzglxxDTO.id != ''">
+            AND id = #{tDwjzglxxDTO.id}
+        </if>
+        <if test="tDwjzglxxDTO.tyshxydm != null and tDwjzglxxDTO.tyshxydm != ''">
+            AND TYSHXYDM = #{tDwjzglxxDTO.tyshxydm}
+        </if>
+    </select>
+</mapper>

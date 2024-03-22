@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.wwyt.dao.ScCheckDao">
+    <resultMap type="com.lyc.wwyt.entity.ScCheckEntity" id="ScCheckMap">
+        <result property="id" column="id"/>
+        <result property="unitId" column="unit_id"/>
+        <result property="checkPart" column="check_part"/>
+        <result property="checkTime" column="check_time"/>
+        <result property="checkPerson" column="check_person"/>
+        <result property="conduct" column="conduct"/>
+        <result property="checkType" column="check_type"/>
+        <result property="recheckTime" column="recheck_time"/>
+        <result property="recheckPerson" column="recheck_person"/>
+        <result property="riskLevel" column="risk_level"/>
+        <result property="departId" column="depart_id"/>
+        <result property="leadPerson" column="lead_person"/>
+        <result property="leadPersonConduct" column="lead_person_conduct"/>
+        <result property="planFinishTime" column="plan_finish_time"/>
+        <result property="rectificationStatus" column="rectification_status"/>
+        <result property="rectificationMoney" column="rectification_money"/>
+        <result property="description" column="description"/>
+        <result property="methods" column="methods"/>
+        <result property="declareStatus" column="declare_status"/>
+        <result property="declareOpinion" column="declare_opinion"/>
+        <result property="checkMethod" column="check_method"/>
+        <result property="unifiedCode" column="unified_code"/>
+        <result property="delFlg" column="del_flg"/>
+        <result property="createId" column="create_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateId" column="update_id"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="checkDepart" column="check_depart"/>
+        <result property="recheckDepart" column="recheck_depart"/>
+        <result property="type" column="type"/>
+        <result property="safeNum" column="safe_num"/>
+        <result property="leftNum" column="left_num"/>
+        <result property="processId" column="process_id"/>
+        <result property="chemicalId" column="chemical_id"/>
+        <result property="sourceId" column="source_id"/>
+        <result property="handleType" column="handle_type"/>
+        <result property="tYhzlxxId" column="t_yhzlxx_id"/>
+        <result property="handleTime" column="handle_time"/>
+        <result property="handleFile" column="handle_file"/>
+    </resultMap>
+
+    <sql id="baseColumn">
+        `id`,
+        `unit_id`,
+        `check_part`,
+        `check_time`,
+        `check_person`,
+        `conduct`,
+        `check_type`,
+        `recheck_time`,
+        `recheck_person`,
+        `risk_level`,
+        `depart_id`,
+        `lead_person`,
+        `lead_person_conduct`,
+        `plan_finish_time`,
+        `rectification_status`,
+        `rectification_money`,
+        `description`,
+        `methods`,
+        `declare_status`,
+        `declare_opinion`,
+        `check_method`,
+        `unified_code`,
+        `del_flg`,
+        `create_id`,
+        `create_time`,
+        `update_id`,
+        `update_time`,
+        `check_depart`,
+        `recheck_depart`,
+        `type`,
+        `safe_num`,
+        `left_num`,
+        `process_id`,
+        `chemical_id`,
+        `source_id`,
+        `handle_type`,
+        `t_yhzlxx_id`,
+        `handle_time`,
+        `handle_file`
+    </sql>
+
+    <select id="queryList" resultType="com.lyc.wwyt.vo.ScCheckVO">
+        select `id`,
+               `unit_id`,
+               `check_part`,
+               `check_time`,
+               `check_person`,
+               `conduct`,
+               `check_type`,
+               `recheck_time`,
+               `recheck_person`,
+               `risk_level`,
+               `depart_id`,
+               `lead_person`,
+               `lead_person_conduct`,
+               `plan_finish_time`,
+               `rectification_status`,
+               `rectification_money`,
+               `description`,
+               `methods`,
+               `declare_status`,
+               `declare_opinion`,
+               `check_method`,
+               `unified_code`,
+               `del_flg`,
+               `create_id`,
+               `create_time`,
+               `update_id`,
+               `update_time`,
+               `check_depart`,
+               `recheck_depart`,
+               `type`,
+               `safe_num`,
+               `left_num`,
+               `process_id`,
+               `chemical_id`,
+               `source_id`,
+               `handle_type`,
+               `t_yhzlxx_id`,
+               `handle_time`,
+               `handle_file`
+        from sc_check
+        where del_flg = 0
+        <if test="scCheckDTO.id != null and scCheckDTO.id != ''">
+            AND id = #{scCheckDTO.id}
+        </if>
+    </select>
+
+    <insert id="saveOrUpdateCheck" keyProperty="id" useGeneratedKeys="true">
+        insert into sc_check(t_yhzlxx_id,
+                             check_part,
+                             check_time,
+                             check_method,
+                             check_person,
+                             risk_level,
+                             description,
+                             lead_person,
+                             plan_finish_time,
+                             rectification_status,
+                             methods,
+                             declare_opinion,
+                             type,
+                             check_type,
+                             declare_status,
+                             del_flg,
+                             create_id,
+                             update_id,
+                             create_time,
+                             update_time,
+                             unit_id,
+                             unified_code) values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.tYhzlxxId},
+             #{item.checkPart},
+             #{item.checkTime},
+             #{item.checkMethod},
+             #{item.checkPerson},
+             #{item.riskLevel},
+             #{item.description},
+             #{item.leadPerson},
+             #{item.planFinishTime},
+             #{item.rectificationStatus},
+             #{item.methods},
+             #{item.declareOpinion},
+             #{item.type},
+             #{item.checkType},
+             #{item.declareStatus},
+             #{item.delFlg},
+             #{item.unitId},
+             #{item.unitId},
+             #{item.createTime},
+             #{item.updateTime},
+             #{item.unitId},
+             #{item.unifiedCode})
+        </foreach>
+        on duplicate key update t_yhzlxx_id          = values(t_yhzlxx_id),
+                                check_part           = values(check_part),
+                                check_time           = values(check_time),
+                                check_person         = values(check_person),
+                                check_method         = values(check_method),
+                                risk_level           = values(risk_level),
+                                description          = values(description),
+                                lead_person          = values(lead_person),
+                                plan_finish_time     = values(plan_finish_time),
+                                rectification_status = values(rectification_status),
+                                methods              = values(methods),
+                                declare_opinion      = values(declare_opinion),
+                                type                 = values(type),
+                                check_type           = values(check_type),
+                                declare_status       = values(declare_status),
+                                update_id            = values(update_id),
+                                update_time          = values(update_time),
+                                unit_id              = values(unit_id),
+                                unified_code         = values(unified_code)
+    </insert>
+</mapper>

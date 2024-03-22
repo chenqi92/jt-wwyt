@@ -9,8 +9,7 @@ import cn.allbs.common.exception.ServiceException;
 import cn.allbs.common.utils.AllbsWebUtils;
 import cn.allbs.common.utils.R;
 import cn.allbs.common.utils.StringUtil;
-import cn.allbs.core.advice.AllbsErrorEvent;
-import cn.allbs.core.util.ErrorUtil;
+import com.lyc.wwyt.utils.ErrorUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,7 +73,7 @@ public class AllbsExceptionTranslator {
     }
 
     private void publishEvent(Throwable error) {
-        cn.allbs.core.advice.AllbsErrorEvent event = new AllbsErrorEvent();
+        AllbsErrorEvent event = new AllbsErrorEvent();
         // 服务异常类型
         event.setErrorType(ErrorType.REQUEST);
         // 异步获取不到的一些信息

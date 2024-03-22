@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.wwyt.dao.TPxjhxxDao">
+    <resultMap type="com.lyc.wwyt.entity.TPxjhxxEntity" id="TPxjhxxMap">
+        <result property="id" column="id"/>
+        <result property="tyshxydm" column="TYSHXYDM"/>
+        <result property="jjmc" column="JJMC"/>
+        <result property="zdrq" column="ZDRQ"/>
+        <result property="jhssrq" column="JHSSRQ"/>
+        <result property="pxnr" column="PXNR"/>
+        <result property="bzr" column="BZR"/>
+        <result property="bzbm" column="BZBM"/>
+        <result property="fj" column="FJ"/>
+        <result property="zrbm" column="ZRBM"/>
+        <result property="zrr" column="ZRR"/>
+        <result property="wcrq" column="WCRQ"/>
+        <result property="jhnd" column="JHND"/>
+        <result property="pxlx" column="PXLX"/>
+        <result property="createTime" column="create_time"/>
+        <result property="createBy" column="create_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="deleteMark" column="delete_mark"/>
+    </resultMap>
+
+    <sql id="baseColumn">
+        `id`,
+        `TYSHXYDM`,
+        `JJMC`,
+        `ZDRQ`,
+        `JHSSRQ`,
+        `PXNR`,
+        `BZR`,
+        `BZBM`,
+        `FJ`,
+        `ZRBM`,
+        `ZRR`,
+        `WCRQ`,
+        `JHND`,
+        `PXLX`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`
+    </sql>
+
+    <select id="queryList" resultType="com.lyc.wwyt.vo.TPxjhxxVO">
+        select
+        `id`,
+        `TYSHXYDM`,
+        `JJMC`,
+        `ZDRQ`,
+        `JHSSRQ`,
+        `PXNR`,
+        `BZR`,
+        `BZBM`,
+        `FJ`,
+        `ZRBM`,
+        `ZRR`,
+        `WCRQ`,
+        `JHND`,
+        `PXLX`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`
+        from t_pxjhxx
+        where delete_mark = 0
+        <if test="tPxjhxxDTO.id != null and tPxjhxxDTO.id != ''">
+            AND id = #{tPxjhxxDTO.id}
+        </if>
+        <if test="tPxjhxxDTO.tyshxydm != null and tPxjhxxDTO.tyshxydm != ''">
+            AND TYSHXYDM = #{tPxjhxxDTO.tyshxydm}
+        </if>
+    </select>
+</mapper>

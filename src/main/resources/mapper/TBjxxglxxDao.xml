@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.wwyt.dao.TBjxxglxxDao">
+    <resultMap type="com.lyc.wwyt.entity.TBjxxglxxEntity" id="TBjxxglxxMap">
+        <result property="id" column="id"/>
+        <result property="tyshxydm" column="TYSHXYDM"/>
+        <result property="bjqybh" column="BJQYBH"/>
+        <result property="bjryxm" column="BJRYXM"/>
+        <result property="bjrywzjd" column="BJRYWZJD"/>
+        <result property="bjrywzwd" column="BJRYWZWD"/>
+        <result property="bjsj" column="BJSJ"/>
+        <result property="bjlx" column="BJLX"/>
+        <result property="bjczsj" column="BJCZSJ"/>
+        <result property="bjczry" column="BJCZRY"/>
+        <result property="bjczjg" column="BJCZJG"/>
+        <result property="bjjl" column="BJJL"/>
+        <result property="createTime" column="create_time"/>
+        <result property="createBy" column="create_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="deleteMark" column="delete_mark"/>
+    </resultMap>
+
+    <sql id="baseColumn">
+        `id`
+                ,
+        `TYSHXYDM`,
+        `BJQYBH`,
+        `BJRYXM`,
+        `BJRYWZJD`,
+        `BJRYWZWD`,
+        `BJSJ`,
+        `BJLX`,
+        `BJCZSJ`,
+        `BJCZRY`,
+        `BJCZJG`,
+        `BJJL`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`
+    </sql>
+
+    <select id="queryList" resultType="com.lyc.wwyt.vo.TBjxxglxxVO">
+        select
+        `id`,
+        `TYSHXYDM`,
+        `BJQYBH`,
+        `BJRYXM`,
+        `BJRYWZJD`,
+        `BJRYWZWD`,
+        `BJSJ`,
+        `BJLX`,
+        `BJCZSJ`,
+        `BJCZRY`,
+        `BJCZJG`,
+        `BJJL`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`
+        from t_bjxxglxx
+        where delete_mark = 0
+        <if test="tBjxxglxxDTO.id != null and tBjxxglxxDTO.id != ''">
+            AND id = #{tBjxxglxxDTO.id}
+        </if>
+        <if test="tBjxxglxxDTO.tyshxydm != null and tBjxxglxxDTO.tyshxydm != ''">
+            AND TYSHXYDM = #{tBjxxglxxDTO.tyshxydm}
+        </if>
+    </select>
+</mapper>

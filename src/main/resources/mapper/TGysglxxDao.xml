@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.wwyt.dao.TGysglxxDao">
+    <resultMap type="com.lyc.wwyt.entity.TGysglxxEntity" id="TGysglxxMap">
+        <result property="id" column="id"/>
+        <result property="tyshxydm" column="TYSHXYDM"/>
+        <result property="gysgsmc" column="GYSGSMC"/>
+        <result property="gyslx" column="GYSLX"/>
+        <result property="gsdz" column="GSDZ"/>
+        <result property="lxr" column="LXR"/>
+        <result property="lxdh" column="LXDH"/>
+        <result property="gysfxpj" column="GYSFXPJ"/>
+        <result property="gyslb" column="GYSLB"/>
+        <result property="yzbm" column="YZBM"/>
+        <result property="jyfw" column="JYFW"/>
+        <result property="gsms" column="GSMS"/>
+        <result property="khrq" column="KHRQ"/>
+        <result property="zf" column="ZF"/>
+        <result property="khjg" column="KHJG"/>
+        <result property="zsmc" column="ZSMC"/>
+        <result property="zsbh" column="ZSBH"/>
+        <result property="sfyyxq" column="SFYYXQ"/>
+        <result property="qzrq" column="QZRQ"/>
+        <result property="dqrq" column="DQRQ"/>
+        <result property="bt" column="BT"/>
+        <result property="khbm" column="KHBM"/>
+        <result property="createTime" column="create_time"/>
+        <result property="createBy" column="create_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="deleteMark" column="delete_mark"/>
+    </resultMap>
+
+    <sql id="baseColumn">
+        `id`,
+        `TYSHXYDM`,
+        `GYSGSMC`,
+        `GYSLX`,
+        `GSDZ`,
+        `LXR`,
+        `LXDH`,
+        `GYSFXPJ`,
+        `GYSLB`,
+        `YZBM`,
+        `JYFW`,
+        `GSMS`,
+        `KHRQ`,
+        `ZF`,
+        `KHJG`,
+        `ZSMC`,
+        `ZSBH`,
+        `SFYYXQ`,
+        `QZRQ`,
+        `DQRQ`,
+        `BT`,
+        `KHBM`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`
+    </sql>
+
+    <select id="queryList" resultType="com.lyc.wwyt.vo.TGysglxxVO">
+        select
+        `id`,
+        `TYSHXYDM`,
+        `GYSGSMC`,
+        `GYSLX`,
+        `GSDZ`,
+        `LXR`,
+        `LXDH`,
+        `GYSFXPJ`,
+        `GYSLB`,
+        `YZBM`,
+        `JYFW`,
+        `GSMS`,
+        `KHRQ`,
+        `ZF`,
+        `KHJG`,
+        `ZSMC`,
+        `ZSBH`,
+        `SFYYXQ`,
+        `QZRQ`,
+        `DQRQ`,
+        `BT`,
+        `KHBM`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`
+        from t_gysglxx
+        where delete_mark = 0
+        <if test="tGysglxxDTO.id != null and tGysglxxDTO.id != ''">
+            AND id = #{tGysglxxDTO.id}
+        </if>
+        <if test="tGysglxxDTO.tyshxydm != null and tGysglxxDTO.tyshxydm != ''">
+            AND TYSHXYDM = #{tGysglxxDTO.tyshxydm}
+        </if>
+    </select>
+</mapper>

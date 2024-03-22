@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.wwyt.dao.TAqfxfxdyDao">
+    <resultMap type="com.lyc.wwyt.entity.TAqfxfxdyEntity" id="TAqfxfxdyMap">
+        <result property="id" column="id"/>
+        <result property="tyshxydm" column="TYSHXYDM"/>
+        <result property="hazardCode" column="HAZARD_CODE"/>
+        <result property="hazardCode1" column="HAZARD_CODE1"/>
+        <result property="hazardDep" column="HAZARD_DEP"/>
+        <result property="hazardLiablePerson" column="HAZARD_LIABLE_PERSON"/>
+        <result property="riskUnitName" column="RISK_UNIT_NAME"/>
+        <result property="riskClass" column="RISK_CLASS"/>
+        <result property="createTime" column="create_time"/>
+        <result property="createBy" column="create_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="deleteMark" column="delete_mark"/>
+        <result property="companyCode" column="COMPANY_CODE"/>
+    </resultMap>
+
+    <sql id="baseColumn">
+        `id`,
+        `TYSHXYDM`,
+        `HAZARD_CODE`,
+        `HAZARD_CODE1`,
+        `HAZARD_DEP`,
+        `HAZARD_LIABLE_PERSON`,
+        `RISK_UNIT_NAME`,
+        `RISK_CLASS`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`,
+        `COMPANY_CODE`
+    </sql>
+
+    <select id="queryList" resultType="com.lyc.wwyt.vo.TAqfxfxdyVO">
+        select
+        `id`,
+        `TYSHXYDM`,
+        `HAZARD_CODE`,
+        `HAZARD_CODE1`,
+        `HAZARD_DEP`,
+        `HAZARD_LIABLE_PERSON`,
+        `RISK_UNIT_NAME`,
+        `RISK_CLASS`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`,
+        `COMPANY_CODE`
+        from t_aqfxfxdy
+        where delete_mark = 0
+        <if test="tAqfxfxdyDTO.id != null and tAqfxfxdyDTO.id != ''">
+            AND id = #{tAqfxfxdyDTO.id}
+        </if>
+        <if test="tAqfxfxdyDTO.tyshxydm != null and tAqfxfxdyDTO.tyshxydm != ''">
+            AND TYSHXYDM = #{tAqfxfxdyDTO.tyshxydm}
+        </if>
+    </select>
+</mapper>

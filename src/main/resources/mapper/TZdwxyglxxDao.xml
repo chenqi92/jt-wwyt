@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.wwyt.dao.TZdwxyglxxDao">
+    <resultMap type="com.lyc.wwyt.entity.TZdwxyglxxEntity" id="TZdwxyglxxMap">
+        <result property="id" column="id"/>
+        <result property="tyshxydm" column="TYSHXYDM"/>
+        <result property="zdwxybh" column="ZDWXYBH"/>
+        <result property="zdwxymc" column="ZDWXYMC"/>
+        <result property="wxyjc" column="WXYJC"/>
+        <result property="wxllx" column="WXLLX"/>
+        <result property="ssbm" column="SSBM"/>
+        <result property="fzrdh" column="FZRDH"/>
+        <result property="sfzhgyq" column="SFZHGYQ"/>
+        <result property="xxdz" column="XXDZ"/>
+        <result property="zdmj" column="ZDMJ"/>
+        <result property="gdzcz" column="GDZCZ"/>
+        <result property="sjsynx" column="SJSYNX"/>
+        <result property="ccxs" column="CCXS"/>
+        <result property="jczq" column="JCZQ"/>
+        <result property="jsgylc" column="JSGYLC"/>
+        <result property="gygcxx" column="GYGCXX"/>
+        <result property="aqfzr" column="AQFZR"/>
+        <result property="aqfzrsj" column="AQFZRSJ"/>
+        <result property="qyfzr" column="QYFZR"/>
+        <result property="qyfzrsj" column="QYFZRSJ"/>
+        <result property="whcd" column="WHCD"/>
+        <result property="psnd" column="PSND"/>
+        <result property="zdwxyms" column="ZDWXYMS"/>
+        <result property="scjyhdlx" column="SCJYHDLX"/>
+        <result property="sccccscq" column="SCCCCSCQ"/>
+        <result property="flfjdsssfdqjsjc" column="FLFJDSSSFDQJSJC"/>
+        <result property="sjwxgy" column="SJWXGY"/>
+        <result property="hjwz" column="HJWZ"/>
+        <result property="tyrq" column="TYRQ"/>
+        <result property="rz" column="RZ"/>
+        <result property="zdwxyjb" column="ZDWXYJB"/>
+        <result property="ylrqzs" column="YLRQZS"/>
+        <result property="flfjdzj" column="FLFJDZJ"/>
+        <result property="flfjddq" column="FLFJDDQ"/>
+        <result property="wxybayxqs" column="WXYBAYXQS"/>
+        <result property="wxybayxqz" column="WXYBAYXQZ"/>
+        <result property="dynsjdwxhxp" column="DYNSJDWXHXP"/>
+        <result property="wxhxpcl" column="WXHXPCL"/>
+        <result property="wxhxpxz" column="WXHXPXZ"/>
+        <result property="sczzhqy" column="SCZZHQY"/>
+        <result property="czl" column="CZL"/>
+        <result property="zbhjlx" column="ZBHJLX"/>
+        <result property="zbhjmc" column="ZBHJMC"/>
+        <result property="zbhjrs" column="ZBHJRS"/>
+        <result property="ywxyzjjl" column="YWXYZJJL"/>
+        <result property="zdwxyzbaqjj" column="ZDWXYZBAQJJ"/>
+        <result property="zbhjlxr" column="ZBHJLXR"/>
+        <result property="zbhjlxrdh" column="ZBHJLXRDH"/>
+        <result property="zbfhmbzjjl" column="ZBFHMBZJJL"/>
+        <result property="wbj500mfwlrsgs" column="WBJ500MFWLRSGS"/>
+        <result property="jd" column="JD"/>
+        <result property="wd" column="WD"/>
+        <result property="createTime" column="create_time"/>
+        <result property="createBy" column="create_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="deleteMark" column="delete_mark"/>
+    </resultMap>
+
+    <sql id="baseColumn">
+        `id`
+                ,
+        `TYSHXYDM`,
+        `ZDWXYBH`,
+        `ZDWXYMC`,
+        `WXYJC`,
+        `WXLLX`,
+        `SSBM`,
+        `FZRDH`,
+        `SFZHGYQ`,
+        `XXDZ`,
+        `ZDMJ`,
+        `GDZCZ`,
+        `SJSYNX`,
+        `CCXS`,
+        `JCZQ`,
+        `JSGYLC`,
+        `GYGCXX`,
+        `AQFZR`,
+        `AQFZRSJ`,
+        `QYFZR`,
+        `QYFZRSJ`,
+        `WHCD`,
+        `PSND`,
+        `ZDWXYMS`,
+        `SCJYHDLX`,
+        `SCCCCSCQ`,
+        `FLFJDSSSFDQJSJC`,
+        `SJWXGY`,
+        `HJWZ`,
+        `TYRQ`,
+        `RZ`,
+        `ZDWXYJB`,
+        `YLRQZS`,
+        `FLFJDZJ`,
+        `FLFJDDQ`,
+        `WXYBAYXQS`,
+        `WXYBAYXQZ`,
+        `DYNSJDWXHXP`,
+        `WXHXPCL`,
+        `WXHXPXZ`,
+        `SCZZHQY`,
+        `CZL`,
+        `ZBHJLX`,
+        `ZBHJMC`,
+        `ZBHJRS`,
+        `YWXYZJJL`,
+        `ZDWXYZBAQJJ`,
+        `ZBHJLXR`,
+        `ZBHJLXRDH`,
+        `ZBFHMBZJJL`,
+        `WBJ500MFWLRSGS`,
+        `JD`,
+        `WD`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`
+    </sql>
+
+    <select id="queryList" resultType="com.lyc.wwyt.vo.TZdwxyglxxVO">
+        select
+        `id`,
+        `TYSHXYDM`,
+        `ZDWXYBH`,
+        `ZDWXYMC`,
+        `WXYJC`,
+        `WXLLX`,
+        `SSBM`,
+        `FZRDH`,
+        `SFZHGYQ`,
+        `XXDZ`,
+        `ZDMJ`,
+        `GDZCZ`,
+        `SJSYNX`,
+        `CCXS`,
+        `JCZQ`,
+        `JSGYLC`,
+        `GYGCXX`,
+        `AQFZR`,
+        `AQFZRSJ`,
+        `QYFZR`,
+        `QYFZRSJ`,
+        `WHCD`,
+        `PSND`,
+        `ZDWXYMS`,
+        `SCJYHDLX`,
+        `SCCCCSCQ`,
+        `FLFJDSSSFDQJSJC`,
+        `SJWXGY`,
+        `HJWZ`,
+        `TYRQ`,
+        `RZ`,
+        `ZDWXYJB`,
+        `YLRQZS`,
+        `FLFJDZJ`,
+        `FLFJDDQ`,
+        `WXYBAYXQS`,
+        `WXYBAYXQZ`,
+        `DYNSJDWXHXP`,
+        `WXHXPCL`,
+        `WXHXPXZ`,
+        `SCZZHQY`,
+        `CZL`,
+        `ZBHJLX`,
+        `ZBHJMC`,
+        `ZBHJRS`,
+        `YWXYZJJL`,
+        `ZDWXYZBAQJJ`,
+        `ZBHJLXR`,
+        `ZBHJLXRDH`,
+        `ZBFHMBZJJL`,
+        `WBJ500MFWLRSGS`,
+        `JD`,
+        `WD`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`
+        from t_zdwxyglxx
+        where delete_mark = 0
+        <if test="tZdwxyglxxDTO.id != null and tZdwxyglxxDTO.id != ''">
+            AND id = #{tZdwxyglxxDTO.id}
+        </if>
+        <if test="tZdwxyglxxDTO.tyshxydm != null and tZdwxyglxxDTO.tyshxydm != ''">
+            AND TYSHXYDM = #{tZdwxyglxxDTO.tyshxydm}
+        </if>
+    </select>
+</mapper>

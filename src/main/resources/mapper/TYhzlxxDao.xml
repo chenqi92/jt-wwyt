@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.wwyt.dao.TYhzlxxDao">
+    <resultMap type="com.lyc.wwyt.entity.TYhzlxxEntity" id="TYhzlxxMap">
+        <result property="id" column="id"/>
+        <result property="tyshxydm" column="TYSHXYDM"/>
+        <result property="dangerName" column="DANGER_NAME"/>
+        <result property="hazardCode" column="HAZARD_CODE"/>
+        <result property="riskMeasureId" column="RISK_MEASURE_ID"/>
+        <result property="recordId" column="RECORD_ID"/>
+        <result property="dangerLevel" column="DANGER_LEVEL"/>
+        <result property="registTime" column="REGIST_TIME"/>
+        <result property="registrant" column="REGISTRANT"/>
+        <result property="dangerSrc" column="DANGER_SRC"/>
+        <result property="dangerManageType" column="DANGER_MANAGE_TYPE"/>
+        <result property="hazardDangerType" column="HAZARD_DANGER_TYPE"/>
+        <result property="dangerDesc" column="DANGER_DESC"/>
+        <result property="dangerReason" column="DANGER_REASON"/>
+        <result property="controlMeasures" column="CONTROL_MEASURES"/>
+        <result property="cost" column="COST"/>
+        <result property="liablePerson" column="LIABLE_PERSON"/>
+        <result property="dangerManageDeadline" column="DANGER_MANAGE_DEADLINE"/>
+        <result property="checkAcceptPerson" column="CHECK_ACCEPT_PERSON"/>
+        <result property="checkAcceptTime" column="CHECK_ACCEPT_TIME"/>
+        <result property="checkAcceptComment" column="CHECK_ACCEPT_COMMENT"/>
+        <result property="dangerState" column="DANGER_STATE"/>
+        <result property="managementClassification" column="MANAGEMENT_CLASSIFICATION"/>
+        <result property="occurrenceLink" column="OCCURRENCE_LINK"/>
+        <result property="attachments1" column="ATTACHMENTS1"/>
+        <result property="attachments2" column="ATTACHMENTS2"/>
+        <result property="fj" column="FJ"/>
+        <result property="createTime" column="create_time"/>
+        <result property="createBy" column="create_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="deleteMark" column="delete_mark"/>
+        <result property="companyCode" column="COMPANY_CODE"/>
+    </resultMap>
+
+    <sql id="baseColumn">
+        `id`,
+        `TYSHXYDM`,
+        `DANGER_NAME`,
+        `HAZARD_CODE`,
+        `RISK_MEASURE_ID`,
+        `RECORD_ID`,
+        `DANGER_LEVEL`,
+        `REGIST_TIME`,
+        `REGISTRANT`,
+        `DANGER_SRC`,
+        `DANGER_MANAGE_TYPE`,
+        `HAZARD_DANGER_TYPE`,
+        `DANGER_DESC`,
+        `DANGER_REASON`,
+        `CONTROL_MEASURES`,
+        `COST`,
+        `LIABLE_PERSON`,
+        `DANGER_MANAGE_DEADLINE`,
+        `CHECK_ACCEPT_PERSON`,
+        `CHECK_ACCEPT_TIME`,
+        `CHECK_ACCEPT_COMMENT`,
+        `DANGER_STATE`,
+        `MANAGEMENT_CLASSIFICATION`,
+        `OCCURRENCE_LINK`,
+        `ATTACHMENTS1`,
+        `ATTACHMENTS2`,
+        `FJ`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`,
+        `COMPANY_CODE`
+    </sql>
+
+    <select id="queryList" resultType="com.lyc.wwyt.vo.TYhzlxxVO">
+        select
+        `id`,
+        `TYSHXYDM`,
+        `DANGER_NAME`,
+        `HAZARD_CODE`,
+        `RISK_MEASURE_ID`,
+        `RECORD_ID`,
+        `DANGER_LEVEL`,
+        `REGIST_TIME`,
+        `REGISTRANT`,
+        `DANGER_SRC`,
+        `DANGER_MANAGE_TYPE`,
+        `HAZARD_DANGER_TYPE`,
+        `DANGER_DESC`,
+        `DANGER_REASON`,
+        `CONTROL_MEASURES`,
+        `COST`,
+        `LIABLE_PERSON`,
+        `DANGER_MANAGE_DEADLINE`,
+        `CHECK_ACCEPT_PERSON`,
+        `CHECK_ACCEPT_TIME`,
+        `CHECK_ACCEPT_COMMENT`,
+        `DANGER_STATE`,
+        `MANAGEMENT_CLASSIFICATION`,
+        `OCCURRENCE_LINK`,
+        `ATTACHMENTS1`,
+        `ATTACHMENTS2`,
+        `FJ`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`,
+        `COMPANY_CODE`
+        from t_yhzlxx
+        where delete_mark = 0
+        <if test="tYhzlxxDTO.id != null and tYhzlxxDTO.id != ''">
+            AND id = #{tYhzlxxDTO.id}
+        </if>
+        <if test="tYhzlxxDTO.tyshxydm != null and tYhzlxxDTO.tyshxydm != ''">
+            AND TYSHXYDM = #{tYhzlxxDTO.tyshxydm}
+        </if>
+    </select>
+</mapper>

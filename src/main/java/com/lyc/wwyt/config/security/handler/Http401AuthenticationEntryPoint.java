@@ -21,6 +21,6 @@ import java.io.IOException;
 public class Http401AuthenticationEntryPoint implements AuthenticationEntryPoint {
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
-        ResponseUtil.out(response, R.fail(SystemCode.FORBIDDEN_401));
+        ResponseUtil.out(response, R.fail(SystemCode.USERNAME_OR_PASSWORD_ERROR));
     }
 }

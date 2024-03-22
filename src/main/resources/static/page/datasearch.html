@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>五位一体数据展示</title>
+    <link rel="stylesheet" type="text/css" href="../plugins/element-ui/theme-chalk/index.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/data.css">
+</head>
+<body>
+<div id="app">
+    <div id="app-container">
+        <el-form :inline="true" :model="queryParams" ref="queryParams" :rules="dataRule"
+                 @keyup.enter.native="getDataList()">
+            <el-form-item label="表名" prop="table">
+                <el-input v-model="queryParams.table" placeholder="表名" clearable size="small"
+                          @keyup.enter.native="handleQuery"/>
+            </el-form-item>
+            <el-form-item label="主键ID" prop="id">
+                <el-input v-model="queryParams.id" placeholder="主键ID" clearable size="small"
+                          @keyup.enter.native="handleQuery"/>
+            </el-form-item>
+            <el-form-item label="企业统一社会信用代码" prop="tyshxydm">
+                <el-input v-model="queryParams.tyscxydm" placeholder="企业统一社会信用代码" clearable size="small"
+                          @keyup.enter.native="handleQuery"/>
+            </el-form-item>
+            <el-form-item label="用户名" prop="userName">
+                <el-input v-model="queryParams.userName" placeholder="用户名" clearable size="small"/>
+            </el-form-item>
+            <el-form-item label="密码" prop="password">
+                <el-input show-password v-model="queryParams.password" placeholder="密码" clearable size="small"/>
+            </el-form-item>
+            <el-form-item>
+                <el-button class="filter-item" type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索
+                </el-button>
+                <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
+                <el-button type="warning" icon="el-icon-download" size="mini" @click="handleExport">导出
+                </el-button>
+            </el-form-item>
+        </el-form>
+
+        <el-table stripe border :data="dataList" v-loading="dataListLoading" :max-height="tableHeight"
+                  style="width: 100%">
+            <el-table-column
+                    v-for="(item, index) in tableHeadList"
+                    :prop="item.code"
+                    :fixed="item.code === 'id'"
+                    header-align="center"
+                    align="center"
+                    min-width="300px"
+                    show-overflow-tooltip
+                    :key="index"
+                    :label="item.name">
+                <template slot="header">
+                    <div>{{item.comment}}</div>
+                </template>
+                <template slot="header">
+                    <div>{{item.name}}</div>
+                </template>
+                <template slot-scope="scope">
+                    <div>{{ scope.row[item.code] }}</div>
+                </template>
+            </el-table-column>
+        </el-table>
+
+        <div class="gather_pagination">
+            <el-pagination @size-change="sizeChangeHandle" @current-change="currentChangeHandle"
+                           :current-page="pageIndex"
+                           :page-sizes="[10, 20, 50, 100]" :page-size="pageSize" :total="totalPage" background
+                           layout="total, sizes, prev, pager, next, jumper">
+            </el-pagination>
+        </div>
+    </div>
+</div>
+
+<script src="../js/vue.js"></script>
+<script src="../plugins/element-ui/index.js"></script>
+<script src="../js/data.js"></script>
+</body>
+</html>

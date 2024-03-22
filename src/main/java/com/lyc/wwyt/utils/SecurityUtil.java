@@ -4,6 +4,9 @@ import cn.hutool.core.codec.Base64;
 import lombok.SneakyThrows;
 import lombok.experimental.UtilityClass;
 import org.springframework.http.HttpHeaders;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.servlet.http.HttpServletRequest;
 import java.nio.charset.StandardCharsets;
@@ -63,5 +66,53 @@ public class SecurityUtil {
         }
 
         return extractAndDecodeHeader(header);
+    }
+
+    /**
+     * 获取当前用户名
+     *
+     * @return
+     */
+    public static String getUsername() {
+        String username = null;
+        Authentication authentication = getAuthentication();
+        if (authentication != null) {
+            Object principal = authentication.getPrincipal();
+            if (principal instanceof UserDetails) {
+                username = ((UserDetails) principal).getUsername();
+            }
+        }
+        return username;
+    }
+
+    /**
+     * 获取用户名
+     *
+     * @return
+     */
+    public static String getUsername(Authentication authentication) {
+        String username = null;
+        if (authentication != null) {
+            Object principal = authentication.getPrincipal();
+            if (principal instanceof String) {
+                username = (String) principal;
+            }
+            if (principal instanceof UserDetails) {
+                username = ((UserDetails) principal).getUsername();
+            }
+        }
+        return username;
+    }
+
+    /**
+     * 获取当前登录信息
+     *
+     * @return
+     */
+    public static Authentication getAuthentication() {
+        if (SecurityContextHolder.getContext() == null) {
+            return null;
+        }
+        return SecurityContextHolder.getContext().getAuthentication();
     }
 }

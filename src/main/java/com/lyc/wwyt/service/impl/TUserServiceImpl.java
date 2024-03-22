@@ -8,7 +8,11 @@ import com.lyc.wwyt.entity.TUserEntity;
 import com.lyc.wwyt.exception.UserNameNotExistException;
 import com.lyc.wwyt.service.TUserService;
 import lombok.AllArgsConstructor;
+import org.springframework.cache.Cache;
+import org.springframework.cache.CacheManager;
 import org.springframework.stereotype.Service;
+
+import static com.lyc.wwyt.constants.CacheConstant.USER_DETAILS;
 
 
 /**
@@ -23,7 +27,7 @@ public class TUserServiceImpl extends ServiceImpl<TUserDao, TUserEntity> impleme
 
     private final TUserDao tUserDao;
 
-//    private final CacheManager cacheManager;
+    private final CacheManager cacheManager;
 
     /**
      * 根据用户名查询用户信息
@@ -33,16 +37,16 @@ public class TUserServiceImpl extends ServiceImpl<TUserDao, TUserEntity> impleme
      */
     @Override
     public TUserEntity findUserInfoByUserName(String username) {
-//        Cache cache = cacheManager.getCache(USER_DETAILS);
-//        if (cache != null && cache.get(username) != null) {
-//            return cache.get(username, TUserEntity.class);
-//        }
+        Cache cache = cacheManager.getCache(USER_DETAILS);
+        if (cache != null && cache.get(username) != null) {
+            return cache.get(username, TUserEntity.class);
+        }
         TUserEntity sysUserEntity = tUserDao.selectOne(Wrappers.<TUserEntity>query().lambda().eq(TUserEntity::getUsername, username));
         if (BeanUtil.isEmpty(sysUserEntity)) {
             throw new UserNameNotExistException();
         }
-//        assert cache != null;
-//        cache.put(username, sysUserEntity);
+        assert cache != null;
+        cache.put(username, sysUserEntity);
         return sysUserEntity;
     }
 }

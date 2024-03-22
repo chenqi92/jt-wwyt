@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.wwyt.dao.TYjwzglxxDao">
+    <resultMap type="com.lyc.wwyt.entity.TYjwzglxxEntity" id="TYjwzglxxMap">
+        <result property="id" column="id"/>
+        <result property="tyshxydm" column="TYSHXYDM"/>
+        <result property="wzmc" column="WZMC"/>
+        <result property="wzbh" column="WZBH"/>
+        <result property="wzyt" column="WZYT"/>
+        <result property="wzxh" column="WZXH"/>
+        <result property="fzbm" column="FZBM"/>
+        <result property="wzfl" column="WZFL"/>
+        <result property="cfwz" column="CFWZ"/>
+        <result property="ccsl" column="CCSL"/>
+        <result property="scrq" column="SCRQ"/>
+        <result property="syqy" column="SYQY"/>
+        <result property="smzq" column="SMZQ"/>
+        <result property="wzzt" column="WZZT"/>
+        <result property="tyrq" column="TYRQ"/>
+        <result property="sysm" column="SYSM"/>
+        <result property="createTime" column="create_time"/>
+        <result property="createBy" column="create_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="deleteMark" column="delete_mark"/>
+    </resultMap>
+
+    <sql id="baseColumn">
+        `id`,
+        `TYSHXYDM`,
+        `WZMC`,
+        `WZBH`,
+        `WZYT`,
+        `WZXH`,
+        `FZBM`,
+        `WZFL`,
+        `CFWZ`,
+        `CCSL`,
+        `SCRQ`,
+        `SYQY`,
+        `SMZQ`,
+        `WZZT`,
+        `TYRQ`,
+        `SYSM`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`
+    </sql>
+
+    <select id="queryList" resultType="com.lyc.wwyt.vo.TYjwzglxxVO">
+        select
+        `id`,
+        `TYSHXYDM`,
+        `WZMC`,
+        `WZBH`,
+        `WZYT`,
+        `WZXH`,
+        `FZBM`,
+        `WZFL`,
+        `CFWZ`,
+        `CCSL`,
+        `SCRQ`,
+        `SYQY`,
+        `SMZQ`,
+        `WZZT`,
+        `TYRQ`,
+        `SYSM`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`
+        from t_yjwzglxx
+        where delete_mark = 0
+        <if test="tYjwzglxxDTO.id != null and tYjwzglxxDTO.id != ''">
+            AND id = #{tYjwzglxxDTO.id}
+        </if>
+        <if test="tYjwzglxxDTO.tyshxydm != null and tYjwzglxxDTO.tyshxydm != ''">
+            AND TYSHXYDM = #{tYjwzglxxDTO.tyshxydm}
+        </if>
+    </select>
+</mapper>

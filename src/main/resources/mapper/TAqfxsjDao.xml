@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.wwyt.dao.TAqfxsjDao">
+    <resultMap type="com.lyc.wwyt.entity.TAqfxsjEntity" id="TAqfxsjMap">
+        <result property="id" column="id"/>
+        <result property="riskUnitId" column="RISK_UNIT_ID"/>
+        <result property="tyshxydm" column="TYSHXYDM"/>
+        <result property="riskEventName" column="RISK_EVENT_NAME"/>
+        <result property="createTime" column="create_time"/>
+        <result property="createBy" column="create_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="deleteMark" column="delete_mark"/>
+        <result property="companyCode" column="COMPANY_CODE"/>
+    </resultMap>
+
+    <sql id="baseColumn">
+        `id`,
+        `RISK_UNIT_ID`,
+        `TYSHXYDM`,
+        `RISK_EVENT_NAME`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`,
+        `COMPANY_CODE`
+    </sql>
+
+    <select id="queryList" resultType="com.lyc.wwyt.vo.TAqfxsjVO">
+        select
+        `id`,
+        `RISK_UNIT_ID`,
+        `TYSHXYDM`,
+        `RISK_EVENT_NAME`,
+        `create_time`,
+        `create_by`,
+        `update_time`,
+        `update_by`,
+        `delete_mark`,
+        `COMPANY_CODE`
+        from t_aqfxsj
+        where delete_mark = 0
+        <if test="tAqfxsjDTO.id != null and tAqfxsjDTO.id != ''">
+            AND id = #{tAqfxsjDTO.id}
+        </if>
+        <if test="tAqfxsjDTO.tyshxydm != null and tAqfxsjDTO.tyshxydm != ''">
+            AND TYSHXYDM = #{tAqfxsjDTO.tyshxydm}
+        </if>
+    </select>
+</mapper>
