@@ -2274,7 +2274,7 @@ CREATE TABLE `t_user`  (
   INDEX `user_idx1_username`(`username`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci COMMENT = '五位一体上传数据用户表' ROW_FORMAT = Dynamic;
 
-INSERT INTO `jt_prod`.`t_user`(`user_id`, `username`, `password`, `phone`, `tyshxydm`, `company_name`, `create_time`, `update_time`, `lock_flag`, `delete_mark`) VALUES (1, 'chenqi', '$2a$10$IVzj1Wd.ZQdOIWdb1htQjexU94uoNeuk1crlQ9ExVupPi0Iy1uv.C', '15850629525', NULL, '', '2023-12-08 15:24:39', '2023-12-08 15:32:19', '0', '0');
+INSERT INTO `jt_prod`.`t_user`(`user_id`, `username`, `password`, `phone`, `tyshxydm`, `company_name`, `create_time`, `update_time`, `lock_flag`, `delete_mark`) VALUES (1, 'chenqi', '$2a$10$IVzj1Wd.ZQdOIWdb1htQjexU94uoNeuk1crlQ9ExVupPi0Iy1uv.C', '13812345678', NULL, '', '2023-12-08 15:24:39', '2023-12-08 15:32:19', '0', '0');
 
 
 -- ----------------------------
